@@ -1,15 +1,18 @@
-package Domain;
+package Domain.Condizioni;
+
+import Domain.IAzione;
+import java.util.ArrayList;
 
 public interface ICondizione {
 
 	abstract boolean verificaSeVera();
 
-	Azione getAzione();
+	IAzione getAzione();
 
 	/**
 	 * 
 	 * @param valori
 	 */
-	void create(int valori);
+	void create(String idCond, ArrayList<Integer> valori);
 
 }

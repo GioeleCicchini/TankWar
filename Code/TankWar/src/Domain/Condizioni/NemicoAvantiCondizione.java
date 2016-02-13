@@ -1,4 +1,6 @@
-package Domain;
+package Domain.Condizioni;
+
+import Domain.IAzione;
 
 public class NemicoAvantiCondizione implements ICondizione {
 
@@ -8,5 +10,20 @@ public class NemicoAvantiCondizione implements ICondizione {
 	 */
 	private int cardinalità;
 	private int idCond;
+
+    @Override
+    public boolean verificaSeVera() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public IAzione getAzione() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void create(int valori) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

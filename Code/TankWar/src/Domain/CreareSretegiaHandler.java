@@ -9,7 +9,7 @@ public class CreareSretegiaHandler {
 	 * @param idCond
 	 * @param valori
 	 */
-	public void scegliCondizione(string idCond, int valori) {
+	public void scegliCondizione(String idCond, int valori) {
 		// TODO - implement CreareSretegiaHandler.scegliCondizione
 		throw new UnsupportedOperationException();
 	}
@@ -20,7 +20,7 @@ public class CreareSretegiaHandler {
 	 * @param idCond
 	 * @param valori
 	 */
-	public void associaAzione(string idTypeAz, string idCond, int valori) {
+	public void associaAzione(String idTypeAz, String idCond, int valori) {
 		// TODO - implement CreareSretegiaHandler.associaAzione
 		throw new UnsupportedOperationException();
 	}
@@ -35,7 +35,7 @@ public class CreareSretegiaHandler {
 	 * @param idTypeAz
 	 * @param valori
 	 */
-	public void scegliAzioneDefault(string idTypeAz, int valori) {
+	public void scegliAzioneDefault(String idTypeAz, int valori) {
 		// TODO - implement CreareSretegiaHandler.scegliAzioneDefault
 		throw new UnsupportedOperationException();
 	}
@@ -44,7 +44,7 @@ public class CreareSretegiaHandler {
 	 * 
 	 * @param nomeStrategia
 	 */
-	public void inserisciNomeStrategia(string nomeStrategia) {
+	public void inserisciNomeStrategia(String nomeStrategia) {
 		// TODO - implement CreareSretegiaHandler.inserisciNomeStrategia
 		throw new UnsupportedOperationException();
 	}

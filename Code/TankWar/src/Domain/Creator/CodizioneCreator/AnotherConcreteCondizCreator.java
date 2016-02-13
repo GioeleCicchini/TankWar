@@ -1,9 +1,17 @@
-package Domain;
+package Domain.Creator.CodizioneCreator;
+
+import Domain.Condizioni.ICondizione;
+import java.util.ArrayList;
 
 public class AnotherConcreteCondizCreator implements ICondizioneCreator {
 
-	private static string idType;
-	private static string name;
-	private static string description;
+	private static String idType;
+	private static String name;
+	private static String description;
+
+    @Override
+    public ICondizione doMakeCondizione(ArrayList<Integer> valori) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

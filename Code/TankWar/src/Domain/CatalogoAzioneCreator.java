@@ -6,7 +6,7 @@ public class CatalogoAzioneCreator {
 	 * 
 	 * @param idTypeAz
 	 */
-	public void getAzioneCreator(string idTypeAz) {
+	public void getAzioneCreator(String idTypeAz) {
 		// TODO - implement CatalogoAzioneCreator.getAzioneCreator
 		throw new UnsupportedOperationException();
 	}
