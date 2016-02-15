@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00005a9-0600-48a6-a431-8c59d2c2b53a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code/Domain/Creator/CodizioneCreator/DefaultCondizioneCreator.java" afterPath="$PROJECT_DIR$/Code/Domain/Creator/CodizioneCreator/DefaultCondizioneCreator.java" />
-    </list>
+    <list default="true" id="f00005a9-0600-48a6-a431-8c59d2c2b53a" name="Default" comment="" />
     <ignored path="TankWar.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -733,12 +731,12 @@
       <updated>1455548302998</updated>
       <workItem from="1455548305248" duration="454000" />
       <workItem from="1455548891600" duration="47000" />
-      <workItem from="1455549021124" duration="2012000" />
+      <workItem from="1455549021124" duration="2222000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2513000" />
+    <option name="totallyTimeSpent" value="2723000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
