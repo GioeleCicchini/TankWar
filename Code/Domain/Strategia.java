@@ -10,7 +10,7 @@ public class Strategia {
     
         private List<IStrategiaComponent> conditionBlock;
         private String nome;
-	private boolean isComplete;
+		private boolean isComplete;
         private AtomicInteger count;
 
     public Strategia() {
@@ -36,7 +36,7 @@ public class Strategia {
 
 	/**
 	 * 
-	 * @param cc
+	 * @param condizionecreator
 	 * @param valori
 	 */
 	public void aggiungiCondizione(ICondizioneCreator condizionecreator, ArrayList<Integer> valori) {
@@ -51,7 +51,7 @@ public class Strategia {
 	 * @param valori
 	 * @param idCond
 	 */
-	public void aggiungiAzione(IAzioneCreator az, int valori, String idCond) {
+	public void aggiungiAzione(Domain.IAzioneCreator az, int valori, String idCond) {
 		// TODO - implement Strategia.aggiungiAzione
 		throw new UnsupportedOperationException();
 	}
@@ -62,7 +62,7 @@ public class Strategia {
 	 * @param Valori
 	 * @param idCond
 	 */
-	public void AggiungiAzione(IAzioneCreator ac, int Valori, String idCond) {
+	public void AggiungiAzione(Domain.IAzioneCreator ac, int Valori, String idCond) {
 		// TODO - implement Strategia.AggiungiAzione
 		throw new UnsupportedOperationException();
 	}
