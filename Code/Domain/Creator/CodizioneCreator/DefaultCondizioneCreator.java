@@ -1,5 +1,6 @@
 package Domain.Creator.CodizioneCreator;
 
+import Domain.Condizioni.DefaultCondizione;
 import Domain.Condizioni.ICondizione;
 
 import java.util.ArrayList;
@@ -13,8 +14,14 @@ public class DefaultCondizioneCreator implements ICondizioneCreator {
     private static DefaultCondizioneCreator singletonInstance = null;
 
     private String name;
+    private String description;
+    private String idType;
 
-    private DefaultCondizioneCreator () {}
+    private DefaultCondizioneCreator () {
+        this.name="Condizione di Default";
+        this.description="Questa è una condizione sempre vera";
+        this.idType="000";
+    }
 
     public static DefaultCondizioneCreator getSingletonInstance ()
     {
@@ -26,8 +33,8 @@ public class DefaultCondizioneCreator implements ICondizioneCreator {
     }
 
     @Override
-    public ICondizione doMakeCondizione(String idCond, ArrayList<Integer> valori) {
-        return null;
+    public DefaultCondizione doMakeCondizione(String idCond, ArrayList<Integer> valori) {
+        DefaultCondizione defaultCondizione = new DefaultCondizione(this.name,this.description,this.idType,idCond,valori);
+        return defaultCondizione;
     }
 }
-wfuheg
