@@ -1,4 +1,8 @@
-package Domain;
+package Domain.Creator.AzioneCreator;
+
+import Domain.Azioni.IAzione;
+
+import java.util.ArrayList;
 
 public interface IAzioneCreator {
 
@@ -6,6 +10,6 @@ public interface IAzioneCreator {
 	 * 
 	 * @param valori
 	 */
-	void doMakeAzione(int valori);
+	IAzione doMakeAzione(String idAz, ArrayList<Integer> valori);
 
 }
