@@ -1,17 +1,39 @@
 package Domain.Creator.CodizioneCreator;
 
 import Domain.Condizioni.ICondizione;
+import Domain.Condizioni.NemicoAvantiCondizione;
+
 import java.util.ArrayList;
 
+/**
+ * Created by beniamino on 15/02/16.
+ */
 public class NemicoAvantiCondizioneCreator implements ICondizioneCreator {
 
-	private static String idType = "001";
-	private static String name;
-	private static String description;
+    private static NemicoAvantiCondizioneCreator singletonInstance = null;
 
-    @Override
-    public ICondizione doMakeCondizione(ArrayList<Integer> valori) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private String name;
+    private String description;
+    private String idType;
+
+    private NemicoAvantiCondizioneCreator() {
+        this.name = "Nemico Avanti";
+        this.description = "Questa condizione controlla se c'è un nemico nel semicampo avanti a sè";
+        this.idType = "001";
     }
 
+    public static NemicoAvantiCondizioneCreator getSingletonInstance()
+    {
+        if (singletonInstance == null)
+        {
+            singletonInstance = new NemicoAvantiCondizioneCreator();
+        }
+        return singletonInstance;
+    }
+
+    @Override
+    public ICondizione doMakeCondizione(String idCond, ArrayList<Integer> valori) {
+        NemicoAvantiCondizione nemicoAvantiCondizione = new NemicoAvantiCondizione(this.name,this.description,idType,idCond,valori);
+        return nemicoAvantiCondizione;
+    }
 }

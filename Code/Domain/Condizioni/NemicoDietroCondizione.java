@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by beniamino on 15/02/16.
  */
-public class NemicoAvantiCondizione implements ICondizione, IStrategiaComponent {
+public class NemicoDietroCondizione implements ICondizione, IStrategiaComponent {
 
     private String name;
     private String description;
@@ -17,7 +17,7 @@ public class NemicoAvantiCondizione implements ICondizione, IStrategiaComponent 
     private String idCond;
     private ArrayList<Integer> valori;
 
-    public NemicoAvantiCondizione(String name, String description, String idType, String idCond, ArrayList<Integer> valori) {
+    public NemicoDietroCondizione(String name, String description, String idType, String idCond, ArrayList<Integer> valori) {
         this.name = name;
         this.description = description;
         this.idType = idType;

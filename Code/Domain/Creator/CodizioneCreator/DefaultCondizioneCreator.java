@@ -33,7 +33,7 @@ public class DefaultCondizioneCreator implements ICondizioneCreator {
     }
 
     @Override
-    public DefaultCondizione doMakeCondizione(String idCond, ArrayList<Integer> valori) {
+    public ICondizione doMakeCondizione(String idCond, ArrayList<Integer> valori) {
         DefaultCondizione defaultCondizione = new DefaultCondizione(this.name,this.description,this.idType,idCond,valori);
         return defaultCondizione;
     }
