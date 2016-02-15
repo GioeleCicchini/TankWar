@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f00005a9-0600-48a6-a431-8c59d2c2b53a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Code/Domain/Creator/CodizioneCreator/DefaultCondizioneCreator.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Code/Domain/Class.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Code/Domain/Demo.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code/Domain/Azioni/AConcreteAzione.java" afterPath="$PROJECT_DIR$/Code/Domain/Azioni/AConcreteAzione.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code/Domain/Strategia.java" afterPath="$PROJECT_DIR$/Code/Domain/Strategia.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code/Domain/Creator/CodizioneCreator/DefaultCondizioneCreator.java" afterPath="$PROJECT_DIR$/Code/Domain/Creator/CodizioneCreator/DefaultCondizioneCreator.java" />
     </list>
     <ignored path="TankWar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,12 +28,12 @@
       <file leaf-file-name="DefaultCondizioneCreator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Code/Domain/Creator/CodizioneCreator/DefaultCondizioneCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62068963">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.28965518">
+              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#706#707#0" expanded="true" />
-                <element signature="e#733#734#0" expanded="true" />
+                <element signature="e#732#733#0" expanded="true" />
+                <element signature="e#759#760#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -739,12 +733,12 @@
       <updated>1455548302998</updated>
       <workItem from="1455548305248" duration="454000" />
       <workItem from="1455548891600" duration="47000" />
-      <workItem from="1455549021124" duration="1773000" />
+      <workItem from="1455549021124" duration="2012000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2274000" />
+    <option name="totallyTimeSpent" value="2513000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -881,12 +875,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Code/Domain/Creator/CodizioneCreator/DefaultCondizioneCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62068963">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.28965518">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#706#707#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
           </folding>
         </state>
       </provider>

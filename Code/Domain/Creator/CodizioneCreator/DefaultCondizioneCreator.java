@@ -12,6 +12,8 @@ public class DefaultCondizioneCreator implements ICondizioneCreator {
 
     private static DefaultCondizioneCreator singletonInstance = null;
 
+    private String name;
+
     private DefaultCondizioneCreator () {}
 
     public static DefaultCondizioneCreator getSingletonInstance ()
