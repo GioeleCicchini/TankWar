@@ -1,8 +1,10 @@
 package Domain.Azioni;
 
+import Domain.IStrategiaComponent;
+
 import java.util.ArrayList;
 
-public class AvanzaDestraAzione implements IAzione {
+public class AvanzaDestraAzione implements IAzione, IStrategiaComponent {
     private String idAz;
     private String idTypeAz;
     private String name;
@@ -15,5 +17,20 @@ public class AvanzaDestraAzione implements IAzione {
         this.name = name;
         this.description = description;
         this.valori = valori;
+    }
+
+    @Override
+    public void add(IStrategiaComponent c) {
+
+    }
+
+    @Override
+    public void remove(IStrategiaComponent c) {
+
+    }
+
+    @Override
+    public IStrategiaComponent getChild() {
+        return null;
     }
 }

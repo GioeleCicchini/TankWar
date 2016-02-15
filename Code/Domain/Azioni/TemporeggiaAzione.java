@@ -1,11 +1,13 @@
 package Domain.Azioni;
 
-import Domain.Azioni.IAzione;
 import Domain.IStrategiaComponent;
 
 import java.util.ArrayList;
 
-public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent {
+/**
+ * Created by emanuele on 15/02/16.
+ */
+public class TemporeggiaAzione implements IAzione, IStrategiaComponent {
 
     private String idAz;
     private String idTypeAz;
@@ -13,7 +15,7 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent {
     private String description;
     private ArrayList<Integer> valori;
 
-    public AvanzaAvantiAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
+    public TemporeggiaAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
         this.idAz = idAz;
         this.idTypeAz = idTypeAz;
         this.name = name;
