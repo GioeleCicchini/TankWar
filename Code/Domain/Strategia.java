@@ -20,7 +20,6 @@ public class Strategia {
         this.count= new AtomicInteger(0);
     }
         
-       
 
 	public boolean getIsComplete() {
 		return this.isComplete;
@@ -40,9 +39,9 @@ public class Strategia {
 	 * @param valori
 	 */
 	public void aggiungiCondizione(ICondizioneCreator condizionecreator, ArrayList<Integer> valori) {
-                String idcond=((Integer)count.incrementAndGet()).toString();
+		String idcond=((Integer)count.incrementAndGet()).toString();
 		ICondizione condizione = condizionecreator.doMakeCondizione(idcond,valori);
-                this.conditionBlock.add((IStrategiaComponent) condizione);
+		this.conditionBlock.add((IStrategiaComponent) condizione);
 	}
 
 	/**
