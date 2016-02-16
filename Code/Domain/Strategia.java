@@ -1,5 +1,6 @@
 package Domain;
 
+import Domain.Azioni.IAzione;
 import Domain.Condizioni.ICondizione;
 import Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class Strategia {
 	 * @param valori
 	 * @param idCond
 	 */
-	public void aggiungiAzione(Domain.IAzioneCreator az, int valori, String idCond) {
+	public void aggiungiAzione(IAzione az, int valori, String idCond) {
 		// TODO - implement Strategia.aggiungiAzione
 		throw new UnsupportedOperationException();
 	}
@@ -61,7 +62,7 @@ public class Strategia {
 	 * @param Valori
 	 * @param idCond
 	 */
-	public void AggiungiAzione(Domain.IAzioneCreator ac, int Valori, String idCond) {
+	public void AggiungiAzione(IAzione ac, int Valori, String idCond) {
 		// TODO - implement Strategia.AggiungiAzione
 		throw new UnsupportedOperationException();
 	}
