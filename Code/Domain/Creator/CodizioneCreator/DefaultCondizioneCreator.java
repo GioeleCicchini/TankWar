@@ -32,6 +32,18 @@ public class DefaultCondizioneCreator implements ICondizioneCreator {
         return singletonInstance;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getIdType() {
+        return idType;
+    }
+
     @Override
     public ICondizione doMakeCondizione(String idCond, ArrayList<Integer> valori) {
         DefaultCondizione defaultCondizione = new DefaultCondizione(this.name,this.description,this.idType,idCond,valori);

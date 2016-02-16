@@ -11,4 +11,5 @@ public interface ICondizioneCreator {
 	 */
 	 ICondizione doMakeCondizione(String idCond, ArrayList<Integer> valori);
 
+	String getIdType();
 }
