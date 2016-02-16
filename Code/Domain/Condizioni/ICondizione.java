@@ -1,6 +1,8 @@
 package Domain.Condizioni;
 
-import Domain.IAzione;
+
+import Domain.Azioni.IAzione;
+
 import java.util.ArrayList;
 
 public interface ICondizione {

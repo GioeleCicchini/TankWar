@@ -1,6 +1,7 @@
 package Domain.Condizioni;
 
-import Domain.IAzione;
+
+import Domain.Azioni.IAzione;
 import Domain.IStrategiaComponent;
 
 import java.util.ArrayList;
