@@ -1,4 +1,6 @@
-package Domain;
+package Domain.Controllers;
+
+import Domain.Player;
 
 public class CreareSretegiaHandler {
 
