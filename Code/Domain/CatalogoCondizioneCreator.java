@@ -35,10 +35,10 @@ public class CatalogoCondizioneCreator {
 
 	/**
 	 * 
-	 * @param idCond id identificativo della generica condizione
+	 * @param idTypeCond id identificativo della generica condizione
 	 */
-	public ICondizioneCreator getCondizioneCreator(String idCond) {
-		return null;
+	public ICondizioneCreator getCondizioneCreator(String idTypeCond) {
+		return this.condizioniCreators.get(idTypeCond);
 	}
 
 	public ICondizioneCreator getCondizioneDefaultCreator(){
