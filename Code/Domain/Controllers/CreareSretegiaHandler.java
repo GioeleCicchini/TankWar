@@ -5,6 +5,8 @@ import Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Domain.Player;
 import Domain.Strategia;
 
+import java.util.ArrayList;
+
 public class CreareSretegiaHandler {
 
 	private static CreareSretegiaHandler singletonInstance = null;
@@ -27,12 +29,13 @@ public class CreareSretegiaHandler {
 
 	/**
 	 * 
-	 * @param idCond
+	 * @param idTypeCond
 	 * @param valori
 	 */
-	public void scegliCondizione(String idCond, int valori) {
-		// TODO - implement CreareSretegiaHandler.scegliCondizione
-		throw new UnsupportedOperationException();
+	public void scegliCondizione(String idTypeCond, ArrayList<Integer> valori) {
+		CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
+		ICondizioneCreator iCondizioneCreator = ccc.getCondizioneCreator(idTypeCond);
+		this.strategiaCorrente.aggiungiCondizione(iCondizioneCreator,valori);
 	}
 
 	/**
