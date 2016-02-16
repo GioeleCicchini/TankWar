@@ -1,10 +1,29 @@
 package Domain.Controllers;
 
+import Domain.CatalogoCondizioneCreator;
+import Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Domain.Player;
+import Domain.Strategia;
 
 public class CreareSretegiaHandler {
 
-	Player currentPlayer;
+	private static CreareSretegiaHandler singletonInstance = null;
+
+	private Player currentPlayer;
+	private Strategia strategiaCorrente;
+
+	private CreareSretegiaHandler() {
+
+	}
+
+	public static CreareSretegiaHandler getSingletonInstance()
+	{
+		if (singletonInstance == null)
+		{
+			singletonInstance = new CreareSretegiaHandler();
+		}
+		return singletonInstance;
+	}
 
 	/**
 	 * 
@@ -28,8 +47,9 @@ public class CreareSretegiaHandler {
 	}
 
 	public void iniziaNuovaStrategia() {
-		// TODO - implement CreareSretegiaHandler.iniziaNuovaStrategia
-		throw new UnsupportedOperationException();
+		CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
+		ICondizioneCreator iCondizioneCreator = catalogoCondizioneCreator.getCondizioneDefaultCreator();
+		this.strategiaCorrente = currentPlayer.iniziaNuovaStrategia(iCondizioneCreator);
 	}
 
 	/**

@@ -41,7 +41,7 @@ public class CatalogoCondizioneCreator {
 		return null;
 	}
 
-	public ICondizioneCreator getCondizioneDeafultCreator(){
+	public ICondizioneCreator getCondizioneDefaultCreator(){
 		return this.condizioniCreators.get(this.defaultCreatorKey);
 	}
 
