@@ -10,16 +10,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Strategia {
     
         private List<IStrategiaComponent> conditionBlock;
+		private ICondizione defaultCondition;
         private String nome;
 		private boolean isComplete;
         private AtomicInteger count;
 
-    public Strategia() {
+    public Strategia(ICondizioneCreator iCondizioneCreator) {
+        this.count = new AtomicInteger(0);
+        String idcond=((Integer)count.incrementAndGet()).toString();
         this.conditionBlock = new ArrayList<>();
+        ArrayList<Integer> valori = new ArrayList<Integer>();
+        this.defaultCondition = iCondizioneCreator.doMakeCondizione(idcond,valori);
         this.nome = "";
         this.isComplete = false;
-        this.count= new AtomicInteger(0);
+
     }
+
         
 
 	public boolean getIsComplete() {
