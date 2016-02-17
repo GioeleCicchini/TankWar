@@ -38,6 +38,12 @@ public class CreareSretegiaHandler {
 		this.strategiaCorrente.aggiungiCondizione(iCondizioneCreator,valori);
 	}
 
+	public void scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, ArrayList<Integer> valori) {
+        CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
+        ICondizioneCreator iCondizioneCreator = ccc.getCondizioneCreator(idTypeCond);
+        this.strategiaCorrente.aggiungiCondizioneAnnidata(iCondizioneCreator, idCondPadre, valori);
+	}
+
 	/**
 	 * 
 	 * @param idTypeAz

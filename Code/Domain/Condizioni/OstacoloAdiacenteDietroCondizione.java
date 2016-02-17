@@ -16,6 +16,7 @@ public class OstacoloAdiacenteDietroCondizione implements ICondizione, IStrategi
 
     private String idCond;
     private ArrayList<Integer> valori;
+    private IStrategiaComponent child;
 
     public OstacoloAdiacenteDietroCondizione(String name, String description, String idType, String idCond, ArrayList<Integer> valori) {
         this.name = name;
@@ -23,6 +24,7 @@ public class OstacoloAdiacenteDietroCondizione implements ICondizione, IStrategi
         this.idType = idType;
         this.idCond = idCond;
         this.valori = valori;
+        this.child = null;
     }
 
 
@@ -43,16 +45,18 @@ public class OstacoloAdiacenteDietroCondizione implements ICondizione, IStrategi
 
     @Override
     public void add(IStrategiaComponent c) {
-
+        if (this.child == null) {
+            this.child = c;
+        }
     }
 
     @Override
     public void remove(IStrategiaComponent c) {
-
+        this.child = null;
     }
 
     @Override
     public IStrategiaComponent getChild() {
-        return null;
+        return this.child;
     }
 }
