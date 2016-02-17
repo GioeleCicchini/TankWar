@@ -71,8 +71,10 @@ public class Strategia implements Serializable {
 	public Strategia() {
 	}
 
-	public aggiungiAzioneDefault(IAzioneCreator iAzioneCreator, ArrayList<Integer> valori) {
-
+	public void aggiungiAzioneDefault(IAzioneCreator iAzioneCreator, ArrayList<Integer> valori) {
+        String idAzione=((Integer)count.incrementAndGet()).toString();
+        IStrategiaComponent azione = (IStrategiaComponent) iAzioneCreator.doMakeAzione(idAzione,valori);
+        this.defaultCondition.addChild(azione);
 	}
 
 	public boolean getIsComplete() {
