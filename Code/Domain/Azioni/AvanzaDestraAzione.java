@@ -20,12 +20,12 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent {
     }
 
     @Override
-    public void add(IStrategiaComponent c) {
+    public void addChild(IStrategiaComponent c) {
 
     }
 
     @Override
-    public void remove(IStrategiaComponent c) {
+    public void removeChild() {
 
     }
 
