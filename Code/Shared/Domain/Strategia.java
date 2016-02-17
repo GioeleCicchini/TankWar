@@ -67,7 +67,8 @@ public class Strategia implements Serializable {
 
     }
 
-        
+	public Strategia() {
+	}
 
 	public boolean getIsComplete() {
 		return this.isComplete;

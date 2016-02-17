@@ -28,6 +28,9 @@ public class NemicoDietroCondizione implements ICondizione, IStrategiaComponent,
         this.child = null;
     }
 
+    public NemicoDietroCondizione() {
+    }
+
     @Override
     public boolean verificaSeVera() {
         return false;
