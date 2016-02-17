@@ -1,5 +1,6 @@
 package Shared.Domain.Controllers;
 
+import Shared.Domain.CatalogoAzioneCreator;
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Player;
@@ -51,8 +52,7 @@ public class CreareSretegiaHandler {
 	 * @param valori
 	 */
 	public void associaAzione(String idTypeAz, String idCond, int valori) {
-		// TODO - implement CreareSretegiaHandler.associaAzione
-		throw new UnsupportedOperationException();
+		CatalogoAzioneCreator catalogoAzioneCreator= CatalogoAzioneCreator.get
 	}
 
 	public void iniziaNuovaStrategia() {

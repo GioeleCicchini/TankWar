@@ -129,21 +129,22 @@ public class Strategia implements Serializable {
 	 * @param valori
 	 * @param idCond
 	 */
-	public void aggiungiAzione(IAzioneCreator az, int valori, String idCond) {
+	public void aggiungiAzione(IAzioneCreator az, ArrayList<Integer> valori, String idCond) {
 		ArrayList<IStrategiaComponent> foglie = this.getFoglie();
+		String idAz = ((Integer)count.incrementAndGet()).toString();
+		IStrategiaComponent azione = (IStrategiaComponent) az.doMakeAzione(idAz,valori);
+		boolean trovato = false;
+		IStrategiaComponent currentfoglia = null;
+		for (int i=0; i<foglie.size() && !trovato; i++){
+			currentfoglia = foglie.get(i);
+			if (((ICondizione)currentfoglia).getIdCond().equals(idCond)){
+				trovato=true;
+				currentfoglia.addChild(azione);
+			}
+		}
 
 	}
 
-	/**
-	 * 
-	 * @param ac
-	 * @param Valori
-	 * @param idCond
-	 */
-	public void AggiungiAzione(IAzione ac, int Valori, String idCond) {
-		// TODO - implement Strategia.AggiungiAzione
-		throw new UnsupportedOperationException();
-	}
 
 	/**
 	 * 
