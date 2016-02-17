@@ -64,9 +64,43 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
         this.child = null;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getIdType() {
+        return idType;
+    }
+
+    public void setIdType(String idType) {
+        this.idType = idType;
+    }
+
+    @Override
+    public void setIdCond(String idCond) {
+        this.idCond = idCond;
+    }
+
+    public ArrayList<Integer> getValori() {
+        return valori;
+    }
+
+    public void setValori(ArrayList<Integer> valori) {
+        this.valori = valori;
+    }
+
+    public void setChild(IStrategiaComponent child) {
+        this.child = child;
+    }
+
     @Override
     public IStrategiaComponent getChild() {
         return this.child;
+
     }
 
     public String getName() {

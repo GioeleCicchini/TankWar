@@ -18,6 +18,38 @@ public class IndietreggiaAzione implements IAzione, IStrategiaComponent, Seriali
     public IndietreggiaAzione() {
     }
 
+    public String getIdTypeAz() {
+        return idTypeAz;
+    }
+
+    public void setIdTypeAz(String idTypeAz) {
+        this.idTypeAz = idTypeAz;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ArrayList<Integer> getValori() {
+        return valori;
+    }
+
+    public void setValori(ArrayList<Integer> valori) {
+        this.valori = valori;
+    }
+
     public IndietreggiaAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
         this.idAz = idAz;
         this.idTypeAz = idTypeAz;
