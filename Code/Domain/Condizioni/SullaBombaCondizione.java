@@ -43,6 +43,11 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent {
     }
 
     @Override
+    public String getIdCond() {
+        return idCond;
+    }
+
+    @Override
     public void addChild(IStrategiaComponent c) {
         if (this.child == null) {
             this.child = c;

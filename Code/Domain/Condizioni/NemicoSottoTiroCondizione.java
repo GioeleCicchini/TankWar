@@ -44,6 +44,11 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
     }
 
     @Override
+    public String getIdCond() {
+        return idCond;
+    }
+
+    @Override
     public void addChild(IStrategiaComponent c) {
         if (this.child == null) {
             this.child = c;
