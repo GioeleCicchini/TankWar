@@ -69,7 +69,7 @@ public class CreareSretegiaHandler {
 	 * @param idTypeAz
 	 * @param valori
 	 */
-	public void scegliAzioneDefault(String idTypeAz, int valori) {
+	public void scegliAzioneDefault(String idTypeAz, ArrayList<Integer> valori) {
 		CatalogoAzioneCreator cac = CatalogoAzioneCreator.getSingletonInstance();
 		IAzioneCreator ac = cac.getAzioneCreator(idTypeAz);
 		this.strategiaCorrente.aggiungiAzioneDefault(ac,valori);
