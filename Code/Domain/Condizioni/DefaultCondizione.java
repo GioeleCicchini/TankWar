@@ -17,6 +17,7 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent{
 
     private String idCond;
     private ArrayList<Integer> valori;
+    private IStrategiaComponent child;
 
     public DefaultCondizione(String name, String description, String idType, String idCond, ArrayList<Integer> valori) {
         this.name = name;
@@ -25,6 +26,7 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent{
 
         this.idCond = idCond;
         this.valori = valori;
+        this.child = null;
     }
 
     @Override
@@ -44,16 +46,18 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent{
 
     @Override
     public void add(IStrategiaComponent c) {
-
+        if (this.child == null){
+            this.child = c;
+        }
     }
 
     @Override
     public void remove(IStrategiaComponent c) {
-
+        this.child = null;
     }
 
     @Override
     public IStrategiaComponent getChild() {
-        return null;
+        return this.child;
     }
 }

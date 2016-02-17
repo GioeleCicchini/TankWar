@@ -1,6 +1,7 @@
 package Domain;
 
 import Domain.Azioni.IAzione;
+import Domain.Condizioni.ICondizione;
 import Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,15 @@ public class Strategia {
 		String idcond=((Integer)count.incrementAndGet()).toString();
 		IStrategiaComponent condizione = (IStrategiaComponent) condizionecreator.doMakeCondizione(idcond,valori);
 		this.conditionBlock.add(condizione);
+	}
+
+	public void aggiungiCondizioneAnnidata(ICondizioneCreator condizioneCreator, String idCondPadre, ArrayList<Integer> valori) {
+		String idcond=((Integer)count.incrementAndGet()).toString();
+		IStrategiaComponent condizione = (IStrategiaComponent) condizioneCreator.doMakeCondizione(idcond,valori);
+		for (IStrategiaComponent currentComponent: this.conditionBlock) {
+			if (((ICondizione)currentComponent).)
+		}
+
 	}
 
 	/**
