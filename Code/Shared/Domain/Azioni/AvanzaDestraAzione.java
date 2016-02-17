@@ -34,4 +34,12 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
     public IStrategiaComponent getChild() {
         return null;
     }
+
+    public String getIdAz() {
+        return idAz;
+    }
+
+    public void setIdAz(String idAz) {
+        this.idAz = idAz;
+    }
 }

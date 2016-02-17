@@ -38,4 +38,12 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
     public IStrategiaComponent getChild() {
         return null;
     }
+
+    public String getIdAz() {
+        return idAz;
+    }
+
+    public void setIdAz(String idAz) {
+        this.idAz = idAz;
+    }
 }

@@ -66,4 +66,12 @@ public class NemicoDestraCondizione implements ICondizione, IStrategiaComponent,
     public IStrategiaComponent getChild() {
         return this.child;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

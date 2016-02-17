@@ -16,4 +16,11 @@ public class Player  implements Serializable{
 		return strategia;
 	}
 
+	public ArrayList<Strategia> getStrategieList() {
+		return strategieList;
+	}
+
+	public void setStrategieList(ArrayList<Strategia> strategieList) {
+		this.strategieList = strategieList;
+	}
 }

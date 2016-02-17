@@ -64,4 +64,12 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
     public IStrategiaComponent getChild() {
         return this.child;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

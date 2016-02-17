@@ -66,4 +66,12 @@ public class OstacoloAdiacenteDestraCondizione implements ICondizione, IStrategi
     public IStrategiaComponent getChild() {
         return this.child;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

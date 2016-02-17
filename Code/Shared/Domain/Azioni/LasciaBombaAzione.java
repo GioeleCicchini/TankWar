@@ -37,4 +37,12 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
     public IStrategiaComponent getChild() {
         return null;
     }
+
+    public String getIdAz() {
+        return idAz;
+    }
+
+    public void setIdAz(String idAz) {
+        this.idAz = idAz;
+    }
 }
