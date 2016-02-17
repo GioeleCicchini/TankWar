@@ -54,10 +54,29 @@ public class Strategia {
 	public void aggiungiCondizioneAnnidata(ICondizioneCreator condizioneCreator, String idCondPadre, ArrayList<Integer> valori) {
 		String idcond=((Integer)count.incrementAndGet()).toString();
 		IStrategiaComponent condizione = (IStrategiaComponent) condizioneCreator.doMakeCondizione(idcond,valori);
-		for (IStrategiaComponent currentComponent: this.conditionBlock) {
-			if (((ICondizione)currentComponent).)
+		boolean trovato = false;
+		ArrayList<IStrategiaComponent> foglie = this.getFoglie();
+		IStrategiaComponent currentfoglia = null;
+		for (int i=0; i<foglie.size() && !trovato; i++){
+			currentfoglia=foglie.get(i);
+			if (((ICondizione)currentfoglia).getIdCond().equals(idCondPadre)){
+				trovato=true;
+			}
 		}
+		currentfoglia.addChild(condizione);
+	}
 
+	public ArrayList<IStrategiaComponent> getFoglie(){
+		ArrayList<IStrategiaComponent> result = new ArrayList<>();
+		IStrategiaComponent currentLine = null;
+		for (int i=0; i<conditionBlock.size(); i++){
+			currentLine=conditionBlock.get(i);
+			while (currentLine.getChild() != null){
+				currentLine=currentLine.getChild();
+			}
+			result.add(currentLine);
+		}
+		return result;
 	}
 
 	/**
