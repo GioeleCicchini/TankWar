@@ -4,12 +4,13 @@ package Shared.Domain.Condizioni;
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.IStrategiaComponent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by beniamino on 15/02/16.
  */
-public class DefaultCondizione implements ICondizione, IStrategiaComponent {
+public class DefaultCondizione implements ICondizione, IStrategiaComponent,Serializable {
 
     private String name;
     private String description;
