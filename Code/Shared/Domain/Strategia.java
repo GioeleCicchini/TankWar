@@ -2,6 +2,7 @@ package Shared.Domain;
 
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Condizioni.ICondizione;
+import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 
 
@@ -128,9 +129,9 @@ public class Strategia implements Serializable {
 	 * @param valori
 	 * @param idCond
 	 */
-	public void aggiungiAzione(IAzione az, int valori, String idCond) {
-		// TODO - implement Strategia.aggiungiAzione
-		throw new UnsupportedOperationException();
+	public void aggiungiAzione(IAzioneCreator az, int valori, String idCond) {
+		ArrayList<IStrategiaComponent> foglie = this.getFoglie();
+
 	}
 
 	/**
