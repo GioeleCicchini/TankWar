@@ -15,6 +15,9 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
     private String description;
     private ArrayList<Integer> valori;
 
+    public AvanzaSinistraAzione() {
+    }
+
     public AvanzaSinistraAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
         this.idAz = idAz;
         this.idTypeAz = idTypeAz;
@@ -39,6 +42,7 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
     }
 
     public String getIdAz() {
+
         return idAz;
     }
 

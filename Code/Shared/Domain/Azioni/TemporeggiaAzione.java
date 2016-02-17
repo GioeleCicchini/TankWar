@@ -16,6 +16,9 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
     private String description;
     private ArrayList<Integer> valori;
 
+    public TemporeggiaAzione() {
+    }
+
     public TemporeggiaAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
         this.idAz = idAz;
         this.idTypeAz = idTypeAz;

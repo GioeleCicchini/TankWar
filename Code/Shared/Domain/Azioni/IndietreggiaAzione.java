@@ -15,6 +15,9 @@ public class IndietreggiaAzione implements IAzione, IStrategiaComponent, Seriali
     private String description;
     private ArrayList<Integer> valori;
 
+    public IndietreggiaAzione() {
+    }
+
     public IndietreggiaAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
         this.idAz = idAz;
         this.idTypeAz = idTypeAz;
@@ -39,6 +42,7 @@ public class IndietreggiaAzione implements IAzione, IStrategiaComponent, Seriali
     }
 
     public String getIdAz() {
+
         return idAz;
     }
 

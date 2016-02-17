@@ -12,6 +12,9 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
     private String description;
     private ArrayList<Integer> valori;
 
+    public AvanzaDestraAzione() {
+    }
+
     public AvanzaDestraAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
         this.idAz = idAz;
         this.idTypeAz = idTypeAz;

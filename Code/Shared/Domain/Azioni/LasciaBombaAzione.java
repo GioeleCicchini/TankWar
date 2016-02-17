@@ -15,6 +15,9 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
     private String description;
     private ArrayList<Integer> valori;
 
+    public LasciaBombaAzione() {
+    }
+
     public LasciaBombaAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
         this.idAz = idAz;
         this.idTypeAz = idTypeAz;
@@ -39,6 +42,7 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
     }
 
     public String getIdAz() {
+
         return idAz;
     }
 

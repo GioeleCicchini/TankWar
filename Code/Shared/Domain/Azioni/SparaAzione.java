@@ -16,6 +16,9 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
     private String description;
     private ArrayList<Integer> valori;
 
+    public SparaAzione() {
+    }
+
     public SparaAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
         this.idAz = idAz;
         this.idTypeAz = idTypeAz;
