@@ -2,4 +2,4 @@
 */.DS_Store
 TankWar.iml
 out
-./Code/hibernate.cfg.xml
+Code/hibernate.cfg.xml
