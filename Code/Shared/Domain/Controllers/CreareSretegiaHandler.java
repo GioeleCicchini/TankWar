@@ -80,13 +80,11 @@ public class CreareSretegiaHandler {
 	 * @param nomeStrategia
 	 */
 	public void inserisciNomeStrategia(String nomeStrategia) {
-		// TODO - implement CreareSretegiaHandler.inserisciNomeStrategia
-		throw new UnsupportedOperationException();
+		this.strategiaCorrente.setNome(nomeStrategia);
 	}
 
 	public void terminaStrategia() {
-		// TODO - implement CreareSretegiaHandler.terminaStrategia
-		throw new UnsupportedOperationException();
+		this.strategiaCorrente.setComplete(true);
 	}
 
 }
