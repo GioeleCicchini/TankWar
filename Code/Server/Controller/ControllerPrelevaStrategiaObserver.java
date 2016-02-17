@@ -1,4 +1,4 @@
-package Controller;
+package Server.Controller;
 
 /**
  * Created by gioele on 16/02/16.

@@ -1,7 +1,6 @@
-package Controller;
+package Server.Controller;
 
-import Domain.Strategia;
-import Util.DTO;
+import Shared.Util.DTO;
 
 import java.io.Serializable;
 import java.util.ArrayList;

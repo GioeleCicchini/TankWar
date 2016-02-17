@@ -1,7 +1,7 @@
-package Controller;
+package Server.Controller;
 
-import Domain.Strategia;
-import Util.HibernateUtil;
+import Server.ServerUtil.HibernateUtil;
+import Shared.Domain.Strategia;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 

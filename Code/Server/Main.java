@@ -1,19 +1,16 @@
-import Controller.ControllerFacade;
-import Controller.ControllerPrelevaStrategiaObserver;
-import Controller.ControllerRegistraStrategiaObserver;
-import Domain.Strategia;
-import Util.HibernateUtil;
-import org.hibernate.Session;
+package Server;
 
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
+import Server.Controller.ControllerFacade;
+import Server.Controller.ControllerPrelevaStrategiaObserver;
+import Server.Controller.ControllerRegistraStrategiaObserver;
+
+import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        ControllerPrelevaStrategiaObserver  prelevaStrategiaObserver = new ControllerPrelevaStrategiaObserver();
+        ControllerPrelevaStrategiaObserver prelevaStrategiaObserver = new ControllerPrelevaStrategiaObserver();
         ControllerRegistraStrategiaObserver registraStrategiaObserver = new ControllerRegistraStrategiaObserver();
 
         ControllerFacade controllerFacade = new ControllerFacade();
