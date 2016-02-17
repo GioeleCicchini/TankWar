@@ -8,12 +8,12 @@ public interface IStrategiaComponent {
 	 */
 	void addChild(IStrategiaComponent c);
 
-	/**
-	 * 
-	 *
-	 */
 	void removeChild();
 
 	IStrategiaComponent getChild();
+
+	String getId();
+
+    void setId(String id);
 
 }

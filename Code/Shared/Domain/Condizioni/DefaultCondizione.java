@@ -16,7 +16,7 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent,Seria
     private String description;
     private String idType;
 
-    private String idCond;
+    private String id;
     private ArrayList<Integer> valori;
     private IStrategiaComponent child;
 
@@ -25,7 +25,7 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent,Seria
         this.description = description;
         this.idType = idType;
 
-        this.idCond = idCond;
+        this.id = idCond;
         this.valori = valori;
         this.child = null;
     }
@@ -46,11 +46,6 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent,Seria
     @Override
     public void create(String idCond, ArrayList<Integer> valori) {
 
-    }
-
-    @Override
-    public String getIdCond() {
-        return this.idCond;
     }
 
     @Override
@@ -81,10 +76,6 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent,Seria
         this.idType = idType;
     }
 
-    @Override
-    public void setIdCond(String idCond) {
-        this.idCond = idCond;
-    }
 
     public ArrayList<Integer> getValori() {
         return valori;
@@ -102,6 +93,16 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent,Seria
     public IStrategiaComponent getChild() {
         return this.child;
 
+    }
+
+    @Override
+    public String getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

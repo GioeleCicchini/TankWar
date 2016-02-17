@@ -15,7 +15,7 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
     private String description;
     private String idType;
 
-    private String idCond;
+    private String id;
     private ArrayList<Integer> valori;
     private IStrategiaComponent child;
 
@@ -23,7 +23,7 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
         this.name = name;
         this.description = description;
         this.idType = idType;
-        this.idCond = idCond;
+        this.id = idCond;
         this.valori = valori;
         this.child = null;
     }
@@ -47,8 +47,8 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
     }
 
     @Override
-    public String getIdCond() {
-        return idCond;
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -80,8 +80,8 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
     }
 
     @Override
-    public void setIdCond(String idCond) {
-        this.idCond = idCond;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public ArrayList<Integer> getValori() {

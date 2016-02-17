@@ -16,7 +16,7 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
     private String description;
     private String idType;
 
-    private String idCond;
+    private String id;
     private ArrayList<Integer> valori;
     private IStrategiaComponent child;
 
@@ -24,7 +24,7 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
         this.name = name;
         this.description = description;
         this.idType = idType;
-        this.idCond = idCond;
+        this.id = idCond;
         this.valori = valori;
         this.child = null;
     }
@@ -43,8 +43,8 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
     }
 
     @Override
-    public String getIdCond() {
-        return idCond;
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -81,8 +81,8 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
     }
 
     @Override
-    public void setIdCond(String idCond) {
-        this.idCond = idCond;
+    public void setId(String idCond) {
+        this.id = idCond;
     }
 
     public ArrayList<Integer> getValori() {

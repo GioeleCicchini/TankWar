@@ -15,7 +15,7 @@ public class NemicoDietroCondizione implements ICondizione, IStrategiaComponent,
     private String description;
     private String idType;
 
-    private String idCond;
+    private String id;
     private ArrayList<Integer> valori;
     private IStrategiaComponent child;
 
@@ -23,7 +23,7 @@ public class NemicoDietroCondizione implements ICondizione, IStrategiaComponent,
         this.name = name;
         this.description = description;
         this.idType = idType;
-        this.idCond = idCond;
+        this.id = idCond;
         this.valori = valori;
         this.child = null;
     }
@@ -44,8 +44,8 @@ public class NemicoDietroCondizione implements ICondizione, IStrategiaComponent,
 
 
     @Override
-    public String getIdCond() {
-        return idCond;
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -82,8 +82,8 @@ public class NemicoDietroCondizione implements ICondizione, IStrategiaComponent,
     }
 
     @Override
-    public void setIdCond(String idCond) {
-        this.idCond = idCond;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public ArrayList<Integer> getValori() {

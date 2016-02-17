@@ -1,7 +1,5 @@
 package Shared.Domain;
 
-import Shared.Domain.Azioni.IAzione;
-import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 
@@ -104,11 +102,11 @@ public class Strategia implements Serializable {
 		String idcond=((Integer)count.incrementAndGet()).toString();
 		IStrategiaComponent condizione = (IStrategiaComponent) condizioneCreator.doMakeCondizione(idcond,valori);
 		boolean trovato = false;
-		ArrayList<IStrategiaComponent> foglie = this.getFoglie();
+		ArrayList<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
 		IStrategiaComponent currentfoglia = null;
-		for (int i=0; i<foglie.size() && !trovato; i++){
-			currentfoglia=foglie.get(i);
-			if (((ICondizione)currentfoglia).getIdCond().equals(idCondPadre)){
+		for (int i=0; i<padriFoglie.size() && !trovato; i++){
+			currentfoglia=padriFoglie.get(i).getChild();
+			if (currentfoglia.getId().equals(idCondPadre)){
 				trovato=true;
 				currentfoglia.addChild(condizione);
 			}
@@ -116,18 +114,20 @@ public class Strategia implements Serializable {
 
 	}
 
-	public ArrayList<IStrategiaComponent> getFoglie(){
-		ArrayList<IStrategiaComponent> result = new ArrayList<>();
-		IStrategiaComponent currentLine = null;
-		for (int i=0; i<conditionBlock.size(); i++){
-			currentLine=conditionBlock.get(i);
-			while (currentLine.getChild() != null){
-				currentLine=currentLine.getChild();
-			}
-			result.add(currentLine);
-		}
-		return result;
-	}
+    public ArrayList<IStrategiaComponent> getPadriFoglie(){
+        ArrayList<IStrategiaComponent> result = new ArrayList<>();
+        IStrategiaComponent currentLine = null;
+        IStrategiaComponent padreCurrentLine = null;
+        for (int i=0; i<conditionBlock.size(); i++){
+            currentLine=conditionBlock.get(i);
+            while (currentLine.getChild() != null){
+                padreCurrentLine = currentLine;
+                currentLine=currentLine.getChild();
+            }
+            result.add(padreCurrentLine);
+        }
+        return result;
+    }
 
 	/**
 	 * 
@@ -136,14 +136,14 @@ public class Strategia implements Serializable {
 	 * @param idCond
 	 */
 	public void aggiungiAzione(IAzioneCreator az, ArrayList<Integer> valori, String idCond) {
-		ArrayList<IStrategiaComponent> foglie = this.getFoglie();
+		ArrayList<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
 		String idAz = ((Integer)count.incrementAndGet()).toString();
 		IStrategiaComponent azione = (IStrategiaComponent) az.doMakeAzione(idAz,valori);
 		boolean trovato = false;
 		IStrategiaComponent currentfoglia = null;
-		for (int i=0; i<foglie.size() && !trovato; i++){
-			currentfoglia = foglie.get(i);
-			if (((ICondizione)currentfoglia).getIdCond().equals(idCond)){
+		for (int i=0; i<padriFoglie.size() && !trovato; i++){
+			currentfoglia = padriFoglie.get(i).getChild();
+			if (currentfoglia.getId().equals(idCond)){
 				trovato=true;
 				currentfoglia.addChild(azione);
 			}
@@ -160,4 +160,18 @@ public class Strategia implements Serializable {
 		this.nome = nomeStrategia;
 	}
 
+	public void rimuoviComponente(String id) {
+		IStrategiaComponent currentPadreFoglia = null;
+        IStrategiaComponent currentFoglia = null;
+        ArrayList<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
+        boolean trovato = false;
+        for (int i=0; i<padriFoglie.size() && !trovato; i++) {
+            currentPadreFoglia = padriFoglie.get(i);
+            currentFoglia = currentPadreFoglia.getChild();
+            if (currentFoglia.getId().equals(id)) {
+                trovato = true;
+                currentPadreFoglia.removeChild();
+            }
+        }
+	}
 }

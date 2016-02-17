@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by emanuele on 15/02/16.
  */
 public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Serializable {
-    private String idAz;
+    private String id;
     private String idTypeAz;
     private String name;
     private String description;
@@ -51,7 +51,7 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
     }
 
     public AvanzaSinistraAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
-        this.idAz = idAz;
+        this.id = idAz;
         this.idTypeAz = idTypeAz;
         this.name = name;
         this.description = description;
@@ -73,12 +73,12 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
         return null;
     }
 
-    public String getIdAz() {
+    public String getId() {
 
-        return idAz;
+        return id;
     }
 
-    public void setIdAz(String idAz) {
-        this.idAz = idAz;
+    public void setId(String id) {
+        this.id = id;
     }
 }

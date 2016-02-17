@@ -83,6 +83,10 @@ public class CreareSretegiaHandler {
 		this.strategiaCorrente.setNome(nomeStrategia);
 	}
 
+	public void rimuoviComponente(String id) {
+		this.strategiaCorrente.rimuoviComponente(id);
+	}
+
 	public void terminaStrategia() {
 		this.strategiaCorrente.setComplete(true);
 	}

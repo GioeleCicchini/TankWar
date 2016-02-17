@@ -1,7 +1,6 @@
 package Shared.Domain.Condizioni;
 
 import Shared.Domain.Azioni.IAzione;
-import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.IStrategiaComponent;
 
 import java.io.Serializable;
@@ -16,7 +15,7 @@ public class NemicoAvantiCondizione implements ICondizione, IStrategiaComponent,
     private String description;
     private String idType;
 
-    private String idCond;
+    private String id;
     private ArrayList<Integer> valori;
     private IStrategiaComponent child;
 
@@ -24,7 +23,7 @@ public class NemicoAvantiCondizione implements ICondizione, IStrategiaComponent,
         this.name = name;
         this.description = description;
         this.idType = idType;
-        this.idCond = idCond;
+        this.id = idCond;
         this.valori = valori;
         this.child = null;
     }
@@ -43,8 +42,8 @@ public class NemicoAvantiCondizione implements ICondizione, IStrategiaComponent,
     }
 
     @Override
-    public String getIdCond() {
-        return idCond;
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -81,8 +80,8 @@ public class NemicoAvantiCondizione implements ICondizione, IStrategiaComponent,
     }
 
     @Override
-    public void setIdCond(String idCond) {
-        this.idCond = idCond;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public ArrayList<Integer> getValori() {

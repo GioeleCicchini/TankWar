@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializable {
 
-    private String idAz;
+    private String id;
     private String idTypeAz;
     private String name;
     private String description;
@@ -53,7 +53,7 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
     }
 
     public TemporeggiaAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
-        this.idAz = idAz;
+        this.id = idAz;
         this.idTypeAz = idTypeAz;
         this.name = name;
         this.description = description;
@@ -75,11 +75,11 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
         return null;
     }
 
-    public String getIdAz() {
-        return idAz;
+    public String getId() {
+        return id;
     }
 
-    public void setIdAz(String idAz) {
-        this.idAz = idAz;
+    public void setId(String id) {
+        this.id = id;
     }
 }

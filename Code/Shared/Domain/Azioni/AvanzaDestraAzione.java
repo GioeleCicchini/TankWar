@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Serializable {
-    private String idAz;
+    private String id;
     private String idTypeAz;
     private String name;
     private String description;
@@ -49,7 +49,7 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
     }
 
     public AvanzaDestraAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
-        this.idAz = idAz;
+        this.id = idAz;
         this.idTypeAz = idTypeAz;
         this.name = name;
         this.description = description;
@@ -71,11 +71,11 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
         return null;
     }
 
-    public String getIdAz() {
-        return idAz;
+    public String getId() {
+        return id;
     }
 
-    public void setIdAz(String idAz) {
-        this.idAz = idAz;
+    public void setId(String id) {
+        this.id = id;
     }
 }
