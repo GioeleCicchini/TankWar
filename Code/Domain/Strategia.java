@@ -1,7 +1,6 @@
 package Domain;
 
 import Domain.Azioni.IAzione;
-import Domain.Condizioni.ICondizione;
 import Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Strategia {
     
         private List<IStrategiaComponent> conditionBlock;
-		private ICondizione defaultCondition;
+		private IStrategiaComponent defaultCondition;
         private String nome;
 		private boolean isComplete;
         private AtomicInteger count;
@@ -20,7 +19,7 @@ public class Strategia {
         String idcond=((Integer)count.incrementAndGet()).toString();
         this.conditionBlock = new ArrayList<>();
         ArrayList<Integer> valori = new ArrayList<Integer>();
-        this.defaultCondition = iCondizioneCreator.doMakeCondizione(idcond,valori);
+        this.defaultCondition = (IStrategiaComponent) iCondizioneCreator.doMakeCondizione(idcond,valori);
         this.nome = "";
         this.isComplete = false;
 
@@ -47,8 +46,8 @@ public class Strategia {
 	 */
 	public void aggiungiCondizione(ICondizioneCreator condizionecreator, ArrayList<Integer> valori) {
 		String idcond=((Integer)count.incrementAndGet()).toString();
-		ICondizione condizione = condizionecreator.doMakeCondizione(idcond,valori);
-		this.conditionBlock.add((IStrategiaComponent) condizione);
+		IStrategiaComponent condizione = (IStrategiaComponent) condizionecreator.doMakeCondizione(idcond,valori);
+		this.conditionBlock.add(condizione);
 	}
 
 	/**
