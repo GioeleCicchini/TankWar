@@ -2,6 +2,7 @@ package Shared.Domain;
 
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Condizioni.ICondizione;
+import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 
 
@@ -68,6 +69,10 @@ public class Strategia implements Serializable {
     }
 
 	public Strategia() {
+	}
+
+	public aggiungiAzioneDefault(IAzioneCreator iAzioneCreator, ArrayList<Integer> valori) {
+
 	}
 
 	public boolean getIsComplete() {

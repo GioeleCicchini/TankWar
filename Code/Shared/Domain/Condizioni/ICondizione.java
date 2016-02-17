@@ -18,6 +18,8 @@ public interface ICondizione {
 	 */
 	void create(String idCond, ArrayList<Integer> valori);
 
+	void setIdCond(String idCond);
+
 	String getIdCond ();
 
 }
