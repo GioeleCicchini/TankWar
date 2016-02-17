@@ -36,4 +36,9 @@ public class NemicoDietroCondizioneCreator implements ICondizioneCreator {
         NemicoDietroCondizione nemicoDietroCondizione = new NemicoDietroCondizione(this.name,this.description,this.idType,idCond,valori);
         return nemicoDietroCondizione;
     }
+
+    @Override
+    public String getIdType() {
+        return null;
+    }
 }
