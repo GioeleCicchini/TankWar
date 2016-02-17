@@ -61,9 +61,10 @@ public class Strategia {
 			currentfoglia=foglie.get(i);
 			if (((ICondizione)currentfoglia).getIdCond().equals(idCondPadre)){
 				trovato=true;
+				currentfoglia.addChild(condizione);
 			}
 		}
-		currentfoglia.addChild(condizione);
+
 	}
 
 	public ArrayList<IStrategiaComponent> getFoglie(){
