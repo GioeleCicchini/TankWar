@@ -70,8 +70,9 @@ public class CreareSretegiaHandler {
 	 * @param valori
 	 */
 	public void scegliAzioneDefault(String idTypeAz, int valori) {
-		// TODO - implement CreareSretegiaHandler.scegliAzioneDefault
-		throw new UnsupportedOperationException();
+		CatalogoAzioneCreator cac = CatalogoAzioneCreator.getSingletonInstance();
+		IAzioneCreator ac = cac.getAzioneCreator(idTypeAz);
+		this.strategiaCorrente.aggiungiAzioneDefault(ac,valori);
 	}
 
 	/**
