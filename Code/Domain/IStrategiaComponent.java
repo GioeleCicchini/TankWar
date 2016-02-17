@@ -3,16 +3,16 @@ package Domain;
 public interface IStrategiaComponent {
 
 	/**
-	 * 
+	 *
 	 * @param c
 	 */
-	void add(IStrategiaComponent c);
+	void addChild(IStrategiaComponent c);
 
 	/**
 	 * 
-	 * @param c
+	 *
 	 */
-	void remove(IStrategiaComponent c);
+	void removeChild();
 
 	IStrategiaComponent getChild();
 

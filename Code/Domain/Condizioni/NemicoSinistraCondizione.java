@@ -45,14 +45,14 @@ public class NemicoSinistraCondizione implements ICondizione, IStrategiaComponen
     }
 
     @Override
-    public void add(IStrategiaComponent c) {
+    public void addChild(IStrategiaComponent c) {
         if (this.child== null){
             this.child=c;
         }
     }
 
     @Override
-    public void remove(IStrategiaComponent c) {
+    public void removeChild() {
         this.child=null;
     }
 
