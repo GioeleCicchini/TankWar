@@ -45,6 +45,11 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent{
     }
 
     @Override
+    public String getIdCond() {
+        return this.idCond;
+    }
+
+    @Override
     public void addChild(IStrategiaComponent c) {
         if (this.child == null){
             this.child = c;

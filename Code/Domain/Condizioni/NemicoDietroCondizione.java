@@ -39,6 +39,11 @@ public class NemicoDietroCondizione implements ICondizione, IStrategiaComponent 
     }
 
     @Override
+    public String getIdCond() {
+        return idCond;
+    }
+
+    @Override
     public void create(String idCond, ArrayList<Integer> valori) {
 
     }
