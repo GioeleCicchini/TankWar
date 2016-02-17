@@ -4,12 +4,13 @@ import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.IStrategiaComponent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by emanuele on 16/02/16.
  */
-public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponent {
+public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponent, Serializable {
 
     private String name;
     private String description;

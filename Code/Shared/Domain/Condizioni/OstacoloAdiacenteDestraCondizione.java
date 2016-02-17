@@ -4,12 +4,13 @@ package Shared.Domain.Condizioni;
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.IStrategiaComponent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by beniamino on 16/02/16.
  */
-public class OstacoloAdiacenteDestraCondizione implements ICondizione, IStrategiaComponent {
+public class OstacoloAdiacenteDestraCondizione implements ICondizione, IStrategiaComponent, Serializable {
 
     private String name;
     private String description;

@@ -2,12 +2,13 @@ package Shared.Domain.Azioni;
 
 import Shared.Domain.IStrategiaComponent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by emanuele on 15/02/16.
  */
-public class TemporeggiaAzione implements IAzione, IStrategiaComponent {
+public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializable {
 
     private String idAz;
     private String idTypeAz;

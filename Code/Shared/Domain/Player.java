@@ -3,9 +3,10 @@ package Shared.Domain;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Player {
+public class Player  implements Serializable{
 
 	private ArrayList<Strategia> strategieList;
 

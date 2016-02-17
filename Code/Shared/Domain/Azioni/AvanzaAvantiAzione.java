@@ -2,9 +2,10 @@ package Shared.Domain.Azioni;
 
 import Shared.Domain.IStrategiaComponent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent {
+public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Serializable {
 
     private String idAz;
     private String idTypeAz;
