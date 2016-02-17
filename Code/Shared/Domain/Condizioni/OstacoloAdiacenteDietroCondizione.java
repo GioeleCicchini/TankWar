@@ -28,6 +28,8 @@ public class OstacoloAdiacenteDietroCondizione implements ICondizione, IStrategi
         this.child = null;
     }
 
+    public OstacoloAdiacenteDietroCondizione() {
+    }
 
     @Override
     public boolean verificaSeVera() {

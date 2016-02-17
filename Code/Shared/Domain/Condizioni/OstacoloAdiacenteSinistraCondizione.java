@@ -29,6 +29,9 @@ public class OstacoloAdiacenteSinistraCondizione implements ICondizione, IStrate
         this.child = null;
     }
 
+    public OstacoloAdiacenteSinistraCondizione() {
+    }
+
     @Override
     public boolean verificaSeVera() {
         return false;

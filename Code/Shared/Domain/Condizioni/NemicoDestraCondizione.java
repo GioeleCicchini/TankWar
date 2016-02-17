@@ -30,6 +30,9 @@ public class NemicoDestraCondizione implements ICondizione, IStrategiaComponent,
         this.child = null;
     }
 
+    public NemicoDestraCondizione() {
+    }
+
     @Override
     public boolean verificaSeVera() {
         return false;

@@ -30,6 +30,9 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent,Seria
         this.child = null;
     }
 
+    public DefaultCondizione() {
+    }
+
     @Override
     public boolean verificaSeVera() {
         return false;

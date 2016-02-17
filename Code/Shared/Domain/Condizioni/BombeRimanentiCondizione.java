@@ -29,6 +29,9 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
         this.child = null;
     }
 
+    public BombeRimanentiCondizione() {
+    }
+
     @Override
     public boolean verificaSeVera() {
         return false;

@@ -28,6 +28,9 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
         this.child = null;
     }
 
+    public NemicoSottoTiroCondizione() {
+    }
+
     @Override
     public boolean verificaSeVera() {
         return false;

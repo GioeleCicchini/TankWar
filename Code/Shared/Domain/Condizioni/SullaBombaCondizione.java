@@ -28,6 +28,9 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
         this.child = null;
     }
 
+    public SullaBombaCondizione() {
+    }
+
     @Override
     public boolean verificaSeVera() {
         return false;
