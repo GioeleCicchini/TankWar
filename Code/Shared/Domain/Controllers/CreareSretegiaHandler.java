@@ -1,6 +1,8 @@
 package Shared.Domain.Controllers;
 
+import Shared.Domain.CatalogoAzioneCreator;
 import Shared.Domain.CatalogoCondizioneCreator;
+import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Player;
 import Shared.Domain.Strategia;
@@ -50,9 +52,10 @@ public class CreareSretegiaHandler {
 	 * @param idCond
 	 * @param valori
 	 */
-	public void associaAzione(String idTypeAz, String idCond, int valori) {
-		// TODO - implement CreareSretegiaHandler.associaAzione
-		throw new UnsupportedOperationException();
+	public void associaAzione(String idTypeAz, String idCond, ArrayList<Integer> valori) {
+		CatalogoAzioneCreator catalogoAzioneCreator= CatalogoAzioneCreator.getSingletonInstance();
+		IAzioneCreator ac = catalogoAzioneCreator.getAzioneCreator(idTypeAz);
+		this.strategiaCorrente.aggiungiAzione(ac,valori,idCond);
 	}
 
 	public void iniziaNuovaStrategia() {
@@ -67,8 +70,9 @@ public class CreareSretegiaHandler {
 	 * @param valori
 	 */
 	public void scegliAzioneDefault(String idTypeAz, int valori) {
-		// TODO - implement CreareSretegiaHandler.scegliAzioneDefault
-		throw new UnsupportedOperationException();
+		CatalogoAzioneCreator cac = CatalogoAzioneCreator.getSingletonInstance();
+		IAzioneCreator ac = cac.getAzioneCreator(idTypeAz);
+		this.strategiaCorrente.aggiungiAzioneDefault(ac,valori);
 	}
 
 	/**
