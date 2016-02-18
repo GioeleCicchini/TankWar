@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws Exception {
 
         ControllerPrelevaStrategiaObserver prelevaStrategiaObserver = new ControllerPrelevaStrategiaObserver();
         ControllerRegistraStrategiaObserver registraStrategiaObserver = new ControllerRegistraStrategiaObserver();
@@ -20,8 +20,6 @@ public class Main {
 
         controllerFacade.Attach(prelevaStrategiaObserver);
         controllerFacade.Attach(registraStrategiaObserver);
-
-
 
         entrataServer.StartServer();
 

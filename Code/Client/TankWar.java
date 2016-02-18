@@ -31,6 +31,7 @@ public class TankWar {
             ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
             CatalogoCondizioneCreator cc = CatalogoCondizioneCreator.getSingletonInstance();
             ICondizioneCreator stampino = cc.getCondizioneDefaultCreator();
+
             Strategia strategia = new Strategia(stampino);
 
 
@@ -49,6 +50,33 @@ public class TankWar {
             clientSocket.close();
             System.out.println("Inviato al server");
         }
+
+        Socket clientSocket2 = new Socket("localhost",6789);
+        try{
+
+            ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket2.getOutputStream());
+            CatalogoCondizioneCreator cc = CatalogoCondizioneCreator.getSingletonInstance();
+            ICondizioneCreator stampino = cc.getCondizioneDefaultCreator();
+
+            Strategia strategia = new Strategia(stampino);
+
+
+            strategia.setNome("Questa è una seconda strategia");
+            strategia.setId("2");
+            DTO dto = new DTO();
+            dto.setFunzione("Registra");
+            dto.aggiungiOggettoPersistente(strategia);
+            objectOutput.writeObject(dto);
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        finally {
+            clientSocket2.close();
+            System.out.println("Inviato al server");
+        }
+
     }
-    
+
 }

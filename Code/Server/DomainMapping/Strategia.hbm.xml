@@ -8,5 +8,11 @@
         </id>
         <property name="nome" column="Nome"/>
 
+        <many-to-one name="defaultCondition" class="Shared.Domain.Condizioni.DefaultCondizione" cascade="all" >
+            <column name="CondizioneDefaultId" not-null="true" />
+        </many-to-one>
+
+
+
     </class>
 </hibernate-mapping>

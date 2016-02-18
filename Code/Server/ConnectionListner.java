@@ -1,12 +1,16 @@
 package Server;
 
 import Server.Controller.ControllerFacade;
+import Server.Controller.Observer;
+import Shared.Domain.Strategia;
 import Shared.Util.DTO;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
 
 /**
  * Created by gioele on 16/02/16.

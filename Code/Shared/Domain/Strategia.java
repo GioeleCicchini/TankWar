@@ -5,8 +5,11 @@ import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 
 
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Strategia implements Serializable {
@@ -17,6 +20,7 @@ public class Strategia implements Serializable {
 		private boolean isComplete;
         private AtomicInteger count;
 		private String id;
+
 
     public List<IStrategiaComponent> getConditionBlock() {
         return conditionBlock;
@@ -57,7 +61,8 @@ public class Strategia implements Serializable {
 
     public Strategia(ICondizioneCreator iCondizioneCreator) {
         this.count = new AtomicInteger(0);
-        String idcond=((Integer)count.incrementAndGet()).toString();
+        String idcond= UUID.randomUUID().toString();
+		System.out.println(idcond);
         this.conditionBlock = new ArrayList<>();
         ArrayList<Integer> valori = new ArrayList<Integer>();
         this.defaultCondition = (IStrategiaComponent) iCondizioneCreator.doMakeCondizione(idcond,valori);
