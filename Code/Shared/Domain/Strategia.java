@@ -119,15 +119,18 @@ public class Strategia implements Serializable {
 
 	}
 
-    public ArrayList<IStrategiaComponent> getPadriFoglie(){
+    public ArrayList<IStrategiaComponent> getPadriFoglie(){ //It doesn't work
         ArrayList<IStrategiaComponent> result = new ArrayList<>();
-        IStrategiaComponent currentLine = null;
         IStrategiaComponent padreCurrentLine = null;
+		IStrategiaComponent currentLine = null;
         for (int i=0; i<conditionBlock.size(); i++){
-            currentLine=conditionBlock.get(i);
+            padreCurrentLine=conditionBlock.get(i);
+			currentLine = padreCurrentLine;
             while (currentLine.getChild() != null){
-                padreCurrentLine = currentLine;
                 currentLine=currentLine.getChild();
+				if (currentLine.getChild() != null) {
+					padreCurrentLine = currentLine;
+				}
             }
             result.add(padreCurrentLine);
         }
@@ -172,10 +175,18 @@ public class Strategia implements Serializable {
         boolean trovato = false;
         for (int i=0; i<padriFoglie.size() && !trovato; i++) {
             currentPadreFoglia = padriFoglie.get(i);
-            currentFoglia = currentPadreFoglia.getChild();
-            if (currentFoglia.getId().equals(id)) {
-                trovato = true;
-                currentPadreFoglia.removeChild();
+            currentFoglia = currentPadreFoglia;
+            if (currentPadreFoglia.getChild() != null) {
+                currentFoglia = currentPadreFoglia.getChild();
+                if (currentFoglia.getId().equals(id)) {
+                    trovato = true;
+                    currentPadreFoglia.removeChild();
+                }
+            } else {
+                if (currentFoglia.getId().equals(id)) {
+                    trovato = true;
+                    this.conditionBlock.remove(i);
+                }
             }
         }
 	}
