@@ -114,15 +114,18 @@ public class Strategia implements Serializable {
 
 	}
 
-    public ArrayList<IStrategiaComponent> getPadriFoglie(){
+    public ArrayList<IStrategiaComponent> getPadriFoglie(){ //It doesn't work
         ArrayList<IStrategiaComponent> result = new ArrayList<>();
-        IStrategiaComponent currentLine = null;
         IStrategiaComponent padreCurrentLine = null;
+		IStrategiaComponent currentLine = null;
         for (int i=0; i<conditionBlock.size(); i++){
-            currentLine=conditionBlock.get(i);
+            padreCurrentLine=conditionBlock.get(i);
             while (currentLine.getChild() != null){
-                padreCurrentLine = currentLine;
+				padreCurrentLine = currentLine;
                 currentLine=currentLine.getChild();
+				if (currentLine != null) {
+
+				}
             }
             result.add(padreCurrentLine);
         }
