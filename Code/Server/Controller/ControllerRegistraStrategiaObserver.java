@@ -20,6 +20,7 @@ public class ControllerRegistraStrategiaObserver implements Observer{
     public void update(ControllerFacade controller) {
 
         if(controller.getFunzione().equals("Registra")){
+
             Session session = HibernateUtil.getSessionFactory().openSession();
 
             try {
@@ -35,7 +36,7 @@ public class ControllerRegistraStrategiaObserver implements Observer{
 
 
             System.out.println("registro la strategia");
-            System.out.println(((Strategia)controller.getOggettiPersistenti().get(0)).getNome());
+           System.out.println(((Strategia)controller.getOggettiPersistenti().get(0)).getDefaultCondition().getId());
 
         }
 

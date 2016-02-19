@@ -13,12 +13,23 @@ public class ControllerFacade implements Controller{
 
         private String funzione;
         private List<Serializable> OggettiPersistenti;
-        private List<Observer> OsservatoriRichieste = new ArrayList<Observer>();
+
+
+
+    private List<Observer> OsservatoriRichieste = new ArrayList<Observer>();
+
+    public List<Observer> getOsservatoriRichieste() {
+        return OsservatoriRichieste;
+    }
+
+    public void setOsservatoriRichieste(List<Observer> osservatoriRichieste) {
+        OsservatoriRichieste = osservatoriRichieste;
+    }
 
     public void ControllerFacade(){
 
-
     }
+
 
     public String getFunzione(){
         return this.funzione;
