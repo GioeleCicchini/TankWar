@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
@@ -7,7 +11,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1192.0" style="-fx-background-color: #f4faff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+<Pane fx:controller="Client.UI.JavaFX.View.CreareStrategia" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1192.0" style="-fx-background-color: #f4faff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextFlow layoutX="67.0" prefHeight="58.0" prefWidth="537.0">
          <children>
@@ -23,7 +28,19 @@
             <Label text="La tua Strategia" textFill="#0077fd" BorderPane.alignment="CENTER" />
          </top>
          <center>
-            <VBox prefHeight="570.0" prefWidth="364.0" BorderPane.alignment="CENTER" />
+            <VBox prefHeight="570.0" prefWidth="364.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="faisalutoButton" onAction="#faiSaluto" mnemonicParsing="false" prefHeight="162.0" prefWidth="392.0" text="Salutami!">
+                     <font>
+                        <Font size="44.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="salutoLabel" prefHeight="197.0" prefWidth="430.0">
+                     <font>
+                        <Font name="System Bold" size="38.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
          </center>
       </BorderPane>
       <Pane layoutX="470.0" layoutY="75.0" prefHeight="591.0" prefWidth="344.0" style="-fx-background-color: #e8f8ff; -fx-border-color: #0077fd; -fx-border-width: 2;">
