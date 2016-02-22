@@ -98,10 +98,11 @@ public class Strategia implements Serializable {
 	 * @param condizionecreator
 	 * @param valori
 	 */
-	public void aggiungiCondizione(ICondizioneCreator condizionecreator, ArrayList<Integer> valori) {
+	public String aggiungiCondizione(ICondizioneCreator condizionecreator, ArrayList<Integer> valori) {
 		String idcond=((Integer)count.incrementAndGet()).toString();
 		IStrategiaComponent condizione = (IStrategiaComponent) condizionecreator.doMakeCondizione(idcond,valori);
 		this.conditionBlock.add(condizione);
+		return idcond;
 	}
 
 	public void aggiungiCondizioneAnnidata(ICondizioneCreator condizioneCreator, String idCondPadre, ArrayList<Integer> valori) {
