@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<Pane fx:controller="Client.UI.JavaFX.View.CreareStrategia" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1192.0" style="-fx-background-color: #f4faff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1192.0" style="-fx-background-color: #f4faff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.UI.JavaFX.View.CreareStrategia">
    <children>
       <TextFlow layoutX="67.0" prefHeight="58.0" prefWidth="537.0">
          <children>
@@ -30,7 +30,7 @@
          <center>
             <VBox prefHeight="570.0" prefWidth="364.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="faisalutoButton" onAction="#faiSaluto" mnemonicParsing="false" prefHeight="162.0" prefWidth="392.0" text="Salutami!">
+                  <Button fx:id="faisalutoButton" mnemonicParsing="false" onAction="#faiSaluto" prefHeight="162.0" prefWidth="392.0" text="Salutami!">
                      <font>
                         <Font size="44.0" />
                      </font>
@@ -48,7 +48,7 @@
             <Label layoutX="46.0" layoutY="6.0" text="Scegli le Condizoni" textFill="#0077fd" />
             <VBox layoutX="3.0" layoutY="29.0" prefHeight="304.0" prefWidth="180.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" depthTest="DISABLE" fill="DODGERBLUE" height="44.0" stroke="BLACK" strokeType="INSIDE" width="182.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" depthTest="DISABLE" fill="DODGERBLUE" height="44.0" mouseTransparent="true" stroke="BLACK" strokeType="INSIDE" width="182.0">
                      <VBox.margin>
                         <Insets bottom="1.0" />
                      </VBox.margin>
