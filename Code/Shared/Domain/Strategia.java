@@ -63,6 +63,7 @@ public class Strategia implements Serializable {
         this.count = new AtomicInteger(0);
         String idcond= UUID.randomUUID().toString();
 		System.out.println(idcond);
+		this.id = UUID.randomUUID().toString();
         this.conditionBlock = new ArrayList<>();
         ArrayList<Integer> valori = new ArrayList<Integer>();
         this.defaultCondition = (IStrategiaComponent) iCondizioneCreator.doMakeCondizione(idcond,valori);

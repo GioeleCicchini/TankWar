@@ -64,18 +64,22 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
         this.child = null;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
 
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
+    @Override
     public String getIdType() {
         return idType;
     }
 
+    @Override
     public void setIdType(String idType) {
         this.idType = idType;
     }
@@ -85,14 +89,17 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
         this.id = idCond;
     }
 
+    @Override
     public ArrayList<Integer> getValori() {
         return valori;
     }
 
+    @Override
     public void setValori(ArrayList<Integer> valori) {
         this.valori = valori;
     }
 
+    @Override
     public void setChild(IStrategiaComponent child) {
         this.child = child;
     }
@@ -103,10 +110,12 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
 
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }

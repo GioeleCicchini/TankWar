@@ -5,13 +5,17 @@ package Client;/*
  */
 
 import Shared.Domain.CatalogoCondizioneCreator;
+import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
+import Shared.Domain.Player;
 import Shared.Domain.Strategia;
 import Shared.Util.DTO;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -31,15 +35,24 @@ public class TankWar {
             ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
             CatalogoCondizioneCreator cc = CatalogoCondizioneCreator.getSingletonInstance();
             ICondizioneCreator stampino = cc.getCondizioneDefaultCreator();
-
             Strategia strategia = new Strategia(stampino);
+
+            // creo una condizione
+
+
+
+            Player player = new Player();
+            List<Strategia> strategie = new ArrayList<Strategia>();
+            strategie.add(strategia);
+            player.setStrategieList(strategie);
+            player.setNome("Gioele");
 
 
             strategia.setNome("ciao beniamino sono passato al server");
-            strategia.setId("1");
             DTO dto = new DTO();
             dto.setFunzione("Registra");
             dto.aggiungiOggettoPersistente(strategia);
+            dto.aggiungiOggettoPersistente(player);
             objectOutput.writeObject(dto);
 
 
@@ -52,30 +65,7 @@ public class TankWar {
         }
 
         Socket clientSocket2 = new Socket("localhost",6789);
-        try{
 
-            ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket2.getOutputStream());
-            CatalogoCondizioneCreator cc = CatalogoCondizioneCreator.getSingletonInstance();
-            ICondizioneCreator stampino = cc.getCondizioneDefaultCreator();
-
-            Strategia strategia = new Strategia(stampino);
-
-
-            strategia.setNome("Questa è una seconda strategia");
-            strategia.setId("2");
-            DTO dto = new DTO();
-            dto.setFunzione("Registra");
-            dto.aggiungiOggettoPersistente(strategia);
-            objectOutput.writeObject(dto);
-
-
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        finally {
-            clientSocket2.close();
-            System.out.println("Inviato al server");
-        }
 
     }
 
