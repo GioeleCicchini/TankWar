@@ -13,7 +13,7 @@ public class Player  implements Serializable{
 
 	private int id;
 	private String nome;
-	private List<Strategia> strategieList;
+	private List<Strategia> strategieList = new ArrayList<Strategia>();
 
 	public Player() {
 	}

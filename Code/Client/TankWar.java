@@ -7,6 +7,8 @@ package Client;/*
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Condizioni.NemicoAvantiCondizione;
+import Shared.Domain.Controllers.CreareSretegiaHandler;
+import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.NemicoAvantiCondizioneCreator;
 import Shared.Domain.IStrategiaComponent;
@@ -18,7 +20,9 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -36,8 +40,8 @@ public class TankWar {
         try{
 
             ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
-            CatalogoCondizioneCreator cc = CatalogoCondizioneCreator.getSingletonInstance();
-            ICondizioneCreator stampino = cc.getCondizioneDefaultCreator();
+       /*     CatalogoCondizioneCreator cc = CatalogoCondizioneCreator.getSingletonInstance();
+           ICondizioneCreator stampino = cc.getCondizioneDefaultCreator();
             Strategia strategia = new Strategia(stampino);
 
             strategia.setNome("ciao beniamino sono passato al server");
@@ -45,17 +49,33 @@ public class TankWar {
 
             NemicoAvantiCondizioneCreator condizione = NemicoAvantiCondizioneCreator.getSingletonInstance();
 
+            String idCondPadre = strategia.aggiungiCondizione(condizione,new ArrayList<>());
+            strategia.aggiungiCondizioneAnnidata(condizione,idCondPadre,new ArrayList<>());
+*/
 
-            strategia.aggiungiCondizione(condizione,new ArrayList<>());
-            strategia.aggiungiCondizione(condizione,new ArrayList<>());
+            CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
+            Map<String,ICondizioneCreator> map = new HashMap<String, ICondizioneCreator>();
 
+            NemicoAvantiCondizioneCreator nemicoAvantiCondizioneCreator = NemicoAvantiCondizioneCreator.getSingletonInstance();
+            DefaultCondizioneCreator defaultCondizioneCreator = DefaultCondizioneCreator.getSingletonInstance();
+
+            map.put("001",nemicoAvantiCondizioneCreator);
+            map.put("000",defaultCondizioneCreator);
+
+            catalogoCondizioneCreator.setCondizioniCreators(map);
 
             Player player = new Player();
-            List<Strategia> strategie = new ArrayList<Strategia>();
-            strategie.add(strategia);
-            player.setStrategieList(strategie);
             player.setNome("Gioele");
 
+
+
+
+            CreareSretegiaHandler handler = CreareSretegiaHandler.getSingletonInstance();
+            handler.setCurrentPlayer(player);
+            handler.iniziaNuovaStrategia();
+            handler.inserisciNomeStrategia("Prima Strategia");
+            String idcondpadre = handler.scegliCondizione("001",new ArrayList<>());
+            handler.scegliCondizioneAnnidata("001",idcondpadre,new ArrayList<>());
 
             DTO dto = new DTO();
             dto.setFunzione("Registra");

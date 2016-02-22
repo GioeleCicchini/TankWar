@@ -44,4 +44,19 @@ public class CatalogoCondizioneCreator {
 		return this.condizioniCreators.get(this.defaultCreatorKey);
 	}
 
+	public String getDefaultCreatorKey() {
+		return defaultCreatorKey;
+	}
+
+	public void setDefaultCreatorKey(String defaultCreatorKey) {
+		this.defaultCreatorKey = defaultCreatorKey;
+	}
+
+	public Map<String, ICondizioneCreator> getCondizioniCreators() {
+		return condizioniCreators;
+	}
+
+	public void setCondizioniCreators(Map<String, ICondizioneCreator> condizioniCreators) {
+		this.condizioniCreators = condizioniCreators;
+	}
 }

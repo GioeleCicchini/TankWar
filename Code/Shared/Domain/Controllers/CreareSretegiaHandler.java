@@ -92,4 +92,20 @@ public class CreareSretegiaHandler {
 		this.strategiaCorrente.setComplete(true);
 	}
 
+
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
+	public Strategia getStrategiaCorrente() {
+		return strategiaCorrente;
+	}
+
+	public void setStrategiaCorrente(Strategia strategiaCorrente) {
+		this.strategiaCorrente = strategiaCorrente;
+	}
 }

@@ -64,7 +64,7 @@ public class Strategia implements Serializable {
         String idcond= UUID.randomUUID().toString();
 		System.out.println(idcond);
 		this.id = UUID.randomUUID().toString();
-        this.conditionBlock = new ArrayList<>();
+        this.conditionBlock = new ArrayList<IStrategiaComponent>();
         ArrayList<Integer> valori = new ArrayList<Integer>();
         this.defaultCondition = (IStrategiaComponent) iCondizioneCreator.doMakeCondizione(idcond,valori);
         this.nome = "";
@@ -100,7 +100,12 @@ public class Strategia implements Serializable {
 	 */
 	public String aggiungiCondizione(ICondizioneCreator condizionecreator, ArrayList<Integer> valori) {
 		String idcond=((Integer)count.incrementAndGet()).toString();
+		System.out.println(idcond);
+
+
 		IStrategiaComponent condizione = (IStrategiaComponent) condizionecreator.doMakeCondizione(idcond,valori);
+		System.out.println(condizione.getId());
+
 		this.conditionBlock.add(condizione);
 		return idcond;
 	}
@@ -111,12 +116,22 @@ public class Strategia implements Serializable {
 		boolean trovato = false;
 		ArrayList<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
 		IStrategiaComponent currentfoglia = null;
+		IStrategiaComponent padre = null;
 		for (int i=0; i<padriFoglie.size() && !trovato; i++){
-			currentfoglia=padriFoglie.get(i).getChild();
-			if (currentfoglia.getId().equals(idCondPadre)){
-				trovato=true;
-				currentfoglia.addChild(condizione);
+			padre = padriFoglie.get(i);
+			currentfoglia=padre.getChild();
+			if (currentfoglia != null) {
+				if (currentfoglia.getId().equals(idCondPadre)){
+					trovato=true;
+					currentfoglia.addChild(condizione);
+				}
+			} else {
+				if (padre.getId().equals(idCondPadre)) {
+					trovato = true;
+					padre.addChild(condizione);
+				}
 			}
+
 		}
 
 	}
