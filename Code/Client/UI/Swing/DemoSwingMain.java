@@ -1,4 +1,4 @@
-package Client;
+package Client.UI.Swing;
 
 import Client.UI.Swing.View.MyFrame;
 
