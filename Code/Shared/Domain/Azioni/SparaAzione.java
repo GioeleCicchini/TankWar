@@ -75,6 +75,11 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
         return null;
     }
 
+    @Override
+    public void setChild(IStrategiaComponent child) {
+
+    }
+
     public String getId() {
         return id;
     }

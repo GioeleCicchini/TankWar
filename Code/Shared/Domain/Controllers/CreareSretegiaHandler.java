@@ -34,10 +34,11 @@ public class CreareSretegiaHandler {
 	 * @param idTypeCond
 	 * @param valori
 	 */
-	public void scegliCondizione(String idTypeCond, ArrayList<Integer> valori) {
+	public String scegliCondizione(String idTypeCond, ArrayList<Integer> valori) {
 		CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
 		ICondizioneCreator iCondizioneCreator = ccc.getCondizioneCreator(idTypeCond);
-		this.strategiaCorrente.aggiungiCondizione(iCondizioneCreator,valori);
+		String idCondPadre = this.strategiaCorrente.aggiungiCondizione(iCondizioneCreator,valori);
+		return idCondPadre;
 	}
 
 	public void scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, ArrayList<Integer> valori) {
@@ -91,4 +92,20 @@ public class CreareSretegiaHandler {
 		this.strategiaCorrente.setComplete(true);
 	}
 
+
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
+	public Strategia getStrategiaCorrente() {
+		return strategiaCorrente;
+	}
+
+	public void setStrategiaCorrente(Strategia strategiaCorrente) {
+		this.strategiaCorrente = strategiaCorrente;
+	}
 }
