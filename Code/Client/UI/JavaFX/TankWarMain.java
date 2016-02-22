@@ -1,5 +1,6 @@
 package Client.UI.JavaFX;
 
+import Client.UI.JavaFX.View.CreareStrategia;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

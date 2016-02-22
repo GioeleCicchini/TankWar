@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -28,27 +30,23 @@
             <Label text="La tua Strategia" textFill="#0077fd" BorderPane.alignment="CENTER" />
          </top>
          <center>
-            <VBox prefHeight="570.0" prefWidth="364.0" BorderPane.alignment="CENTER">
+            <VBox id="vboxpozzo" fx:id="boxpozzo" onDragOver="#dragover" prefHeight="570.0" prefWidth="364.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="faisalutoButton" mnemonicParsing="false" onAction="#faiSaluto" prefHeight="162.0" prefWidth="392.0" text="Salutami!">
-                     <font>
-                        <Font size="44.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="salutoLabel" prefHeight="197.0" prefWidth="430.0">
-                     <font>
-                        <Font name="System Bold" size="38.0" />
-                     </font>
-                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="61.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="61.0" layoutX="10.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="61.0" layoutX="10.0" layoutY="71.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="61.0" layoutX="10.0" layoutY="132.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="61.0" layoutX="10.0" layoutY="193.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="61.0" layoutX="10.0" layoutY="254.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
                </children></VBox>
          </center>
       </BorderPane>
       <Pane layoutX="470.0" layoutY="75.0" prefHeight="591.0" prefWidth="344.0" style="-fx-background-color: #e8f8ff; -fx-border-color: #0077fd; -fx-border-width: 2;">
          <children>
             <Label layoutX="46.0" layoutY="6.0" text="Scegli le Condizoni" textFill="#0077fd" />
-            <VBox layoutX="3.0" layoutY="29.0" prefHeight="304.0" prefWidth="180.0">
+            <VBox layoutX="3.0" layoutY="29.0" prefHeight="432.0" prefWidth="338.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" depthTest="DISABLE" fill="DODGERBLUE" height="44.0" mouseTransparent="true" stroke="BLACK" strokeType="INSIDE" width="182.0">
+                  <Rectangle fx:id="blucondition" arcHeight="5.0" arcWidth="5.0" depthTest="DISABLE" fill="DODGERBLUE" height="52.0" mouseTransparent="true" onDragDetected="#startdragndrop" stroke="BLACK" strokeType="INSIDE" width="182.0">
                      <VBox.margin>
                         <Insets bottom="1.0" />
                      </VBox.margin>
