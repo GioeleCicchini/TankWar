@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Shared.Domain.IStrategiaComponent" table="StrategiaComponent">
+        <id name="id" column="id">
+            <generator class="assigned"/>
+        </id>
+        <discriminator column="Component_type" type="string"/>
+
+    </class>
+    <subclass name="Shared.Domain.Condizioni.NemicoAvantiCondizione" extends="Shared.Domain.IStrategiaComponent" discriminator-value="NemicoAvantiCondizione">
+        <join table="NemicoAvantiCondizione">
+            <key column="Id"></key>
+            <property name="name">
+                <column name="Nome"></column>
+            </property>
+            <property name="description">
+                <column name="Descrizione"></column>
+            </property>
+        </join>
+
+    </subclass>
+</hibernate-mapping>

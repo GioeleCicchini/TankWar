@@ -26,9 +26,7 @@ public class ControllerRegistraStrategiaObserver implements Observer{
 
             try {
                 session.beginTransaction();
-                //session.save(((Strategia)controller.getOggettiPersistenti().get(0)));
-                System.out.println("qui");
-                session.save((Player)controller.getOggettiPersistenti().get(1));
+                session.save((Player)controller.getOggettiPersistenti().get(0));
 
                 session.getTransaction().commit();
             }
@@ -40,8 +38,7 @@ public class ControllerRegistraStrategiaObserver implements Observer{
 
 
             System.out.println("registro la strategia");
-           System.out.println(((Player)controller.getOggettiPersistenti().get(1)).getNome());
-           System.out.println(((Strategia)controller.getOggettiPersistenti().get(0)).getDefaultCondition().getId());
+
 
         }
 

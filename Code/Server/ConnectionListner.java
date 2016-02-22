@@ -40,6 +40,7 @@ public class ConnectionListner {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             ObjectInputStream objectInput = new ObjectInputStream(connectionSocket.getInputStream());
             DTO dto = null;
             try {
@@ -48,7 +49,7 @@ public class ConnectionListner {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }finally {
-
+            connectionSocket.close();
             }
 
         }
