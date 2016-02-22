@@ -73,6 +73,11 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
         return null;
     }
 
+    @Override
+    public void setChild(IStrategiaComponent child) {
+
+    }
+
     public String getId() {
 
         return id;

@@ -11,6 +11,7 @@ public interface IStrategiaComponent {
 	void removeChild();
 
 	IStrategiaComponent getChild();
+	void setChild(IStrategiaComponent child);
 	String getId();
     void setId(String id);
 

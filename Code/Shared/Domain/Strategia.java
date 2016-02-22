@@ -99,7 +99,7 @@ public class Strategia implements Serializable {
 	 * @param valori
 	 */
 	public String aggiungiCondizione(ICondizioneCreator condizionecreator, ArrayList<Integer> valori) {
-		String idcond=((Integer)count.incrementAndGet()).toString();
+		String idcond= UUID.randomUUID().toString();
 		System.out.println(idcond);
 
 
@@ -111,7 +111,7 @@ public class Strategia implements Serializable {
 	}
 
 	public void aggiungiCondizioneAnnidata(ICondizioneCreator condizioneCreator, String idCondPadre, ArrayList<Integer> valori) {
-		String idcond=((Integer)count.incrementAndGet()).toString();
+		String idcond= UUID.randomUUID().toString();
 		IStrategiaComponent condizione = (IStrategiaComponent) condizioneCreator.doMakeCondizione(idcond,valori);
 		boolean trovato = false;
 		ArrayList<IStrategiaComponent> padriFoglie = this.getPadriFoglie();

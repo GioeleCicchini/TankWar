@@ -8,9 +8,9 @@
             <generator class="assigned"/>
         </id>
         <discriminator column="Component_type" type="string"/>
-        <one-to-one name="child" class="Shared.Domain.IStrategiaComponent" cascade="save-update">
+        <many-to-one name="child" class="Shared.Domain.IStrategiaComponent" cascade="all">
 
-        </one-to-one>
+        </many-to-one>
     </class>
     <subclass name="Shared.Domain.Condizioni.NemicoAvantiCondizione" extends="Shared.Domain.IStrategiaComponent" discriminator-value="NemicoAvantiCondizione">
         <join table="NemicoAvantiCondizione">

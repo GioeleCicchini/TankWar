@@ -73,6 +73,11 @@ public class IndietreggiaAzione implements IAzione, IStrategiaComponent, Seriali
         return null;
     }
 
+    @Override
+    public void setChild(IStrategiaComponent child) {
+
+    }
+
     public String getId() {
 
         return id;

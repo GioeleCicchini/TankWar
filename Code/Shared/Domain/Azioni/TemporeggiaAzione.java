@@ -75,6 +75,11 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
         return null;
     }
 
+    @Override
+    public void setChild(IStrategiaComponent child) {
+
+    }
+
     public String getId() {
         return id;
     }
