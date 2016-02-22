@@ -74,8 +74,8 @@ public class TankWar {
             handler.setCurrentPlayer(player);
             handler.iniziaNuovaStrategia();
             handler.inserisciNomeStrategia("Prima Strategia");
-            String idcondpadre = handler.scegliCondizione("001",new ArrayList<>());
-            handler.scegliCondizioneAnnidata("001",idcondpadre,new ArrayList<>());
+            String idcondpadre = handler.scegliCondizione("001",new ArrayList<Integer>());
+            handler.scegliCondizioneAnnidata("001",idcondpadre,new ArrayList<Integer>());
 
             DTO dto = new DTO();
             dto.setFunzione("Registra");
