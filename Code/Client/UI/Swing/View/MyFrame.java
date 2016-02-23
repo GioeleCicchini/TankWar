@@ -1,5 +1,6 @@
 package Client.UI.Swing.View;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,7 +26,7 @@ public class MyFrame extends JFrame {
         c.add(jl);
         c.setLayout(new GridLayout(4,4));
         for (int i=0; i<15; i++){
-            JButton button= new JButton(String.valueOf(i));
+            final JButton button= new JButton(String.valueOf(i));
             button.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
