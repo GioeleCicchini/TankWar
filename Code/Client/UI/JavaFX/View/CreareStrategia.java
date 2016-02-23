@@ -12,9 +12,11 @@ import javafx.scene.shape.Rectangle;
 
 public class CreareStrategia {
     public Label salutoLabel;
-    public Button faisalutoButton;
-    public Rectangle blucondition;
+
     public VBox boxpozzo;
+    public Rectangle blucondition;
+    public VBox ant;
+    public Label labelll;
 
 
     public void faiSaluto(ActionEvent actionEvent) {
@@ -25,9 +27,9 @@ public class CreareStrategia {
     public void startdragndrop(Event event) {
         Dragboard db = blucondition.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
-        content.putString("Pippo");
+        content.putString("Hello!");
+        System.out.println("E pattita start drag n drop");
         db.setContent(content);
-
         event.consume();
     }
 
@@ -71,5 +73,16 @@ public class CreareStrategia {
 
     public void mouseDragReleased(Event event) {
         System.out.println("mouse drag released");
+    }
+
+    public void scrivi(Event event) {
+        System.out.println("sto qua");
+    }
+
+    public void aaaaant(Event event) {
+        labelll.setText("scrivi cazzo");
+    }
+
+    public void startdrag(Event event) {
     }
 }

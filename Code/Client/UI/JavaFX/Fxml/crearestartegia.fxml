@@ -44,9 +44,9 @@
       <Pane layoutX="470.0" layoutY="75.0" prefHeight="591.0" prefWidth="344.0" style="-fx-background-color: #e8f8ff; -fx-border-color: #0077fd; -fx-border-width: 2;">
          <children>
             <Label layoutX="46.0" layoutY="6.0" text="Scegli le Condizoni" textFill="#0077fd" />
-            <VBox layoutX="3.0" layoutY="29.0" prefHeight="432.0" prefWidth="338.0">
+            <VBox id="anthony" fx:id="ant" layoutX="3.0" layoutY="29.0" onMouseClicked="#aaaaant" prefHeight="432.0" prefWidth="338.0">
                <children>
-                  <Rectangle fx:id="blucondition" arcHeight="5.0" arcWidth="5.0" depthTest="DISABLE" fill="DODGERBLUE" height="52.0" mouseTransparent="true" onDragDetected="#startdragndrop" onDragDone="#elementDragDone" onDragDropped="#elementDropped" onDragEntered="#elementDragEntered" onDragExited="#elementDragExited" onDragOver="#elementDragOver" onMouseDragEntered="#mouseDragEntered" onMouseDragExited="#mouseDragExited" onMouseDragOver="#mouseDragOver" onMouseDragReleased="#mouseDragReleased" stroke="BLACK" strokeType="INSIDE" width="182.0">
+                  <Rectangle fx:id="blucondition" arcHeight="5.0" arcWidth="5.0" depthTest="DISABLE" fill="DODGERBLUE" height="52.0" mouseTransparent="true" onDragDetected="#startdragndrop" onDragOver="#elementDragOver" onMouseDragEntered="#mouseDragEntered" onMouseDragOver="#mouseDragOver" stroke="BLACK" strokeType="INSIDE" width="182.0">
                      <VBox.margin>
                         <Insets bottom="1.0" />
                      </VBox.margin>
@@ -57,6 +57,11 @@
                      </VBox.margin>
                   </Rectangle>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ef96e" height="44.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
+                  <Button mnemonicParsing="false" text="Button" />
+                  <Label id="labbba" fx:id="labelll" onMouseClicked="#scrivi" prefHeight="75.0" prefWidth="164.0" text="Testo1">
+                     <font>
+                        <Font size="46.0" />
+                     </font></Label>
                </children>
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
