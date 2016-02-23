@@ -24,8 +24,6 @@ public class TankWarMain extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setFullScreen(true);
 
-        Rectangle rectangle= (Rectangle) root.lookup("#blucondition");
-        rectangle.makeD
         primaryStage.show();
     }
 
