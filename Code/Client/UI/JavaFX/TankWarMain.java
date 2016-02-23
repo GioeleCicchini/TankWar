@@ -25,6 +25,8 @@ public class TankWarMain extends Application {
         primaryStage.setFullScreen(true);
 
         primaryStage.show();
+
+
     }
 
 

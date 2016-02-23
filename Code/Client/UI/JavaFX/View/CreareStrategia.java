@@ -8,7 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.input.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+
+import java.awt.event.*;
 
 public class CreareStrategia {
     public Label salutoLabel;
@@ -19,70 +23,65 @@ public class CreareStrategia {
     public Label labelll;
 
 
-    public void faiSaluto(ActionEvent actionEvent) {
-        salutoLabel.setText("Salutam a Soreta!");
-    }
+    public Text trascinami;
+    public Text trascinaqui; //target
 
+    public void myDragDetected(Event event) {
+        System.out.println("onDragDetected");
 
-    public void startdragndrop(Event event) {
-        Dragboard db = blucondition.startDragAndDrop(TransferMode.ANY);
+        Dragboard db = trascinami.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
-        content.putString("Hello!");
-        System.out.println("E pattita start drag n drop");
+        content.putString(trascinami.getText());
         db.setContent(content);
+        
+
         event.consume();
     }
 
-    public void dragover(Event event) {
-        if (event.getSource() != blucondition){
+    public void myDragOver(DragEvent event) {
+        System.out.println("onDragOver");
 
+        if (event.getGestureSource() != trascinaqui && event.getDragboard().hasString()){
+            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+        }
+        event.consume();
+    }
+
+    public void myDragEntered(DragEvent event) {
+        System.out.println("onDragEntered");
+        if (event.getGestureSource() != trascinaqui &&
+                event.getDragboard().hasString()) {
+            trascinaqui.setFill(Color.GREEN);
+        }
+        event.consume();
+    }
+
+    public void myDragExited(Event event) {
+        trascinaqui.setFill(Color.BLACK);
+
+        event.consume();
+    }
+
+    public void myDragDropped(DragEvent event) {
+        System.out.println("onDragDropped");
+        Dragboard db = event.getDragboard();
+        boolean success = false;
+        if (db.hasString()) {
+            trascinaqui.setText(db.getString());
+            success = true;
+            event.setDropCompleted(success);
+
+            event.consume();
         }
     }
 
-    public void elementDropped(Event event) {
-        System.out.println("element dropped!");
+    public void myDragDone(DragEvent event) {
+        System.out.println("onDragDone");
+        if (event.getTransferMode() == TransferMode.MOVE) {
+            trascinami.setText("");
+        }
+        event.consume();
     }
 
-    public void elementDragDone(Event event) {
-        System.out.println("element drag done");
-    }
 
-    public void elementDragEntered(Event event) {
-        System.out.println("element drag entered");
-    }
-
-    public void elementDragExited(Event event) {
-        System.out.println("element drag exited");
-    }
-
-    public void elementDragOver(Event event) {
-        System.out.println("element drag over");
-    }
-
-    public void mouseDragEntered(Event event) {
-        System.out.println("mouse drag entered");
-    }
-
-    public void mouseDragExited(Event event) {
-        System.out.println("mouse drag exited");
-    }
-
-    public void mouseDragOver(Event event) {
-        System.out.println("mouse drag over");
-    }
-
-    public void mouseDragReleased(Event event) {
-        System.out.println("mouse drag released");
-    }
-
-    public void scrivi(Event event) {
-        System.out.println("sto qua");
-    }
-
-    public void aaaaant(Event event) {
-        labelll.setText("scrivi cazzo");
-    }
-
-    public void startdrag(Event event) {
-    }
 }

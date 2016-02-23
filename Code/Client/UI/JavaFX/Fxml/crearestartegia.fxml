@@ -30,7 +30,7 @@
             <Label text="La tua Strategia" textFill="#0077fd" BorderPane.alignment="CENTER" />
          </top>
          <center>
-            <VBox id="vboxpozzo" fx:id="boxpozzo" onDragOver="#dragover" prefHeight="570.0" prefWidth="364.0" BorderPane.alignment="CENTER">
+            <VBox id="vboxpozzo" fx:id="boxpozzo" prefHeight="570.0" prefWidth="364.0" BorderPane.alignment="CENTER">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="61.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="61.0" layoutX="10.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
@@ -44,29 +44,16 @@
       <Pane layoutX="470.0" layoutY="75.0" prefHeight="591.0" prefWidth="344.0" style="-fx-background-color: #e8f8ff; -fx-border-color: #0077fd; -fx-border-width: 2;">
          <children>
             <Label layoutX="46.0" layoutY="6.0" text="Scegli le Condizoni" textFill="#0077fd" />
-            <VBox id="anthony" fx:id="ant" layoutX="3.0" layoutY="29.0" onMouseClicked="#aaaaant" prefHeight="432.0" prefWidth="338.0">
-               <children>
-                  <Rectangle fx:id="blucondition" arcHeight="5.0" arcWidth="5.0" depthTest="DISABLE" fill="DODGERBLUE" height="52.0" mouseTransparent="true" onDragDetected="#startdragndrop" onDragOver="#elementDragOver" onMouseDragEntered="#mouseDragEntered" onMouseDragOver="#mouseDragOver" stroke="BLACK" strokeType="INSIDE" width="182.0">
-                     <VBox.margin>
-                        <Insets bottom="1.0" />
-                     </VBox.margin>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fb7676" height="44.0" pickOnBounds="true" stroke="BLACK" strokeType="INSIDE" width="182.0">
-                     <VBox.margin>
-                        <Insets bottom="1.0" />
-                     </VBox.margin>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ef96e" height="44.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Label id="labbba" fx:id="labelll" onMouseClicked="#scrivi" prefHeight="75.0" prefWidth="164.0" text="Testo1">
-                     <font>
-                        <Font size="46.0" />
-                     </font></Label>
-               </children>
-               <padding>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </padding>
-            </VBox>
+            <Text id="trascinami" fx:id="trascinami"  layoutX="50.0" layoutY="113.0" onDragDone="#myDragDone" onDragDetected="#myDragDetected" on strokeType="OUTSIDE" strokeWidth="0.0" text="Trascinami" wrappingWidth="224.21875">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Text>
+            <Text id="trascinaqui" fx:id="trascinaqui" onDragOver="#myDragOver" onDragEntered="#myDragEntered" onDragExited="#myDragExited" onDragDropped="#myDragDropped" layoutX="89.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quì" wrappingWidth="166.21875">
+               <font>
+                  <Font size="53.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <Pane layoutX="844.0" layoutY="75.0" prefHeight="591.0" prefWidth="332.0" style="-fx-background-color: #e8f8ff; -fx-border-color: #0077fd; -fx-border-width: 2;">
