@@ -75,10 +75,11 @@ public class Strategia implements Serializable {
 	public Strategia() {
 	}
 
-	public void aggiungiAzioneDefault(IAzioneCreator iAzioneCreator, ArrayList<Integer> valori) {
-        String idAzione=((Integer)count.incrementAndGet()).toString();
+	public String aggiungiAzioneDefault(IAzioneCreator iAzioneCreator, ArrayList<Integer> valori) {
+        String idAzione = UUID.randomUUID().toString();
         IStrategiaComponent azione = (IStrategiaComponent) iAzioneCreator.doMakeAzione(idAzione,valori);
         this.defaultCondition.addChild(azione);
+        return idAzione;
 	}
 
 	public boolean getIsComplete() {
@@ -110,7 +111,7 @@ public class Strategia implements Serializable {
 		return idcond;
 	}
 
-	public void aggiungiCondizioneAnnidata(ICondizioneCreator condizioneCreator, String idCondPadre, ArrayList<Integer> valori) {
+	public String aggiungiCondizioneAnnidata(ICondizioneCreator condizioneCreator, String idCondPadre, ArrayList<Integer> valori) {
 		String idcond= UUID.randomUUID().toString();
 		IStrategiaComponent condizione = (IStrategiaComponent) condizioneCreator.doMakeCondizione(idcond,valori);
 		boolean trovato = false;
@@ -133,7 +134,7 @@ public class Strategia implements Serializable {
 			}
 
 		}
-
+		return idcond;
 	}
 
     public ArrayList<IStrategiaComponent> getPadriFoglie(){ //It doesn't work
@@ -160,9 +161,9 @@ public class Strategia implements Serializable {
 	 * @param valori
 	 * @param idCond
 	 */
-	public void aggiungiAzione(IAzioneCreator az, ArrayList<Integer> valori, String idCond) {
+	public String aggiungiAzione(IAzioneCreator az, ArrayList<Integer> valori, String idCond) {
 		ArrayList<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
-		String idAz = ((Integer)count.incrementAndGet()).toString();
+		String idAz = UUID.randomUUID().toString();
 		IStrategiaComponent azione = (IStrategiaComponent) az.doMakeAzione(idAz,valori);
 		boolean trovato = false;
 		IStrategiaComponent currentfoglia = null;
@@ -173,6 +174,7 @@ public class Strategia implements Serializable {
 				currentfoglia.addChild(azione);
 			}
 		}
+		return idAz;
 
 	}
 

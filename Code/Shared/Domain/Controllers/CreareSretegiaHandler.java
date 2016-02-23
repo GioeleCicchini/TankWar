@@ -41,10 +41,11 @@ public class CreareSretegiaHandler {
 		return idCondPadre;
 	}
 
-	public void scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, ArrayList<Integer> valori) {
+	public String scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, ArrayList<Integer> valori) {
         CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
         ICondizioneCreator iCondizioneCreator = ccc.getCondizioneCreator(idTypeCond);
-        this.strategiaCorrente.aggiungiCondizioneAnnidata(iCondizioneCreator, idCondPadre, valori);
+        String NuovoIdCondPadre = this.strategiaCorrente.aggiungiCondizioneAnnidata(iCondizioneCreator, idCondPadre, valori);
+		return NuovoIdCondPadre;
 	}
 
 	/**
@@ -53,10 +54,11 @@ public class CreareSretegiaHandler {
 	 * @param idCond
 	 * @param valori
 	 */
-	public void associaAzione(String idTypeAz, String idCond, ArrayList<Integer> valori) {
+	public String associaAzione(String idTypeAz, String idCond, ArrayList<Integer> valori) {
 		CatalogoAzioneCreator catalogoAzioneCreator= CatalogoAzioneCreator.getSingletonInstance();
 		IAzioneCreator ac = catalogoAzioneCreator.getAzioneCreator(idTypeAz);
-		this.strategiaCorrente.aggiungiAzione(ac,valori,idCond);
+		String idAzPadre = this.strategiaCorrente.aggiungiAzione(ac,valori,idCond);
+		return idAzPadre;
 	}
 
 	public void iniziaNuovaStrategia() {
@@ -70,10 +72,11 @@ public class CreareSretegiaHandler {
 	 * @param idTypeAz
 	 * @param valori
 	 */
-	public void scegliAzioneDefault(String idTypeAz, ArrayList<Integer> valori) {
+	public String scegliAzioneDefault(String idTypeAz, ArrayList<Integer> valori) {
 		CatalogoAzioneCreator cac = CatalogoAzioneCreator.getSingletonInstance();
 		IAzioneCreator ac = cac.getAzioneCreator(idTypeAz);
-		this.strategiaCorrente.aggiungiAzioneDefault(ac,valori);
+		String idAzDefault = this.strategiaCorrente.aggiungiAzioneDefault(ac,valori);
+		return idAzDefault;
 	}
 
 	/**
