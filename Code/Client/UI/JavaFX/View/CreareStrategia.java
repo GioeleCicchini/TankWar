@@ -36,4 +36,40 @@ public class CreareStrategia {
 
         }
     }
+
+    public void elementDropped(Event event) {
+        System.out.println("element dropped!");
+    }
+
+    public void elementDragDone(Event event) {
+        System.out.println("element drag done");
+    }
+
+    public void elementDragEntered(Event event) {
+        System.out.println("element drag entered");
+    }
+
+    public void elementDragExited(Event event) {
+        System.out.println("element drag exited");
+    }
+
+    public void elementDragOver(Event event) {
+        System.out.println("element drag over");
+    }
+
+    public void mouseDragEntered(Event event) {
+        System.out.println("mouse drag entered");
+    }
+
+    public void mouseDragExited(Event event) {
+        System.out.println("mouse drag exited");
+    }
+
+    public void mouseDragOver(Event event) {
+        System.out.println("mouse drag over");
+    }
+
+    public void mouseDragReleased(Event event) {
+        System.out.println("mouse drag released");
+    }
 }

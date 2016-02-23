@@ -46,7 +46,7 @@
             <Label layoutX="46.0" layoutY="6.0" text="Scegli le Condizoni" textFill="#0077fd" />
             <VBox layoutX="3.0" layoutY="29.0" prefHeight="432.0" prefWidth="338.0">
                <children>
-                  <Rectangle fx:id="blucondition" arcHeight="5.0" arcWidth="5.0" depthTest="DISABLE" fill="DODGERBLUE" height="52.0" mouseTransparent="true" onDragDetected="#startdragndrop" stroke="BLACK" strokeType="INSIDE" width="182.0">
+                  <Rectangle fx:id="blucondition" arcHeight="5.0" arcWidth="5.0" depthTest="DISABLE" fill="DODGERBLUE" height="52.0" mouseTransparent="true" onDragDetected="#startdragndrop" onDragDone="#elementDragDone" onDragDropped="#elementDropped" onDragEntered="#elementDragEntered" onDragExited="#elementDragExited" onDragOver="#elementDragOver" onMouseDragEntered="#mouseDragEntered" onMouseDragExited="#mouseDragExited" onMouseDragOver="#mouseDragOver" onMouseDragReleased="#mouseDragReleased" stroke="BLACK" strokeType="INSIDE" width="182.0">
                      <VBox.margin>
                         <Insets bottom="1.0" />
                      </VBox.margin>
