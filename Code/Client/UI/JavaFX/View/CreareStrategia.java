@@ -36,12 +36,12 @@ public class CreareStrategia {
     public void condDragDetected(Event event) {
         System.out.println("onDragDetected");
 
-        Dragboard db = ((Label)event.getSource()).startDragAndDrop(TransferMode.ANY);
+        Dragboard db = ((Label) event.getSource()).startDragAndDrop(TransferMode.ANY);
         //Dragboard db = NemicoAvantiRectangle.startDragAndDrop(TransferMode.ANY);
 
 
         ClipboardContent content = new ClipboardContent();
-            content.putString("Qua ci andrà qualcosa per id");
+        content.putString("Qua ci andrà qualcosa per id");
         db.setContent(content);
 
         event.consume();
@@ -50,7 +50,7 @@ public class CreareStrategia {
     public void targetDragOver(DragEvent event) {
         System.out.println("onDragOver");
 
-        if(event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()){
+        if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
 
@@ -60,7 +60,7 @@ public class CreareStrategia {
     public void targetDragEntered(DragEvent event) {
         System.out.println("onDragEntered");
 
-        if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()){
+        if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()) {
             DropPaneTarget.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
 
@@ -79,7 +79,7 @@ public class CreareStrategia {
 
         //TODO mettere qua il fatto che si scrive il pezzo nella strategia
 
-        success=true;
+        success = true;
 
         event.setDropCompleted(success);
 
@@ -94,11 +94,16 @@ public class CreareStrategia {
 
     public void caricaSchermata() {
         CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
-        Map<String,LabelConditionCreator> LabelMap= new HashMap<>();
-        for (String id: catalogoCondizioneCreator.getCondizioniCreators().keySet()) {
+        Map<String, LabelConditionCreator> LabelMap = new HashMap<>();
+        for (String id : catalogoCondizioneCreator.getCondizioniCreators().keySet()) {
             LabelConditionCreator lcc = new LabelConditionCreator(id);
-            LabelMap.put(id,lcc);
+            LabelMap.put(id, lcc);
         }
-        PaneCondizioni.
+        LabelConditionCreator elemento;
+        for (String id : LabelMap.keySet()) {
+            elemento = LabelMap.get(id);
+            PaneCondizioni.getChildren().add(elemento);
+        }
+
     }
 }

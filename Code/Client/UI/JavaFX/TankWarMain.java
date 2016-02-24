@@ -1,7 +1,9 @@
 package Client.UI.JavaFX;
 
-import Shared.Domain.Controllers.CreareSretegiaHandler;
+import Client.UI.JavaFX.View.CreareStrategia;
+import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
+import com.sun.javafx.fxml.LoadListener;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +17,7 @@ public class TankWarMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Fxml/crearestrategia.fxml"));
+
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root));
         primaryStage.setFullScreen(true);
@@ -22,7 +25,13 @@ public class TankWarMain extends Application {
         StartUpHandler startUpHandler = StartUpHandler.getSingletonInstance();
         startUpHandler.inizia();
 
+
         primaryStage.show();
+        while (!primaryStage.isShowing()) {
+            System.out.println(primaryStage.isShowing());
+        }
+        CreareStrategia creareStrategia = new CreareStrategia();
+        creareStrategia.caricaSchermata();
 
 
 
