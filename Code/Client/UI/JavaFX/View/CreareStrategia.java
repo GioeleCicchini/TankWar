@@ -13,51 +13,36 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 import java.awt.event.*;
+import java.awt.event.MouseEvent;
 
 public class CreareStrategia {
-    public Label salutoLabel;
-
-    public VBox boxpozzo;
-    public Rectangle blucondition;
-    public VBox ant;
-    public Label labelll;
 
 
     public Text trascinami;
     public Text trascinaqui; //target
+    public Rectangle blueSource;
+    public Rectangle whiteTarget;
 
-    public void myDragDetected(Event event) {
-        System.out.println("onDragDetected");
 
-        Dragboard db = trascinami.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent content = new ClipboardContent();
-        content.putString(trascinami.getText());
-        db.setContent(content);
-        
-
-        event.consume();
-    }
 
     public void myDragOver(DragEvent event) {
         System.out.println("onDragOver");
 
-        if (event.getGestureSource() != trascinaqui && event.getDragboard().hasString()){
-            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-        }
+        event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+
         event.consume();
     }
 
     public void myDragEntered(DragEvent event) {
         System.out.println("onDragEntered");
-        if (event.getGestureSource() != trascinaqui &&
-                event.getDragboard().hasString()) {
-            trascinaqui.setFill(Color.GREEN);
-        }
+
+        ((Rectangle)event.getGestureSource()).setFill(Color.BISQUE);
+
         event.consume();
     }
 
-    public void myDragExited(Event event) {
-        trascinaqui.setFill(Color.BLACK);
+    public void myDragExited(DragEvent event) {
+        ((Rectangle)event.getGestureSource()).setFill(Color.BLACK);
 
         event.consume();
     }
@@ -67,7 +52,6 @@ public class CreareStrategia {
         Dragboard db = event.getDragboard();
         boolean success = false;
         if (db.hasString()) {
-            trascinaqui.setText(db.getString());
             success = true;
             event.setDropCompleted(success);
 
@@ -78,10 +62,20 @@ public class CreareStrategia {
     public void myDragDone(DragEvent event) {
         System.out.println("onDragDone");
         if (event.getTransferMode() == TransferMode.MOVE) {
-            trascinami.setText("");
         }
         event.consume();
     }
 
 
+    public void myDragDetected(MouseEvent event) {
+        System.out.println("onDragDetected");
+
+        Dragboard db = ((Rectangle)event.getSource()).startDragAndDrop(TransferMode.ANY);
+        ClipboardContent content = new ClipboardContent();
+        content.putString("rerere");
+        db.setContent(content);
+
+
+        event.consume();
+    }
 }
