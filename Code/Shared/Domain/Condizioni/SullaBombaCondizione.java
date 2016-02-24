@@ -11,19 +11,22 @@ import java.util.ArrayList;
  */
 public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, Serializable {
 
+
     private String name;
     private String description;
     private String idType;
 
     private String id;
+    private boolean vera;
     private ArrayList<Integer> valori;
     private IStrategiaComponent child;
 
-    public SullaBombaCondizione(String name, String description, String idType, String idCond, ArrayList<Integer> valori) {
+    public SullaBombaCondizione(String name, String description, String idType, String idCond, boolean vera, ArrayList<Integer> valori) {
         this.name = name;
         this.description = description;
         this.idType = idType;
         this.id = idCond;
+        this.vera = vera;
         this.valori = valori;
         this.child = null;
     }
@@ -39,11 +42,6 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
     @Override
     public IAzione getAzione() {
         return null;
-    }
-
-    @Override
-    public void create(String idCond, ArrayList<Integer> valori) {
-
     }
 
     @Override

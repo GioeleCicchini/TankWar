@@ -34,17 +34,17 @@ public class CreareSretegiaHandler {
 	 * @param idTypeCond
 	 * @param valori
 	 */
-	public String scegliCondizione(String idTypeCond, ArrayList<Integer> valori) {
+	public String scegliCondizione(String idTypeCond, boolean vera, ArrayList<Integer> valori) {
 		CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
 		ICondizioneCreator iCondizioneCreator = ccc.getCondizioneCreator(idTypeCond);
-		String idCondPadre = this.strategiaCorrente.aggiungiCondizione(iCondizioneCreator,valori);
+		String idCondPadre = this.strategiaCorrente.aggiungiCondizione(iCondizioneCreator,vera,valori);
 		return idCondPadre;
 	}
 
-	public String scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, ArrayList<Integer> valori) {
+	public String scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, boolean vera, ArrayList<Integer> valori) {
         CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
         ICondizioneCreator iCondizioneCreator = ccc.getCondizioneCreator(idTypeCond);
-        String NuovoIdCondPadre = this.strategiaCorrente.aggiungiCondizioneAnnidata(iCondizioneCreator, idCondPadre, valori);
+        String NuovoIdCondPadre = this.strategiaCorrente.aggiungiCondizioneAnnidata(iCondizioneCreator, idCondPadre, vera, valori);
 		return NuovoIdCondPadre;
 	}
 

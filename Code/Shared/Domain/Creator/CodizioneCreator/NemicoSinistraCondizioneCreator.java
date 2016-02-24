@@ -33,8 +33,8 @@ public class NemicoSinistraCondizioneCreator implements ICondizioneCreator {
     }
 
     @Override
-    public ICondizione doMakeCondizione(String idCond, ArrayList<Integer> valori) {
-        NemicoSinistraCondizione nemicoSinistraCondizione = new NemicoSinistraCondizione(this.name,this.description,this.idType,idCond,valori);
+    public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
+        NemicoSinistraCondizione nemicoSinistraCondizione = new NemicoSinistraCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return nemicoSinistraCondizione;
     }
 

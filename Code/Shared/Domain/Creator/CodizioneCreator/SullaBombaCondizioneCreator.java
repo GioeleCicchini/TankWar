@@ -32,8 +32,8 @@ public class SullaBombaCondizioneCreator implements ICondizioneCreator {
     }
 
     @Override
-    public ICondizione doMakeCondizione(String idCond, ArrayList<Integer> valori) {
-        SullaBombaCondizione sullaBombaCondizione = new SullaBombaCondizione(this.name,this.description,this.idType,idCond,valori);
+    public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
+        SullaBombaCondizione sullaBombaCondizione = new SullaBombaCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return sullaBombaCondizione;
     }
 

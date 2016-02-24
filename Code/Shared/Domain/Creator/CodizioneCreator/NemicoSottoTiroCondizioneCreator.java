@@ -33,8 +33,8 @@ public class NemicoSottoTiroCondizioneCreator implements ICondizioneCreator {
     }
 
     @Override
-    public ICondizione doMakeCondizione(String idCond, ArrayList<Integer> valori) {
-        NemicoSottoTiroCondizione nemicoSottoTiroCondizione = new NemicoSottoTiroCondizione(this.name,this.description,this.idType,idCond,valori);
+    public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
+        NemicoSottoTiroCondizione nemicoSottoTiroCondizione = new NemicoSottoTiroCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return nemicoSottoTiroCondizione;
     }
 

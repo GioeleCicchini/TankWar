@@ -33,8 +33,8 @@ public class OstacoloAdiacenteDietroCondizioneCreator implements ICondizioneCrea
     }
 
     @Override
-    public ICondizione doMakeCondizione(String idCond, ArrayList<Integer> valori) {
-        OstacoloAdiacenteDietroCondizione ostacoloAdiacenteDietroCondizione = new OstacoloAdiacenteDietroCondizione(this.name,this.description,this.idType, idCond, valori);
+    public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
+        OstacoloAdiacenteDietroCondizione ostacoloAdiacenteDietroCondizione = new OstacoloAdiacenteDietroCondizione(this.name,this.description,this.idType, idCond, vera, valori);
         return ostacoloAdiacenteDietroCondizione;
     }
 

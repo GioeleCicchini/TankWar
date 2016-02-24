@@ -66,7 +66,7 @@ public class Strategia implements Serializable {
 		this.id = UUID.randomUUID().toString();
         this.conditionBlock = new ArrayList<IStrategiaComponent>();
         ArrayList<Integer> valori = new ArrayList<Integer>();
-        this.defaultCondition = (IStrategiaComponent) iCondizioneCreator.doMakeCondizione(idcond,valori);
+        this.defaultCondition = (IStrategiaComponent) iCondizioneCreator.doMakeCondizione(idcond,true,valori);
         this.nome = "";
         this.isComplete = false;
 
@@ -99,21 +99,21 @@ public class Strategia implements Serializable {
 	 * @param condizionecreator
 	 * @param valori
 	 */
-	public String aggiungiCondizione(ICondizioneCreator condizionecreator, ArrayList<Integer> valori) {
+	public String aggiungiCondizione(ICondizioneCreator condizionecreator, boolean vera, ArrayList<Integer> valori) {
 		String idcond= UUID.randomUUID().toString();
 		System.out.println(idcond);
 
 
-		IStrategiaComponent condizione = (IStrategiaComponent) condizionecreator.doMakeCondizione(idcond,valori);
+		IStrategiaComponent condizione = (IStrategiaComponent) condizionecreator.doMakeCondizione(idcond,vera,valori);
 		System.out.println(condizione.getId());
 
 		this.conditionBlock.add(condizione);
 		return idcond;
 	}
 
-	public String aggiungiCondizioneAnnidata(ICondizioneCreator condizioneCreator, String idCondPadre, ArrayList<Integer> valori) {
+	public String aggiungiCondizioneAnnidata(ICondizioneCreator condizioneCreator, String idCondPadre, boolean vera, ArrayList<Integer> valori) {
 		String idcond= UUID.randomUUID().toString();
-		IStrategiaComponent condizione = (IStrategiaComponent) condizioneCreator.doMakeCondizione(idcond,valori);
+		IStrategiaComponent condizione = (IStrategiaComponent) condizioneCreator.doMakeCondizione(idcond,vera,valori);
 		boolean trovato = false;
 		ArrayList<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
 		IStrategiaComponent currentfoglia = null;

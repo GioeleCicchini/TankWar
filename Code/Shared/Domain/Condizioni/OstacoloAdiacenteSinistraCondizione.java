@@ -11,20 +11,23 @@ import java.util.ArrayList;
  */
 public class OstacoloAdiacenteSinistraCondizione implements ICondizione, IStrategiaComponent, Serializable {
 
+
     private String name;
     private String description;
     private String idType;
 
     private String id;
+    private boolean vera;
     private ArrayList<Integer> valori;
 
     private IStrategiaComponent child;
 
-    public OstacoloAdiacenteSinistraCondizione(String name, String description, String idType, String idCond, ArrayList<Integer> valori) {
+    public OstacoloAdiacenteSinistraCondizione(String name, String description, String idType, String idCond, boolean vera, ArrayList<Integer> valori) {
         this.name = name;
         this.description = description;
         this.idType = idType;
         this.id = idCond;
+        this.vera = vera;
         this.valori = valori;
         this.child = null;
     }
@@ -40,11 +43,6 @@ public class OstacoloAdiacenteSinistraCondizione implements ICondizione, IStrate
     @Override
     public IAzione getAzione() {
         return null;
-    }
-
-    @Override
-    public void create(String idCond, ArrayList<Integer> valori) {
-
     }
 
     @Override
