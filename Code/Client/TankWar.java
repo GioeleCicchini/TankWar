@@ -64,7 +64,7 @@ public class TankWar {
 
             catalogoCondizioneCreator.setCondizioniCreators(map);
 
-            Player player = new Player();
+            Player player = Player.getSingletonInstance();
             player.setNome("Gioele");
 
 

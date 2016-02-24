@@ -45,7 +45,7 @@
             </Pane>
          </children>
       </Pane>
-      <Pane layoutX="694.0" layoutY="160.0" prefHeight="298.0" prefWidth="556.0" style="-fx-background-color: #bff3fb; -fx-border-color: #ffffff; -fx-border-radius: 3; -fx-border-width: 3;">
+      <Pane id="PaneCondizioni" fx:id="PaneCondizioni" layoutX="694.0" layoutY="160.0" prefHeight="298.0" prefWidth="556.0" style="-fx-background-color: #bff3fb; -fx-border-color: #ffffff; -fx-border-radius: 3; -fx-border-width: 3;">
          <children>
             <Text fill="#4eabff" layoutX="11.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scegli tra queste Condizioni:" wrappingWidth="246.0628662109375">
                <font>
@@ -82,7 +82,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label onDragDetected="#condDragDetected" layoutX="287.0" layoutY="45.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: #1fff35; -fx-border-color: #000000; -fx-background-radius: 3;" text="Label" />
+            <Label layoutX="287.0" layoutY="45.0" onDragDetected="#condDragDetected" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: #1fff35; -fx-border-color: #000000; -fx-background-radius: 3;" text="Label" />
          </children>
       </Pane>
       <Pane layoutX="694.0" layoutY="473.0" prefHeight="298.0" prefWidth="556.0" style="-fx-background-color: #bff3fb; -fx-border-color: #ffffff; -fx-border-radius: 3; -fx-border-width: 3;">

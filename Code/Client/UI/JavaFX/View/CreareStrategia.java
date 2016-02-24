@@ -1,5 +1,7 @@
 package Client.UI.JavaFX.View;
 
+import Client.UI.JavaFX.CustomWidget.LabelConditionCreator;
+import Shared.Domain.CatalogoCondizioneCreator;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -16,6 +18,8 @@ import javafx.scene.text.Text;
 
 import java.awt.event.*;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CreareStrategia {
 
@@ -26,6 +30,7 @@ public class CreareStrategia {
     public Rectangle NemicoDietroRectangle;
     public Rectangle NemicoSottoTiroRectangle;
     public Label labelFeedback;
+    public Pane PaneCondizioni;
 
 
     public void condDragDetected(Event event) {
@@ -85,5 +90,15 @@ public class CreareStrategia {
         System.out.println("onDragDone");
 
         event.consume();
+    }
+
+    public void caricaSchermata() {
+        CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
+        Map<String,LabelConditionCreator> LabelMap= new HashMap<>();
+        for (String id: catalogoCondizioneCreator.getCondizioniCreators().keySet()) {
+            LabelConditionCreator lcc = new LabelConditionCreator(id);
+            LabelMap.put(id,lcc);
+        }
+        PaneCondizioni.
     }
 }
