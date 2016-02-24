@@ -28,11 +28,12 @@ public class CreareStrategia {
     public Label labelFeedback;
 
 
-    public void condDragDetected(MouseEvent event) {
+    public void condDragDetected(Event event) {
         System.out.println("onDragDetected");
 
-        Dragboard db = ((Rectangle)event.getSource()).startDragAndDrop(TransferMode.ANY);
+        Dragboard db = ((Label)event.getSource()).startDragAndDrop(TransferMode.ANY);
         //Dragboard db = NemicoAvantiRectangle.startDragAndDrop(TransferMode.ANY);
+
 
         ClipboardContent content = new ClipboardContent();
             content.putString("Qua ci andrà qualcosa per id");
