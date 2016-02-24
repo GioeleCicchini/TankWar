@@ -3,12 +3,14 @@ package Client.UI.JavaFX.View;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.input.*;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -17,4 +19,70 @@ import java.awt.event.MouseEvent;
 
 public class CreareStrategia {
 
+    public Pane DropPaneTarget;
+    public Rectangle NemicoAvantiRectangle;
+    public Rectangle NemicoDestraRectangle;
+    public Rectangle NemicoSinistraRectangle;
+    public Rectangle NemicoDietroRectangle;
+    public Rectangle NemicoSottoTiroRectangle;
+    public Label labelFeedback;
+
+
+    public void condDragDetected(MouseEvent event) {
+        System.out.println("onDragDetected");
+
+        Dragboard db = ((Rectangle)event.getSource()).startDragAndDrop(TransferMode.ANY);
+        //Dragboard db = NemicoAvantiRectangle.startDragAndDrop(TransferMode.ANY);
+
+        ClipboardContent content = new ClipboardContent();
+            content.putString("Qua ci andrà qualcosa per id");
+        db.setContent(content);
+
+        event.consume();
+    }
+
+    public void targetDragOver(DragEvent event) {
+        System.out.println("onDragOver");
+
+        if(event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()){
+            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+        }
+
+        event.consume();
+    }
+
+    public void targetDragEntered(DragEvent event) {
+        System.out.println("onDragEntered");
+
+        if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()){
+            DropPaneTarget.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
+
+        event.consume();
+    }
+
+    public void targetDragDropped(DragEvent event) {
+        System.out.println("onDragDropped");
+
+        Dragboard db = event.getDragboard();
+        boolean success = false;
+
+        System.out.println("Ho appena droppato qualcosa");
+
+        labelFeedback.setText("PRESA!");
+
+        //TODO mettere qua il fatto che si scrive il pezzo nella strategia
+
+        success=true;
+
+        event.setDropCompleted(success);
+
+        event.consume();
+    }
+
+    public void condDragDone(DragEvent event) {
+        System.out.println("onDragDone");
+
+        event.consume();
+    }
 }
