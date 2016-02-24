@@ -5,15 +5,11 @@ package Client;/*
  */
 
 import Shared.Domain.CatalogoCondizioneCreator;
-import Shared.Domain.Condizioni.ICondizione;
-import Shared.Domain.Condizioni.NemicoAvantiCondizione;
-import Shared.Domain.Controllers.CreareSretegiaHandler;
+import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.NemicoAvantiCondizioneCreator;
-import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.Player;
-import Shared.Domain.Strategia;
 import Shared.Util.DTO;
 
 import java.io.IOException;
@@ -21,7 +17,6 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -70,7 +65,7 @@ public class TankWar {
 
 
 
-            CreareSretegiaHandler handler = CreareSretegiaHandler.getSingletonInstance();
+            CreareStrategiaHandler handler = CreareStrategiaHandler.getSingletonInstance();
             handler.setCurrentPlayer(player);
             handler.iniziaNuovaStrategia();
             handler.inserisciNomeStrategia("Prima Strategia");
