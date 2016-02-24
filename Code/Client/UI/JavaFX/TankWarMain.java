@@ -1,6 +1,7 @@
 package Client.UI.JavaFX;
 
-import Shared.Domain.Controllers.CreareSretegiaHandler;
+import Client.UI.JavaFX.View.CreareStrategia;
+import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,9 @@ public class TankWarMain extends Application {
 
         StartUpHandler startUpHandler = StartUpHandler.getSingletonInstance();
         startUpHandler.inizia();
+
+        CreareStrategia creareStrategia = new CreareStrategia();
+        creareStrategia.caricaSchermata();
 
         primaryStage.show();
 

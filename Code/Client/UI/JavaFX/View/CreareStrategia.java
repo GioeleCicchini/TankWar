@@ -31,6 +31,7 @@ public class CreareStrategia {
     public Rectangle NemicoSottoTiroRectangle;
     public Label labelFeedback;
     public Pane PaneCondizioni;
+    public GridPane gridPane;
 
 
     public void condDragDetected(Event event) {
@@ -94,11 +95,15 @@ public class CreareStrategia {
 
     public void caricaSchermata() {
         CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
-        Map<String,LabelConditionCreator> LabelMap= new HashMap<>();
+        Map<String,LabelConditionCreator> labelMap= new HashMap<>();
         for (String id: catalogoCondizioneCreator.getCondizioniCreators().keySet()) {
             LabelConditionCreator lcc = new LabelConditionCreator(id);
-            LabelMap.put(id,lcc);
+            labelMap.put(id,lcc);
         }
-        PaneCondizioni.
+        labelMap.get("001").setText("Hey");
+        labelMap.get("001").setLayoutX(20);
+        labelMap.get("001").setLayoutY(10);
+        gridPane.add(labelMap.get("001"),0,0);
+
     }
 }
