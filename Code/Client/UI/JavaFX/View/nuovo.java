@@ -19,7 +19,7 @@ public class nuovo {
     public Circle cerchio1;
 
 
-    public void dragLabel(MouseEvent event) {
+    public void dragLabel(Event event) {
         System.out.println("onDragDetected");
 
                 /* allow any transfer mode */

@@ -9,22 +9,22 @@ import Shared.Domain.Strategia;
 
 import java.util.ArrayList;
 
-public class CreareSretegiaHandler {
+public class CreareStrategiaHandler {
 
-	private static CreareSretegiaHandler singletonInstance = null;
+	private static CreareStrategiaHandler singletonInstance = null;
 
 	private Player currentPlayer;
 	private Strategia strategiaCorrente;
 
-	private CreareSretegiaHandler() {
+	private CreareStrategiaHandler() {
 
 	}
 
-	public static CreareSretegiaHandler getSingletonInstance()
+	public static CreareStrategiaHandler getSingletonInstance()
 	{
 		if (singletonInstance == null)
 		{
-			singletonInstance = new CreareSretegiaHandler();
+			singletonInstance = new CreareStrategiaHandler();
 		}
 		return singletonInstance;
 	}
