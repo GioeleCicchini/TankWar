@@ -34,6 +34,7 @@ public class CreareStrategia implements Initializable{
     public Rectangle NemicoSottoTiroRectangle;
     public Label labelFeedback;
     public GridPane conditionCreatorGrid;
+    public GridPane azioneCreatorGrid;
 
 
     public void condDragDetected(Event event) {
