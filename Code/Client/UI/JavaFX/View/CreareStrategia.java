@@ -30,8 +30,8 @@ public class CreareStrategia {
     public Rectangle NemicoDietroRectangle;
     public Rectangle NemicoSottoTiroRectangle;
     public Label labelFeedback;
-    public Pane PaneCondizioni = new Pane();
-    public GridPane gridPane = new GridPane();
+    public Pane PaneCondizioni;
+    public GridPane gridPane;
 
 
     public void condDragDetected(Event event) {
