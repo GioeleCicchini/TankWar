@@ -40,6 +40,6 @@ public class OstacoloAdiacenteDietroCondizioneCreator implements ICondizioneCrea
 
     @Override
     public String getIdType() {
-        return null;
+        return this.idType;
     }
 }

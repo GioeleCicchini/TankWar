@@ -39,6 +39,6 @@ public class SullaBombaCondizioneCreator implements ICondizioneCreator {
 
     @Override
     public String getIdType() {
-        return null;
+        return this.idType;
     }
 }

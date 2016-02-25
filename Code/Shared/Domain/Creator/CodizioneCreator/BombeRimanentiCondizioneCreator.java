@@ -40,6 +40,6 @@ public class BombeRimanentiCondizioneCreator implements ICondizioneCreator {
 
     @Override
     public String getIdType() {
-        return null;
+        return this.idType;
     }
 }

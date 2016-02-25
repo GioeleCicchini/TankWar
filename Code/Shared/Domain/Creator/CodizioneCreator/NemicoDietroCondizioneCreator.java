@@ -40,6 +40,6 @@ public class NemicoDietroCondizioneCreator implements ICondizioneCreator {
 
     @Override
     public String getIdType() {
-        return null;
+        return this.idType;
     }
 }

@@ -36,4 +36,28 @@ public class AvanzaSinistraAzioneCreator implements IAzioneCreator {
         IAzione avanzaSinistraAzione = new AvanzaSinistraAzione(this.name,this.description,this.idTypeAz,idAz,valori);
         return avanzaSinistraAzione;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getIdTypeAz() {
+        return idTypeAz;
+    }
+
+    public void setIdTypeAz(String idTypeAz) {
+        this.idTypeAz = idTypeAz;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -37,4 +37,28 @@ public class TemporeggiaAzioneCreator implements IAzioneCreator {
         IAzione temporeggiaAzione = new TemporeggiaAzione(this.name,this.description,this.idTypeAz,idAz,valori);
         return temporeggiaAzione;
     }
+
+    public String getIdTypeAz() {
+        return idTypeAz;
+    }
+
+    public void setIdTypeAz(String idTypeAz) {
+        this.idTypeAz = idTypeAz;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

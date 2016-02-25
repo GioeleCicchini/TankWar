@@ -37,4 +37,28 @@ public class SparaAzioneCreator implements IAzioneCreator {
         IAzione sparaAzione = new SparaAzione(this.name,this.description,this.idTypeAz,idAz,valori);
         return sparaAzione;
     }
+
+    public String getIdTypeAz() {
+        return idTypeAz;
+    }
+
+    public void setIdTypeAz(String idTypeAz) {
+        this.idTypeAz = idTypeAz;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
