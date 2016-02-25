@@ -30,8 +30,8 @@ public class CreareStrategia {
     public Rectangle NemicoDietroRectangle;
     public Rectangle NemicoSottoTiroRectangle;
     public Label labelFeedback;
-    public Pane PaneCondizioni;
-    public GridPane gridPane;
+    public Pane PaneCondizioni = new Pane();
+    public GridPane gridPane = new GridPane();
 
 
     public void condDragDetected(Event event) {
@@ -98,13 +98,45 @@ public class CreareStrategia {
         Map<String, LabelConditionCreator> LabelMap = new HashMap<>();
         for (String id : catalogoCondizioneCreator.getCondizioniCreators().keySet()) {
             LabelConditionCreator lcc = new LabelConditionCreator(id);
-            LabelMap.put(id, lcc);
+            LabelMap.put(id, lcc); //perchè sono solo 2?
+            //System.out.println(lcc.toString());
         }
+        //System.out.println(PaneCondizioni);
+        //System.out.println(gridPane);
+
+        //GRIDPANE
+
+        LabelConditionCreator elemento;
+        for (String id:LabelMap.keySet()) {
+            elemento = LabelMap.get(id);
+            elemento.setVisible(true);
+            elemento.setText("Mammeta Works");
+            elemento.setLayoutX(10);
+            elemento.setLayoutY(10);
+            elemento.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+                @Override
+                public void handle(javafx.scene.input.MouseEvent event) {
+                    System.out.println("Nonneta works");
+                }
+            });
+            gridPane.add(elemento,0,0);
+            System.out.println("Mammeta");
+        }
+
+
+
+        //PANE SEMPLICE
+        /*
         LabelConditionCreator elemento;
         for (String id : LabelMap.keySet()) {
             elemento = LabelMap.get(id);
-            PaneCondizioni.getChildren().add(elemento);
+            System.out.println(elemento.toString());
+
+            //PaneCondizioni.getChildren().add(elemento);
         }
+        */
+
+
 
     }
 }

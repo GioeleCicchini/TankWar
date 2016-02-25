@@ -82,7 +82,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <GridPane fx:id="gridPane" id="grid" layoutX="221.0" layoutY="42.0" prefHeight="108.0" prefWidth="215.0" style="-fx-background-color: #f5f5f5;">
+            <GridPane id="grid" fx:id="gridPane" layoutX="274.0" layoutY="42.0" prefHeight="238.0" prefWidth="268.0" style="-fx-background-color: #f5f5f5;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

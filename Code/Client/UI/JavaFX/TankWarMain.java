@@ -5,10 +5,12 @@ import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
 import com.sun.javafx.fxml.LoadListener;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,15 @@ public class TankWarMain extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Fxml/crearestrategia.fxml"));
 
         primaryStage.setTitle("Hello World");
+        /*
+        primaryStage.setOnShown(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                CreareStrategia creareStrategia = new CreareStrategia();
+                creareStrategia.caricaSchermata();
+            }
+        });
+        */
         primaryStage.setScene(new Scene(root));
         primaryStage.setFullScreen(true);
 

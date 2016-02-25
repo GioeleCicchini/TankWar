@@ -40,6 +40,14 @@ public class StartUpHandler {
         NemicoSinistraCondizioneCreator nemicoSinistraCondizioneCreator = NemicoSinistraCondizioneCreator.getSingletonInstance();
 
 
+        System.out.println("Debugging dentro al catalogo:");
+        System.out.println("Id delle cc presenti:");
+        System.out.println(nemicoAvantiCondizioneCreator.getIdType());
+        System.out.println(defaultCondizioneCreator.getIdType());
+        System.out.println(nemicoDestraCondizioneCreator.getIdType());
+        System.out.println(nemicoDietroCondizioneCreator.getIdType());
+        System.out.println(nemicoSinistraCondizioneCreator.getIdType());
+
         map.put(nemicoAvantiCondizioneCreator.getIdType(),nemicoAvantiCondizioneCreator);
         map.put(defaultCondizioneCreator.getIdType(),defaultCondizioneCreator);
         map.put(nemicoDestraCondizioneCreator.getIdType(),nemicoDestraCondizioneCreator);
@@ -47,6 +55,10 @@ public class StartUpHandler {
         map.put(nemicoSinistraCondizioneCreator.getIdType(),nemicoSinistraCondizioneCreator);
 
         ccc.setCondizioniCreators(map);
+
+        for (String id : ccc.getCondizioniCreators().keySet()) {
+            System.out.println(ccc.getCondizioneCreator(id)); //Perchè solo 2?
+        }
 
 
     }
