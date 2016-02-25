@@ -2,6 +2,7 @@ package Client.UI.JavaFX.View;
 
 import Client.UI.JavaFX.CustomWidget.LabelConditionCreator;
 import Shared.Domain.CatalogoCondizioneCreator;
+import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -100,9 +101,12 @@ public class CreareStrategia implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
-        Map<String, LabelConditionCreator> LabelMap = new HashMap<>();
-        for (String id : catalogoCondizioneCreator.getCondizioniCreators().keySet()) {
-            LabelConditionCreator lcc = new LabelConditionCreator(id);
+        HashMap<String, LabelConditionCreator> LabelMap = new HashMap<>();
+        Map<String, ICondizioneCreator> catalogoMap = catalogoCondizioneCreator.getCondizioniCreators();
+        for (String id : catalogoMap.keySet()) {
+            String name = catalogoMap.get(id).getName();
+            String description = catalogoMap.get(id).getDescription();
+            LabelConditionCreator lcc = new LabelConditionCreator(id,name,description);
             LabelMap.put(id, lcc); //perchè sono solo 2?
             //System.out.println(lcc.toString());
         }
@@ -112,18 +116,11 @@ public class CreareStrategia implements Initializable{
         //GRIDPANE
 
         LabelConditionCreator elemento;
-        for (String id:LabelMap.keySet()) {
+        for (String id: LabelMap.keySet()) {
             elemento = LabelMap.get(id);
             elemento.setVisible(true);
-            elemento.setText("Mammeta Works");
-            elemento.setLayoutX(10);
-            elemento.setLayoutY(10);
-            elemento.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-                @Override
-                public void handle(javafx.scene.input.MouseEvent event) {
-                    System.out.println("Nonneta works");
-                }
-            });
+            elemento.setText(LabelMap.get(id).getName());
+            elemento.setDescription(LabelMap.get(id).getDescription());
             conditionCreatorGrid.add(elemento,0,0);
             System.out.println("Mammeta");
         }
