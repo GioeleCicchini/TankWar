@@ -5,6 +5,7 @@ import Shared.Domain.CatalogoCondizioneCreator;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,10 +19,12 @@ import javafx.scene.text.Text;
 
 import java.awt.event.*;
 import java.awt.event.MouseEvent;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
-public class CreareStrategia {
+public class CreareStrategia implements Initializable{
 
     public Pane DropPaneTarget;
     public Rectangle NemicoAvantiRectangle;
@@ -30,8 +33,7 @@ public class CreareStrategia {
     public Rectangle NemicoDietroRectangle;
     public Rectangle NemicoSottoTiroRectangle;
     public Label labelFeedback;
-    public Pane PaneCondizioni;
-    public GridPane gridPane;
+    public GridPane conditionCreatorGrid;
 
 
     public void condDragDetected(Event event) {
@@ -93,7 +95,9 @@ public class CreareStrategia {
         event.consume();
     }
 
-    public void caricaSchermata() {
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
         Map<String, LabelConditionCreator> LabelMap = new HashMap<>();
         for (String id : catalogoCondizioneCreator.getCondizioniCreators().keySet()) {
@@ -119,7 +123,7 @@ public class CreareStrategia {
                     System.out.println("Nonneta works");
                 }
             });
-            gridPane.add(elemento,0,0);
+            conditionCreatorGrid.add(elemento,0,0);
             System.out.println("Mammeta");
         }
 

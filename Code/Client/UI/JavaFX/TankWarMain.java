@@ -36,17 +36,6 @@ public class TankWarMain extends Application {
         StartUpHandler startUpHandler = StartUpHandler.getSingletonInstance();
         startUpHandler.inizia();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/crearestrategia.fxml"));
-        CreareStrategia controller = (CreareStrategia) loader.getController();
-
-        primaryStage.setOnShowing(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                controller.caricaSchermata();
-            }
-        });
-
-
         primaryStage.show();
 
         /*
