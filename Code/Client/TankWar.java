@@ -9,6 +9,7 @@ import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.NemicoAvantiCondizioneCreator;
+import Shared.Domain.Creator.ICreator;
 import Shared.Domain.Player;
 import Shared.Util.DTO;
 
@@ -49,7 +50,7 @@ public class TankWar {
 */
 
             CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
-            Map<String,ICondizioneCreator> map = new HashMap<String, ICondizioneCreator>();
+            Map<String,ICreator> map = new HashMap<>();
 
             NemicoAvantiCondizioneCreator nemicoAvantiCondizioneCreator = NemicoAvantiCondizioneCreator.getSingletonInstance();
             DefaultCondizioneCreator defaultCondizioneCreator = DefaultCondizioneCreator.getSingletonInstance();
@@ -57,7 +58,7 @@ public class TankWar {
             map.put("001",nemicoAvantiCondizioneCreator);
             map.put("000",defaultCondizioneCreator);
 
-            catalogoCondizioneCreator.setCondizioniCreators(map);
+            catalogoCondizioneCreator.setCreators(map);
 
             Player player = Player.getSingletonInstance();
             player.setNome("Gioele");

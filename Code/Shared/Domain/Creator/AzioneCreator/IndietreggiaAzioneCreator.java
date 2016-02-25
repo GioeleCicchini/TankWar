@@ -2,24 +2,25 @@ package Shared.Domain.Creator.AzioneCreator;
 
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Azioni.IndietreggiaAzione;
+import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
 
 /**
  * Created by emanuele on 15/02/16.
  */
-public class IndietreggiaAzioneCreator implements IAzioneCreator {
+public class IndietreggiaAzioneCreator implements IAzioneCreator,ICreator {
 
     private static IndietreggiaAzioneCreator singletonInstance = null;
 
-    private String idTypeAz;
+    private String idType;
     private String name;
     private String description;
 
     private IndietreggiaAzioneCreator() {
         this.name = "Indietreggia";
         this.description = "Quest'azione fa indietreggiare il Tank";
-        this.idTypeAz = "002";
+        this.idType = "002";
     };
 
     public static IndietreggiaAzioneCreator getSingletonInstance ()
@@ -33,16 +34,16 @@ public class IndietreggiaAzioneCreator implements IAzioneCreator {
 
     @Override
     public IAzione doMakeAzione(String idAz, ArrayList<Integer> valori) {
-        IAzione indietreggiaAzione = new IndietreggiaAzione(this.name,this.description,this.idTypeAz,idAz,valori);
+        IAzione indietreggiaAzione = new IndietreggiaAzione(this.name,this.description,this.idType,idAz,valori);
         return indietreggiaAzione;
     }
 
-    public String getIdTypeAz() {
-        return idTypeAz;
+    public String getIdType() {
+        return idType;
     }
 
-    public void setIdTypeAz(String idTypeAz) {
-        this.idTypeAz = idTypeAz;
+    public void setIdType(String idType) {
+        this.idType = idType;
     }
 
     public String getName() {

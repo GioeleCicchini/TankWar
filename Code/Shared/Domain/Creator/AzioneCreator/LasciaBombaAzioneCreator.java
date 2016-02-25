@@ -2,24 +2,25 @@ package Shared.Domain.Creator.AzioneCreator;
 
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Azioni.LasciaBombaAzione;
+import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
 
 /**
  * Created by emanuele on 15/02/16.
  */
-public class LasciaBombaAzioneCreator implements IAzioneCreator {
+public class LasciaBombaAzioneCreator implements IAzioneCreator,ICreator {
 
     private static LasciaBombaAzioneCreator singletonInstance = null;
 
-    private String idTypeAz;
+    private String idType;
     private String name;
     private String description;
 
     private LasciaBombaAzioneCreator() {
         this.name = "Lascia una bomba";
         this.description = "Quest'azione fa lasciare una bomba al Tank";
-        this.idTypeAz = "005";
+        this.idType = "005";
     };
 
     public static LasciaBombaAzioneCreator getSingletonInstance ()
@@ -33,16 +34,16 @@ public class LasciaBombaAzioneCreator implements IAzioneCreator {
 
     @Override
     public IAzione doMakeAzione(String idAz, ArrayList<Integer> valori) {
-        IAzione lasciaBombaAzione = new LasciaBombaAzione(this.name,this.description,this.idTypeAz,idAz,valori);
+        IAzione lasciaBombaAzione = new LasciaBombaAzione(this.name,this.description,this.idType,idAz,valori);
         return lasciaBombaAzione;
     }
 
-    public String getIdTypeAz() {
-        return idTypeAz;
+    public String getIdType() {
+        return idType;
     }
 
-    public void setIdTypeAz(String idTypeAz) {
-        this.idTypeAz = idTypeAz;
+    public void setIdType(String idType) {
+        this.idType = idType;
     }
 
     public String getName() {

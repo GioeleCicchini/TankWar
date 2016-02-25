@@ -1,11 +1,10 @@
 package Shared.Domain.Controllers;
 
-import Shared.Domain.CatalogoAzioneCreator;
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.*;
+import Shared.Domain.Creator.ICreator;
 import Shared.Domain.Player;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +30,7 @@ public class StartUpHandler {
         Player player = Player.getSingletonInstance();
         CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
 
-        Map<String,ICondizioneCreator> map = new HashMap<String, ICondizioneCreator>();
+        Map<String,ICreator> map = new HashMap<>();
 
         NemicoAvantiCondizioneCreator nemicoAvantiCondizioneCreator = NemicoAvantiCondizioneCreator.getSingletonInstance();
         DefaultCondizioneCreator defaultCondizioneCreator = DefaultCondizioneCreator.getSingletonInstance();
@@ -54,10 +53,10 @@ public class StartUpHandler {
         map.put(nemicoDietroCondizioneCreator.getIdType(),nemicoDietroCondizioneCreator);
         map.put(nemicoSinistraCondizioneCreator.getIdType(),nemicoSinistraCondizioneCreator);
 
-        ccc.setCondizioniCreators(map);
+        ccc.setCreators(map);
 
         for (String id : ccc.getCondizioniCreators().keySet()) {
-            System.out.println(ccc.getCondizioneCreator(id)); //Perchè solo 2?
+            System.out.println(ccc.getCreator(id)); //Perchè solo 2?
         }
 
 

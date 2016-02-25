@@ -2,7 +2,9 @@ package Client.UI.JavaFX.View;
 
 import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
 import Client.UI.UIUtils.GridPutter;
+import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.CatalogoCondizioneCreator;
+import Shared.Domain.Controllers.StartUpHandler;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
@@ -88,7 +90,7 @@ public class CreareStrategia implements Initializable{
 
         event.consume();
     }
-
+  /*
     private List getCondizioneCreatorLabels (){
         CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
         List<ConditionCreatorLabel> condCreatLabels = new ArrayList<>();
@@ -101,17 +103,22 @@ public class CreareStrategia implements Initializable{
             ccl.setText(currentCreator.getName());
             ccl.setDescription(currentCreator.getDescription());
             ccl.setVisible(true);
-            //TODO diamogli un colore
             condCreatLabels.add(ccl);
         }
         return condCreatLabels;
     }
+    */
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List condCLabels = this.getCondizioneCreatorLabels();
+        StartUpHandler startUpHandler = StartUpHandler.getSingletonInstance();
+        startUpHandler.inizia();
+
+        CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
+        LabelsMaker labelsMaker = new LabelsMaker();
+        List condCLabels = labelsMaker.getConditionLabels(ccc);
         ConditionCreatorLabel currentLabel;
 
         GridPutter gridPutter = new GridPutter(conditionCreatorGrid);

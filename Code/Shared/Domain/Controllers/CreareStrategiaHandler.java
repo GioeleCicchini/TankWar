@@ -36,14 +36,14 @@ public class CreareStrategiaHandler {
 	 */
 	public String scegliCondizione(String idTypeCond, boolean vera, ArrayList<Integer> valori) {
 		CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
-		ICondizioneCreator iCondizioneCreator = ccc.getCondizioneCreator(idTypeCond);
+		ICondizioneCreator iCondizioneCreator = (ICondizioneCreator) ccc.getCreator(idTypeCond);
 		String idCondPadre = this.strategiaCorrente.aggiungiCondizione(iCondizioneCreator,vera,valori);
 		return idCondPadre;
 	}
 
 	public String scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, boolean vera, ArrayList<Integer> valori) {
         CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
-        ICondizioneCreator iCondizioneCreator = ccc.getCondizioneCreator(idTypeCond);
+        ICondizioneCreator iCondizioneCreator = (ICondizioneCreator) ccc.getCreator(idTypeCond);
         String NuovoIdCondPadre = this.strategiaCorrente.aggiungiCondizioneAnnidata(iCondizioneCreator, idCondPadre, vera, valori);
 		return NuovoIdCondPadre;
 	}
@@ -56,7 +56,7 @@ public class CreareStrategiaHandler {
 	 */
 	public String associaAzione(String idTypeAz, String idCond, ArrayList<Integer> valori) {
 		CatalogoAzioneCreator catalogoAzioneCreator= CatalogoAzioneCreator.getSingletonInstance();
-		IAzioneCreator ac = catalogoAzioneCreator.getAzioneCreator(idTypeAz);
+		IAzioneCreator ac = (IAzioneCreator) catalogoAzioneCreator.getCreator(idTypeAz);
 		String idAzPadre = this.strategiaCorrente.aggiungiAzione(ac,valori,idCond);
 		return idAzPadre;
 	}
@@ -74,7 +74,7 @@ public class CreareStrategiaHandler {
 	 */
 	public String scegliAzioneDefault(String idTypeAz, ArrayList<Integer> valori) {
 		CatalogoAzioneCreator cac = CatalogoAzioneCreator.getSingletonInstance();
-		IAzioneCreator ac = cac.getAzioneCreator(idTypeAz);
+		IAzioneCreator ac = (IAzioneCreator) cac.getCreator(idTypeAz);
 		String idAzDefault = this.strategiaCorrente.aggiungiAzioneDefault(ac,valori);
 		return idAzDefault;
 	}

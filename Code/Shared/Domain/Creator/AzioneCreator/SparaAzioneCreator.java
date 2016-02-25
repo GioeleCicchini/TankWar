@@ -2,6 +2,7 @@ package Shared.Domain.Creator.AzioneCreator;
 
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Azioni.SparaAzione;
+import Shared.Domain.Creator.ICreator;
 
 
 import java.util.ArrayList;
@@ -9,18 +10,18 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class SparaAzioneCreator implements IAzioneCreator {
+public class SparaAzioneCreator implements IAzioneCreator,ICreator {
 
     private static SparaAzioneCreator singletonInstance = null;
 
-    private String idTypeAz;
+    private String idType;
     private String name;
     private String description;
 
     private SparaAzioneCreator() {
         this.name = "Spara";
         this.description = "Il Tank spara nella direzione davanti a se";
-        this.idTypeAz = "004";
+        this.idType = "004";
     };
 
     public static SparaAzioneCreator getSingletonInstance ()
@@ -34,16 +35,16 @@ public class SparaAzioneCreator implements IAzioneCreator {
 
     @Override
     public IAzione doMakeAzione(String idAz, ArrayList<Integer> valori) {
-        IAzione sparaAzione = new SparaAzione(this.name,this.description,this.idTypeAz,idAz,valori);
+        IAzione sparaAzione = new SparaAzione(this.name,this.description,this.idType,idAz,valori);
         return sparaAzione;
     }
 
-    public String getIdTypeAz() {
-        return idTypeAz;
+    public String getIdType() {
+        return idType;
     }
 
-    public void setIdTypeAz(String idTypeAz) {
-        this.idTypeAz = idTypeAz;
+    public void setIdType(String idType) {
+        this.idType = idType;
     }
 
     public String getName() {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by beniamino on 15/02/16.
  */
-public class OstacoloAdiacenteAvantiCondizioneCreator implements ICondizioneCreator{
+public class OstacoloAdiacenteAvantiCondizioneCreator implements ICondizioneCreator, Shared.Domain.Creator.ICreator {
 
     private static OstacoloAdiacenteAvantiCondizioneCreator singletonInstance = null;
 

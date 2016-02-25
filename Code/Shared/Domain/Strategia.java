@@ -5,8 +5,6 @@ import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 
 
 import java.io.Serializable;
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

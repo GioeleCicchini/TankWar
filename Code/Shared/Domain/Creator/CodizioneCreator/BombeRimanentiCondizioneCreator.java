@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 16/02/16.
  */
-public class BombeRimanentiCondizioneCreator implements ICondizioneCreator {
+public class BombeRimanentiCondizioneCreator implements ICondizioneCreator, Shared.Domain.Creator.ICreator {
 
     private static BombeRimanentiCondizioneCreator singletonInstance = null;
 

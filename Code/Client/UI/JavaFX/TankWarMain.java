@@ -20,32 +20,12 @@ public class TankWarMain extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Fxml/crearestrategia.fxml"));
 
-        primaryStage.setTitle("Hello World");
-        /*
-        primaryStage.setOnShown(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                CreareStrategia creareStrategia = new CreareStrategia();
-                creareStrategia.caricaSchermata();
-            }
-        });
-        */
+        primaryStage.setTitle("Tank War");
+
         primaryStage.setScene(new Scene(root));
         primaryStage.setFullScreen(true);
 
-        StartUpHandler startUpHandler = StartUpHandler.getSingletonInstance();
-        startUpHandler.inizia();
-
         primaryStage.show();
-
-        /*
-        while (!primaryStage.isShowing()) {
-            System.out.println(primaryStage.isShowing());
-        }
-        CreareStrategia creareStrategia = new CreareStrategia();
-        creareStrategia.caricaSchermata();
-        */
-
 
     }
 

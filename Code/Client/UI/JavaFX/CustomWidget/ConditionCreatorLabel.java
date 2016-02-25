@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 /**
  * Created by beniamino on 24/02/16.
  */
-public class ConditionCreatorLabel extends Label{
+public class ConditionCreatorLabel extends Label implements ICustomLabel{
     private String idType;
     private String name;
     private String description;

@@ -1,15 +1,16 @@
 package Shared.Domain;
 
 import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
+import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CatalogoAzioneCreator {
+public class CatalogoAzioneCreator implements ICatalogo {
 
-	public static CatalogoAzioneCreator singletonInstance = null;
+	private static CatalogoAzioneCreator singletonInstance = null;
 
-    private Map<String,IAzioneCreator> azioniCreators;
+    private Map<String,ICreator> azioniCreators;
 
     private CatalogoAzioneCreator() {
         this.azioniCreators=new HashMap<>();
@@ -24,12 +25,19 @@ public class CatalogoAzioneCreator {
         return singletonInstance;
     }
 
-	/**
-	 * 
-	 * @param idTypeAz
-	 */
-	public IAzioneCreator getAzioneCreator(String idTypeAz) {
-        return this.azioniCreators.get(idTypeAz);
-	}
 
+    @Override
+    public ICreator getCreator(String idType) {
+        return this.azioniCreators.get(idType);
+    }
+
+    @Override
+    public Map<String, ICreator> getCreators() {
+        return this.azioniCreators;
+    }
+
+    @Override
+    public void setCreators(Map<String, ICreator> creators) {
+        this.azioniCreators=creators;
+    }
 }

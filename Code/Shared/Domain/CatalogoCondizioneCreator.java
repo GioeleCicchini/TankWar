@@ -3,15 +3,16 @@ package Shared.Domain;
 
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
+import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CatalogoCondizioneCreator {
+public class CatalogoCondizioneCreator implements ICatalogo {
 
-	public static CatalogoCondizioneCreator singletonInstance = null;
+	private static CatalogoCondizioneCreator singletonInstance = null;
 
-	private Map<String,ICondizioneCreator> condizioniCreators;
+	private Map<String,ICreator> condizioniCreators;
 
 	private String defaultCreatorKey;
 
@@ -20,7 +21,7 @@ public class CatalogoCondizioneCreator {
 		this.condizioniCreators=new HashMap<>();
 		ICondizioneCreator condizioneDefaultCreator= DefaultCondizioneCreator.getSingletonInstance();
 		this.defaultCreatorKey = condizioneDefaultCreator.getIdType();
-		this.condizioniCreators.put(this.defaultCreatorKey,condizioneDefaultCreator);
+		this.condizioniCreators.put(this.defaultCreatorKey,(ICreator) condizioneDefaultCreator);
 	}
 
 	public static CatalogoCondizioneCreator getSingletonInstance()
@@ -33,15 +34,20 @@ public class CatalogoCondizioneCreator {
 	}
 
 	/**
-	 * 
-	 * @param idTypeCond id identificativo della generica condizione
+	 *
+	 * @param idType id identificativo della generica condizione
 	 */
-	public ICondizioneCreator getCondizioneCreator(String idTypeCond) {
-		return this.condizioniCreators.get(idTypeCond);
+	public ICreator getCreator(String idType) {
+		return this.condizioniCreators.get(idType);
+	}
+
+	@Override
+	public Map<String, ICreator> getCreators() {
+		return this.condizioniCreators;
 	}
 
 	public ICondizioneCreator getCondizioneDefaultCreator(){
-		return this.condizioniCreators.get(this.defaultCreatorKey);
+		return (ICondizioneCreator) this.condizioniCreators.get(this.defaultCreatorKey);
 	}
 
 	public String getDefaultCreatorKey() {
@@ -52,11 +58,11 @@ public class CatalogoCondizioneCreator {
 		this.defaultCreatorKey = defaultCreatorKey;
 	}
 
-	public Map<String, ICondizioneCreator> getCondizioniCreators() {
+	public Map<String, ICreator> getCondizioniCreators() {
 		return condizioniCreators;
 	}
 
-	public void setCondizioniCreators(Map<String, ICondizioneCreator> condizioniCreators) {
-		this.condizioniCreators = condizioniCreators;
+	public void setCreators(Map<String, Shared.Domain.Creator.ICreator> creators) {
+		this.condizioniCreators = creators;
 	}
 }

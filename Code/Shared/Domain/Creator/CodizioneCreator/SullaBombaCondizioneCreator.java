@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 16/02/16.
  */
-public class SullaBombaCondizioneCreator implements ICondizioneCreator {
+public class SullaBombaCondizioneCreator implements ICondizioneCreator, Shared.Domain.Creator.ICreator {
 
     private static SullaBombaCondizioneCreator singletonInstance = null;
 

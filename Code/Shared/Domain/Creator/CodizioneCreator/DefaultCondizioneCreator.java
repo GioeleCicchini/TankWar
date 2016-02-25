@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Created by beniamino on 15/02/16.
  * Questa classe è un Singleton
  */
-public class DefaultCondizioneCreator implements ICondizioneCreator {
+public class DefaultCondizioneCreator implements ICondizioneCreator, Shared.Domain.Creator.ICreator {
 
     private static DefaultCondizioneCreator singletonInstance = null;
 
@@ -19,7 +19,7 @@ public class DefaultCondizioneCreator implements ICondizioneCreator {
     private String description;
     private String idType;
 
-    private DefaultCondizioneCreator () {
+    private DefaultCondizioneCreator() {
         this.name="Condizione di Default";
         this.description="Questa è una condizione sempre vera";
         this.idType="000";
@@ -44,6 +44,21 @@ public class DefaultCondizioneCreator implements ICondizioneCreator {
 
     public String getIdType() {
         return idType;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public void setIdType(String idType) {
+        this.idType = idType;
     }
 
     @Override
