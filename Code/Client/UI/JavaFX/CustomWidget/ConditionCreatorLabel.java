@@ -7,25 +7,25 @@ import javafx.scene.control.Label;
 /**
  * Created by beniamino on 24/02/16.
  */
-public class LabelConditionCreator extends Label{
+public class ConditionCreatorLabel extends Label{
     private String idType;
     private String name;
     private String description;
 
-    public LabelConditionCreator(String idType, String name, String description) {
+    public ConditionCreatorLabel(String idType, String name, String description) {
         this.idType = idType;
         this.name = name;
         this.description = description;
     }
 
-    public LabelConditionCreator(String text, String idType, String name, String description) {
+    public ConditionCreatorLabel(String text, String idType, String name, String description) {
         super(text);
         this.idType = idType;
         this.name = name;
         this.description = description;
     }
 
-    public LabelConditionCreator(String text, Node graphic, String idType, String name, String description) {
+    public ConditionCreatorLabel(String text, Node graphic, String idType, String name, String description) {
         super(text, graphic);
         this.idType = idType;
         this.name = name;

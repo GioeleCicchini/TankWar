@@ -1,29 +1,21 @@
 package Client.UI.JavaFX.View;
 
-import Client.UI.JavaFX.CustomWidget.LabelConditionCreator;
+import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
+import Client.UI.UIUtils.GridPutter;
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 
-import java.awt.event.*;
-import java.awt.event.MouseEvent;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class CreareStrategia implements Initializable{
 
@@ -97,48 +89,36 @@ public class CreareStrategia implements Initializable{
         event.consume();
     }
 
+    private List getCondizioneCreatorLabels (){
+        CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
+        List<ConditionCreatorLabel> condCreatLabels = new ArrayList<>();
+        Map<String,ICondizioneCreator> condCreators = ccc.getCondizioniCreators();
+        for (String id: condCreators.keySet()) {
+            ICondizioneCreator currentCreator = condCreators.get(id);
+            String name = currentCreator.getName();
+            String description = currentCreator.getDescription();
+            ConditionCreatorLabel ccl = new ConditionCreatorLabel(id,name,description);
+            ccl.setText(currentCreator.getName());
+            ccl.setDescription(currentCreator.getDescription());
+            ccl.setVisible(true);
+            //TODO diamogli un colore
+            condCreatLabels.add(ccl);
+        }
+        return condCreatLabels;
+    }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
-        HashMap<String, LabelConditionCreator> LabelMap = new HashMap<>();
-        Map<String, ICondizioneCreator> catalogoMap = catalogoCondizioneCreator.getCondizioniCreators();
-        for (String id : catalogoMap.keySet()) {
-            String name = catalogoMap.get(id).getName();
-            String description = catalogoMap.get(id).getDescription();
-            LabelConditionCreator lcc = new LabelConditionCreator(id,name,description);
-            LabelMap.put(id, lcc); //perchè sono solo 2?
-            //System.out.println(lcc.toString());
+        List condCLabels = this.getCondizioneCreatorLabels();
+        ConditionCreatorLabel currentLabel;
+
+        GridPutter gridPutter = new GridPutter(conditionCreatorGrid);
+        for (int i=0; i<condCLabels.size(); i++){
+            if (!gridPutter.isFull()){
+                gridPutter.put((Node) condCLabels.get(i));
+            }
         }
-        //System.out.println(PaneCondizioni);
-        //System.out.println(gridPane);
-
-        //GRIDPANE
-
-        LabelConditionCreator elemento;
-        for (String id: LabelMap.keySet()) {
-            elemento = LabelMap.get(id);
-            elemento.setVisible(true);
-            elemento.setText(LabelMap.get(id).getName());
-            elemento.setDescription(LabelMap.get(id).getDescription());
-            conditionCreatorGrid.add(elemento,0,0);
-            System.out.println("Mammeta");
-        }
-
-
-
-        //PANE SEMPLICE
-        /*
-        LabelConditionCreator elemento;
-        for (String id : LabelMap.keySet()) {
-            elemento = LabelMap.get(id);
-            System.out.println(elemento.toString());
-
-            //PaneCondizioni.getChildren().add(elemento);
-        }
-        */
-
-
-
     }
 }
