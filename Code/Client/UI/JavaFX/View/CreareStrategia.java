@@ -5,7 +5,6 @@ import Client.UI.UIUtils.GridPutter;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Controllers.StartUpHandler;
-import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;

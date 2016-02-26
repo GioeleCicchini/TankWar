@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by beniamino on 16/02/16.
  */
-public class OstacoloAdiacenteDestraCondizioneCreator implements ICondizioneCreator, ICreator {
+public class OstacoloAdiacenteDestraCondizioneCreator implements ICreator {
 
     private static OstacoloAdiacenteDestraCondizioneCreator singletonInstance = null;
 
@@ -33,7 +33,6 @@ public class OstacoloAdiacenteDestraCondizioneCreator implements ICondizioneCrea
         return singletonInstance;
     }
 
-    @Override
     public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
         OstacoloAdiacenteDestraCondizione ostacoloAdiacenteDestraCondizione = new OstacoloAdiacenteDestraCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return ostacoloAdiacenteDestraCondizione;

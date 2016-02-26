@@ -2,7 +2,6 @@ package Client.UI.UIUtils;
 
 import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
 import Client.UI.JavaFX.CustomWidget.ICustomLabel;
-import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.ICreator;
 import Shared.Domain.ICatalogo;
 

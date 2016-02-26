@@ -1,11 +1,7 @@
 package Shared.Domain.Controllers;
 
-import Shared.Domain.CatalogoAzioneCreator;
-import Shared.Domain.CatalogoCondizioneCreator;
-import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
-import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
-import Shared.Domain.Player;
-import Shared.Domain.Strategia;
+import Shared.Domain.*;
+import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
 
@@ -35,8 +31,8 @@ public class CreareStrategiaHandler {
 	 * @param valori
 	 */
 	public String scegliCondizione(String idTypeCond, boolean vera, ArrayList<Integer> valori) {
-		CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
-		ICondizioneCreator iCondizioneCreator = (ICondizioneCreator) ccc.getCreator(idTypeCond);
+		ICatalogo ccc = CatalogoCondizioneCreator.getSingletonInstance();
+		ICreator iCondizioneCreator = ccc.getCreator(idTypeCond);
 		String idCondPadre = this.strategiaCorrente.aggiungiCondizione(iCondizioneCreator,vera,valori);
 		return idCondPadre;
 	}

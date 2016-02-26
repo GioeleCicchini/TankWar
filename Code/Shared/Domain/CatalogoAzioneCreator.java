@@ -1,6 +1,5 @@
 package Shared.Domain;
 
-import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;

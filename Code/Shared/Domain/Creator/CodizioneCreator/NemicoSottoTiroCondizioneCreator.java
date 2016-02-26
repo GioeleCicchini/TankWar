@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by beniamino on 15/02/16.
  */
-public class NemicoSottoTiroCondizioneCreator implements ICondizioneCreator, ICreator {
+public class NemicoSottoTiroCondizioneCreator implements ICreator {
 
     private static NemicoSottoTiroCondizioneCreator singletonInstance = null;
 
@@ -33,7 +33,6 @@ public class NemicoSottoTiroCondizioneCreator implements ICondizioneCreator, ICr
         return singletonInstance;
     }
 
-    @Override
     public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
         NemicoSottoTiroCondizione nemicoSottoTiroCondizione = new NemicoSottoTiroCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return nemicoSottoTiroCondizione;

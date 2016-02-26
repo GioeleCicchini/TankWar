@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Created by beniamino on 15/02/16.
  * Questa classe è un Singleton
  */
-public class DefaultCondizioneCreator implements ICondizioneCreator, ICreator {
+public class DefaultCondizioneCreator implements ICreator {
 
     private static DefaultCondizioneCreator singletonInstance = null;
 
@@ -62,7 +62,6 @@ public class DefaultCondizioneCreator implements ICondizioneCreator, ICreator {
         this.idType = idType;
     }
 
-    @Override
     public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
         DefaultCondizione defaultCondizione = new DefaultCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return defaultCondizione;

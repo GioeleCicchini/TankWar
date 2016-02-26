@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class LasciaBombaAzioneCreator implements IAzioneCreator,ICreator {
+public class LasciaBombaAzioneCreator implements ICreator {
 
     private static LasciaBombaAzioneCreator singletonInstance = null;
 
@@ -32,7 +32,6 @@ public class LasciaBombaAzioneCreator implements IAzioneCreator,ICreator {
         return singletonInstance;
     }
 
-    @Override
     public IAzione doMakeAzione(String idAz, ArrayList<Integer> valori) {
         IAzione lasciaBombaAzione = new LasciaBombaAzione(this.name,this.description,this.idType,idAz,valori);
         return lasciaBombaAzione;

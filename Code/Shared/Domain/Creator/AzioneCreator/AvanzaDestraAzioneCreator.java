@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class AvanzaDestraAzioneCreator implements IAzioneCreator,ICreator {
+public class AvanzaDestraAzioneCreator implements ICreator {
 
     private static AvanzaDestraAzioneCreator singletonInstance = null;
 
@@ -32,7 +32,6 @@ public class AvanzaDestraAzioneCreator implements IAzioneCreator,ICreator {
         return singletonInstance;
     }
 
-    @Override
     public IAzione doMakeAzione(String idAz, ArrayList<Integer> valori) {
         IAzione avanzaDestraAzione = new AvanzaDestraAzione(this.name,this.description,this.idType,idAz,valori);
         return avanzaDestraAzione;

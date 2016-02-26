@@ -1,7 +1,7 @@
 package Shared.Domain;
 
-import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
-import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
+import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
+import Shared.Domain.Creator.ICreator;
 
 
 import java.io.Serializable;
@@ -57,14 +57,15 @@ public class Strategia implements Serializable {
         this.id = id;
     }
 
-    public Strategia(ICondizioneCreator iCondizioneCreator) {
+    public Strategia(ICreator iCondizioneCreator) {
         this.count = new AtomicInteger(0);
         String idcond= UUID.randomUUID().toString();
 		System.out.println(idcond);
 		this.id = UUID.randomUUID().toString();
         this.conditionBlock = new ArrayList<IStrategiaComponent>();
         ArrayList<Integer> valori = new ArrayList<Integer>();
-        this.defaultCondition = (IStrategiaComponent) iCondizioneCreator.doMakeCondizione(idcond,true,valori);
+		//TODO Poca flessibilità
+        this.defaultCondition = (IStrategiaComponent) ((DefaultCondizioneCreator)iCondizioneCreator).doMakeCondizione(idcond,true,valori);
         this.nome = "";
         this.isComplete = false;
 
@@ -73,7 +74,7 @@ public class Strategia implements Serializable {
 	public Strategia() {
 	}
 
-	public String aggiungiAzioneDefault(IAzioneCreator iAzioneCreator, ArrayList<Integer> valori) {
+	public String aggiungiAzioneDefault(ICreator iAzioneCreator, ArrayList<Integer> valori) {
         String idAzione = UUID.randomUUID().toString();
         IStrategiaComponent azione = (IStrategiaComponent) iAzioneCreator.doMakeAzione(idAzione,valori);
         this.defaultCondition.addChild(azione);
@@ -97,7 +98,7 @@ public class Strategia implements Serializable {
 	 * @param condizionecreator
 	 * @param valori
 	 */
-	public String aggiungiCondizione(ICondizioneCreator condizionecreator, boolean vera, ArrayList<Integer> valori) {
+	public String aggiungiCondizione(ICreator condizionecreator, boolean vera, ArrayList<Integer> valori) {
 		String idcond= UUID.randomUUID().toString();
 		System.out.println(idcond);
 

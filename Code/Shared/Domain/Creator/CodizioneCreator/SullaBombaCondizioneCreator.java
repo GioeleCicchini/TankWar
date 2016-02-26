@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 16/02/16.
  */
-public class SullaBombaCondizioneCreator implements ICondizioneCreator, ICreator {
+public class SullaBombaCondizioneCreator implements ICreator {
 
     private static SullaBombaCondizioneCreator singletonInstance = null;
 
@@ -32,7 +32,6 @@ public class SullaBombaCondizioneCreator implements ICondizioneCreator, ICreator
         return singletonInstance;
     }
 
-    @Override
     public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
         SullaBombaCondizione sullaBombaCondizione = new SullaBombaCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return sullaBombaCondizione;

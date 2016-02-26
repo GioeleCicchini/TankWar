@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class IndietreggiaAzioneCreator implements IAzioneCreator,ICreator {
+public class IndietreggiaAzioneCreator implements ICreator {
 
     private static IndietreggiaAzioneCreator singletonInstance = null;
 
@@ -32,7 +32,6 @@ public class IndietreggiaAzioneCreator implements IAzioneCreator,ICreator {
         return singletonInstance;
     }
 
-    @Override
     public IAzione doMakeAzione(String idAz, ArrayList<Integer> valori) {
         IAzione indietreggiaAzione = new IndietreggiaAzione(this.name,this.description,this.idType,idAz,valori);
         return indietreggiaAzione;

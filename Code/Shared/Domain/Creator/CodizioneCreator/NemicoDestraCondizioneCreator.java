@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by beniamino on 15/02/16.
  */
-public class NemicoDestraCondizioneCreator implements ICondizioneCreator, ICreator {
+public class NemicoDestraCondizioneCreator implements ICreator {
 
     private static NemicoDestraCondizioneCreator singletonInstance = null;
 
@@ -32,7 +32,6 @@ public class NemicoDestraCondizioneCreator implements ICondizioneCreator, ICreat
         return singletonInstance;
     }
 
-    @Override
     public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
         NemicoDestraCondizione nemicoDestraCondizione = new NemicoDestraCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return nemicoDestraCondizione;

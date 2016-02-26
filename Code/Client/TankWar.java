@@ -7,7 +7,6 @@ package Client;/*
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
-import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.NemicoAvantiCondizioneCreator;
 import Shared.Domain.Creator.ICreator;
 import Shared.Domain.Player;

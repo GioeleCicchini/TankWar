@@ -2,13 +2,14 @@ package Shared.Domain.Creator.AzioneCreator;
 
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Azioni.TemporeggiaAzione;
+import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
 
 /**
  * Created by emanuele on 15/02/16.
  */
-public class TemporeggiaAzioneCreator implements IAzioneCreator {
+public class TemporeggiaAzioneCreator implements ICreator {
 
     private static TemporeggiaAzioneCreator singletonInstance = null;
 
@@ -31,7 +32,6 @@ public class TemporeggiaAzioneCreator implements IAzioneCreator {
         return singletonInstance;
     }
 
-    @Override
     public IAzione doMakeAzione(String idAz, ArrayList<Integer> valori) {
         IAzione temporeggiaAzione = new TemporeggiaAzione(this.name,this.description,this.idType,idAz,valori);
         return temporeggiaAzione;
