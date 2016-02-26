@@ -23,29 +23,9 @@ import java.util.*;
 public class CreareStrategia implements Initializable{
 
     public Pane DropPaneTarget;
-    public Rectangle NemicoAvantiRectangle;
-    public Rectangle NemicoDestraRectangle;
-    public Rectangle NemicoSinistraRectangle;
-    public Rectangle NemicoDietroRectangle;
-    public Rectangle NemicoSottoTiroRectangle;
     public Label labelFeedback;
     public GridPane conditionCreatorGrid;
     public GridPane azioneCreatorGrid;
-
-/*
-    public void condDragDetected(Event event) {
-        System.out.println("onDragDetected");
-
-        Dragboard db = ((Label) event.getSource()).startDragAndDrop(TransferMode.ANY);
-        //Dragboard db = NemicoAvantiRectangle.startDragAndDrop(TransferMode.ANY);
-
-
-        ClipboardContent content = new ClipboardContent();
-        content.putString("Qua ci andrà qualcosa per id");
-        db.setContent(content);
-
-        event.consume();
-    }*/
 
     public void targetDragOver(DragEvent event) {
         System.out.println("onDragOver");
@@ -91,26 +71,6 @@ public class CreareStrategia implements Initializable{
 
         event.consume();
     }
-  /*
-    private List getCondizioneCreatorLabels (){
-        CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
-        List<ConditionCreatorLabel> condCreatLabels = new ArrayList<>();
-        Map<String,ICondizioneCreator> condCreators = ccc.getCondizioniCreators();
-        for (String id: condCreators.keySet()) {
-            ICondizioneCreator currentCreator = condCreators.get(id);
-            String name = currentCreator.getName();
-            String description = currentCreator.getDescription();
-            ConditionCreatorLabel ccl = new ConditionCreatorLabel(id,name,description);
-            ccl.setText(currentCreator.getName());
-            ccl.setDescription(currentCreator.getDescription());
-            ccl.setVisible(true);
-            condCreatLabels.add(ccl);
-        }
-        return condCreatLabels;
-    }
-    */
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -128,9 +88,7 @@ public class CreareStrategia implements Initializable{
                 System.out.println("onDragDetected");
 
                 Dragboard db = ((Label) event.getSource()).startDragAndDrop(TransferMode.ANY);
-                //Dragboard db = NemicoAvantiRectangle.startDragAndDrop(TransferMode.ANY);
-
-
+                
                 ClipboardContent content = new ClipboardContent();
                 content.putString("Qua ci andrà qualcosa per id");
                 db.setContent(content);
