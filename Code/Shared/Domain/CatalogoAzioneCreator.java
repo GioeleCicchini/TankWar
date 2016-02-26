@@ -40,4 +40,8 @@ public class CatalogoAzioneCreator implements ICatalogo {
     public void setCreators(Map<String, ICreator> creators) {
         this.azioniCreators=creators;
     }
+
+    private void loadCreator() {
+        
+    }
 }

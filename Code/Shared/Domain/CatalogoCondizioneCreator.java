@@ -67,9 +67,8 @@ public class CatalogoCondizioneCreator implements ICatalogo {
 	public void setCreators(Map<String, ICreator> creators) {
 		this.condizioniCreators = creators;
 	}
-
-    @Override
-    public void loadCreator() {
+    
+    private void loadCreator() {
 
     }
 }
