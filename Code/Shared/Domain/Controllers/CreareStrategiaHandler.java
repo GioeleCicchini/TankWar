@@ -32,14 +32,14 @@ public class CreareStrategiaHandler {
 	 * @param valori
 	 */
 	public String scegliCondizione(String idTypeCond, boolean vera, ArrayList<Integer> valori) {
-		ICatalogo ccc = CatalogoCondizioneCreator.getSingletonInstance();
+		ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
 		ICreator iCondizioneCreator = ccc.getCreator(idTypeCond);
 		String idCondPadre = this.strategiaCorrente.aggiungiCondizione(iCondizioneCreator,vera,valori);
 		return idCondPadre;
 	}
 
 	public String scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, boolean vera, ArrayList<Integer> valori) {
-        ICatalogo ccc = CatalogoCondizioneCreator.getSingletonInstance();
+        ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
         ICreator iCondizioneCreator = ccc.getCreator(idTypeCond);//sta riga è poetica
         String NuovoIdCondPadre = this.strategiaCorrente.aggiungiCondizioneAnnidata(iCondizioneCreator, idCondPadre, vera, valori);
 		return NuovoIdCondPadre;
@@ -52,16 +52,16 @@ public class CreareStrategiaHandler {
 	 * @param valori
 	 */
 	public String associaAzione(String idTypeAz, String idCond, ArrayList<Integer> valori) {
-		CatalogoAzioneCreator catalogoAzioneCreator= CatalogoAzioneCreator.getSingletonInstance();
+		ICatalogo catalogoAzioneCreator= StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
 		ICreator ac = catalogoAzioneCreator.getCreator(idTypeAz);
 		String idAzPadre = this.strategiaCorrente.aggiungiAzione(ac,valori,idCond);
 		return idAzPadre;
 	}
 
 	public void iniziaNuovaStrategia() {
-		CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
-		ICreator iCondizioneCreator = catalogoCondizioneCreator.getCondizioneDefaultCreator();
-		this.strategiaCorrente = currentPlayer.iniziaNuovaStrategia(iCondizioneCreator);
+		ICatalogo catalogoCondizioneCreator = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
+		ICreator condizioneDefaultCreator = ((CatalogoCondizioneCreator)catalogoCondizioneCreator).getCondizioneDefaultCreator();
+		this.strategiaCorrente = currentPlayer.iniziaNuovaStrategia(condizioneDefaultCreator);
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class CreareStrategiaHandler {
 	 * @param valori
 	 */
 	public String scegliAzioneDefault(String idTypeAz, ArrayList<Integer> valori) {
-		CatalogoAzioneCreator cac = CatalogoAzioneCreator.getSingletonInstance();
+		ICatalogo cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
 		ICreator ac = cac.getCreator(idTypeAz);
 		String idAzDefault = this.strategiaCorrente.aggiungiAzioneDefault(ac,valori);
 		return idAzDefault;
