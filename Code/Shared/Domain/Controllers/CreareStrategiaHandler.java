@@ -1,6 +1,7 @@
 package Shared.Domain.Controllers;
 
 import Shared.Domain.*;
+import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
@@ -38,8 +39,8 @@ public class CreareStrategiaHandler {
 	}
 
 	public String scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, boolean vera, ArrayList<Integer> valori) {
-        CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
-        ICondizioneCreator iCondizioneCreator = (ICondizioneCreator) ccc.getCreator(idTypeCond);
+        ICatalogo ccc = CatalogoCondizioneCreator.getSingletonInstance();
+        ICreator iCondizioneCreator = ccc.getCreator(idTypeCond);//sta riga è poetica
         String NuovoIdCondPadre = this.strategiaCorrente.aggiungiCondizioneAnnidata(iCondizioneCreator, idCondPadre, vera, valori);
 		return NuovoIdCondPadre;
 	}
@@ -52,7 +53,7 @@ public class CreareStrategiaHandler {
 	 */
 	public String associaAzione(String idTypeAz, String idCond, ArrayList<Integer> valori) {
 		CatalogoAzioneCreator catalogoAzioneCreator= CatalogoAzioneCreator.getSingletonInstance();
-		IAzioneCreator ac = (IAzioneCreator) catalogoAzioneCreator.getCreator(idTypeAz);
+		ICreator ac = catalogoAzioneCreator.getCreator(idTypeAz);
 		String idAzPadre = this.strategiaCorrente.aggiungiAzione(ac,valori,idCond);
 		return idAzPadre;
 	}
