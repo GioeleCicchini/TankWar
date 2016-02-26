@@ -10,6 +10,7 @@ import Shared.Domain.Controllers.StartUpHandler;
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.NemicoAvantiCondizioneCreator;
 import Shared.Domain.Creator.ICreator;
+import Shared.Domain.ICatalogo;
 import Shared.Domain.Player;
 import Shared.Util.DTO;
 import org.dom4j.io.STAXEventReader;
@@ -50,7 +51,8 @@ public class TankWar {
             strategia.aggiungiCondizioneAnnidata(condizione,idCondPadre,new ArrayList<>());
 */
 
-            CatalogoCondizioneCreator catalogoCondizioneCreator = (CatalogoCondizioneCreator) StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
+
+            ICatalogo catalogoCondizioneCreator = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
             Map<String,ICreator> map = new HashMap<>();
 
             NemicoAvantiCondizioneCreator nemicoAvantiCondizioneCreator = NemicoAvantiCondizioneCreator.getSingletonInstance();
