@@ -1,16 +1,11 @@
 package Shared.Domain;
 
 
-import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
-import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
+import Shared.Domain.Creator.CodizioneCreator.*;
 import Shared.Domain.Creator.ICreator;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.jar.Manifest;
 
 
 public class CatalogoCondizioneCreator implements ICatalogo {
@@ -23,12 +18,10 @@ public class CatalogoCondizioneCreator implements ICatalogo {
 
 
 	private CatalogoCondizioneCreator() {
-		this.condizioniCreators=new HashMap<>();
-
-
+        this.condizioniCreators = new HashMap<>();
+		this.loadCreator();
         ICreator condizioneDefaultCreator= DefaultCondizioneCreator.getSingletonInstance();
 		this.defaultCreatorKey = condizioneDefaultCreator.getIdType();
-		this.condizioniCreators.put(this.defaultCreatorKey, condizioneDefaultCreator);
 	}
 
 	public static CatalogoCondizioneCreator getSingletonInstance()
@@ -72,4 +65,32 @@ public class CatalogoCondizioneCreator implements ICatalogo {
 	public void setCreators(Map<String, ICreator> creators) {
 		this.condizioniCreators = creators;
 	}
+
+    private void loadCreator() {
+        ICreator iCreator = BombeRimanentiCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = NemicoAvantiCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = NemicoDestraCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = NemicoDietroCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = NemicoSinistraCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = NemicoSottoTiroCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = OstacoloAdiacenteAvantiCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = OstacoloAdiacenteDestraCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = OstacoloAdiacenteDietroCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = OstacoloAdiacenteSinistraCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = SullaBombaCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+        iCreator = DefaultCondizioneCreator.getSingletonInstance();
+        this.condizioniCreators.put(iCreator.getIdType(),iCreator);
+
+    }
 }
