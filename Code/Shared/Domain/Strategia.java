@@ -1,6 +1,8 @@
 package Shared.Domain;
 
+import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
+import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.ICreator;
 
 
@@ -76,7 +78,7 @@ public class Strategia implements Serializable {
 
 	public String aggiungiAzioneDefault(ICreator iAzioneCreator, ArrayList<Integer> valori) {
         String idAzione = UUID.randomUUID().toString();
-        IStrategiaComponent azione = (IStrategiaComponent) iAzioneCreator.doMakeAzione(idAzione,valori);
+        IStrategiaComponent azione = (IStrategiaComponent) ((IAzioneCreator)iAzioneCreator).doMakeAzione(idAzione,valori);
         this.defaultCondition.addChild(azione);
         return idAzione;
 	}
@@ -103,16 +105,16 @@ public class Strategia implements Serializable {
 		System.out.println(idcond);
 
 
-		IStrategiaComponent condizione = (IStrategiaComponent) condizionecreator.doMakeCondizione(idcond,vera,valori);
+		IStrategiaComponent condizione = (IStrategiaComponent) ((ICondizioneCreator)condizionecreator).doMakeCondizione(idcond,vera,valori);
 		System.out.println(condizione.getId());
 
 		this.conditionBlock.add(condizione);
 		return idcond;
 	}
 
-	public String aggiungiCondizioneAnnidata(ICondizioneCreator condizioneCreator, String idCondPadre, boolean vera, ArrayList<Integer> valori) {
+	public String aggiungiCondizioneAnnidata(ICreator condizioneCreator, String idCondPadre, boolean vera, ArrayList<Integer> valori) {
 		String idcond= UUID.randomUUID().toString();
-		IStrategiaComponent condizione = (IStrategiaComponent) condizioneCreator.doMakeCondizione(idcond,vera,valori);
+		IStrategiaComponent condizione = (IStrategiaComponent) ((ICondizioneCreator)condizioneCreator).doMakeCondizione(idcond,vera,valori);
 		boolean trovato = false;
 		ArrayList<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
 		IStrategiaComponent currentfoglia = null;
@@ -160,10 +162,10 @@ public class Strategia implements Serializable {
 	 * @param valori
 	 * @param idCond
 	 */
-	public String aggiungiAzione(IAzioneCreator az, ArrayList<Integer> valori, String idCond) {
+	public String aggiungiAzione(ICreator az, ArrayList<Integer> valori, String idCond) {
 		ArrayList<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
 		String idAz = UUID.randomUUID().toString();
-		IStrategiaComponent azione = (IStrategiaComponent) az.doMakeAzione(idAz,valori);
+		IStrategiaComponent azione = (IStrategiaComponent) ((IAzioneCreator)az).doMakeAzione(idAz,valori);
 		boolean trovato = false;
 		IStrategiaComponent currentfoglia = null;
 		for (int i=0; i<padriFoglie.size() && !trovato; i++){

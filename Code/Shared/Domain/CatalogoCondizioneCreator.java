@@ -18,9 +18,9 @@ public class CatalogoCondizioneCreator implements ICatalogo {
 
 	private CatalogoCondizioneCreator() {
 		this.condizioniCreators=new HashMap<>();
-		ICondizioneCreator condizioneDefaultCreator= DefaultCondizioneCreator.getSingletonInstance();
+		ICreator condizioneDefaultCreator= DefaultCondizioneCreator.getSingletonInstance();
 		this.defaultCreatorKey = condizioneDefaultCreator.getIdType();
-		this.condizioniCreators.put(this.defaultCreatorKey,(ICreator) condizioneDefaultCreator);
+		this.condizioniCreators.put(this.defaultCreatorKey, condizioneDefaultCreator);
 	}
 
 	public static CatalogoCondizioneCreator getSingletonInstance()
@@ -45,8 +45,8 @@ public class CatalogoCondizioneCreator implements ICatalogo {
 		return this.condizioniCreators;
 	}
 
-	public ICondizioneCreator getCondizioneDefaultCreator(){
-		return (ICondizioneCreator) this.condizioniCreators.get(this.defaultCreatorKey);
+	public ICreator getCondizioneDefaultCreator(){
+		return this.condizioniCreators.get(this.defaultCreatorKey);
 	}
 
 	public String getDefaultCreatorKey() {
@@ -61,7 +61,7 @@ public class CatalogoCondizioneCreator implements ICatalogo {
 		return condizioniCreators;
 	}
 
-	public void setCreators(Map<String, Shared.Domain.Creator.ICreator> creators) {
+	public void setCreators(Map<String, ICreator> creators) {
 		this.condizioniCreators = creators;
 	}
 }
