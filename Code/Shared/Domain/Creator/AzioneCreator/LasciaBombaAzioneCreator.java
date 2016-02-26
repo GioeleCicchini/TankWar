@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class LasciaBombaAzioneCreator implements ICreator {
+public class LasciaBombaAzioneCreator implements ICreator,IAzioneCreator {
 
     private static LasciaBombaAzioneCreator singletonInstance = null;
 

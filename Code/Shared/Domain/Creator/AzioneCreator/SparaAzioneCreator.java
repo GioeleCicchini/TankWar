@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class SparaAzioneCreator implements ICreator {
+public class SparaAzioneCreator implements ICreator,IAzioneCreator {
 
     private static SparaAzioneCreator singletonInstance = null;
 

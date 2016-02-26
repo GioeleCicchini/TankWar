@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class IndietreggiaAzioneCreator implements ICreator {
+public class IndietreggiaAzioneCreator implements ICreator,IAzioneCreator {
 
     private static IndietreggiaAzioneCreator singletonInstance = null;
 
