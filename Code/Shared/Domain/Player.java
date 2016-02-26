@@ -1,6 +1,8 @@
 package Shared.Domain;
 
 
+import Shared.Domain.Creator.ICreator;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +24,10 @@ public class Player  implements Serializable{
 	private String nome;
 	private List<Strategia> strategieList = new ArrayList<Strategia>();
 
-	private Player() {
+	protected Player() {
 	}
 
-	public Strategia iniziaNuovaStrategia(ICondizioneCreator condizioneCreator) {
+	public Strategia iniziaNuovaStrategia(ICreator condizioneCreator) {
 		Strategia strategia = new Strategia(condizioneCreator);
 		this.strategieList.add(strategia);
 		return strategia;
