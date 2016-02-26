@@ -25,7 +25,12 @@ public class StartUpHandler {
         return singletonInstance;
     }
 
+    private Player player;
+    private ICatalogo catalogoCondCreator;
+    private ICatalogo catalogoAzCreator;
+
     private StartUpHandler() {
+        this.player=
     }
 
     public void inizia(){
