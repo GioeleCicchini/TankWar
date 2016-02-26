@@ -107,10 +107,12 @@ public class OstacoloAdiacenteDietroCondizione implements ICondizione, IStrategi
         this.name = name;
     }
 
-    public boolean isVera() {
+    @Override
+    public boolean getVera() {
         return vera;
     }
 
+    @Override
     public void setVera(boolean vera) {
         this.vera = vera;
     }

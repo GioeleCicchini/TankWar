@@ -118,10 +118,12 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
         this.name = name;
     }
 
-    public boolean isVera() {
+    @Override
+    public boolean getVera() {
         return vera;
     }
 
+    @Override
     public void setVera(boolean vera) {
         this.vera = vera;
     }
