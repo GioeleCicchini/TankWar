@@ -60,7 +60,7 @@ public class CreareStrategiaHandler {
 
 	public void iniziaNuovaStrategia() {
 		CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
-		ICondizioneCreator iCondizioneCreator = catalogoCondizioneCreator.getCondizioneDefaultCreator();
+		ICreator iCondizioneCreator = catalogoCondizioneCreator.getCondizioneDefaultCreator();
 		this.strategiaCorrente = currentPlayer.iniziaNuovaStrategia(iCondizioneCreator);
 	}
 
@@ -71,7 +71,7 @@ public class CreareStrategiaHandler {
 	 */
 	public String scegliAzioneDefault(String idTypeAz, ArrayList<Integer> valori) {
 		CatalogoAzioneCreator cac = CatalogoAzioneCreator.getSingletonInstance();
-		IAzioneCreator ac = (IAzioneCreator) cac.getCreator(idTypeAz);
+		ICreator ac = cac.getCreator(idTypeAz);
 		String idAzDefault = this.strategiaCorrente.aggiungiAzioneDefault(ac,valori);
 		return idAzDefault;
 	}

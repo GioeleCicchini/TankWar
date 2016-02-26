@@ -18,7 +18,7 @@ public class Strategia implements Serializable {
 		private IStrategiaComponent defaultCondition;
         private String nome;
 		private boolean isComplete;
-        private AtomicInteger count;
+
 		private String id;
 
 
@@ -60,7 +60,7 @@ public class Strategia implements Serializable {
     }
 
     public Strategia(ICreator iCondizioneCreator) {
-        this.count = new AtomicInteger(0);
+
         String idcond= UUID.randomUUID().toString();
 		System.out.println(idcond);
 		this.id = UUID.randomUUID().toString();
