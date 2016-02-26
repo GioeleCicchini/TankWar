@@ -10,7 +10,7 @@
 
 
         <list name="conditionBlock" cascade="all">
-            <key column="Condizione_id"/>
+            <key column="Strategia_id"/>
             <list-index column="IDX" />
             <one-to-many class="Shared.Domain.IStrategiaComponent"/>
         </list>

@@ -6,9 +6,11 @@ package Client;/*
 
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
+import Shared.Domain.Controllers.StartUpHandler;
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.NemicoAvantiCondizioneCreator;
 import Shared.Domain.Creator.ICreator;
+import Shared.Domain.ICatalogo;
 import Shared.Domain.Player;
 import Shared.Util.DTO;
 
@@ -48,7 +50,7 @@ public class TankWar {
             strategia.aggiungiCondizioneAnnidata(condizione,idCondPadre,new ArrayList<>());
 */
 
-            CatalogoCondizioneCreator catalogoCondizioneCreator = CatalogoCondizioneCreator.getSingletonInstance();
+            ICatalogo catalogoCondizioneCreator = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
             Map<String,ICreator> map = new HashMap<>();
 
             NemicoAvantiCondizioneCreator nemicoAvantiCondizioneCreator = NemicoAvantiCondizioneCreator.getSingletonInstance();
@@ -59,7 +61,7 @@ public class TankWar {
 
             catalogoCondizioneCreator.setCreators(map);
 
-            Player player = Player.getSingletonInstance();
+            Player player = StartUpHandler.getSingletonInstance().getPlayer();
             player.setNome("Gioele");
 
 
