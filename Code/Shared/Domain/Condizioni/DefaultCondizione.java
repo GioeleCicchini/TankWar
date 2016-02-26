@@ -48,7 +48,7 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent,Seria
 
     @Override
     public void addChild(IStrategiaComponent c) {
-        if (this.child == null){
+        if (this.child == null) {
             this.child = c;
         }
     }
@@ -109,5 +109,15 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent,Seria
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean getVera() {
+        return vera;
+    }
+
+    @Override
+    public void setVera(boolean vera) {
+        this.vera = vera;
     }
 }

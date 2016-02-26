@@ -108,4 +108,14 @@ public class OstacoloAdiacenteAvantiCondizione implements ICondizione, IStrategi
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean getVera() {
+        return vera;
+    }
+
+    @Override
+    public void setVera(boolean vera) {
+        this.vera = vera;
+    }
 }

@@ -36,4 +36,8 @@ public interface ICondizione {
 	IStrategiaComponent getChild();
 
 	void setChild(IStrategiaComponent child);
+
+	void setVera(boolean vera);
+
+	boolean getVera();
 }
