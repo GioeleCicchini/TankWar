@@ -13,6 +13,7 @@ public class CatalogoAzioneCreator implements ICatalogo {
 
     private CatalogoAzioneCreator() {
         this.azioniCreators=new HashMap<>();
+
     }
 
     public static CatalogoAzioneCreator getSingletonInstance()

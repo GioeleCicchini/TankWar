@@ -24,7 +24,7 @@ public class CatalogoCondizioneCreator implements ICatalogo {
 
 	private CatalogoCondizioneCreator() {
 		this.condizioniCreators=new HashMap<>();
-		
+
 
         ICreator condizioneDefaultCreator= DefaultCondizioneCreator.getSingletonInstance();
 		this.defaultCreatorKey = condizioneDefaultCreator.getIdType();
