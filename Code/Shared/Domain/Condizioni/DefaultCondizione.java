@@ -48,7 +48,7 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent,Seria
 
     @Override
     public void addChild(IStrategiaComponent c) {
-        if (this.child == null){
+        if (this.child == null) {
             this.child = c;
         }
     }
