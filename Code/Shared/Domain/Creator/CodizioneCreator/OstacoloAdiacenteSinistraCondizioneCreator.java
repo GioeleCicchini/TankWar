@@ -2,13 +2,14 @@ package Shared.Domain.Creator.CodizioneCreator;
 
 import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Condizioni.OstacoloAdiacenteSinistraCondizione;
+import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
 
 /**
  * Created by beniamino on 16/02/16.
  */
-public class OstacoloAdiacenteSinistraCondizioneCreator implements ICondizioneCreator, Shared.Domain.Creator.ICreator {
+public class OstacoloAdiacenteSinistraCondizioneCreator implements ICondizioneCreator, ICreator {
 
     private static OstacoloAdiacenteSinistraCondizioneCreator singletonInstance = null;
 

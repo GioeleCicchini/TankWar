@@ -2,6 +2,7 @@ package Shared.Domain.Creator.CodizioneCreator;
 
 import Shared.Domain.Condizioni.BombeRimanentiCondizione;
 import Shared.Domain.Condizioni.ICondizione;
+import Shared.Domain.Creator.ICreator;
 
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 16/02/16.
  */
-public class BombeRimanentiCondizioneCreator implements ICondizioneCreator, Shared.Domain.Creator.ICreator {
+public class BombeRimanentiCondizioneCreator implements ICondizioneCreator, ICreator {
 
     private static BombeRimanentiCondizioneCreator singletonInstance = null;
 

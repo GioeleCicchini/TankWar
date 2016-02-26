@@ -2,6 +2,7 @@ package Shared.Domain.Creator.CodizioneCreator;
 
 import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Condizioni.NemicoSottoTiroCondizione;
+import Shared.Domain.Creator.ICreator;
 
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by beniamino on 15/02/16.
  */
-public class NemicoSottoTiroCondizioneCreator implements ICondizioneCreator, Shared.Domain.Creator.ICreator {
+public class NemicoSottoTiroCondizioneCreator implements ICondizioneCreator, ICreator {
 
     private static NemicoSottoTiroCondizioneCreator singletonInstance = null;
 

@@ -2,13 +2,14 @@ package Shared.Domain.Creator.CodizioneCreator;
 
 import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Condizioni.SullaBombaCondizione;
+import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
 
 /**
  * Created by emanuele on 16/02/16.
  */
-public class SullaBombaCondizioneCreator implements ICondizioneCreator, Shared.Domain.Creator.ICreator {
+public class SullaBombaCondizioneCreator implements ICondizioneCreator, ICreator {
 
     private static SullaBombaCondizioneCreator singletonInstance = null;
 

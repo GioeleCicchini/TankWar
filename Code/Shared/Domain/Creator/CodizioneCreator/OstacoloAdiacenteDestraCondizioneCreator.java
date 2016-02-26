@@ -2,6 +2,7 @@ package Shared.Domain.Creator.CodizioneCreator;
 
 import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Condizioni.OstacoloAdiacenteDestraCondizione;
+import Shared.Domain.Creator.ICreator;
 
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by beniamino on 16/02/16.
  */
-public class OstacoloAdiacenteDestraCondizioneCreator implements ICondizioneCreator, Shared.Domain.Creator.ICreator {
+public class OstacoloAdiacenteDestraCondizioneCreator implements ICondizioneCreator, ICreator {
 
     private static OstacoloAdiacenteDestraCondizioneCreator singletonInstance = null;
 

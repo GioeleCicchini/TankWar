@@ -2,13 +2,14 @@ package Shared.Domain.Creator.CodizioneCreator;
 
 import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Condizioni.NemicoDietroCondizione;
+import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
 
 /**
  * Created by beniamino on 15/02/16.
  */
-public class NemicoDietroCondizioneCreator implements ICondizioneCreator, Shared.Domain.Creator.ICreator {
+public class NemicoDietroCondizioneCreator implements ICondizioneCreator, ICreator {
 
     private static NemicoDietroCondizioneCreator singletonInstance = null;
 
