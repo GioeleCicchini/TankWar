@@ -109,4 +109,12 @@ public class NemicoDietroCondizione implements ICondizione, IStrategiaComponent,
     public void setName(String name) {
         this.name = name;
     }
+
+    public boolean isVera() {
+        return vera;
+    }
+
+    public void setVera(boolean vera) {
+        this.vera = vera;
+    }
 }
