@@ -12,5 +12,5 @@ public interface ICatalogo {
     public Map<String, ICreator> getCreators();
     public void setCreators(Map<String, ICreator> creators);
 
-    void loadCreator ();
+    void loadCreator();
 }
