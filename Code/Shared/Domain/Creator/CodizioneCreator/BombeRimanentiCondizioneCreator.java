@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 16/02/16.
  */
-public class BombeRimanentiCondizioneCreator implements ICreator {
+public class BombeRimanentiCondizioneCreator implements ICreator, ICondizioneCreator {
 
     private static BombeRimanentiCondizioneCreator singletonInstance = null;
 

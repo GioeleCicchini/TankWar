@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by beniamino on 15/02/16.
  */
-public class NemicoDestraCondizioneCreator implements ICreator {
+public class NemicoDestraCondizioneCreator implements ICreator, ICondizioneCreator {
 
     private static NemicoDestraCondizioneCreator singletonInstance = null;
 

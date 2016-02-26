@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by beniamino on 16/02/16.
  */
-public class OstacoloAdiacenteDestraCondizioneCreator implements ICreator {
+public class OstacoloAdiacenteDestraCondizioneCreator implements ICreator, ICondizioneCreator {
 
     private static OstacoloAdiacenteDestraCondizioneCreator singletonInstance = null;
 

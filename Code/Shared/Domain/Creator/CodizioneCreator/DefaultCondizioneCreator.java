@@ -4,6 +4,7 @@ package Shared.Domain.Creator.CodizioneCreator;
 import Shared.Domain.Condizioni.DefaultCondizione;
 import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Creator.ICreator;
+import com.sun.org.apache.bcel.internal.generic.ICONST;
 
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * Created by beniamino on 15/02/16.
  * Questa classe è un Singleton
  */
-public class DefaultCondizioneCreator implements ICreator {
+public class DefaultCondizioneCreator implements ICreator, ICondizioneCreator {
 
     private static DefaultCondizioneCreator singletonInstance = null;
 

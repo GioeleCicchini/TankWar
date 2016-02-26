@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 16/02/16.
  */
-public class SullaBombaCondizioneCreator implements ICreator {
+public class SullaBombaCondizioneCreator implements ICreator, ICondizioneCreator {
 
     private static SullaBombaCondizioneCreator singletonInstance = null;
 
