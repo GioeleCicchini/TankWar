@@ -30,12 +30,32 @@ public class StartUpHandler {
     private ICatalogo catalogoAzCreator;
 
     private StartUpHandler() {
-        this.player=
+        this.player=new Player();
+        this.catalogoCondCreator=new CatalogoCondizioneCreator();
+        this.catalogoAzCreator=new CatalogoAzioneCreator();
     }
 
-    public void inizia(){
-        Player player = Player.getSingletonInstance();
-        ICatalogo ccc = CatalogoCondizioneCreator.getSingletonInstance();
-        ICatalogo cac = CatalogoAzioneCreator.getSingletonInstance();
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public ICatalogo getCatalogoCondCreator() {
+        return catalogoCondCreator;
+    }
+
+    public void setCatalogoCondCreator(ICatalogo catalogoCondCreator) {
+        this.catalogoCondCreator = catalogoCondCreator;
+    }
+
+    public ICatalogo getCatalogoAzCreator() {
+        return catalogoAzCreator;
+    }
+
+    public void setCatalogoAzCreator(ICatalogo catalogoAzCreator) {
+        this.catalogoAzCreator = catalogoAzCreator;
     }
 }

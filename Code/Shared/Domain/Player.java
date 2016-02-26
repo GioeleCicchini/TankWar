@@ -8,23 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player  implements Serializable{
-	private static Player singletonInstance=null;
-
-	public static Player getSingletonInstance()
-	{
-		if (singletonInstance == null)
-		{
-			singletonInstance = new Player();
-		}
-		return singletonInstance;
-	}
-
 
 	private int id;
 	private String nome;
-	private List<Strategia> strategieList = new ArrayList<Strategia>();
+	private List<Strategia> strategieList;
 
-	protected Player() {
+	public Player() {
+		this.strategieList = new ArrayList<>();
 	}
 
 	public Strategia iniziaNuovaStrategia(ICreator condizioneCreator) {
