@@ -6,7 +6,7 @@ import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
 
-public class AvanzaAvantiAzioneCreator implements ICreator {
+public class AvanzaAvantiAzioneCreator implements ICreator,IAzioneCreator {
 
 	private static AvanzaAvantiAzioneCreator singletonInstance = null;
 

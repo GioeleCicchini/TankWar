@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class AvanzaDestraAzioneCreator implements ICreator {
+public class AvanzaDestraAzioneCreator implements ICreator,IAzioneCreator {
 
     private static AvanzaDestraAzioneCreator singletonInstance = null;
 

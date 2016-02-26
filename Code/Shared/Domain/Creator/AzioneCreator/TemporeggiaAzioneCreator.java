@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class TemporeggiaAzioneCreator implements ICreator {
+public class TemporeggiaAzioneCreator implements ICreator,IAzioneCreator {
 
     private static TemporeggiaAzioneCreator singletonInstance = null;
 
