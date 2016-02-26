@@ -2,15 +2,10 @@ package Shared.Domain;
 
 
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
-import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.ICreator;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.jar.Manifest;
 
 
 public class CatalogoCondizioneCreator implements ICatalogo {
