@@ -1,5 +1,6 @@
 package Shared.Domain;
 
+import Shared.Domain.Creator.AzioneCreator.*;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;
@@ -13,7 +14,7 @@ public class CatalogoAzioneCreator implements ICatalogo {
 
     private CatalogoAzioneCreator() {
         this.azioniCreators=new HashMap<>();
-
+        loadCreator();
     }
 
     public static CatalogoAzioneCreator getSingletonInstance()
@@ -42,6 +43,36 @@ public class CatalogoAzioneCreator implements ICatalogo {
     }
 
     private void loadCreator() {
-        
+        //TODO Questo è molto brutto, trovare via alternativa
+        String key = "";
+        ICreator creator;
+
+        creator=AvanzaAvantiAzioneCreator.getSingletonInstance();
+        key = creator.getIdType();
+        this.azioniCreators.put(key,creator);
+
+        creator= AvanzaDestraAzioneCreator.getSingletonInstance();
+        key=creator.getIdType();
+        this.azioniCreators.put(key,creator);
+
+        creator= AvanzaSinistraAzioneCreator.getSingletonInstance();
+        key=creator.getIdType();
+        this.azioniCreators.put(key,creator);
+
+        creator= IndietreggiaAzioneCreator.getSingletonInstance();
+        key=creator.getIdType();
+        this.azioniCreators.put(key,creator);
+
+        creator= LasciaBombaAzioneCreator.getSingletonInstance();
+        key=creator.getIdType();
+        this.azioniCreators.put(key,creator);
+
+        creator=SparaAzioneCreator.getSingletonInstance();
+        key=creator.getIdType();
+        this.azioniCreators.put(key,creator);
+
+        creator=TemporeggiaAzioneCreator.getSingletonInstance();
+        key=creator.getIdType();
+        this.azioniCreators.put(key,creator);
     }
 }
