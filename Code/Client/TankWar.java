@@ -7,6 +7,7 @@ package Client;/*
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
+import Shared.Domain.Creator.AzioneCreator.AvanzaAvantiAzioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.NemicoAvantiCondizioneCreator;
 import Shared.Domain.Creator.ICreator;
@@ -53,15 +54,9 @@ public class TankWar {
 
 
             ICatalogo catalogoCondizioneCreator = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
-            Map<String,ICreator> map = new HashMap<>();
+            ICatalogo catalogoAzioneCreator = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
 
-            NemicoAvantiCondizioneCreator nemicoAvantiCondizioneCreator = NemicoAvantiCondizioneCreator.getSingletonInstance();
-            DefaultCondizioneCreator defaultCondizioneCreator = DefaultCondizioneCreator.getSingletonInstance();
 
-            map.put("001",nemicoAvantiCondizioneCreator);
-            map.put("000",defaultCondizioneCreator);
-
-            catalogoCondizioneCreator.setCreators(map);
 
             Player player = StartUpHandler.getSingletonInstance().getPlayer();
             player.setNome("Gioele");
@@ -73,8 +68,9 @@ public class TankWar {
             handler.setCurrentPlayer(player);
             handler.iniziaNuovaStrategia();
             handler.inserisciNomeStrategia("Prima Strategia");
-            String idcondpadre = handler.scegliCondizione("001",true,new ArrayList<Integer>());
-            handler.scegliCondizioneAnnidata("001",idcondpadre,true,new ArrayList<Integer>());
+            String idcondpadre = handler.scegliCondizione("000",true,new ArrayList<Integer>());
+           String idAnnidata= handler.scegliCondizioneAnnidata("001",idcondpadre,true,new ArrayList<Integer>());
+            handler.associaAzione("001",idAnnidata,new ArrayList<Integer>());
 
             DTO dto = new DTO();
             dto.setFunzione("Registra");
