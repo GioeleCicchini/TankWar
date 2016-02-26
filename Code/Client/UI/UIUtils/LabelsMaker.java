@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class LabelsMaker {
 
-    //TODO Il metodo seguente non è flessibile, nw vorrei uno unico per Condition e Action. Occorrono pattern?
+    //TODO Il metodo seguente non è flessibile, ne vorrei uno unico per Condition e Action. Occorrono pattern?
 
     public List<ICustomLabel> getConditionLabels (ICatalogo catalogo){
         List<ICustomLabel> customLabels = new ArrayList<>();

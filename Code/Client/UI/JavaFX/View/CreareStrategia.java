@@ -5,6 +5,7 @@ import Client.UI.UIUtils.GridPutter;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Controllers.StartUpHandler;
+import Shared.Domain.ICatalogo;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -113,10 +114,9 @@ public class CreareStrategia implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        StartUpHandler startUpHandler = StartUpHandler.getSingletonInstance();
-        startUpHandler.inizia();
 
-        CatalogoCondizioneCreator ccc = CatalogoCondizioneCreator.getSingletonInstance();
+        ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
+
         LabelsMaker labelsMaker = new LabelsMaker();
         List condCLabels = labelsMaker.getConditionLabels(ccc);
         ConditionCreatorLabel currentLabel;
