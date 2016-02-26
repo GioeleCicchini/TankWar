@@ -2,10 +2,13 @@ package Shared.Domain;
 
 
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
+import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+
 
 public class CatalogoCondizioneCreator implements ICatalogo {
 
@@ -18,7 +21,15 @@ public class CatalogoCondizioneCreator implements ICatalogo {
 
 	private CatalogoCondizioneCreator() {
 		this.condizioniCreators=new HashMap<>();
-		ICreator condizioneDefaultCreator= DefaultCondizioneCreator.getSingletonInstance();
+
+
+        /*
+        Reflections reflections = new Reflections("Code.Shared.Domain.Creator.CondizioneCreator");
+
+        Set<Class<? extends ICondizioneCreator>> subTypes = reflections.getSubTypesOf(ICondizioneCreator.class);
+        */
+
+        ICreator condizioneDefaultCreator= DefaultCondizioneCreator.getSingletonInstance();
 		this.defaultCreatorKey = condizioneDefaultCreator.getIdType();
 		this.condizioniCreators.put(this.defaultCreatorKey, condizioneDefaultCreator);
 	}
