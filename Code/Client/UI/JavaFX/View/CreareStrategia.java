@@ -76,31 +76,20 @@ public class CreareStrategia implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
+        ICatalogo cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
 
         LabelsMaker labelsMaker = new LabelsMaker();
+
         List condCLabels = labelsMaker.getConditionLabels(ccc);
         ConditionCreatorLabel currentLabel;
 
-        GridPutter gridPutter = new GridPutter(conditionCreatorGrid);
-        EventHandler handlerDrag = new EventHandler() {
-            @Override
-            public void handle(Event event) {
-                System.out.println("onDragDetected");
+        GridPutter gridCondPutter = new GridPutter(conditionCreatorGrid);
 
-                Dragboard db = ((Label) event.getSource()).startDragAndDrop(TransferMode.ANY);
-                
-                ClipboardContent content = new ClipboardContent();
-                content.putString("Qua ci andrà qualcosa per id");
-                db.setContent(content);
-
-                event.consume();
-            }
-        };
         for (int i=0; i<condCLabels.size(); i++){
-            if (!gridPutter.isFull()){
-                ((Node) condCLabels.get(i)).setOnDragDetected(handlerDrag);
-                };
-            gridPutter.put((Node) condCLabels.get(i));
+            if (!gridCondPutter.isFull()){
+                currentLabel= (ConditionCreatorLabel)condCLabels.get(i);
+                gridCondPutter.put((Node)currentLabel);
+                }
         }
     }
 }
