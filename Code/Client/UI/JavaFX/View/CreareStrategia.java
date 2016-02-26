@@ -7,6 +7,7 @@ import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Controllers.StartUpHandler;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -31,7 +32,7 @@ public class CreareStrategia implements Initializable{
     public GridPane conditionCreatorGrid;
     public GridPane azioneCreatorGrid;
 
-
+/*
     public void condDragDetected(Event event) {
         System.out.println("onDragDetected");
 
@@ -44,7 +45,7 @@ public class CreareStrategia implements Initializable{
         db.setContent(content);
 
         event.consume();
-    }
+    }*/
 
     public void targetDragOver(DragEvent event) {
         System.out.println("onDragOver");
@@ -122,10 +123,27 @@ public class CreareStrategia implements Initializable{
         ConditionCreatorLabel currentLabel;
 
         GridPutter gridPutter = new GridPutter(conditionCreatorGrid);
+        EventHandler handlerDrag = new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                System.out.println("onDragDetected");
+
+                Dragboard db = ((Label) event.getSource()).startDragAndDrop(TransferMode.ANY);
+                //Dragboard db = NemicoAvantiRectangle.startDragAndDrop(TransferMode.ANY);
+
+
+                ClipboardContent content = new ClipboardContent();
+                content.putString("Qua ci andrà qualcosa per id");
+                db.setContent(content);
+
+                event.consume();
+            }
+        };
         for (int i=0; i<condCLabels.size(); i++){
             if (!gridPutter.isFull()){
-                gridPutter.put((Node) condCLabels.get(i));
-            }
+                ((Node) condCLabels.get(i)).setOnDragDetected(handlerDrag);
+                };
+            gridPutter.put((Node) condCLabels.get(i));
         }
     }
 }
