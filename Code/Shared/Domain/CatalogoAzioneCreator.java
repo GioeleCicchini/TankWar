@@ -8,24 +8,12 @@ import java.util.Map;
 
 public class CatalogoAzioneCreator implements ICatalogo {
 
-	private static CatalogoAzioneCreator singletonInstance = null;
-
     private Map<String,ICreator> azioniCreators;
 
-    private CatalogoAzioneCreator() {
+    public CatalogoAzioneCreator() {
         this.azioniCreators=new HashMap<>();
         loadCreator();
     }
-
-    public static CatalogoAzioneCreator getSingletonInstance()
-    {
-        if (singletonInstance == null)
-        {
-            singletonInstance= new CatalogoAzioneCreator();
-        }
-        return singletonInstance;
-    }
-
 
     @Override
     public ICreator getCreator(String idType) {

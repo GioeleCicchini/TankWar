@@ -10,27 +10,16 @@ import java.util.Map;
 
 public class CatalogoCondizioneCreator implements ICatalogo {
 
-	private static CatalogoCondizioneCreator singletonInstance = null;
-
 	private Map<String,ICreator> condizioniCreators;
 
 	private String defaultCreatorKey;
 
 
-	private CatalogoCondizioneCreator() {
+	public CatalogoCondizioneCreator() {
         this.condizioniCreators = new HashMap<>();
 		this.loadCreator();
         ICreator condizioneDefaultCreator= DefaultCondizioneCreator.getSingletonInstance();
 		this.defaultCreatorKey = condizioneDefaultCreator.getIdType();
-	}
-
-	public static CatalogoCondizioneCreator getSingletonInstance()
-	{
-		if (singletonInstance == null)
-		{
-			singletonInstance= new CatalogoCondizioneCreator();
-		}
-		return singletonInstance;
 	}
 
 	/**
