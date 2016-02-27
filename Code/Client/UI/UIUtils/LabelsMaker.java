@@ -45,7 +45,9 @@ public class LabelsMaker {
             float g = rand.nextFloat();
             float b = rand.nextFloat();
             Color color=Color.color(r,g,b);
-            ((ConditionCreatorLabel) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(-10))));
+            ((ConditionCreatorLabel) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
+            ((ConditionCreatorLabel) myLabel).setLayoutX(1000);
+
             ((ConditionCreatorLabel)myLabel).setOnDragDetected(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {

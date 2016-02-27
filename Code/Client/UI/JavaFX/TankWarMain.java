@@ -18,14 +18,15 @@ public class TankWarMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Fxml/crearestrategia.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Fxml/ProvaResponsive.fxml"));
 
         primaryStage.setTitle("Tank War");
-
-        primaryStage.setScene(new Scene(root));
         primaryStage.setFullScreen(true);
+        primaryStage.setScene(new Scene(root));
+
 
         primaryStage.show();
+
 
     }
 
