@@ -1,5 +1,6 @@
 package Client.UI.UIUtils;
 
+import Client.UI.JavaFX.CustomWidget.ActionCreatorLabel;
 import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
 import Client.UI.JavaFX.CustomWidget.ICustomLabel;
 import Shared.Domain.Creator.ICreator;
@@ -26,41 +27,66 @@ public class LabelsMaker {
 
     //TODO Il metodo seguente non è flessibile, ne vorrei uno unico per Condition e Action. Occorrono pattern?
 
-    public List<ICustomLabel> getConditionLabels (ICatalogo catalogo){
+    public static List<ICustomLabel> getConditionLabels (ICatalogo catalogo){
         List<ICustomLabel> customLabels = new ArrayList<>();
         Map<String, ICreator> creators = catalogo.getCreators();
+        ICreator currentCreator;
         for (String id: creators.keySet()) {
-            ICreator currentCreator = creators.get(id);
+            currentCreator = creators.get(id);
             String name = currentCreator.getName();
             String description = currentCreator.getDescription();
-            ICustomLabel myLabel = new ConditionCreatorLabel(id,name,description);
-            ((ConditionCreatorLabel)myLabel).setText(currentCreator.getName());
-            ((ConditionCreatorLabel)myLabel).setDescription(currentCreator.getDescription());
-            ((ConditionCreatorLabel)myLabel).setVisible(true);
-            Random rand = new Random();
-            float r = rand.nextFloat();
-            float g = rand.nextFloat();
-            float b = rand.nextFloat();
-            Color color=Color.color(r,g,b);
-            ((ConditionCreatorLabel) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
-            //((ConditionCreatorLabel) myLabel).setLayoutX(1000);
-            ((ConditionCreatorLabel) myLabel).setBorder(Border.EMPTY);
+            ICustomLabel myLabel = new ConditionCreatorLabel(id,name,description);//Questa riga crea rigidità
+            ((Label)myLabel).setText(currentCreator.getName());
+            myLabel.setDescription(currentCreator.getDescription());
 
-            ((ConditionCreatorLabel)myLabel).setOnDragDetected(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    Dragboard db = ((Label) event.getSource()).startDragAndDrop(TransferMode.ANY);
-
-                    ClipboardContent content = new ClipboardContent();
-                    content.putString("Qua ci andrà qualcosa per id");
-                    db.setContent(content);
-
-                    event.consume();
-                }
-            });
+            layoutizeLabel(myLabel);
             customLabels.add(myLabel);
         }
         return customLabels;
+    }
+
+    public static List<ICustomLabel> getActionLabes (ICatalogo catalogo){
+        List<ICustomLabel> customLabels = new ArrayList<>();
+        Map<String,ICreator> creators = catalogo.getCreators();
+        ICreator currentCreator;
+        for (String id :
+                creators.keySet()) {
+            currentCreator = creators.get(id);
+            String name = currentCreator.getName();
+            String description = currentCreator.getDescription();
+            ICustomLabel myLabel = new ActionCreatorLabel(id,name,description);//RIGIDITA'
+            ((Label)myLabel).setText(currentCreator.getName());
+            myLabel.setDescription(currentCreator.getDescription());
+
+            layoutizeLabel(myLabel);
+            customLabels.add(myLabel);
+        }
+        return customLabels;
+    }
+
+    private static void layoutizeLabel(ICustomLabel myLabel){
+        Random rand = new Random();
+        float r = rand.nextFloat();
+        float g = rand.nextFloat();
+        float b = rand.nextFloat();
+        Color color=Color.color(r,g,b);
+        ((Label) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
+        //((ConditionCreatorLabel) myLabel).setLayoutX(1000);
+        ((Label) myLabel).setBorder(Border.EMPTY);
+
+        ((Label)myLabel).setOnDragDetected(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Dragboard db = ((Label) event.getSource()).startDragAndDrop(TransferMode.ANY);
+
+                ClipboardContent content = new ClipboardContent();
+                content.putString("Qua ci andrà qualcosa per id");
+                db.setContent(content);
+
+                event.consume();
+            }
+        });
+        ((Label)myLabel).setVisible(true);
     }
 
 }

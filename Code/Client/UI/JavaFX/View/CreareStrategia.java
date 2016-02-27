@@ -1,6 +1,8 @@
 package Client.UI.JavaFX.View;
 
+import Client.UI.JavaFX.CustomWidget.ActionCreatorLabel;
 import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
+import Client.UI.JavaFX.CustomWidget.ICustomLabel;
 import Client.UI.UIUtils.GridPutter;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.CatalogoCondizioneCreator;
@@ -78,18 +80,24 @@ public class CreareStrategia implements Initializable{
         ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
         ICatalogo cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
 
-        LabelsMaker labelsMaker = new LabelsMaker();
-
-        List condCLabels = labelsMaker.getConditionLabels(ccc);
-        ConditionCreatorLabel currentLabel;
-
+        List<ICustomLabel> condCLabels = LabelsMaker.getConditionLabels(ccc);
+        ICustomLabel currentCLabel;
         GridPutter gridCondPutter = new GridPutter(conditionCreatorGrid);
-
         for (int i=0; i<condCLabels.size(); i++){
             if (!gridCondPutter.isFull()){
-                currentLabel= (ConditionCreatorLabel)condCLabels.get(i);
-                gridCondPutter.put((Node)currentLabel);
+                currentCLabel= condCLabels.get(i);
+                gridCondPutter.put((Node)currentCLabel);
                 }
+        }
+
+        List <ICustomLabel> azioneCLabels = LabelsMaker.getActionLabes(cac);//Vorrei chiamasse lo stesso metodo di sopra
+        ICustomLabel currentALabel;
+        GridPutter gridAzioniPutter = new GridPutter(azioneCreatorGrid);
+        for (int i=0; i<azioneCLabels.size(); i++){
+            if (!gridAzioniPutter.isFull()){
+                currentALabel= azioneCLabels.get(i);
+                gridAzioniPutter.put((Node) currentALabel);
+            }
         }
     }
 }
