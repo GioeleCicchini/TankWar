@@ -11,9 +11,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -39,14 +37,14 @@ public class LabelsMaker {
             ((ConditionCreatorLabel)myLabel).setText(currentCreator.getName());
             ((ConditionCreatorLabel)myLabel).setDescription(currentCreator.getDescription());
             ((ConditionCreatorLabel)myLabel).setVisible(true);
-            //TODO diamogli un colore
             Random rand = new Random();
             float r = rand.nextFloat();
             float g = rand.nextFloat();
             float b = rand.nextFloat();
             Color color=Color.color(r,g,b);
             ((ConditionCreatorLabel) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
-            ((ConditionCreatorLabel) myLabel).setLayoutX(1000);
+            //((ConditionCreatorLabel) myLabel).setLayoutX(1000);
+            ((ConditionCreatorLabel) myLabel).setBorder(Border.EMPTY);
 
             ((ConditionCreatorLabel)myLabel).setOnDragDetected(new EventHandler<MouseEvent>() {
                 @Override
