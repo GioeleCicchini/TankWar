@@ -35,9 +35,6 @@
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #E3F2FD;" />
-                     </children>
                   </GridPane>
                   <VBox prefHeight="582.0" prefWidth="1352.0" style="-fx-background-color: #90CAF9;">
                      <children>
