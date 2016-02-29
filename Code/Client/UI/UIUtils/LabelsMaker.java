@@ -89,7 +89,6 @@ public class LabelsMaker {
 
         ((Label) myLabel).setTextAlignment(TextAlignment.CENTER);
         ((Label) myLabel).setFont(Font.font(20));
-        ((Label) myLabel)
 
 
         ((Label)myLabel).setOnDragDetected(new EventHandler<MouseEvent>() {
