@@ -30,6 +30,7 @@ public class CreareStrategia implements Initializable{
     public GridPane azioneCreatorGrid;
     public VBox condizioniCreatorVBox;
     public VBox azioniCreatorVBox;
+    public VBox strategiaVBox;
 
 
     public void targetDragOver(DragEvent event) {
