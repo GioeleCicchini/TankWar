@@ -6,6 +6,7 @@ import Client.UI.JavaFX.CustomWidget.ICustomLabel;
 import Client.UI.UIUtils.GridPutter;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.CatalogoCondizioneCreator;
+import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
 import Shared.Domain.ICatalogo;
 import javafx.event.Event;
@@ -61,14 +62,14 @@ public class CreareStrategia implements Initializable{
         boolean success = false;
 
         System.out.println("Ho appena droppato qualcosa");
-        ConditionCreatorLabel label =(ConditionCreatorLabel) event.getGestureSource();
-        String idCond = label.getIdType();
-        strategiaVBox.getChildren().add(label);
-
-       labelFeedback.setText("PRESA!");
 
         //TODO mettere qua il fatto che si scrive il pezzo nella strategia
+        ConditionCreatorLabel labelDragged =(ConditionCreatorLabel) event.getGestureSource();
+        strategiaVBox.getChildren().add(labelDragged);
 
+        String idTypeCond = labelDragged.getIdType();
+        List<Integer> valori = new ArrayList<>();
+        CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond,true,valori);
 
         success = true;
 

@@ -5,6 +5,7 @@ import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CreareStrategiaHandler {
 
@@ -31,14 +32,14 @@ public class CreareStrategiaHandler {
 	 * @param idTypeCond
 	 * @param valori
 	 */
-	public String scegliCondizione(String idTypeCond, boolean vera, ArrayList<Integer> valori) {
+	public String scegliCondizione(String idTypeCond, boolean vera, List<Integer> valori) {
 		ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
 		ICreator iCondizioneCreator = ccc.getCreator(idTypeCond);
 		String idCondPadre = this.strategiaCorrente.aggiungiCondizione(iCondizioneCreator,vera,valori);
 		return idCondPadre;
 	}
 
-	public String scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, boolean vera, ArrayList<Integer> valori) {
+	public String scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, boolean vera, List<Integer> valori) {
         ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
         ICreator iCondizioneCreator = ccc.getCreator(idTypeCond);//sta riga è poetica
         String NuovoIdCondPadre = this.strategiaCorrente.aggiungiCondizioneAnnidata(iCondizioneCreator, idCondPadre, vera, valori);
@@ -51,7 +52,7 @@ public class CreareStrategiaHandler {
 	 * @param idCond
 	 * @param valori
 	 */
-	public String associaAzione(String idTypeAz, String idCond, ArrayList<Integer> valori) {
+	public String associaAzione(String idTypeAz, String idCond, List<Integer> valori) {
 		ICatalogo catalogoAzioneCreator= StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
 		ICreator ac = catalogoAzioneCreator.getCreator(idTypeAz);
 		String idAzPadre = this.strategiaCorrente.aggiungiAzione(ac,valori,idCond);
@@ -69,7 +70,7 @@ public class CreareStrategiaHandler {
 	 * @param idTypeAz
 	 * @param valori
 	 */
-	public String scegliAzioneDefault(String idTypeAz, ArrayList<Integer> valori) {
+	public String scegliAzioneDefault(String idTypeAz, List<Integer> valori) {
 		ICatalogo cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
 		ICreator ac = cac.getCreator(idTypeAz);
 		String idAzDefault = this.strategiaCorrente.aggiungiAzioneDefault(ac,valori);

@@ -5,6 +5,7 @@ import Shared.Domain.IStrategiaComponent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by beniamino on 15/02/16.
@@ -18,10 +19,10 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
 
     private String id;
     private boolean vera;
-    private ArrayList<Integer> valori;
+    private List<Integer> valori;
     private  IStrategiaComponent child;
 
-    public NemicoSottoTiroCondizione(String name, String description, String idType, String idCond, boolean vera, ArrayList<Integer> valori) {
+    public NemicoSottoTiroCondizione(String name, String description, String idType, String idCond, boolean vera, List<Integer> valori) {
         this.name = name;
         this.description = description;
         this.idType = idType;
@@ -82,11 +83,11 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
         this.id = id;
     }
 
-    public ArrayList<Integer> getValori() {
+    public List<Integer> getValori() {
         return valori;
     }
 
-    public void setValori(ArrayList<Integer> valori) {
+    public void setValori(List<Integer> valori) {
         this.valori = valori;
     }
 

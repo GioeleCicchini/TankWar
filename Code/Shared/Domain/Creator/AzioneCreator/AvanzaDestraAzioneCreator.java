@@ -5,6 +5,7 @@ import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by emanuele on 15/02/16.
@@ -32,7 +33,7 @@ public class AvanzaDestraAzioneCreator implements ICreator,IAzioneCreator {
         return singletonInstance;
     }
 
-    public IAzione doMakeAzione(String idAz, ArrayList<Integer> valori) {
+    public IAzione doMakeAzione(String idAz, List<Integer> valori) {
         IAzione avanzaDestraAzione = new AvanzaDestraAzione(this.name,this.description,this.idType,idAz,valori);
         return avanzaDestraAzione;
     }

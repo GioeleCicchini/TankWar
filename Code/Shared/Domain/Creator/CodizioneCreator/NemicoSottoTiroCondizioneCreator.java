@@ -6,6 +6,7 @@ import Shared.Domain.Creator.ICreator;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by beniamino on 15/02/16.
@@ -33,7 +34,7 @@ public class NemicoSottoTiroCondizioneCreator implements ICreator, ICondizioneCr
         return singletonInstance;
     }
 
-    public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
+    public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
         NemicoSottoTiroCondizione nemicoSottoTiroCondizione = new NemicoSottoTiroCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return nemicoSottoTiroCondizione;
     }

@@ -8,6 +8,7 @@ import com.sun.org.apache.bcel.internal.generic.ICONST;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by beniamino on 15/02/16.
@@ -63,7 +64,7 @@ public class DefaultCondizioneCreator implements ICreator, ICondizioneCreator {
         this.idType = idType;
     }
 
-    public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
+    public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
         DefaultCondizione defaultCondizione = new DefaultCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return defaultCondizione;
     }

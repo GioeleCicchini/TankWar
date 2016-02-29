@@ -4,6 +4,7 @@ import Shared.Domain.IStrategiaComponent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Serializable {
 
@@ -11,7 +12,7 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
     private String idTypeAz;
     private String name;
     private String description;
-    private ArrayList<Integer> valori;
+    private List<Integer> valori;
 
     public String getIdTypeAz() {
         return idTypeAz;
@@ -37,11 +38,11 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
         this.description = description;
     }
 
-    public ArrayList<Integer> getValori() {
+    public List<Integer> getValori() {
         return valori;
     }
 
-    public void setValori(ArrayList<Integer> valori) {
+    public void setValori(List<Integer> valori) {
         this.valori = valori;
     }
 
@@ -49,7 +50,7 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
 
     }
 
-    public AvanzaAvantiAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
+    public AvanzaAvantiAzione(String name, String description, String idTypeAz, String idAz, List<Integer> valori) {
         this.id = idAz;
         this.idTypeAz = idTypeAz;
         this.name = name;

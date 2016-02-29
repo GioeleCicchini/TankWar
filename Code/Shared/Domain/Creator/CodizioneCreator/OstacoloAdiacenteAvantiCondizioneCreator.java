@@ -5,6 +5,7 @@ import Shared.Domain.Condizioni.OstacoloAdiacenteAvantiCondizione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by beniamino on 15/02/16.
@@ -32,7 +33,7 @@ public class OstacoloAdiacenteAvantiCondizioneCreator implements ICreator, ICond
         return singletonInstance;
     }
 
-    public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
+    public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
         OstacoloAdiacenteAvantiCondizione ostacoloAdiacenteAvantiCondizione = new OstacoloAdiacenteAvantiCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return ostacoloAdiacenteAvantiCondizione;
     }

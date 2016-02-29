@@ -4,6 +4,7 @@ import Shared.Domain.IStrategiaComponent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by emanuele on 15/02/16.
@@ -13,7 +14,7 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
     private String idTypeAz;
     private String name;
     private String description;
-    private ArrayList<Integer> valori;
+    private List<Integer> valori;
 
     public AvanzaSinistraAzione() {
     }
@@ -42,15 +43,15 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
         this.description = description;
     }
 
-    public ArrayList<Integer> getValori() {
+    public List<Integer> getValori() {
         return valori;
     }
 
-    public void setValori(ArrayList<Integer> valori) {
+    public void setValori(List<Integer> valori) {
         this.valori = valori;
     }
 
-    public AvanzaSinistraAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
+    public AvanzaSinistraAzione(String name, String description, String idTypeAz, String idAz, List<Integer> valori) {
         this.id = idAz;
         this.idTypeAz = idTypeAz;
         this.name = name;

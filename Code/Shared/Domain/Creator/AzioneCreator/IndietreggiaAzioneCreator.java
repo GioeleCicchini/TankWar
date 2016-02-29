@@ -5,6 +5,7 @@ import Shared.Domain.Azioni.IndietreggiaAzione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by emanuele on 15/02/16.
@@ -32,7 +33,7 @@ public class IndietreggiaAzioneCreator implements ICreator,IAzioneCreator {
         return singletonInstance;
     }
 
-    public IAzione doMakeAzione(String idAz, ArrayList<Integer> valori) {
+    public IAzione doMakeAzione(String idAz, List<Integer> valori) {
         IAzione indietreggiaAzione = new IndietreggiaAzione(this.name,this.description,this.idType,idAz,valori);
         return indietreggiaAzione;
     }

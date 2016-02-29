@@ -4,6 +4,7 @@ import Shared.Domain.IStrategiaComponent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by emanuele on 15/02/16.
@@ -14,7 +15,7 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
     private String idTypeAz;
     private String name;
     private String description;
-    private ArrayList<Integer> valori;
+    private List<Integer> valori;
 
     public String getIdTypeAz() {
         return idTypeAz;
@@ -40,11 +41,11 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
         this.description = description;
     }
 
-    public ArrayList<Integer> getValori() {
+    public List<Integer> getValori() {
         return valori;
     }
 
-    public void setValori(ArrayList<Integer> valori) {
+    public void setValori(List<Integer> valori) {
         this.valori = valori;
     }
 
@@ -52,7 +53,7 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
 
     }
 
-    public TemporeggiaAzione(String name, String description, String idTypeAz, String idAz, ArrayList<Integer> valori) {
+    public TemporeggiaAzione(String name, String description, String idTypeAz, String idAz, List<Integer> valori) {
         this.id = idAz;
         this.idTypeAz = idTypeAz;
         this.name = name;

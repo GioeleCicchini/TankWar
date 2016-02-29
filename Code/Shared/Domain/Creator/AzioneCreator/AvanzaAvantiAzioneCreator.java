@@ -5,6 +5,7 @@ import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AvanzaAvantiAzioneCreator implements ICreator,IAzioneCreator {
 
@@ -29,7 +30,7 @@ public class AvanzaAvantiAzioneCreator implements ICreator,IAzioneCreator {
 		return singletonInstance;
 	}
 
-	public IAzione doMakeAzione(String idAz, ArrayList<Integer> valori) {
+	public IAzione doMakeAzione(String idAz, List<Integer> valori) {
 		IAzione avanzaAvantiAzione = new AvanzaAvantiAzione(this.name,this.description,this.idType,idAz,valori);
 		return avanzaAvantiAzione;
 	}

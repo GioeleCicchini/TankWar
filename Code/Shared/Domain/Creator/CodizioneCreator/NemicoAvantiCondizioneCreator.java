@@ -5,6 +5,7 @@ import Shared.Domain.Condizioni.NemicoAvantiCondizione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by beniamino on 15/02/16.
@@ -32,7 +33,7 @@ public class NemicoAvantiCondizioneCreator implements ICreator, ICondizioneCreat
         return singletonInstance;
     }
 
-    public ICondizione doMakeCondizione(String idCond, boolean vera, ArrayList<Integer> valori) {
+    public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
         NemicoAvantiCondizione nemicoAvantiCondizione = new NemicoAvantiCondizione(this.name,this.description,idType,idCond,vera,valori);
         return nemicoAvantiCondizione;
     }

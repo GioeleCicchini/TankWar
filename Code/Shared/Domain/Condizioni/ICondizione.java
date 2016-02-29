@@ -6,6 +6,7 @@ import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.IStrategiaComponent;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface ICondizione {
 
@@ -29,9 +30,9 @@ public interface ICondizione {
 
 	void setId(String id);
 
-	ArrayList<Integer> getValori();
+	List<Integer> getValori();
 
-	void setValori(ArrayList<Integer> valori);
+	void setValori(List<Integer> valori);
 
 	IStrategiaComponent getChild();
 

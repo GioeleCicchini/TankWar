@@ -6,6 +6,7 @@ import Shared.Domain.IStrategiaComponent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by emanuele on 16/02/16.
@@ -19,10 +20,10 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
 
     private String id;
     private boolean vera;
-    private ArrayList<Integer> valori;
+    private List<Integer> valori;
     private IStrategiaComponent child;
 
-    public BombeRimanentiCondizione(String name, String description, String idType, String idCond, boolean vera, ArrayList<Integer> valori) {
+    public BombeRimanentiCondizione(String name, String description, String idType, String idCond, boolean vera, List<Integer> valori) {
         this.name = name;
         this.description = description;
         this.idType = idType;
@@ -88,12 +89,12 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
     }
 
     @Override
-    public ArrayList<Integer> getValori() {
+    public List<Integer> getValori() {
         return valori;
     }
 
     @Override
-    public void setValori(ArrayList<Integer> valori) {
+    public void setValori(List<Integer> valori) {
         this.valori = valori;
     }
 
