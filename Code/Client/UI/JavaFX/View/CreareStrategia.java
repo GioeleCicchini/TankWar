@@ -28,6 +28,9 @@ public class CreareStrategia implements Initializable{
     public Label labelFeedback;
     public GridPane conditionCreatorGrid;
     public GridPane azioneCreatorGrid;
+    public VBox condizioniCreatorVBox;
+    public VBox azioniCreatorVBox;
+
 
     public void targetDragOver(DragEvent event) {
         System.out.println("onDragOver");
@@ -35,7 +38,6 @@ public class CreareStrategia implements Initializable{
         if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
-
         event.consume();
     }
 
@@ -82,6 +84,10 @@ public class CreareStrategia implements Initializable{
 
         List<ICustomLabel> condCLabels = LabelsMaker.getConditionLabels(ccc);
         ICustomLabel currentCLabel;
+        for (int i=0; i<condCLabels.size(); i++){
+            condizioniCreatorVBox.getChildren().add((Node) condCLabels.get(i));
+        }
+        /*
         GridPutter gridCondPutter = new GridPutter(conditionCreatorGrid);
         for (int i=0; i<condCLabels.size(); i++){
             if (!gridCondPutter.isFull()){
@@ -89,9 +95,14 @@ public class CreareStrategia implements Initializable{
                 gridCondPutter.put((Node)currentCLabel);
                 }
         }
+        */
 
         List <ICustomLabel> azioneCLabels = LabelsMaker.getActionLabes(cac);//Vorrei chiamasse lo stesso metodo di sopra
         ICustomLabel currentALabel;
+        for (int i=0; i<azioneCLabels.size(); i++){
+            azioniCreatorVBox.getChildren().add((Node) azioneCLabels.get(i));
+        }
+        /*
         GridPutter gridAzioniPutter = new GridPutter(azioneCreatorGrid);
         for (int i=0; i<azioneCLabels.size(); i++){
             if (!gridAzioniPutter.isFull()){
@@ -99,5 +110,6 @@ public class CreareStrategia implements Initializable{
                 gridAzioniPutter.put((Node) currentALabel);
             }
         }
+        */
     }
 }
