@@ -85,9 +85,11 @@ public class LabelsMaker {
         //((ConditionCreatorLabel) myLabel).setLayoutX(1000);
         ((Label) myLabel).setBorder(Border.EMPTY);
         ((Label) myLabel).setMinSize(300,35);
-        ((Label) myLabel).setTextAlignment(TextAlignment.CENTER);
-        ((Label) myLabel).setFont(Font.font(20)); 
+        ColumnConstraints col1 = new ColumnConstraints();
 
+        ((Label) myLabel).setTextAlignment(TextAlignment.CENTER);
+        ((Label) myLabel).setFont(Font.font(20));
+        ((Label) myLabel)
 
 
         ((Label)myLabel).setOnDragDetected(new EventHandler<MouseEvent>() {
