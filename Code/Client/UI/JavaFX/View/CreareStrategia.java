@@ -47,7 +47,7 @@ public class CreareStrategia implements Initializable{
 
         if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()) {
 
-            DropPaneTarget.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+            DropPaneTarget.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
 
         }
 
@@ -63,10 +63,12 @@ public class CreareStrategia implements Initializable{
         System.out.println("Ho appena droppato qualcosa");
         ConditionCreatorLabel label =(ConditionCreatorLabel) event.getGestureSource();
         String idCond = label.getIdType();
+        strategiaVBox.getChildren().add(label);
 
        labelFeedback.setText("PRESA!");
 
         //TODO mettere qua il fatto che si scrive il pezzo nella strategia
+
 
         success = true;
 
