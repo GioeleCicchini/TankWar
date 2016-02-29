@@ -14,6 +14,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,12 +69,26 @@ public class LabelsMaker {
     private static void layoutizeLabel(ICustomLabel myLabel){
         Random rand = new Random();
         float r = rand.nextFloat();
+        while(r<0.5){
+            r=rand.nextFloat();
+        }
         float g = rand.nextFloat();
+        while(g<0.5){
+            g=rand.nextFloat();
+        }
         float b = rand.nextFloat();
+        while(b<0.5){
+            b=rand.nextFloat();
+        }
         Color color=Color.color(r,g,b);
         ((Label) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
         //((ConditionCreatorLabel) myLabel).setLayoutX(1000);
         ((Label) myLabel).setBorder(Border.EMPTY);
+        ((Label) myLabel).setMinSize(300,35);
+        ((Label) myLabel).setTextAlignment(TextAlignment.CENTER);
+        ((Label) myLabel).setFont(Font.font(20)); 
+
+
 
         ((Label)myLabel).setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
