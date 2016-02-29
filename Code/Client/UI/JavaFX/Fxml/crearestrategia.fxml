@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.UI.JavaFX.View.CreareStrategia">
+<Pane style="-fx-background-color: #eafcff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.UI.JavaFX.View.CreareStrategia">
    <children>
       <Pane layoutX="147.0" layoutY="35.0" style="-fx-background-color: #bff3fb; -fx-border-color: #ffffff; -fx-border-radius: 3; -fx-border-width: 3;">
          <children>
@@ -50,7 +50,7 @@
         <tabs>
           <Tab text="Condizioni">
             <content>
-              <AnchorPane prefHeight="26.0" prefWidth="0.0" style="-fx-background-color: #bff3fb;">
+              <AnchorPane prefHeight="500.0" prefWidth="457.0" style="-fx-background-color: #bff3fb;">
                      <children>
                         <GridPane id="ConditionCreatorGrid" fx:id="conditionCreatorGrid" layoutX="20.0" layoutY="19.0" prefHeight="467.0" prefWidth="391.0" style="-fx-background-color: #9cf3ff; -fx-border-color: #ffffff; -fx-border-radius: 3; -fx-border-width: 3;">
                           <columnConstraints>
