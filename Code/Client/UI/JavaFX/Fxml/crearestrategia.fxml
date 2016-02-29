@@ -43,7 +43,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <VBox prefHeight="582.0" prefWidth="1352.0" style="-fx-background-color: #90CAF9;">
+                  <VBox id="strategiaVBox" fx:id="strategiaVBox" prefHeight="582.0" prefWidth="1352.0" style="-fx-background-color: #90CAF9;">
                      <children>
                         <Label prefHeight="65.0" prefWidth="1351.0" text="La tua Strategia:" textFill="WHITE">
                            <font>
