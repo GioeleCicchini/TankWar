@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 /**
  * Created by beniamino on 25/02/16.
  */
-public class ActionCreatorLabel extends Label implements ICustomLabel{
+public class ActionCreatorLabel extends Label implements ICreatorCustomLabel {
 
     private String idType;
     private String name;

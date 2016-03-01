@@ -1,8 +1,8 @@
 package Client.UI.JavaFX.View;
 
+import Client.UI.JavaFX.CustomWidget.ICreatorCustomLabel;
 import Client.UI.JavaFX.CustomWidget.ActionCreatorLabel;
 import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
-import Client.UI.JavaFX.CustomWidget.ICustomLabel;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
@@ -80,6 +80,7 @@ public class CreareStrategia implements Initializable{
             }
             prossimaCondAnnidata=true;//La prossima si anniderà a questa
 
+
         }
         if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ){ //TODO è bruttissimo
             System.out.println("Hey abbiamo un creator di azione");
@@ -122,8 +123,8 @@ public class CreareStrategia implements Initializable{
         CreareStrategiaHandler.getSingletonInstance().setCurrentPlayer(player);//TODO anche questo non va qua
         CreareStrategiaHandler.getSingletonInstance().iniziaNuovaStrategia();
 
-        List<ICustomLabel> condCLabels = LabelsMaker.getConditionLabels(ccc);
-        ICustomLabel currentCLabel;
+        List<ICreatorCustomLabel> condCLabels = LabelsMaker.getConditionLabels(ccc);
+        ICreatorCustomLabel currentCLabel;
         for (int i=0; i<condCLabels.size(); i++){
             condizioniCreatorVBox.getChildren().add((Node) condCLabels.get(i));
         }
@@ -137,8 +138,8 @@ public class CreareStrategia implements Initializable{
         }
         */
 
-        List <ICustomLabel> azioneCLabels = LabelsMaker.getActionLabes(cac);//Vorrei chiamasse lo stesso metodo di sopra
-        ICustomLabel currentALabel;
+        List <ICreatorCustomLabel> azioneCLabels = LabelsMaker.getActionLabes(cac);//Vorrei chiamasse lo stesso metodo di sopra
+        ICreatorCustomLabel currentALabel;
         for (int i=0; i<azioneCLabels.size(); i++){
             azioniCreatorVBox.getChildren().add((Node) azioneCLabels.get(i));
         }
