@@ -1,7 +1,8 @@
 package Client.UI.JavaFX.View;
 
-import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabelCreator;
 import Client.UI.JavaFX.CustomWidget.ICreatorCustomLabel;
+import Client.UI.JavaFX.CustomWidget.ActionCreatorLabel;
+import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
@@ -22,11 +23,12 @@ public class CreareStrategia implements Initializable{
 
     public Pane DropPaneTarget;
     public Label labelFeedback;
-    public GridPane conditionCreatorGrid;
-    public GridPane azioneCreatorGrid;
     public VBox condizioniCreatorVBox;
     public VBox azioniCreatorVBox;
     public VBox strategiaVBox;
+
+    private String ultimaCondizione;
+    private boolean prossimaCondAnnidata = false;
 
 
     public void targetDragOver(DragEvent event) {
@@ -58,13 +60,43 @@ public class CreareStrategia implements Initializable{
 
         System.out.println("Ho appena droppato qualcosa");
 
-        //TODO mettere qua il fatto che si scrive il pezzo nella strategia
-        ConditionCreatorLabelCreator labelDragged =(ConditionCreatorLabelCreator) event.getGestureSource();
-        strategiaVBox.getChildren().add(labelDragged);
+        System.out.println("Il nome della classe dell'oggetto draggato è " + event.getGestureSource().getClass().toString());
 
-        String idTypeCond = labelDragged.getIdType();
-        List<Integer> valori = new ArrayList<Integer>();
-        CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond,true,valori);
+        if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel")){ //TODO è bruttissimo
+            System.out.println("Hey abbiamo un creator di condizione");
+            //TODO mettere qua il fatto che si scrive il pezzo nella strategia
+            ConditionCreatorLabel labelDragged =(ConditionCreatorLabel) event.getGestureSource();
+            strategiaVBox.getChildren().add(labelDragged);
+
+            String idTypeCond = labelDragged.getIdType();
+            List<Integer> valori = new ArrayList<Integer>();
+            if (!prossimaCondAnnidata){
+                System.out.println("Cond non Annidata!");
+                CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond,true,valori);
+            }
+            else {
+                System.out.println("Cond Annidata");
+                CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond,ultimaCondizione,true,valori);
+            }
+            prossimaCondAnnidata=true;//La prossima si anniderà a questa
+            ultimaCondizione=idTypeCond;
+
+
+        }
+        if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ){ //TODO è bruttissimo
+            System.out.println("Hey abbiamo un creator di azione");
+            //TODO Mettere un feedback nella grafica
+            ActionCreatorLabel labelDragged =(ActionCreatorLabel) event.getGestureSource();
+            strategiaVBox.getChildren().add(labelDragged);
+            
+            String idTypeAz = labelDragged.getIdType();
+            List<Integer> valori = new ArrayList<>();
+            if (ultimaCondizione != null){
+                System.out.println("Sto appendendo l'azione ad una condizione già inserita");
+                CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz,ultimaCondizione,valori);
+            }
+        }
+        System.out.println("Mammeta");
 
         success = true;
 

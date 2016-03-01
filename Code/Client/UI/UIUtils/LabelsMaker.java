@@ -1,7 +1,7 @@
 package Client.UI.UIUtils;
 
-import Client.UI.JavaFX.CustomWidget.ActionCreatorLabelCreator;
-import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabelCreator;
+import Client.UI.JavaFX.CustomWidget.ActionCreatorLabel;
+import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
 import Client.UI.JavaFX.CustomWidget.ICreatorCustomLabel;
 import Shared.Domain.Creator.ICreator;
 import Shared.Domain.ICatalogo;
@@ -37,7 +37,7 @@ public class LabelsMaker {
             currentCreator = creators.get(id);
             String name = currentCreator.getName();
             String description = currentCreator.getDescription();
-            ICreatorCustomLabel myLabel = new ConditionCreatorLabelCreator(id,name,description);//Questa riga crea rigidità
+            ICreatorCustomLabel myLabel = new ConditionCreatorLabel(id,name,description);//Questa riga crea rigidità
             ((Label)myLabel).setText(currentCreator.getName());
             myLabel.setDescription(currentCreator.getDescription());
 
@@ -56,7 +56,7 @@ public class LabelsMaker {
             currentCreator = creators.get(id);
             String name = currentCreator.getName();
             String description = currentCreator.getDescription();
-            ICreatorCustomLabel myLabel = new ActionCreatorLabelCreator(id,name,description);//RIGIDITA'
+            ICreatorCustomLabel myLabel = new ActionCreatorLabel(id,name,description);//RIGIDITA'
             ((Label)myLabel).setText(currentCreator.getName());
             myLabel.setDescription(currentCreator.getDescription());
 
@@ -82,7 +82,7 @@ public class LabelsMaker {
         }
         Color color=Color.color(r,g,b);
         ((Label) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
-        //((ConditionCreatorLabelCreator) myLabel).setLayoutX(1000);
+        //((ConditionCreatorLabel) myLabel).setLayoutX(1000);
         ((Label) myLabel).setBorder(Border.EMPTY);
         ((Label) myLabel).setMinSize(300,35);
 
