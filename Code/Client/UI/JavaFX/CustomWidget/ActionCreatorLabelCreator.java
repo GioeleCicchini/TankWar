@@ -6,26 +6,26 @@ import javafx.scene.control.Label;
 /**
  * Created by beniamino on 25/02/16.
  */
-public class ActionCreatorLabel extends Label implements ICustomLabel{
+public class ActionCreatorLabelCreator extends Label implements ICreatorCustomLabel {
 
     private String idType;
     private String name;
     private String description;
 
-    public ActionCreatorLabel(String idTypeAz, String name, String description) {
+    public ActionCreatorLabelCreator(String idTypeAz, String name, String description) {
         this.idType = idTypeAz;
         this.name = name;
         this.description = description;
     }
 
-    public ActionCreatorLabel(String text, String idTypeAz, String name, String description) {
+    public ActionCreatorLabelCreator(String text, String idTypeAz, String name, String description) {
         super(text);
         this.idType = idTypeAz;
         this.name = name;
         this.description = description;
     }
 
-    public ActionCreatorLabel(String text, Node graphic, String idTypeAz, String name, String description) {
+    public ActionCreatorLabelCreator(String text, Node graphic, String idTypeAz, String name, String description) {
         super(text, graphic);
         this.idType = idTypeAz;
         this.name = name;

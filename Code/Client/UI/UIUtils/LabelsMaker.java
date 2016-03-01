@@ -1,8 +1,8 @@
 package Client.UI.UIUtils;
 
-import Client.UI.JavaFX.CustomWidget.ActionCreatorLabel;
-import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
-import Client.UI.JavaFX.CustomWidget.ICustomLabel;
+import Client.UI.JavaFX.CustomWidget.ActionCreatorLabelCreator;
+import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabelCreator;
+import Client.UI.JavaFX.CustomWidget.ICreatorCustomLabel;
 import Shared.Domain.Creator.ICreator;
 import Shared.Domain.ICatalogo;
 import javafx.event.EventHandler;
@@ -29,15 +29,15 @@ public class LabelsMaker {
 
     //TODO Il metodo seguente non è flessibile, ne vorrei uno unico per Condition e Action. Occorrono pattern?
 
-    public static List<ICustomLabel> getConditionLabels (ICatalogo catalogo){
-        List<ICustomLabel> customLabels = new ArrayList<>();
+    public static List<ICreatorCustomLabel> getConditionLabels (ICatalogo catalogo){
+        List<ICreatorCustomLabel> customLabels = new ArrayList<>();
         Map<String, ICreator> creators = catalogo.getCreators();
         ICreator currentCreator;
         for (String id: creators.keySet()) {
             currentCreator = creators.get(id);
             String name = currentCreator.getName();
             String description = currentCreator.getDescription();
-            ICustomLabel myLabel = new ConditionCreatorLabel(id,name,description);//Questa riga crea rigidità
+            ICreatorCustomLabel myLabel = new ConditionCreatorLabelCreator(id,name,description);//Questa riga crea rigidità
             ((Label)myLabel).setText(currentCreator.getName());
             myLabel.setDescription(currentCreator.getDescription());
 
@@ -47,8 +47,8 @@ public class LabelsMaker {
         return customLabels;
     }
 
-    public static List<ICustomLabel> getActionLabes (ICatalogo catalogo){
-        List<ICustomLabel> customLabels = new ArrayList<>();
+    public static List<ICreatorCustomLabel> getActionLabes (ICatalogo catalogo){
+        List<ICreatorCustomLabel> customLabels = new ArrayList<>();
         Map<String,ICreator> creators = catalogo.getCreators();
         ICreator currentCreator;
         for (String id :
@@ -56,7 +56,7 @@ public class LabelsMaker {
             currentCreator = creators.get(id);
             String name = currentCreator.getName();
             String description = currentCreator.getDescription();
-            ICustomLabel myLabel = new ActionCreatorLabel(id,name,description);//RIGIDITA'
+            ICreatorCustomLabel myLabel = new ActionCreatorLabelCreator(id,name,description);//RIGIDITA'
             ((Label)myLabel).setText(currentCreator.getName());
             myLabel.setDescription(currentCreator.getDescription());
 
@@ -66,7 +66,7 @@ public class LabelsMaker {
         return customLabels;
     }
 
-    private static void layoutizeLabel(ICustomLabel myLabel){
+    private static void layoutizeLabel(ICreatorCustomLabel myLabel){
         Random rand = new Random();
         float r = rand.nextFloat();
         while(r<0.5){
@@ -82,7 +82,7 @@ public class LabelsMaker {
         }
         Color color=Color.color(r,g,b);
         ((Label) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
-        //((ConditionCreatorLabel) myLabel).setLayoutX(1000);
+        //((ConditionCreatorLabelCreator) myLabel).setLayoutX(1000);
         ((Label) myLabel).setBorder(Border.EMPTY);
         ((Label) myLabel).setMinSize(300,35);
 
