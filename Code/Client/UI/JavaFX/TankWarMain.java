@@ -20,6 +20,8 @@ public class TankWarMain extends Application {
         primaryStage.show();
 
 
+        System.out.println("ciao");
+
     }
 
 

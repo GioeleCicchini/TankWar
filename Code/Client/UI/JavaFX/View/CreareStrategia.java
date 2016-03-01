@@ -72,14 +72,13 @@ public class CreareStrategia implements Initializable{
             List<Integer> valori = new ArrayList<Integer>();
             if (!prossimaCondAnnidata){
                 System.out.println("Cond non Annidata!");
-                CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond,true,valori);
+                ultimaCondizione= CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond,true,valori);
             }
             else {
                 System.out.println("Cond Annidata");
-                CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond,ultimaCondizione,true,valori);
+                ultimaCondizione=CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond,ultimaCondizione,true,valori);
             }
             prossimaCondAnnidata=true;//La prossima si anniderà a questa
-            ultimaCondizione=idTypeCond;
 
         }
         if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ){ //TODO è bruttissimo
@@ -93,6 +92,7 @@ public class CreareStrategia implements Initializable{
             if (ultimaCondizione != null){
                 System.out.println("Sto appendendo l'azione ad una condizione già inserita");
                 CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz,ultimaCondizione,valori);
+                prossimaCondAnnidata = false;
             }
         }
         System.out.println("Mammeta");
@@ -102,6 +102,7 @@ public class CreareStrategia implements Initializable{
         event.setDropCompleted(success);
 
         event.consume();
+        System.out.println("Ultima condizione: " + ultimaCondizione);
     }
 
     public void condDragDone(DragEvent event) {
