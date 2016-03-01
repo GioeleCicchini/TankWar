@@ -3,6 +3,7 @@ package Client.UI.UIUtils;
 import Client.UI.JavaFX.CustomWidget.ActionCreatorLabel;
 import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
 import Client.UI.JavaFX.CustomWidget.ICreatorCustomLabel;
+import Client.UI.JavaFX.CustomWidget.ICustomLabel;
 import Shared.Domain.Creator.ICreator;
 import Shared.Domain.ICatalogo;
 import javafx.event.EventHandler;
@@ -29,7 +30,7 @@ public class LabelsMaker {
 
     //TODO Il metodo seguente non è flessibile, ne vorrei uno unico per Condition e Action. Occorrono pattern?
 
-    public static List<ICreatorCustomLabel> getConditionLabels (ICatalogo catalogo){
+    public static List<ICreatorCustomLabel> getConditionCreatorLabels(ICatalogo catalogo){
         List<ICreatorCustomLabel> customLabels = new ArrayList<>();
         Map<String, ICreator> creators = catalogo.getCreators();
         ICreator currentCreator;
@@ -47,7 +48,7 @@ public class LabelsMaker {
         return customLabels;
     }
 
-    public static List<ICreatorCustomLabel> getActionLabes (ICatalogo catalogo){
+    public static List<ICreatorCustomLabel> getActionCreatorLabels(ICatalogo catalogo){
         List<ICreatorCustomLabel> customLabels = new ArrayList<>();
         Map<String,ICreator> creators = catalogo.getCreators();
         ICreator currentCreator;
@@ -104,6 +105,10 @@ public class LabelsMaker {
             }
         });
         ((Label)myLabel).setVisible(true);
+    }
+
+    public ICustomLabel getLabel(String name, String description, String idComponent) {
+
     }
 
 }

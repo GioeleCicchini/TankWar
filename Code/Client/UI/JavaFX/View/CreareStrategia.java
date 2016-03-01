@@ -123,7 +123,7 @@ public class CreareStrategia implements Initializable{
         CreareStrategiaHandler.getSingletonInstance().setCurrentPlayer(player);//TODO anche questo non va qua
         CreareStrategiaHandler.getSingletonInstance().iniziaNuovaStrategia();
 
-        List<ICreatorCustomLabel> condCLabels = LabelsMaker.getConditionLabels(ccc);
+        List<ICreatorCustomLabel> condCLabels = LabelsMaker.getConditionCreatorLabels(ccc);
         ICreatorCustomLabel currentCLabel;
         for (int i=0; i<condCLabels.size(); i++){
             condizioniCreatorVBox.getChildren().add((Node) condCLabels.get(i));
@@ -138,7 +138,7 @@ public class CreareStrategia implements Initializable{
         }
         */
 
-        List <ICreatorCustomLabel> azioneCLabels = LabelsMaker.getActionLabes(cac);//Vorrei chiamasse lo stesso metodo di sopra
+        List <ICreatorCustomLabel> azioneCLabels = LabelsMaker.getActionCreatorLabels(cac);//Vorrei chiamasse lo stesso metodo di sopra
         ICreatorCustomLabel currentALabel;
         for (int i=0; i<azioneCLabels.size(); i++){
             azioniCreatorVBox.getChildren().add((Node) azioneCLabels.get(i));

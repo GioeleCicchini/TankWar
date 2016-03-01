@@ -18,6 +18,11 @@ public class ConditionLabel extends Label implements ICustomLabel {
     }
 
     @Override
+    public ICustomLabel crea(String name, String description, String idCond) {
+        return new ConditionLabel(name,description,idCond);
+    }
+
+    @Override
     public String getIdComponent() {
         return this.idCond;
     }
