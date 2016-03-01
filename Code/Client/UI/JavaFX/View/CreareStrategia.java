@@ -9,6 +9,7 @@ import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
 import Shared.Domain.ICatalogo;
+import Shared.Domain.Player;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -68,7 +69,7 @@ public class CreareStrategia implements Initializable{
         strategiaVBox.getChildren().add(labelDragged);
 
         String idTypeCond = labelDragged.getIdType();
-        List<Integer> valori = new ArrayList<>();
+        List<Integer> valori = new ArrayList<Integer>();
         CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond,true,valori);
 
         success = true;
@@ -89,6 +90,11 @@ public class CreareStrategia implements Initializable{
 
         ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
         ICatalogo cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
+
+        //TODO sta qua solo provvisoriamente, verrà chiamato da un handler precedente
+        Player player = StartUpHandler.getSingletonInstance().getPlayer();
+        CreareStrategiaHandler.getSingletonInstance().setCurrentPlayer(player);//TODO anche questo non va qua
+        CreareStrategiaHandler.getSingletonInstance().iniziaNuovaStrategia();
 
         List<ICustomLabel> condCLabels = LabelsMaker.getConditionLabels(ccc);
         ICustomLabel currentCLabel;
