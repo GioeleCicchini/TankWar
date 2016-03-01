@@ -64,13 +64,24 @@ public class CreareStrategia implements Initializable{
 
         System.out.println("Ho appena droppato qualcosa");
 
-        //TODO mettere qua il fatto che si scrive il pezzo nella strategia
-        ConditionCreatorLabel labelDragged =(ConditionCreatorLabel) event.getGestureSource();
-        strategiaVBox.getChildren().add(labelDragged);
+        if (event.getGestureSource().getClass().toString() == "ConditionCreatorLabel"){ //Sta riga secondo me non funziona
+            System.out.println("Hey abbiamo un creator di condizione");
+            //TODO mettere qua il fatto che si scrive il pezzo nella strategia
+            ConditionCreatorLabel labelDragged =(ConditionCreatorLabel) event.getGestureSource();
+            strategiaVBox.getChildren().add(labelDragged);
 
-        String idTypeCond = labelDragged.getIdType();
-        List<Integer> valori = new ArrayList<Integer>();
-        CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond,true,valori);
+            String idTypeCond = labelDragged.getIdType();
+            List<Integer> valori = new ArrayList<Integer>();
+            CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond,true,valori);
+        }
+        if (event.getGestureSource().getClass().toString() == "ActionCreatorLabel"){ //Sta riga secondo me non funziona
+            System.out.println("Hey abbiamo un creator di azione");
+            //TODO Mettere un feedback nella grafica
+            ActionCreatorLabel labelDragged =(ActionCreatorLabel) event.getGestureSource();
+            strategiaVBox.getChildren().add(labelDragged);
+            
+            //Ci serve un riferimento all'ultima condizione inserita
+        }
 
         success = true;
 
