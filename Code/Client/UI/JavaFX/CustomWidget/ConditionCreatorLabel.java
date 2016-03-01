@@ -1,5 +1,6 @@
 package Client.UI.JavaFX.CustomWidget;
 
+import Client.UI.UIUtils.LabelsMaker;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 
@@ -29,6 +30,14 @@ public class ConditionCreatorLabel extends Label implements ICreatorCustomLabel 
         this.idType = idType;
         this.name = name;
         this.description = description;
+    }
+
+
+    @Override
+    public ICustomLabel makeComponent(String name, String description, String idCond) {
+        ConditionLabel conditionLabel = new ConditionLabel(name,description,idCond);
+        LabelsMaker.layoutizeLabel(conditionLabel);
+        return conditionLabel;
     }
 
     public String getIdType() {

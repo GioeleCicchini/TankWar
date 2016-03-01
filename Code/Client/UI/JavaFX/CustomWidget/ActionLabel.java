@@ -17,10 +17,6 @@ public class ActionLabel extends Label implements ICustomLabel {
         this.idAz = idAz;
     }
 
-    @Override
-    public ICustomLabel crea(String name, String description, String idAz) {
-        return new ActionLabel(name,description,idAz);
-    }
 
     @Override
     public String getIdComponent() {

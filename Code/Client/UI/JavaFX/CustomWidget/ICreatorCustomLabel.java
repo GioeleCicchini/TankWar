@@ -4,6 +4,8 @@ package Client.UI.JavaFX.CustomWidget;
  * Created by beniamino on 25/02/16.
  */
 public interface ICreatorCustomLabel {
+
+    public ICustomLabel makeComponent(String name, String description, String idComponent);
     public String getIdType();
     public void setIdType(String idType);
     public String getName();

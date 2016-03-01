@@ -42,7 +42,7 @@ public class LabelsMaker {
             ((Label)myLabel).setText(currentCreator.getName());
             myLabel.setDescription(currentCreator.getDescription());
 
-            layoutizeLabel(myLabel);
+            layoutizeLabelCreator(myLabel);
             customLabels.add(myLabel);
         }
         return customLabels;
@@ -61,13 +61,13 @@ public class LabelsMaker {
             ((Label)myLabel).setText(currentCreator.getName());
             myLabel.setDescription(currentCreator.getDescription());
 
-            layoutizeLabel(myLabel);
+            layoutizeLabelCreator(myLabel);
             customLabels.add(myLabel);
         }
         return customLabels;
     }
 
-    private static void layoutizeLabel(ICreatorCustomLabel myLabel){
+    private static void layoutizeLabelCreator(ICreatorCustomLabel myLabel){
         Random rand = new Random();
         float r = rand.nextFloat();
         while(r<0.5){
@@ -107,8 +107,32 @@ public class LabelsMaker {
         ((Label)myLabel).setVisible(true);
     }
 
-    public ICustomLabel getLabel(String name, String description, String idComponent) {
+    public static void layoutizeLabel(ICustomLabel myLabel){
+        Random rand = new Random();
+        float r = rand.nextFloat();
+        while(r<0.5){
+            r=rand.nextFloat();
+        }
+        float g = rand.nextFloat();
+        while(g<0.5){
+            g=rand.nextFloat();
+        }
+        float b = rand.nextFloat();
+        while(b<0.5){
+            b=rand.nextFloat();
+        }
+        Color color=Color.color(r,g,b);
+        ((Label) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
+        ((Label) myLabel).setBorder(Border.EMPTY);
+        ((Label) myLabel).setMinSize(300,35);
+        ((Label) myLabel).setText(myLabel.getName());
+        myLabel.setDescription(myLabel.getDescription());
 
+
+        ((Label) myLabel).setTextAlignment(TextAlignment.CENTER);
+        ((Label) myLabel).setFont(Font.font(20));
+
+        ((Label)myLabel).setVisible(true);
     }
 
 }

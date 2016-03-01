@@ -1,5 +1,6 @@
 package Client.UI.JavaFX.CustomWidget;
 
+import Client.UI.UIUtils.LabelsMaker;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 
@@ -30,6 +31,13 @@ public class ActionCreatorLabel extends Label implements ICreatorCustomLabel {
         this.idType = idTypeAz;
         this.name = name;
         this.description = description;
+    }
+
+    @Override
+    public ICustomLabel makeComponent(String name, String description, String idAz) {
+        ActionLabel actionLabel = new ActionLabel(name,description,idAz);
+        LabelsMaker.layoutizeLabel(actionLabel);
+        return actionLabel;
     }
 
     public String getIdType() {

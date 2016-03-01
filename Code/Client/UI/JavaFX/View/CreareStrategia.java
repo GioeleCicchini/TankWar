@@ -1,8 +1,6 @@
 package Client.UI.JavaFX.View;
 
-import Client.UI.JavaFX.CustomWidget.ICreatorCustomLabel;
-import Client.UI.JavaFX.CustomWidget.ActionCreatorLabel;
-import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
+import Client.UI.JavaFX.CustomWidget.*;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
@@ -66,7 +64,8 @@ public class CreareStrategia implements Initializable{
             System.out.println("Hey abbiamo un creator di condizione");
             //TODO mettere qua il fatto che si scrive il pezzo nella strategia
             ConditionCreatorLabel labelDragged =(ConditionCreatorLabel) event.getGestureSource();
-            strategiaVBox.getChildren().add(labelDragged);
+
+
 
             String idTypeCond = labelDragged.getIdType();
             List<Integer> valori = new ArrayList<Integer>();
@@ -79,14 +78,16 @@ public class CreareStrategia implements Initializable{
                 ultimaCondizione=CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond,ultimaCondizione,true,valori);
             }
             prossimaCondAnnidata=true;//La prossima si anniderà a questa
-
+            String nameLabel = labelDragged.getName();
+            String descriptionLabel = labelDragged.getDescription();
+            ICustomLabel conditionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,ultimaCondizione);
+            strategiaVBox.getChildren().add((Node)conditionLabel);
 
         }
         if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ){ //TODO è bruttissimo
             System.out.println("Hey abbiamo un creator di azione");
             //TODO Mettere un feedback nella grafica
             ActionCreatorLabel labelDragged =(ActionCreatorLabel) event.getGestureSource();
-            strategiaVBox.getChildren().add(labelDragged);
             
             String idTypeAz = labelDragged.getIdType();
             List<Integer> valori = new ArrayList<>();
@@ -95,6 +96,12 @@ public class CreareStrategia implements Initializable{
                 CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz,ultimaCondizione,valori);
                 prossimaCondAnnidata = false;
             }
+            String nameLabel = labelDragged.getName();
+            String descriptionLabel = labelDragged.getDescription();
+            ICustomLabel actionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,ultimaCondizione);
+            strategiaVBox.getChildren().add((Node)actionLabel);
+
+
         }
         System.out.println("Mammeta");
 
