@@ -168,8 +168,12 @@ public class Strategia implements Serializable {
 		IStrategiaComponent azione = (IStrategiaComponent) ((IAzioneCreator)az).doMakeAzione(idAz,valori);
 		boolean trovato = false;
 		IStrategiaComponent currentfoglia = null;
-		for (int i=0; i<padriFoglie.size() && !trovato; i++){
-			currentfoglia = padriFoglie.get(i).getChild();
+		for (int i=0; i<padriFoglie.size() && !trovato; i++) {
+			if (padriFoglie.get(i).getChild() != null) {
+				currentfoglia = padriFoglie.get(i).getChild();
+			} else {
+				currentfoglia = padriFoglie.get(i);
+			}
 			if (currentfoglia.getId().equals(idCond)){
 				trovato=true;
 				currentfoglia.addChild(azione);

@@ -95,11 +95,12 @@ public class CreareStrategia implements Initializable{
                 System.out.println("Sto appendendo l'azione ad una condizione già inserita");
                 CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz,ultimaCondizione,valori);
                 prossimaCondAnnidata = false;
+                String nameLabel = labelDragged.getName();
+                String descriptionLabel = labelDragged.getDescription();
+                ICustomLabel actionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,ultimaCondizione);
+                strategiaVBox.getChildren().add((Node)actionLabel);
+                ultimaCondizione = null;
             }
-            String nameLabel = labelDragged.getName();
-            String descriptionLabel = labelDragged.getDescription();
-            ICustomLabel actionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,ultimaCondizione);
-            strategiaVBox.getChildren().add((Node)actionLabel);
 
 
         }
