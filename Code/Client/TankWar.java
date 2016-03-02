@@ -69,7 +69,7 @@ public class TankWar {
             handler.iniziaNuovaStrategia();
             handler.inserisciNomeStrategia("Prima Strategia");
             String idcondpadre = handler.scegliCondizione("000",true,new ArrayList<Integer>());
-           String idAnnidata= handler.scegliCondizioneAnnidata("001",idcondpadre,true,new ArrayList<Integer>());
+            String idAnnidata= handler.scegliCondizioneAnnidata("001",idcondpadre,true,new ArrayList<Integer>());
             handler.associaAzione("001",idAnnidata,new ArrayList<Integer>());
 
             DTO dto = new DTO();

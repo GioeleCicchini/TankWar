@@ -43,7 +43,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <VBox id="strategiaVBox" fx:id="strategiaVBox" prefHeight="582.0" prefWidth="1352.0" style="-fx-background-color: #90CAF9;">
+                  <VBox prefHeight="527.0" prefWidth="1352.0" style="-fx-background-color: #90CAF9;">
                      <children>
                         <Label prefHeight="65.0" prefWidth="1351.0" text="La tua Strategia:" textFill="WHITE">
                            <font>
@@ -53,8 +53,23 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
+                        <VBox id="strategiaVBox" fx:id="strategiaVBox" prefHeight="455.0" prefWidth="1352.0" />
                      </children>
                   </VBox>
+                  <HBox prefHeight="78.0" prefWidth="1352.0">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#rimuoviComponente" prefHeight="70.0" prefWidth="677.0" text="Rimuovi ultimo componente">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="675.0" text="Conferma Strategia" onMouseClicked="#terminaStrategia">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
             <TabPane prefHeight="765.0" prefWidth="937.0" style="-fx-background-color: #9cf3ff;" tabClosingPolicy="UNAVAILABLE">

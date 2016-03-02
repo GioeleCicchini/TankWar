@@ -6,6 +6,7 @@ import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
 import Shared.Domain.ICatalogo;
 import Shared.Domain.Player;
+import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -14,6 +15,7 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -91,7 +93,7 @@ public class CreareStrategia implements Initializable{
             
             String idTypeAz = labelDragged.getIdType();
             List<Integer> valori = new ArrayList<>();
-            if (ultimaCondizione != null){
+            if (ultimaCondizione != null && strategiaVBox.getChildren().size() != 0){
                 System.out.println("Sto appendendo l'azione ad una condizione già inserita");
                 CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz,ultimaCondizione,valori);
                 prossimaCondAnnidata = false;
@@ -160,5 +162,27 @@ public class CreareStrategia implements Initializable{
             }
         }
         */
+    }
+
+    public void rimuoviComponente(MouseEvent event) {
+
+        Integer lunghezza  = strategiaVBox.getChildren().size();
+        if (lunghezza != 0) {
+            ICustomLabel label = (ICustomLabel)strategiaVBox.getChildren().get(lunghezza-1);
+            String idComponent = label.getIdComponent();
+            CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idComponent);
+            strategiaVBox.getChildren().remove(label);
+            lunghezza = lunghezza - 1;
+            Integer indexUltimo = lunghezza-1;
+            if (lunghezza != 0) {
+                ultimaCondizione = ((ICustomLabel)strategiaVBox.getChildren().get(indexUltimo)).getIdComponent();
+            } else {
+                ultimaCondizione = null;
+            }
+        }
+    }
+
+    public void terminaStrategia(MouseEvent event) throws IOException {
+        CreareStrategiaHandler.getSingletonInstance().terminaStrategia();
     }
 }

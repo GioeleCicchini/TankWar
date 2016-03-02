@@ -3,7 +3,11 @@ package Shared.Domain.Controllers;
 import Shared.Domain.*;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.ICreator;
+import Shared.Util.DTO;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,8 +93,28 @@ public class CreareStrategiaHandler {
 		this.strategiaCorrente.rimuoviComponente(id);
 	}
 
-	public void terminaStrategia() {
+	public void terminaStrategia() throws IOException {
 		this.strategiaCorrente.setComplete(true);
+		Socket clientSocket = new Socket("localhost",6789);
+
+
+		try {
+
+			ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
+
+			this.currentPlayer.setNome("Gioele");
+			this.inserisciNomeStrategia("Prima Strategia");
+			DTO dto = new DTO();
+			dto.setFunzione("Registra");
+			dto.aggiungiOggettoPersistente(this.currentPlayer);
+			objectOutput.writeObject(dto);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		finally {
+			clientSocket.close();
+			System.out.println("Inviato al server");
+		}
 	}
 
 
