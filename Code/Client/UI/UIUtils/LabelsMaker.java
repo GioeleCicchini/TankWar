@@ -41,8 +41,10 @@ public class LabelsMaker {
             ICreatorCustomLabel myLabel = new ConditionCreatorLabel(id,name,description);//Questa riga crea rigidità
             ((Label)myLabel).setText(currentCreator.getName());
             myLabel.setDescription(currentCreator.getDescription());
-
-            layoutizeLabelCreator(myLabel);
+            double r = 0.753;
+            double g = 0.902;
+            double b = 0.514;
+            layoutizeLabelCreator(myLabel, r,g,b);
             customLabels.add(myLabel);
         }
         return customLabels;
@@ -60,15 +62,17 @@ public class LabelsMaker {
             ICreatorCustomLabel myLabel = new ActionCreatorLabel(id,name,description);//RIGIDITA'
             ((Label)myLabel).setText(currentCreator.getName());
             myLabel.setDescription(currentCreator.getDescription());
-
-            layoutizeLabelCreator(myLabel);
+            double r = 0.012;
+            double g = 0.61;
+            double b = 0.90;
+            layoutizeLabelCreator(myLabel,r,g,b);
             customLabels.add(myLabel);
         }
         return customLabels;
     }
 
-    private static void layoutizeLabelCreator(ICreatorCustomLabel myLabel){
-        Random rand = new Random();
+    private static void layoutizeLabelCreator(ICreatorCustomLabel myLabel, double r,double g, double b){
+        /*Random rand = new Random();
         float r = rand.nextFloat();
         while(r<0.5){
             r=rand.nextFloat();
@@ -80,11 +84,11 @@ public class LabelsMaker {
         float b = rand.nextFloat();
         while(b<0.5){
             b=rand.nextFloat();
-        }
+        }*/
         Color color=Color.color(r,g,b);
         ((Label) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
         //((ConditionCreatorLabel) myLabel).setLayoutX(1000);
-        ((Label) myLabel).setBorder(Border.EMPTY);
+        ((Label) myLabel).setStyle("-fx-border-color: white;");
         ((Label) myLabel).setMinSize(300,35);
 
 

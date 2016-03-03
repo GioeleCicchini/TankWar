@@ -188,7 +188,9 @@ public class CreareStrategia implements Initializable{
     }
 
     public void terminaStrategia(MouseEvent event) throws IOException {
-        CreareStrategiaHandler.getSingletonInstance().terminaStrategia();
+        CreareStrategiaHandler creareStrategiaHandler = CreareStrategiaHandler.getSingletonInstance();
+        creareStrategiaHandler.inserisciNomeStrategia(nomeStrategia.getText());
+        creareStrategiaHandler.terminaStrategia();
     }
 
     public void inserisciNomeStrategia(Event event) {

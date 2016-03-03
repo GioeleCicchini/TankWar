@@ -55,7 +55,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <TextArea id="nomeStrategia" fx:id="nomeStrategia" focusTraversable="false" onKeyReleased="#inserisciNomeStrategia" prefHeight="47.0" prefWidth="212.0" />
+                              <TextArea id="nomeStrategia" fx:id="nomeStrategia" focusTraversable="false" prefHeight="47.0" prefWidth="212.0" />
                            </children>
                         </HBox>
                         <VBox id="strategiaVBox" fx:id="strategiaVBox" prefHeight="455.0" prefWidth="1352.0" />
