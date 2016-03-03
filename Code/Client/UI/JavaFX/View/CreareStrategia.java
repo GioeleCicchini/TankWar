@@ -51,13 +51,6 @@ public class CreareStrategia implements Initializable{
 
     public void targetDragEntered(DragEvent event) {
         System.out.println("onDragEntered");
-
-        if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()) {
-
-            DropPaneTarget.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        }
-
         event.consume();
     }
 
