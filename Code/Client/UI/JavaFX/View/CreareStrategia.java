@@ -14,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -30,6 +31,7 @@ public class CreareStrategia implements Initializable{
     public VBox azioniCreatorVBox;
     public VBox strategiaVBox;
     public TextArea nomeStrategia;
+    public ToggleButton toggleButton;
     private int indentazione;
 
     private String ultimaCondizione;
@@ -202,5 +204,14 @@ public class CreareStrategia implements Initializable{
         String nome = nomeStrategia.getText();
         CreareStrategiaHandler.getSingletonInstance().inserisciNomeStrategia(nome);
         System.out.println(nome);
+    }
+
+    public void clickToggle(Event event) {
+        if (toggleButton.isSelected()){
+            toggleButton.setText("Premi per le NON negate");
+        }
+        else {
+            toggleButton.setText("Premi per le negate");
+        }
     }
 }
