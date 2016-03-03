@@ -1,5 +1,8 @@
 package Client.UI.JavaFX.View;
 
+import Shared.Domain.Controllers.CreareStrategiaHandler;
+import Shared.Domain.Controllers.StartUpHandler;
+import Shared.Domain.Player;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,7 +23,10 @@ public class Inizio implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        //TODO sta qua solo provvisoriamente, verrà chiamato da un handler precedente
+        Player player = StartUpHandler.getSingletonInstance().getPlayer();
+        CreareStrategiaHandler.getSingletonInstance().setCurrentPlayer(player);//TODO anche questo non va qua
+        CreareStrategiaHandler.getSingletonInstance().iniziaNuovaStrategia();
     }
 
     public void startDemo(Event event) {

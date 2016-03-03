@@ -50,13 +50,6 @@ public class CreareStrategia implements Initializable{
 
     public void targetDragEntered(DragEvent event) {
         System.out.println("onDragEntered");
-
-        if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()) {
-
-            DropPaneTarget.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        }
-
         event.consume();
     }
 
@@ -148,11 +141,6 @@ public class CreareStrategia implements Initializable{
 
         ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
         ICatalogo cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
-
-        //TODO sta qua solo provvisoriamente, verrà chiamato da un handler precedente
-        Player player = StartUpHandler.getSingletonInstance().getPlayer();
-        CreareStrategiaHandler.getSingletonInstance().setCurrentPlayer(player);//TODO anche questo non va qua
-        CreareStrategiaHandler.getSingletonInstance().iniziaNuovaStrategia();
 
         List<ICreatorCustomLabel> condCLabels = LabelsMaker.getConditionCreatorLabels(ccc);
         ICreatorCustomLabel currentCLabel;
