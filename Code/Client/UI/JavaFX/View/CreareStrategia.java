@@ -30,6 +30,7 @@ public class CreareStrategia implements Initializable{
     public VBox azioniCreatorVBox;
     public VBox strategiaVBox;
     public TextArea nomeStrategia;
+    private int indentazione;
 
     private String ultimaCondizione;
     private boolean prossimaCondAnnidata = false;
@@ -41,6 +42,10 @@ public class CreareStrategia implements Initializable{
         if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
+
+
+
+
         event.consume();
     }
 
@@ -56,8 +61,11 @@ public class CreareStrategia implements Initializable{
         event.consume();
     }
 
+
+
     public void targetDragDropped(DragEvent event) {
         System.out.println("onDragDropped");
+
 
         Dragboard db = event.getDragboard();
         boolean success = false;
@@ -82,11 +90,12 @@ public class CreareStrategia implements Initializable{
             else {
                 System.out.println("Cond Annidata");
                 ultimaCondizione=CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond,ultimaCondizione,true,valori);
+                indentazione = indentazione +1;
             }
             prossimaCondAnnidata=true;//La prossima si anniderà a questa
             String nameLabel = labelDragged.getName();
             String descriptionLabel = labelDragged.getDescription();
-            ICustomLabel conditionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,ultimaCondizione);
+            HBox conditionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,ultimaCondizione,indentazione);
             strategiaVBox.getChildren().add((Node)conditionLabel);
 
         }
@@ -98,14 +107,17 @@ public class CreareStrategia implements Initializable{
             String idTypeAz = labelDragged.getIdType();
             List<Integer> valori = new ArrayList<>();
             if (ultimaCondizione != null && strategiaVBox.getChildren().size() != 0){
+                indentazione = indentazione +1 ;
                 System.out.println("Sto appendendo l'azione ad una condizione già inserita");
                 CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz,ultimaCondizione,valori);
                 prossimaCondAnnidata = false;
                 String nameLabel = labelDragged.getName();
                 String descriptionLabel = labelDragged.getDescription();
-                ICustomLabel actionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,ultimaCondizione);
+                HBox actionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,ultimaCondizione,indentazione);
                 strategiaVBox.getChildren().add((Node)actionLabel);
+
                 ultimaCondizione = null;
+                indentazione = 0;
             }
 
 
@@ -173,16 +185,23 @@ public class CreareStrategia implements Initializable{
 
         Integer lunghezza  = strategiaVBox.getChildren().size();
         if (lunghezza != 0) {
-            ICustomLabel label = (ICustomLabel)strategiaVBox.getChildren().get(lunghezza-1);
+            HBox riga = (HBox)strategiaVBox.getChildren().get(lunghezza-1);
+            ICustomLabel label= (ICustomLabel)riga.getChildren().get(riga.getChildren().size()-1);
             String idComponent = label.getIdComponent();
             CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idComponent);
-            strategiaVBox.getChildren().remove(label);
+            strategiaVBox.getChildren().remove(riga);
+
             lunghezza = lunghezza - 1;
             Integer indexUltimo = lunghezza-1;
             if (lunghezza != 0) {
+                HBox ultimariga = (HBox)strategiaVBox.getChildren().get(indexUltimo);
+                ICustomLabel ultima= (ICustomLabel)(riga.getChildren().get(ultimariga.getChildren().size()-1));
+                ultimaCondizione = ultima.getIdComponent();
                 ultimaCondizione = ((ICustomLabel)strategiaVBox.getChildren().get(indexUltimo)).getIdComponent();
+                indentazione = indentazione -1 ;
             } else {
                 ultimaCondizione = null;
+                indentazione = 0;
             }
         }
     }

@@ -1,8 +1,11 @@
 package Client.UI.JavaFX.CustomWidget;
 
 import Client.UI.UIUtils.LabelsMaker;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 
 /**
  * Created by beniamino on 25/02/16.
@@ -34,10 +37,20 @@ public class ActionCreatorLabel extends Label implements ICreatorCustomLabel {
     }
 
     @Override
-    public ICustomLabel makeComponent(String name, String description, String idAz) {
+    public HBox makeComponent(String name, String description, String idAz, int indent) {
         ActionLabel actionLabel = new ActionLabel(name,description,idAz);
+        actionLabel.setPadding(new Insets(0,0,0,20));
+        HBox indentazione =  new HBox();
+        int i;
+        for(i=0;i<indent; i=i+1) {
+            Label space = new Label();
+            space.setMinWidth(50);
+            indentazione.getChildren().add(space);
+        }
         LabelsMaker.layoutizeLabel(actionLabel);
-        return actionLabel;
+        indentazione.getChildren().add(actionLabel);
+        return indentazione;
+
     }
 
     public String getIdType() {
