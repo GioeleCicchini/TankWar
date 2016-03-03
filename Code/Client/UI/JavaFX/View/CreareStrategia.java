@@ -1,13 +1,12 @@
 package Client.UI.JavaFX.View;
 
 import Client.UI.JavaFX.CustomWidget.*;
+import Client.UI.UIUtils.HBoxMaker;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
 import Shared.Domain.ICatalogo;
 import Shared.Domain.Player;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -90,8 +89,11 @@ public class CreareStrategia implements Initializable{
             prossimaCondAnnidata=true;//La prossima si anniderà a questa
             String nameLabel = labelDragged.getName();
             String descriptionLabel = labelDragged.getDescription();
-            HBox conditionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,ultimaCondizione,indentazione);
-            strategiaVBox.getChildren().add((Node)conditionLabel);
+            Color colore = labelDragged.getColor();
+            ICustomLabel conditionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,colore,ultimaCondizione);
+            HBox elemento = HBoxMaker.crea(indentazione);
+            elemento.getChildren().add((Label)conditionLabel);
+            strategiaVBox.getChildren().add(elemento);
 
         }
         if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ){ //TODO è bruttissimo
@@ -108,8 +110,11 @@ public class CreareStrategia implements Initializable{
                 prossimaCondAnnidata = false;
                 String nameLabel = labelDragged.getName();
                 String descriptionLabel = labelDragged.getDescription();
-                HBox actionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,ultimaCondizione,indentazione);
-                strategiaVBox.getChildren().add((Node)actionLabel);
+                Color colore = labelDragged.getColor();
+                ICustomLabel actionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,colore,ultimaCondizione);
+                HBox elemento = HBoxMaker.crea(indentazione);
+                elemento.getChildren().add((Label)actionLabel);
+                strategiaVBox.getChildren().add(elemento);
 
                 ultimaCondizione = null;
                 indentazione = 0;
@@ -182,11 +187,17 @@ public class CreareStrategia implements Initializable{
             strategiaVBox.getChildren().remove(riga);
 
             lunghezza = lunghezza - 1;
-            Integer indexUltimo = lunghezza-1;
             if (lunghezza != 0) {
+                indentazione = indentazione -1 ;
                 ICustomLabel ultima= (ICustomLabel)(riga.getChildren().get(riga.getChildren().size()-1));
                 ultimaCondizione = ultima.getIdComponent();
-                indentazione = indentazione -1 ;
+                if (indentazione == -1) {
+                    indentazione = 0;
+                    ultimaCondizione = null;
+                    prossimaCondAnnidata = false;
+                    System.out.println("Ci sono");
+
+                }
             } else {
                 ultimaCondizione = null;
                 indentazione = 0;
