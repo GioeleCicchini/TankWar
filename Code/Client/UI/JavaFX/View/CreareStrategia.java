@@ -6,11 +6,14 @@ import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
 import Shared.Domain.ICatalogo;
 import Shared.Domain.Player;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -26,6 +29,7 @@ public class CreareStrategia implements Initializable{
     public VBox condizioniCreatorVBox;
     public VBox azioniCreatorVBox;
     public VBox strategiaVBox;
+    public TextArea nomeStrategia;
 
     private String ultimaCondizione;
     private boolean prossimaCondAnnidata = false;
@@ -162,6 +166,7 @@ public class CreareStrategia implements Initializable{
             }
         }
         */
+
     }
 
     public void rimuoviComponente(MouseEvent event) {
@@ -184,5 +189,11 @@ public class CreareStrategia implements Initializable{
 
     public void terminaStrategia(MouseEvent event) throws IOException {
         CreareStrategiaHandler.getSingletonInstance().terminaStrategia();
+    }
+
+    public void inserisciNomeStrategia(Event event) {
+        String nome = nomeStrategia.getText();
+        CreareStrategiaHandler.getSingletonInstance().inserisciNomeStrategia(nome);
+        System.out.println(nome);
     }
 }

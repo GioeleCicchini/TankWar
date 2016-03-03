@@ -103,7 +103,6 @@ public class CreareStrategiaHandler {
 			ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
 
 			this.currentPlayer.setNome("Gioele");
-			this.inserisciNomeStrategia("Prima Strategia");
 			DTO dto = new DTO();
 			dto.setFunzione("Registra");
 			dto.aggiungiOggettoPersistente(this.currentPlayer);

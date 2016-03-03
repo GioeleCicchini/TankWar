@@ -45,14 +45,19 @@
                   </GridPane>
                   <VBox prefHeight="527.0" prefWidth="1352.0" style="-fx-background-color: #90CAF9;">
                      <children>
-                        <Label prefHeight="65.0" prefWidth="1351.0" text="La tua Strategia:" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
+                        <HBox prefHeight="62.0" prefWidth="1352.0">
+                           <children>
+                              <Label prefHeight="56.0" prefWidth="253.0" text="La tua Strategia:" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <TextArea id="nomeStrategia" fx:id="nomeStrategia" focusTraversable="false" onKeyReleased="#inserisciNomeStrategia" prefHeight="47.0" prefWidth="212.0" />
+                           </children>
+                        </HBox>
                         <VBox id="strategiaVBox" fx:id="strategiaVBox" prefHeight="455.0" prefWidth="1352.0" />
                      </children>
                   </VBox>
@@ -63,7 +68,7 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="675.0" text="Conferma Strategia" onMouseClicked="#terminaStrategia">
+                        <Button mnemonicParsing="false" onMouseClicked="#terminaStrategia" prefHeight="70.0" prefWidth="675.0" text="Conferma Strategia">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
