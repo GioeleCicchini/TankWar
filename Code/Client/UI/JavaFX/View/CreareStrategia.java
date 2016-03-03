@@ -197,7 +197,6 @@ public class CreareStrategia implements Initializable{
                 HBox ultimariga = (HBox)strategiaVBox.getChildren().get(indexUltimo);
                 ICustomLabel ultima= (ICustomLabel)(riga.getChildren().get(ultimariga.getChildren().size()-1));
                 ultimaCondizione = ultima.getIdComponent();
-                ultimaCondizione = ((ICustomLabel)strategiaVBox.getChildren().get(indexUltimo)).getIdComponent();
                 indentazione = indentazione -1 ;
             } else {
                 ultimaCondizione = null;
