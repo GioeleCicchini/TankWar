@@ -18,7 +18,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" prefHeight="427.0" prefWidth="767.0" text="Fai partire Demo di Creare Stretegia!" onMouseClicked="#startDemo" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Button fx:id="startButton" mnemonicParsing="false" prefHeight="427.0" prefWidth="767.0" text="Fai partire Demo di Creare Stretegia!" onMouseClicked="#startDemo" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="34.0" />
          </font>
