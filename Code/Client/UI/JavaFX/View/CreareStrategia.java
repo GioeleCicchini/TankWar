@@ -137,11 +137,6 @@ public class CreareStrategia implements Initializable{
         ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
         ICatalogo cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
 
-        //TODO sta qua solo provvisoriamente, verrà chiamato da un handler precedente
-        Player player = StartUpHandler.getSingletonInstance().getPlayer();
-        CreareStrategiaHandler.getSingletonInstance().setCurrentPlayer(player);//TODO anche questo non va qua
-        CreareStrategiaHandler.getSingletonInstance().iniziaNuovaStrategia();
-
         List<ICreatorCustomLabel> condCLabels = LabelsMaker.getConditionCreatorLabels(ccc);
         ICreatorCustomLabel currentCLabel;
         for (int i=0; i<condCLabels.size(); i++){
