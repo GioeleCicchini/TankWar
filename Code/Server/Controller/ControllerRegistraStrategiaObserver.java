@@ -50,7 +50,7 @@ public class ControllerRegistraStrategiaObserver implements Observer {
 
             }
 
-            System.out.println("Registro una strategiia al player");
+            System.out.println("Registro una strategia al player");
 
 
 

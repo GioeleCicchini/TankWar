@@ -76,12 +76,12 @@
                                  <children>
                                     <VBox prefHeight="728.0" prefWidth="779.0">
                                        <children>
+                                          <VBox id="condizioniCreatorVBox" fx:id="condizioniCreatorVBox" prefHeight="664.0" prefWidth="779.0" style="-fx-background-color: #64B5F6;" />
                                           <ToggleButton fx:id="toggleButton" mnemonicParsing="false" onMouseClicked="#clickToggle" prefHeight="76.0" prefWidth="778.0" text="Premi per le negate">
                                              <font>
                                                 <Font name="System Bold" size="24.0" />
                                              </font>
                                           </ToggleButton>
-                                          <VBox id="condizioniCreatorVBox" fx:id="condizioniCreatorVBox" prefHeight="664.0" prefWidth="779.0" style="-fx-background-color: #64B5F6;" />
                                        </children>
                                     </VBox>
                                  </children>
