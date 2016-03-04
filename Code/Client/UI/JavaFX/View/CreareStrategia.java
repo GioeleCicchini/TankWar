@@ -76,22 +76,22 @@ public class CreareStrategia implements Initializable{
 
             String idTypeCond = labelDragged.getIdType();
             List<Integer> valori = new ArrayList<Integer>();
+            if (toggleButton.isSelected()) {
+                vera = false;
+            }
             if (!prossimaCondAnnidata){
                 System.out.println("Cond non Annidata!");
-                ultimaCondizione= CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond,true,valori);
+                ultimaCondizione= CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond,vera,valori);
             }
             else {
                 System.out.println("Cond Annidata");
-                ultimaCondizione=CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond,ultimaCondizione,true,valori);
+                ultimaCondizione=CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond,ultimaCondizione,vera,valori);
                 indentazione = indentazione +1;
             }
             prossimaCondAnnidata=true;//La prossima si anniderà a questa
             String nameLabel = labelDragged.getName();
             String descriptionLabel = labelDragged.getDescription();
             Color colore = labelDragged.getColor();
-            if (toggleButton.isSelected()) {
-                vera = false;
-            }
             ICustomLabel conditionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,colore,ultimaCondizione,vera);
             HBox elemento = HBoxMaker.crea(indentazione);
             elemento.getChildren().add((Label)conditionLabel);
