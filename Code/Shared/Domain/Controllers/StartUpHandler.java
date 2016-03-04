@@ -31,6 +31,7 @@ public class StartUpHandler {
 
     private StartUpHandler() {
         this.player=new Player();
+        this.player.setNome("Gioele");
         this.catalogoCondCreator=new CatalogoCondizioneCreator();
         this.catalogoAzCreator=new CatalogoAzioneCreator();
     }

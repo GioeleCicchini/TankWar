@@ -96,9 +96,8 @@ public class CreareStrategiaHandler {
 
 		ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
 		DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
-		this.currentPlayer.setNome("Gioele");
 
-		service.Invia(dtoMaker.getPlayerDTO());
+		service.Invia(dtoMaker.getStrategiaDTO());
 
 	}
 
