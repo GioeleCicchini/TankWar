@@ -2,16 +2,14 @@ package Server;
 
 import Server.Controller.ControllerFacade;
 import Server.Controller.ControllerPrelevaStrategiaObserver;
-import Server.Controller.ControllerRegistraStrategiaObserver;
-
-import java.io.IOException;
+import Server.Controller.ControllerRegistraPlayerObserver;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
         ControllerPrelevaStrategiaObserver prelevaStrategiaObserver = new ControllerPrelevaStrategiaObserver();
-        ControllerRegistraStrategiaObserver registraStrategiaObserver = new ControllerRegistraStrategiaObserver();
+        ControllerRegistraPlayerObserver registraStrategiaObserver = new ControllerRegistraPlayerObserver();
 
         ControllerFacade controllerFacade = new ControllerFacade();
         ConnectionListner entrataServer = new ConnectionListner();

@@ -39,18 +39,6 @@ public class TankWar {
         try{
 
             ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
-       /*     CatalogoCondizioneCreator cc = CatalogoCondizioneCreator.getSingletonInstance();
-           ICondizioneCreator stampino = cc.getCondizioneDefaultCreator();
-            Strategia strategia = new Strategia(stampino);
-
-            strategia.setNome("ciao beniamino sono passato al server");
-            // creo una condizione
-
-            NemicoAvantiCondizioneCreator condizione = NemicoAvantiCondizioneCreator.getSingletonInstance();
-
-            String idCondPadre = strategia.aggiungiCondizione(condizione,new ArrayList<>());
-            strategia.aggiungiCondizioneAnnidata(condizione,idCondPadre,new ArrayList<>());
-*/
 
 
             ICatalogo catalogoCondizioneCreator = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();

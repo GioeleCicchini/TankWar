@@ -1,14 +1,12 @@
 package Shared.Domain.Controllers;
 
 import Shared.Domain.*;
-import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.ICreator;
+import Shared.TecnicalService.ConcreteRemoteService;
 import Shared.Util.DTO;
+import Shared.Util.DTOMaker;
 
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CreareStrategiaHandler {
@@ -95,25 +93,13 @@ public class CreareStrategiaHandler {
 
 	public void terminaStrategia() throws IOException {
 		this.strategiaCorrente.setComplete(true);
-		Socket clientSocket = new Socket("localhost",6789);
 
+		ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
+		DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
+		this.currentPlayer.setNome("Gioele");
 
-		try {
+		service.Invia(dtoMaker.getPlayerDTO());
 
-			ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
-
-			this.currentPlayer.setNome("Gioele");
-			DTO dto = new DTO();
-			dto.setFunzione("Registra");
-			dto.aggiungiOggettoPersistente(this.currentPlayer);
-			objectOutput.writeObject(dto);
-		} catch (Exception e){
-			e.printStackTrace();
-		}
-		finally {
-			clientSocket.close();
-			System.out.println("Inviato al server");
-		}
 	}
 
 
