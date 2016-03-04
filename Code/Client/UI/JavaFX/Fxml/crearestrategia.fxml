@@ -66,22 +66,22 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="759.0" prefWidth="778.0">
+            <VBox prefHeight="0.0" prefWidth="778.0">
                <children>
-                  <TabPane prefHeight="760.0" prefWidth="778.0" style="-fx-background-color: #9cf3ff;" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane prefHeight="937.0" prefWidth="778.0" style="-fx-background-color: #9cf3ff;" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="Condizioni">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="755.0" prefWidth="778.0">
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="840.0" prefWidth="778.0">
                                  <children>
                                     <VBox prefHeight="728.0" prefWidth="779.0">
                                        <children>
-                                          <VBox id="condizioniCreatorVBox" fx:id="condizioniCreatorVBox" prefHeight="664.0" prefWidth="779.0" style="-fx-background-color: #64B5F6;" />
-                                          <ToggleButton fx:id="toggleButton" mnemonicParsing="false" onMouseClicked="#clickToggle" prefHeight="78.0" prefWidth="778.0" text="Premi per le negate">
+                                          <ToggleButton fx:id="toggleButton" mnemonicParsing="false" onMouseClicked="#clickToggle" prefHeight="76.0" prefWidth="778.0" text="Premi per le negate">
                                              <font>
                                                 <Font name="System Bold" size="24.0" />
                                              </font>
                                           </ToggleButton>
+                                          <VBox id="condizioniCreatorVBox" fx:id="condizioniCreatorVBox" prefHeight="664.0" prefWidth="779.0" style="-fx-background-color: #64B5F6;" />
                                        </children>
                                     </VBox>
                                  </children>
