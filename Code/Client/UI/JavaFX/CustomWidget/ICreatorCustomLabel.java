@@ -8,8 +8,8 @@ import javafx.scene.paint.Color;
  * Created by beniamino on 25/02/16.
  */
 public interface ICreatorCustomLabel {
-
-    public ICustomLabel makeComponent(String name, String description, Color color, String idComponent);
+    //TODO Qui le classi figlie implementano entrambe questo metodo ma alle azioni non interessa assolutamente il parametro vera
+    public ICustomLabel makeComponent(String name, String description, Color color, String idComponent, boolean vera);
     public String getIdType();
     public void setIdType(String idType);
     public String getName();

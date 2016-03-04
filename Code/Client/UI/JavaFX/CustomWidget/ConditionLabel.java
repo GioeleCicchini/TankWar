@@ -10,11 +10,13 @@ public class ConditionLabel extends Label implements ICustomLabel {
     private String name;
     private String description;
     private String idCond;
+    private boolean vera;
 
-    public ConditionLabel(String name, String description, String idCond) {
+    public ConditionLabel(String name, String description, String idCond, boolean vera) {
         this.name = name;
         this.description = description;
         this.idCond = idCond;
+        this.vera = vera;
     }
 
 
@@ -47,4 +49,14 @@ public class ConditionLabel extends Label implements ICustomLabel {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public boolean getVera() {
+        return this.vera;
+    }
+
+    public void setVera(boolean vera) {
+        this.vera = vera;
+    }
+
+
 }
