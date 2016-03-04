@@ -30,6 +30,7 @@ public class CreareStrategia implements Initializable{
     public TextArea nomeStrategia;
     public ToggleButton toggleButton;
     private int indentazione;
+    private String where = null;
 
     private String ultimaCondizione;
     private boolean prossimaCondAnnidata = false;
@@ -56,7 +57,50 @@ public class CreareStrategia implements Initializable{
 
 
     public void targetDragDropped(DragEvent event) {
+
         System.out.println("onDragDropped");
+        Dragboard db = event.getDragboard();
+        boolean booleanoDellaCondizione = true;
+        if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel")) { //TODO è bruttissimo
+            //Caso in cui viene trascinato un CondizioneCreator
+            System.out.println("Hey abbiamo un creator di condizione");
+            ConditionCreatorLabel labelDragged = (ConditionCreatorLabel) event.getGestureSource();
+            String idTypeCond = labelDragged.getIdType();
+            List<Integer> valori = new ArrayList<Integer>();
+            String idCondCreata;
+            if (toggleButton.isSelected()) {
+                booleanoDellaCondizione = false;
+            }
+            if (where == null) { //è una condizione direttamente figlia di strategia
+                System.out.println("Cond non Annidata!");
+                idCondCreata = CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond, booleanoDellaCondizione, valori);
+                ICustomLabel conditionLabel = labelDragged.makeComponent(idCondCreata, where, booleanoDellaCondizione);
+                where = idCondCreata;
+                this.strategiaVBox.getChildren().add(HBoxMaker.creaRiga(conditionLabel, true));
+
+            } else {
+                System.out.println("Cond Annidata");
+                idCondCreata = CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond, where, booleanoDellaCondizione, valori);
+                ICustomLabel conditionLabel = labelDragged.makeComponent(idCondCreata, where, booleanoDellaCondizione);
+                where = idCondCreata;
+                this.strategiaVBox.getChildren().add(HBoxMaker.creaRiga(conditionLabel, false));
+            }
+        }
+        if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ) { //TODO è bruttissimo
+            //Caso in cui viene trascinato un AzioneCreator
+            if (where!=null) {
+                System.out.println("Hey abbiamo un creator di azione");
+                ActionCreatorLabel labelDragged = (ActionCreatorLabel) event.getGestureSource();
+                String idTypeAz = labelDragged.getIdType();
+                List<Integer> valori = new ArrayList<Integer>();
+                String idAzioneCreata;
+                idAzioneCreata = CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz,where,valori);
+                ICustomLabel azioneLabel = labelDragged.makeComponent(idAzioneCreata,where,true); //TODO cacca
+                where = null;
+                this.strategiaVBox.getChildren().add(HBoxMaker.creaRiga(azioneLabel,false));
+            }
+        }
+        /*System.out.println("onDragDropped");
 
 
         Dragboard db = event.getDragboard();
@@ -131,7 +175,7 @@ public class CreareStrategia implements Initializable{
         event.setDropCompleted(success);
 
         event.consume();
-        System.out.println("Ultima condizione: " + ultimaCondizione);
+        System.out.println("Ultima condizione: " + ultimaCondizione);*/
     }
 
     public void condDragDone(DragEvent event) {
@@ -180,7 +224,9 @@ public class CreareStrategia implements Initializable{
 
     public void rimuoviComponente(MouseEvent event) {
 
-        Integer lunghezza  = strategiaVBox.getChildren().size();
+
+
+        /*Integer lunghezza  = strategiaVBox.getChildren().size();
         if (lunghezza != 0) {
             HBox riga = (HBox)strategiaVBox.getChildren().get(lunghezza-1);
             ICustomLabel label= (ICustomLabel)riga.getChildren().get(riga.getChildren().size()-1);
@@ -191,11 +237,11 @@ public class CreareStrategia implements Initializable{
             lunghezza = lunghezza - 1;
             if (lunghezza != 0) {
                 indentazione = indentazione -1 ;
-                ICustomLabel ultima= (ICustomLabel)(riga.getChildren().get(riga.getChildren().size()-1));
+                HBox ultimaRiga= (HBox) strategiaVBox.getChildren().get(lunghezza-1);
+                ICustomLabel ultima = (ICustomLabel)(ultimaRiga.getChildren().get(ultimaRiga.getChildren().size()-1));
                 ultimaCondizione = ultima.getIdComponent();
                 if (indentazione == -1) {
                     indentazione = 0;
-                    ultimaCondizione = null;
                     prossimaCondAnnidata = false;
                     System.out.println("Ci sono");
 
@@ -204,7 +250,7 @@ public class CreareStrategia implements Initializable{
                 ultimaCondizione = null;
                 indentazione = 0;
             }
-        }
+        }*/
     }
 
     public void terminaStrategia(MouseEvent event) throws IOException {

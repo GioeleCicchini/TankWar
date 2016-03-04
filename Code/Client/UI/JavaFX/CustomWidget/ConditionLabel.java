@@ -11,8 +11,9 @@ public class ConditionLabel extends Label implements ICustomLabel {
     private String description;
     private String idCond;
     private boolean vera;
+    private String idPadre;
 
-    public ConditionLabel(String name, String description, String idCond, boolean vera) {
+    public ConditionLabel(String name, String description, String idCond, String idPadre, boolean vera) {
         this.vera = vera;
         if (!this.vera) {
             this.name = "Se NON " + name;
@@ -21,6 +22,7 @@ public class ConditionLabel extends Label implements ICustomLabel {
         }
         this.description = description;
         this.idCond = idCond;
+        this.idPadre = idPadre;
     }
 
 
@@ -52,6 +54,16 @@ public class ConditionLabel extends Label implements ICustomLabel {
     @Override
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public void setIdPadre(String idPadre) {
+        this.idPadre = idPadre;
+    }
+
+    @Override
+    public String getIdPadre() {
+        return this.idPadre;
     }
 
     public boolean getVera() {

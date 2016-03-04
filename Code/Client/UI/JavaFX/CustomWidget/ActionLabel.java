@@ -10,11 +10,13 @@ public class ActionLabel extends Label implements ICustomLabel {
     private String name;
     private String description;
     private String idAz;
+    private String idPadre;
 
-    public ActionLabel(String name, String description, String idAz) {
+    public ActionLabel(String name, String description, String idAz, String idPadre) {
         this.name = name;
         this.description = description;
         this.idAz = idAz;
+        this.idPadre = idPadre;
     }
 
 
@@ -46,5 +48,15 @@ public class ActionLabel extends Label implements ICustomLabel {
     @Override
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public void setIdPadre(String idPadre) {
+        this.idPadre = idPadre;
+    }
+
+    @Override
+    public String getIdPadre() {
+        return this.idPadre;
     }
 }
