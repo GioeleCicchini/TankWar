@@ -6,10 +6,8 @@ import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
 import Shared.Domain.ICatalogo;
-import Shared.Domain.Player;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -227,7 +225,7 @@ public class CreareStrategia implements Initializable{
             ConditionCreatorLabel currentElement;
             for (int i=0; i<condizioniCreatorVBox.getChildren().size(); i++){
                 currentElement = (ConditionCreatorLabel) condizioniCreatorVBox.getChildren().get(i);
-                currentElement.setFalseColor();
+                currentElement.setFalse();
             }
         }
         else {
@@ -235,7 +233,7 @@ public class CreareStrategia implements Initializable{
             ConditionCreatorLabel currentElement;
             for (int i=0; i<condizioniCreatorVBox.getChildren().size(); i++){
                 currentElement = (ConditionCreatorLabel) condizioniCreatorVBox.getChildren().get(i);
-                currentElement.setTrueColor();
+                currentElement.setTrue();
             }
         }
     }

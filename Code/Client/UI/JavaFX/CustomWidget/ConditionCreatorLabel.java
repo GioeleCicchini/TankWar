@@ -3,9 +3,7 @@ package Client.UI.JavaFX.CustomWidget;
 import Client.UI.UIUtils.LabelsMaker;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
 /**
@@ -76,11 +74,11 @@ public class ConditionCreatorLabel extends Label implements ICreatorCustomLabel 
         return (Color) this.getBackground().getFills().get(0).getFill();
     }
 
-    public void setTrueColor(){
-        LabelsMaker.setTrueColor(this);
+    public void setTrue(){
+        LabelsMaker.setTrue(this);
     }
-    public void setFalseColor(){
-        LabelsMaker.setFalseColor(this);
+    public void setFalse(){
+        LabelsMaker.setFalse(this);
     }
 
 
