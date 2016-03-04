@@ -117,7 +117,7 @@ public class LabelsMaker {
         ((Label) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
         ((Label) myLabel).setBorder(Border.EMPTY);
         ((Label) myLabel).setStyle("-fx-border-color: white;");
-        ((Label) myLabel).setMinSize(300,35);
+        ((Label) myLabel).setMinSize(400,35);
         ((Label) myLabel).setText(myLabel.getName());
         myLabel.setDescription(myLabel.getDescription());
 

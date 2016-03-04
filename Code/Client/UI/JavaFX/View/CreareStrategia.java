@@ -224,6 +224,13 @@ public class CreareStrategia implements Initializable{
 
     public void rimuoviComponente(MouseEvent event) {
 
+        Integer lunghezzaVBox = this.strategiaVBox.getChildren().size();
+        HBox rigaCorrente = (HBox)this.strategiaVBox.getChildren().get(lunghezzaVBox-1);
+        Integer lunghezzaHBox = rigaCorrente.getChildren().size();
+        ICustomLabel ultimaInserita = (ICustomLabel)rigaCorrente.getChildren().get(lunghezzaHBox-1);
+        String idUltimaInserita = ultimaInserita.getIdComponent();
+        CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idUltimaInserita);
+        
 
 
         /*Integer lunghezza  = strategiaVBox.getChildren().size();
