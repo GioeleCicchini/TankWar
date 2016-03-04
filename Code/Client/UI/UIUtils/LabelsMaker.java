@@ -45,6 +45,7 @@ public class LabelsMaker {
             double g = 0.902;
             double b = 0.514;
             layoutizeLabelCreator(myLabel, r,g,b);
+            setTrue((ConditionCreatorLabel) myLabel);//Non è pulitissimo
             customLabels.add(myLabel);
         }
         return customLabels;
@@ -126,20 +127,26 @@ public class LabelsMaker {
         ((Label)myLabel).setVisible(true);
     }
 
-    public static void setTrueColor (ConditionCreatorLabel l){
+    public static void setTrue(ConditionCreatorLabel l){
         Double r= 0.753;
         Double g= 0.902;
         Double b= 0.514;
         Color color =Color.color(r,g,b);
         ((Label) l).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
+        String text = l.getName();
+        text="Se " + text;
+        l.setText(text);
     }
 
-    public static void setFalseColor (ConditionCreatorLabel l){
+    public static void setFalse(ConditionCreatorLabel l){
         Double r= 1.0;
         Double g= 0.4;
         Double b= 0.4;
         Color color =Color.color(r,g,b);
         ((Label) l).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
+        String text = l.getName();
+        text="Se NON " + text;
+        l.setText(text);
     }
 
 }
