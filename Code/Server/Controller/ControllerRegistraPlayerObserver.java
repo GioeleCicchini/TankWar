@@ -9,9 +9,9 @@ import org.hibernate.Session;
 /**
  * Created by gioele on 16/02/16.
  */
-public class ControllerRegistraStrategiaObserver implements Observer{
+public class ControllerRegistraPlayerObserver implements Observer{
 
-    public ControllerRegistraStrategiaObserver(){
+    public ControllerRegistraPlayerObserver(){
 
 
 
@@ -20,7 +20,7 @@ public class ControllerRegistraStrategiaObserver implements Observer{
     @Override
     public void update(ControllerFacade controller) {
 
-        if(controller.getFunzione().equals("Registra")){
+        if(controller.getFunzione().equals("RegistraPlayer")){
 
             Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -37,7 +37,7 @@ public class ControllerRegistraStrategiaObserver implements Observer{
             }
 
 
-            System.out.println("registro la strategia");
+            System.out.println("Registro il Player nel DB");
 
 
         }
