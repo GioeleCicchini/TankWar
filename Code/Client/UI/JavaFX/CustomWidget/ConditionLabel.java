@@ -14,10 +14,10 @@ public class ConditionLabel extends Label implements ICustomLabel {
 
     public ConditionLabel(String name, String description, String idCond, boolean vera) {
         this.vera = vera;
-        if (this.vera) {
-            this.name = "SE NON" + name;
+        if (!this.vera) {
+            this.name = "Se NON " + name;
         } else {
-            this.name = name;
+            this.name = "Se "+ name;
         }
         this.description = description;
         this.idCond = idCond;
