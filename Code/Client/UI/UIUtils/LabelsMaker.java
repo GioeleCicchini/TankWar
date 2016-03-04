@@ -86,7 +86,6 @@ public class LabelsMaker {
             b=rand.nextFloat();
         }*/
         Color color=Color.color(r,g,b);
-        myLabel.setColor(color);
         ((Label) myLabel).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
         //((ConditionCreatorLabel) myLabel).setLayoutX(1000);
         ((Label) myLabel).setStyle("-fx-border-color: white;");
@@ -125,6 +124,22 @@ public class LabelsMaker {
         ((Label) myLabel).setFont(Font.font(20));
 
         ((Label)myLabel).setVisible(true);
+    }
+
+    public static void setTrueColor (ConditionCreatorLabel l){
+        Double r= 0.753;
+        Double g= 0.902;
+        Double b= 0.514;
+        Color color =Color.color(r,g,b);
+        ((Label) l).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
+    }
+
+    public static void setFalseColor (ConditionCreatorLabel l){
+        Double r= 1.0;
+        Double g= 0.4;
+        Double b= 0.4;
+        Color color =Color.color(r,g,b);
+        ((Label) l).setBackground(new Background(new BackgroundFill(color,new CornerRadii(3),new Insets(0))));
     }
 
 }

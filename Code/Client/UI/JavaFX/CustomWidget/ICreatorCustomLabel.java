@@ -16,7 +16,6 @@ public interface ICreatorCustomLabel {
     public void setName(String name);
     public String getDescription();
     public void setDescription(String description);
-    public void setColor(Color color);
     public Color getColor();
 
 }

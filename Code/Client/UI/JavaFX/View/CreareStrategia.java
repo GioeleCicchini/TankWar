@@ -220,9 +220,19 @@ public class CreareStrategia implements Initializable{
     public void clickToggle(Event event) {
         if (toggleButton.isSelected()){
             toggleButton.setText("Premi per le NON negate");
+            ConditionCreatorLabel currentElement;
+            for (int i=0; i<condizioniCreatorVBox.getChildren().size(); i++){
+                currentElement = (ConditionCreatorLabel) condizioniCreatorVBox.getChildren().get(i);
+                currentElement.setFalseColor();
+            }
         }
         else {
             toggleButton.setText("Premi per le negate");
+            ConditionCreatorLabel currentElement;
+            for (int i=0; i<condizioniCreatorVBox.getChildren().size(); i++){
+                currentElement = (ConditionCreatorLabel) condizioniCreatorVBox.getChildren().get(i);
+                currentElement.setTrueColor();
+            }
         }
     }
 }
