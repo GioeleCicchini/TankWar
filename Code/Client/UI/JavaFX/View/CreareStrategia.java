@@ -230,7 +230,7 @@ public class CreareStrategia implements Initializable{
         ICustomLabel ultimaInserita = (ICustomLabel)rigaCorrente.getChildren().get(lunghezzaHBox-1);
         String idUltimaInserita = ultimaInserita.getIdComponent();
         CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idUltimaInserita);
-        
+
 
 
         /*Integer lunghezza  = strategiaVBox.getChildren().size();
