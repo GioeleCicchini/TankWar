@@ -63,6 +63,7 @@ public class CreareStrategia implements Initializable{
 
         Dragboard db = event.getDragboard();
         boolean success = false;
+        boolean vera = true;
 
         System.out.println("Ho appena droppato qualcosa");
 
@@ -90,7 +91,10 @@ public class CreareStrategia implements Initializable{
             String nameLabel = labelDragged.getName();
             String descriptionLabel = labelDragged.getDescription();
             Color colore = labelDragged.getColor();
-            ICustomLabel conditionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,colore,ultimaCondizione);
+            if (toggleButton.isSelected()) {
+                vera = false;
+            }
+            ICustomLabel conditionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,colore,ultimaCondizione,vera);
             HBox elemento = HBoxMaker.crea(indentazione);
             elemento.getChildren().add((Label)conditionLabel);
             strategiaVBox.getChildren().add(elemento);
@@ -111,7 +115,7 @@ public class CreareStrategia implements Initializable{
                 String nameLabel = labelDragged.getName();
                 String descriptionLabel = labelDragged.getDescription();
                 Color colore = labelDragged.getColor();
-                ICustomLabel actionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,colore,ultimaCondizione);
+                ICustomLabel actionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,colore,ultimaCondizione,vera);
                 HBox elemento = HBoxMaker.crea(indentazione);
                 elemento.getChildren().add((Label)actionLabel);
                 strategiaVBox.getChildren().add(elemento);
