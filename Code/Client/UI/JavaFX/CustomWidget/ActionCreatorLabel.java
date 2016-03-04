@@ -41,8 +41,8 @@ public class ActionCreatorLabel extends Label implements ICreatorCustomLabel {
     }
 
     @Override
-    public ICustomLabel makeComponent(String name, String description, Color color, String idAz,boolean vera) {
-        ActionLabel actionLabel = new ActionLabel(name,description,idAz,vera);
+    public ICustomLabel makeComponent(String name, String description, Color color, String idAz, boolean vera) {
+        ActionLabel actionLabel = new ActionLabel(name,description,idAz);
         actionLabel.setPadding(new Insets(0,0,0,20));
         LabelsMaker.layoutizeLabel(actionLabel,this.color);
         return actionLabel;

@@ -50,12 +50,10 @@ public class ConditionLabel extends Label implements ICustomLabel {
         this.description = description;
     }
 
-    @Override
     public boolean getVera() {
         return this.vera;
     }
 
-    @Override
     public void setVera(boolean vera) {
         this.vera = vera;
     }
