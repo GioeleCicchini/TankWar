@@ -1,7 +1,7 @@
 package Client.UI.JavaFX.View;
 
 import Client.UI.JavaFX.CustomWidget.*;
-import Client.UI.UIUtils.HBoxMaker;
+import Client.UI.UIUtils.StrategiaPutter;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
@@ -14,7 +14,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +30,7 @@ public class CreareStrategia implements Initializable{
     public ToggleButton toggleButton;
     private int indentazione;
     private String where = null;
+    public StrategiaPutter strategiaPutter;
 
     private String ultimaCondizione;
     private boolean prossimaCondAnnidata = false;
@@ -76,14 +76,14 @@ public class CreareStrategia implements Initializable{
                 idCondCreata = CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond, booleanoDellaCondizione, valori);
                 ICustomLabel conditionLabel = labelDragged.makeComponent(idCondCreata, where, booleanoDellaCondizione);
                 where = idCondCreata;
-                this.strategiaVBox.getChildren().add(HBoxMaker.creaRiga(conditionLabel, true));
+                strategiaPutter.addLabel(conditionLabel,true);
 
             } else {
                 System.out.println("Cond Annidata");
                 idCondCreata = CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond, where, booleanoDellaCondizione, valori);
                 ICustomLabel conditionLabel = labelDragged.makeComponent(idCondCreata, where, booleanoDellaCondizione);
                 where = idCondCreata;
-                this.strategiaVBox.getChildren().add(HBoxMaker.creaRiga(conditionLabel, false));
+                strategiaPutter.addLabel(conditionLabel,false);
             }
         }
         if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ) { //TODO è bruttissimo
@@ -97,7 +97,7 @@ public class CreareStrategia implements Initializable{
                 idAzioneCreata = CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz,where,valori);
                 ICustomLabel azioneLabel = labelDragged.makeComponent(idAzioneCreata,where,true); //TODO cacca
                 where = null;
-                this.strategiaVBox.getChildren().add(HBoxMaker.creaRiga(azioneLabel,false));
+                strategiaPutter.addLabel(azioneLabel,false);
             }
         }
         /*System.out.println("onDragDropped");
@@ -137,7 +137,7 @@ public class CreareStrategia implements Initializable{
             String descriptionLabel = labelDragged.getDescription();
             Color colore = labelDragged.getColor();
             ICustomLabel conditionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,colore,ultimaCondizione,vera);
-            HBox elemento = HBoxMaker.crea(indentazione);
+            HBox elemento = StrategiaPutter.crea(indentazione);
             elemento.getChildren().add((Label)conditionLabel);
             strategiaVBox.getChildren().add(elemento);
 
@@ -158,7 +158,7 @@ public class CreareStrategia implements Initializable{
                 String descriptionLabel = labelDragged.getDescription();
                 Color colore = labelDragged.getColor();
                 ICustomLabel actionLabel = labelDragged.makeComponent(nameLabel,descriptionLabel,colore,ultimaCondizione,vera);
-                HBox elemento = HBoxMaker.crea(indentazione);
+                HBox elemento = StrategiaPutter.crea(indentazione);
                 elemento.getChildren().add((Label)actionLabel);
                 strategiaVBox.getChildren().add(elemento);
 
@@ -176,6 +176,7 @@ public class CreareStrategia implements Initializable{
 
         event.consume();
         System.out.println("Ultima condizione: " + ultimaCondizione);*/
+        System.out.println("Lunghezza VBox= "+ ((Integer)strategiaVBox.getChildren().size()).toString());
     }
 
     public void condDragDone(DragEvent event) {
@@ -220,18 +221,23 @@ public class CreareStrategia implements Initializable{
         }
         */
 
+        strategiaPutter= new StrategiaPutter(strategiaVBox);
+
     }
 
     public void rimuoviComponente(MouseEvent event) {
 
         Integer lunghezzaVBox = this.strategiaVBox.getChildren().size();
-        HBox rigaCorrente = (HBox)this.strategiaVBox.getChildren().get(lunghezzaVBox-1);
-        Integer lunghezzaHBox = rigaCorrente.getChildren().size();
-        ICustomLabel ultimaInserita = (ICustomLabel)rigaCorrente.getChildren().get(lunghezzaHBox-1);
-        String idUltimaInserita = ultimaInserita.getIdComponent();
-        CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idUltimaInserita);
-
-
+        if (lunghezzaVBox > 0){
+            HBox rigaCorrente = (HBox)this.strategiaVBox.getChildren().get(lunghezzaVBox-1);
+            Integer lunghezzaHBox = rigaCorrente.getChildren().size();
+            ICustomLabel ultimaInserita = (ICustomLabel)rigaCorrente.getChildren().get(lunghezzaHBox-1);
+            String idUltimaInserita = ultimaInserita.getIdComponent();
+            where=ultimaInserita.getIdPadre();//La prossima messa andrà al posto di questa
+            CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idUltimaInserita);
+            strategiaPutter.removeLastLabel();
+            System.out.println("lunghezza VBox= " + this.strategiaVBox.getChildren().size());
+        }
 
         /*Integer lunghezza  = strategiaVBox.getChildren().size();
         if (lunghezza != 0) {
