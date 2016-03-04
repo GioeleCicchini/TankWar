@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
  */
 public interface ICreatorCustomLabel {
 
-    public ICustomLabel makeComponent(String name, String description, Color color, String idComponent);
+    public ICustomLabel makeComponent(String name, String description, Color color, String idComponent, boolean vera);
     public String getIdType();
     public void setIdType(String idType);
     public String getName();

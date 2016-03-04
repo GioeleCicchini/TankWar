@@ -39,8 +39,8 @@ public class ConditionCreatorLabel extends Label implements ICreatorCustomLabel 
 
 
     @Override
-    public ICustomLabel makeComponent(String name, String description, Color color, String idCond) {
-        ConditionLabel conditionLabel = new ConditionLabel(name,description,idCond);
+    public ICustomLabel makeComponent(String name, String description, Color color, String idCond, boolean vera) {
+        ConditionLabel conditionLabel = new ConditionLabel(name,description,idCond,vera);
         conditionLabel.setPadding(new Insets(0,0,0,20));
         LabelsMaker.layoutizeLabel(conditionLabel,this.color);
         return conditionLabel;
