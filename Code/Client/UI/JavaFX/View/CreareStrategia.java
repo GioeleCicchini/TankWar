@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
@@ -281,6 +282,8 @@ public class CreareStrategia implements Initializable{
     public void clickToggle(Event event) {
         if (toggleButton.isSelected()){
             toggleButton.setText("Premi per le NON negate");
+            toggleButton.setStyle("-fx-background-color:#0277BD");
+
             ConditionCreatorLabel currentElement;
             for (int i=0; i<condizioniCreatorVBox.getChildren().size(); i++){
                 currentElement = (ConditionCreatorLabel) condizioniCreatorVBox.getChildren().get(i);
@@ -289,6 +292,7 @@ public class CreareStrategia implements Initializable{
         }
         else {
             toggleButton.setText("Premi per le negate");
+            toggleButton.setStyle("-fx-background-color:#01579B");
             ConditionCreatorLabel currentElement;
             for (int i=0; i<condizioniCreatorVBox.getChildren().size(); i++){
                 currentElement = (ConditionCreatorLabel) condizioniCreatorVBox.getChildren().get(i);
