@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public interface IComRemoteService {
 
-    void Invia(DTO dto) throws IOException;
-    void Ricevi(DTO dto);
+    Object RichiediAlServer(DTO dto) throws IOException;
+
 
 }

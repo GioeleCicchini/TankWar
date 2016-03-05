@@ -33,6 +33,7 @@ public class TankWar {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
+      /*
         Socket clientSocket = new Socket("localhost",6789);
 
 
@@ -46,7 +47,7 @@ public class TankWar {
 
 
 
-            Player player = StartUpHandler.getSingletonInstance().getPlayer();
+          Player player = StartUpHandler.getSingletonInstance().getPlayer();
             player.setNome("Gioele");
 
 
@@ -76,7 +77,7 @@ public class TankWar {
 
 
 
-
+*/
     }
 
 }

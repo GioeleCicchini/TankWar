@@ -1,8 +1,11 @@
 package Server.Controller;
 
 import Server.ServerUtil.HibernateUtil;
+import Server.ServerUtil.RispostaMaker;
 import Shared.Domain.Player;
 import Shared.Domain.Strategia;
+import Shared.Util.DTO;
+import Shared.Util.DTOMaker;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -27,7 +30,7 @@ public class ControllerRegistraStrategiaObserver implements Observer {
 
             String playerId =(String)controller.getOggettiPersistenti().get(0);
             Strategia strategia = (Strategia)controller.getOggettiPersistenti().get(1);
-
+            DTO rispostaDTO = null;
 
             Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -36,6 +39,9 @@ public class ControllerRegistraStrategiaObserver implements Observer {
             List results = cr.list();
                 Player player =(Player)results.get(0);
             player.aggiungiStrategia(strategia);
+            rispostaDTO = DTOMaker.getSingletonInstance().getStrategiaServerResponceDTO();
+            RispostaMaker.getSingletonInstance().ImmettiRisposta(rispostaDTO);
+            System.out.println("Player Immesso nella risposta");
 
             try {
                 session.beginTransaction();

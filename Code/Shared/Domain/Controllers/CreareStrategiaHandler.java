@@ -62,6 +62,7 @@ public class CreareStrategiaHandler {
 	}
 
 	public void iniziaNuovaStrategia() {
+		System.out.println(currentPlayer.getNome());
 		ICatalogo catalogoCondizioneCreator = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
 		ICreator condizioneDefaultCreator = ((CatalogoCondizioneCreator)catalogoCondizioneCreator).getCondizioneDefaultCreator();
 		this.strategiaCorrente = currentPlayer.iniziaNuovaStrategia(condizioneDefaultCreator);
@@ -97,7 +98,9 @@ public class CreareStrategiaHandler {
 		ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
 		DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
 
-		service.Invia(dtoMaker.getStrategiaDTO());
+		DTO risp =(DTO)service.RichiediAlServer(dtoMaker.getStrategiaDTO());
+
+
 
 	}
 

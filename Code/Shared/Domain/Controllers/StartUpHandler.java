@@ -6,7 +6,11 @@ import Shared.Domain.Creator.CodizioneCreator.*;
 import Shared.Domain.Creator.ICreator;
 import Shared.Domain.ICatalogo;
 import Shared.Domain.Player;
+import Shared.TecnicalService.ConcreteRemoteService;
+import Shared.Util.DTO;
+import Shared.Util.DTOMaker;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,14 +34,25 @@ public class StartUpHandler {
     private ICatalogo catalogoAzCreator;
 
     private StartUpHandler() {
-        this.player=new Player();
-        this.player.setNome("Gioele");
         this.catalogoCondCreator=new CatalogoCondizioneCreator();
         this.catalogoAzCreator=new CatalogoAzioneCreator();
     }
 
-    public Player getPlayer() {
+    public Player getPlayer(String username,String password) throws IOException {
+
+        ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
+        DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
+
+        DTO risp =(DTO)service.RichiediAlServer(dtoMaker.getEffettuaLoginDTO(username,password));
+
+
+        if (risp.getFunzione().equals("UtenteTrovato")) {
+            this.player = (Player) risp.getOggettiPersistenti().get(0);
+            System.out.println("Player Ricevuto");
+        }
+
         return player;
+
     }
 
     public void setPlayer(Player player) {
