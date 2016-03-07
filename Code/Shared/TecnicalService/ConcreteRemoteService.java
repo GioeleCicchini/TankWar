@@ -3,6 +3,7 @@ package Shared.TecnicalService;
 import Shared.Util.DTO;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
@@ -26,28 +27,30 @@ public class ConcreteRemoteService implements IComRemoteService {
 
 
     @Override
-    public void Invia(DTO dto) throws IOException {
+    public DTO RichiediAlServer(DTO dto) throws IOException {
         Socket clientSocket = new Socket("localhost",6789);
-
+        DTO risp = null;
         try {
             ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
             objectOutput.writeObject(dto);
+            ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+
+
+            risp =(DTO)objectInputStream.readObject();
+
+
         }
         catch (IOException e){
             e.printStackTrace();
-        }
-        finally {
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
             clientSocket.close();
             System.out.println("Inviato al server");
         }
 
 
-
-
+        return risp;
     }
 
-    @Override
-    public void Ricevi(DTO dto) {
-
-    }
 }

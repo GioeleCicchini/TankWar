@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -10,11 +11,17 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.UI.JavaFX.View.CreareStrategia">
    <children>
-      <HBox prefHeight="201.0" prefWidth="1920.0">
+
+      <HBox prefHeight="97.0" prefWidth="1920.0">
          <children>
-            <Label prefHeight="323.0" prefWidth="1933.0" style="-fx-background-color: #2196F3;" text="Componi la tua Strategia" textFill="WHITE">
+            <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="662.0" style="-fx-background-color: #FF3D00;" text="Indietro" textFill="WHITE" wrapText="true">
                <font>
-                  <Font name="System Bold" size="70.0" />
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+            <Label prefHeight="90.0" prefWidth="1084.0" style="-fx-background-color: #01579B;" text="Componi la tua Strategia" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="33.0" />
                </font>
                <opaqueInsets>
                   <Insets />
@@ -23,41 +30,56 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
+            <VBox prefHeight="177.0" prefWidth="1080.0">
+               <children>
+                  <HBox prefHeight="193.0" prefWidth="777.0">
+                     <children>
+                        <Label contentDisplay="RIGHT" prefHeight="90.0" prefWidth="605.0" style="-fx-background-color: #01579B;" text="Dai un nome alla tua strategia" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <graphic>
+                              <TextField fx:id="nomeStrategia" prefHeight="33.0" prefWidth="85.0" />
+                           </graphic>
+                        </Label>
+                        <Button mnemonicParsing="false" onMouseClicked="#terminaStrategia" prefHeight="176.0" prefWidth="401.0" style="-fx-background-color: #1B5E20;" text="Conferma Strategia" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </HBox>
-      <HBox prefHeight="903.0" prefWidth="1920.0">
+
+      <HBox prefHeight="997.0" prefWidth="1920.0">
          <children>
             <VBox prefHeight="915.0" prefWidth="1143.0">
                <children>
-                  <VBox id="pozzo" fx:id="DropPaneTarget" onDragDone="#condDragDone" onDragDropped="#targetDragDropped" onDragEntered="#targetDragEntered" onDragOver="#targetDragOver" prefHeight="820.0" prefWidth="1143.0" style="-fx-background-color: #90CAF9;">
+
+                  <VBox id="pozzo" fx:id="DropPaneTarget" onDragDone="#condDragDone" onDragDropped="#targetDragDropped" onDragEntered="#targetDragEntered" onDragOver="#targetDragOver" prefHeight="807.0" prefWidth="1143.0" style="-fx-background-color: #90CAF9;">
                      <children>
-                        <HBox prefHeight="31.0" prefWidth="1496.0">
-                           <children>
-                              <Label prefHeight="30.0" prefWidth="328.0" text="La tua Strategia:" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets left="30.0" />
-                                 </padding>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Label>
-                              <TextArea id="nomeStrategia" fx:id="nomeStrategia" focusTraversable="false" prefHeight="31.0" prefWidth="759.0" />
-                           </children>
-                        </HBox>
+                        <HBox prefHeight="31.0" prefWidth="1496.0" />
+
                         <VBox id="strategiaVBox" fx:id="strategiaVBox" prefHeight="0.0" prefWidth="1503.0" />
                      </children>
                   </VBox>
+                  <VBox prefHeight="174.0" prefWidth="1143.0" style="-fx-background-color: #90CAF9;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                  </VBox>
                   <HBox prefHeight="84.0" prefWidth="1143.0">
                      <children>
-                        <Button mnemonicParsing="false" onMouseClicked="#rimuoviComponente" prefHeight="100.0" prefWidth="677.0" text="Rimuovi ultimo componente">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onMouseClicked="#terminaStrategia" prefHeight="109.0" prefWidth="675.0" text="Conferma Strategia">
+                        <Button mnemonicParsing="false" onMouseClicked="#rimuoviComponente" prefHeight="62.0" prefWidth="1143.0" style="-fx-background-color: #01579B;" text="Rimuovi ultimo componente" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -66,36 +88,31 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="918.0" prefWidth="778.0">
+
+            <VBox prefHeight="1027.0" prefWidth="778.0">
                <children>
-                  <TabPane prefHeight="932.0" prefWidth="778.0" style="-fx-background-color: #9cf3ff;" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane prefHeight="1046.0" prefWidth="778.0" style="-fx-background-color: #9cf3ff;" tabClosingPolicy="UNAVAILABLE">
+
                     <tabs>
                       <Tab text="Condizioni">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="840.0" prefWidth="778.0">
+                           <content>
+                              <VBox prefHeight="1063.0" prefWidth="778.0">
                                  <children>
-                                    <VBox prefHeight="858.0" prefWidth="779.0">
-                                       <children>
-                                          <VBox id="condizioniCreatorVBox" fx:id="condizioniCreatorVBox" prefHeight="784.0" prefWidth="779.0" style="-fx-background-color: #64B5F6;" />
-                                          <ToggleButton fx:id="toggleButton" mnemonicParsing="false" onMouseClicked="#clickToggle" prefHeight="79.0" prefWidth="778.0" text="Premi per le negate">
-                                             <font>
-                                                <Font name="System Bold" size="24.0" />
-                                             </font>
-                                          </ToggleButton>
-                                       </children>
-                                    </VBox>
+
+                                    <VBox id="condizioniCreatorVBox" fx:id="condizioniCreatorVBox" prefHeight="901.0" prefWidth="778.0" style="-fx-background-color: #64B5F6;" />
+                                    <ToggleButton fx:id="toggleButton" mnemonicParsing="false" onMouseClicked="#clickToggle" prefHeight="66.0" prefWidth="778.0" style="-fx-background-color: #01579B;" text="Premi per le negate" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </ToggleButton>
                                  </children>
-                              </AnchorPane>
-                        </content>
+                              </VBox>
+                           </content>
                       </Tab>
                       <Tab text="Azioni">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="732.0" prefWidth="761.0" style="-fx-background-color: #64B5F6;">
-                                 <children>
-                                    <VBox id="azioniCreatorVBox" fx:id="azioniCreatorVBox" prefHeight="732.0" prefWidth="779.0" />
-                                 </children>
-                              </AnchorPane>
-                        </content>
+                           <content>
+                              <VBox id="azioniCreatorVBox" fx:id="azioniCreatorVBox" prefHeight="732.0" prefWidth="779.0" style="-fx-background-color: #64B5F6;" />
+                           </content>
                       </Tab>
                     </tabs>
                   </TabPane>
