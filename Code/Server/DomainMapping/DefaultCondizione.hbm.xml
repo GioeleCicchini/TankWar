@@ -17,6 +17,12 @@
         <property name="idType" type="string">
             <column name="idType" />
         </property>
+        <property name="vera" type="boolean">
+            <column name="vera" />
+        </property>
+
+        <many-to-one name="child" class="Shared.Domain.IStrategiaComponent" column="child" cascade="all"></many-to-one>
+
 
 
 

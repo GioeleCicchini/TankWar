@@ -32,24 +32,6 @@
         </join>
     </subclass>
 
-    <subclass name="Shared.Domain.Condizioni.DefaultCondizione" extends="Shared.Domain.IStrategiaComponent" discriminator-value="DefaultCondizione">
-        <join table="DefaultCondizione">
-            <key column="Id"></key>
-            <property name="name">
-                <column name="Nome"></column>
-            </property>
-            <property name="description">
-                <column name="Descrizione"></column>
-            </property>
-            <property name="vera">
-                <column name="Vera"></column>
-            </property>
-            <property name="idType">
-                <column name="ID_TYPE"></column>
-            </property>
-
-        </join>
-    </subclass>
 
 
     <subclass name="Shared.Domain.Condizioni.NemicoAvantiCondizione" extends="Shared.Domain.IStrategiaComponent" discriminator-value="NemicoAvantiCondizione">

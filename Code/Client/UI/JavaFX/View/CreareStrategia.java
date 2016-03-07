@@ -246,7 +246,7 @@ public class CreareStrategia implements Initializable{
             String idLabel = label.getIdComponent();
             messaAzioneDefault = false;
             CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idLabel);
-
+            defaultPutter.removeLastLabel();
         }
 
     }

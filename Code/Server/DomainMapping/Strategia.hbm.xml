@@ -17,6 +17,9 @@
 
 
 
+        <many-to-one name="defaultCondition" column="DefaultCondition" class="Shared.Domain.Condizioni.DefaultCondizione" cascade="all"></many-to-one>
+
+
 
 
 
