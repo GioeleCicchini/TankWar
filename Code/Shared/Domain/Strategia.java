@@ -192,7 +192,7 @@ public class Strategia implements Serializable {
 
 	public void rimuoviComponente(String id) {
 		boolean trovato = false;
-		if (this.defaultCondition.getChild().getId().equals(id)) {
+		if (this.defaultCondition.getChild() != null && this.defaultCondition.getChild().getId().equals(id)) {
 			this.defaultCondition.removeChild();
 			trovato = true;
 		}

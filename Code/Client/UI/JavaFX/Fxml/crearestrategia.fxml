@@ -14,7 +14,7 @@
 
       <HBox prefHeight="97.0" prefWidth="1920.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="662.0" style="-fx-background-color: #FF3D00;" text="Indietro" textFill="WHITE" wrapText="true">
+            <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="662.0" style="-fx-background-color: #FF3D00;" text="Indietro" textFill="WHITE" wrapText="true" onMouseClicked="#indietro" fx:id="indietroButton">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

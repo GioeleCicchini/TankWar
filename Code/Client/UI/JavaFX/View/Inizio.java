@@ -23,10 +23,12 @@ public class Inizio implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CreareStrategiaHandler.getSingletonInstance().iniziaNuovaStrategia();
+
     }
 
     public void startDemo(Event event) {
+
+        CreareStrategiaHandler.getSingletonInstance().iniziaNuovaStrategia();
         Stage stage;
         Parent root = null;
 

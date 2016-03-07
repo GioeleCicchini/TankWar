@@ -105,6 +105,12 @@ public class CreareStrategiaHandler {
 
 	}
 
+	public void distruggiStrategiaCorrente(){
+
+		this.strategiaCorrente = null;
+
+	}
+
 
 	public Player getCurrentPlayer() {
 		return currentPlayer;

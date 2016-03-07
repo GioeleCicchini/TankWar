@@ -5,14 +5,20 @@ import Client.UI.UIUtils.StrategiaPutter;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
+import Shared.Domain.Player;
 import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +34,7 @@ public class CreareStrategia implements Initializable{
     public TextField nomeStrategia;
     public ToggleButton toggleButton;
     public VBox condizioneDefaultVBox;
+    public Button indietroButton;
     private int indentazione;
     private String where = null;
     public StrategiaPutter strategiaPutter;
@@ -285,5 +292,28 @@ public class CreareStrategia implements Initializable{
         }
         event.consume();
     }
+
+    public void indietro(MouseEvent event) {
+
+        CreareStrategiaHandler.getSingletonInstance().distruggiStrategiaCorrente();
+        Stage stage;
+        Parent root = null;
+
+        stage=(Stage)indietroButton.getScene().getWindow();
+        try {
+            root= FXMLLoader.load(getClass().getResource("../Fxml/inizio.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Scene scene= new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+
+
+
+    }
+
 
 }
