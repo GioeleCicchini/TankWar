@@ -4,11 +4,7 @@ import Client.UI.UIUtils.LabelsMaker;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
-
-import java.awt.*;
 
 /**
  * Created by beniamino on 25/02/16.
