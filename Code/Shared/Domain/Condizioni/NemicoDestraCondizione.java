@@ -135,7 +135,11 @@ public class NemicoDestraCondizione implements ICondizione, IStrategiaComponent,
         condizione.put("description",this.description);
         condizione.put("vera",this.vera);
         condizione.put("valori",this.valori);
-        condizione.put("child",this.child.getMap());
+        if (this.child!=null) {
+            condizione.put("child",this.child.getMap());
+        } else {
+            condizione.put("child",null);
+        }
         return condizione;
     }
 }

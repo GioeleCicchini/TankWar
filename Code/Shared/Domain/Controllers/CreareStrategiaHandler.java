@@ -8,6 +8,7 @@ import Shared.Util.DTOMaker;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public class CreareStrategiaHandler {
 
@@ -120,4 +121,8 @@ public class CreareStrategiaHandler {
 	public void setStrategiaCorrente(Strategia strategiaCorrente) {
 		this.strategiaCorrente = strategiaCorrente;
 	}
+
+	public Map getStrategiaCorrenteMap() {
+        return this.strategiaCorrente.getMap();
+    }
 }

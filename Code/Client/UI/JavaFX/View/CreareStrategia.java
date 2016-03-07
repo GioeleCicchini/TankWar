@@ -5,7 +5,6 @@ import Client.UI.UIUtils.StrategiaPutter;
 import Client.UI.UIUtils.LabelsMaker;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
-import Shared.Domain.ICatalogo;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -193,8 +192,8 @@ public class CreareStrategia implements Initializable{
         strategiaPutter= new StrategiaPutter(strategiaVBox);
         defaultPutter = new StrategiaPutter(CondizioneDefaultVBox);
 
-        ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
-        ICatalogo cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
+        Map ccc = StartUpHandler.getSingletonInstance().getCatalogoConditionCreatorMap();
+        Map cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreatorMap();
 
         List<ICreatorCustomLabel> condCLabels = LabelsMaker.getConditionCreatorLabels(ccc);
         ICreatorCustomLabel currentCLabel;
@@ -204,7 +203,8 @@ public class CreareStrategia implements Initializable{
                 condizioniCreatorVBox.getChildren().add((Node) condCLabels.get(i));
             }
             else {
-                String idCondDef = CreareStrategiaHandler.getSingletonInstance().getStrategiaCorrente().getDefaultCondition().getId();
+                Map strategiaCorrente = CreareStrategiaHandler.getSingletonInstance().getStrategiaCorrenteMap();
+                String idCondDef = (String)((Map)strategiaCorrente.get("defaultCondition")).get("id");
                 ICustomLabel deafultCondizioneLabel = currentCLabel.makeComponent(idCondDef,null,true);
                 defaultPutter.addLabel(deafultCondizioneLabel,true);
             }

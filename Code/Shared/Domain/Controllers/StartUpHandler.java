@@ -67,11 +67,19 @@ public class StartUpHandler {
         this.catalogoCondCreator = catalogoCondCreator;
     }
 
+    public Map getCatalogoConditionCreatorMap() {
+        return this.catalogoCondCreator.getMap();
+    }
+
     public ICatalogo getCatalogoAzCreator() {
         return catalogoAzCreator;
     }
 
     public void setCatalogoAzCreator(ICatalogo catalogoAzCreator) {
         this.catalogoAzCreator = catalogoAzCreator;
+    }
+
+    public Map getCatalogoAzCreatorMap() {
+        return this.catalogoAzCreator.getMap();
     }
 }
