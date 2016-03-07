@@ -28,7 +28,7 @@ public class CreareStrategia implements Initializable{
     public VBox strategiaVBox;
     public TextField nomeStrategia;
     public ToggleButton toggleButton;
-    public VBox CondizioneDefaultVBox;
+    public VBox condizioneDefaultVBox;
     private int indentazione;
     private String where = null;
     public StrategiaPutter strategiaPutter;
@@ -191,7 +191,7 @@ public class CreareStrategia implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         strategiaPutter= new StrategiaPutter(strategiaVBox);
-        defaultPutter = new StrategiaPutter(CondizioneDefaultVBox);
+        defaultPutter = new StrategiaPutter(condizioneDefaultVBox);
 
         ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
         ICatalogo cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
@@ -312,5 +312,19 @@ public class CreareStrategia implements Initializable{
                 currentElement.setTrue();
             }
         }
+    }
+
+    public void rimuoviAzioneDefault(MouseEvent event) {
+        Integer elementi = this.condizioneDefaultVBox.getChildren().size();
+        if (elementi == 2) {
+            HBox riga = (HBox) this.condizioneDefaultVBox.getChildren().get(1);
+            Integer lunghezzaHBox = riga.getChildren().size();
+            ICustomLabel label = (ICustomLabel) riga.getChildren().get(lunghezzaHBox-1);
+            String idLabel = label.getIdComponent();
+            messaAzioneDefault = false;
+            CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idLabel);
+            
+        }
+
     }
 }

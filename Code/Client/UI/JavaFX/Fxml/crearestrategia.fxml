@@ -69,7 +69,7 @@
                         <VBox id="strategiaVBox" fx:id="strategiaVBox" prefHeight="0.0" prefWidth="1503.0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="CondizioneDefaultVBox" prefHeight="323.0" prefWidth="1143.0" style="-fx-background-color: #90CAF9;">
+                  <VBox fx:id="condizioneDefaultVBox" prefHeight="323.0" prefWidth="1143.0" style="-fx-background-color: #90CAF9;">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -79,7 +79,12 @@
                   </VBox>
                   <HBox prefHeight="84.0" prefWidth="1143.0">
                      <children>
-                        <Button mnemonicParsing="false" onMouseClicked="#rimuoviComponente" prefHeight="62.0" prefWidth="1143.0" style="-fx-background-color: #01579B;" text="Rimuovi ultimo componente" textFill="WHITE">
+                        <Button mnemonicParsing="false" onMouseClicked="#rimuoviComponente" prefHeight="61.0" prefWidth="578.0" style="-fx-background-color: #01579B; -fx-border-color: #ffffff; -fx-border-width: 2px;" text="Rimuovi ultimo componente" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onMouseClicked="#rimuoviAzioneDefault" prefHeight="61.0" prefWidth="585.0" style="-fx-background-color: #01579B; -fx-border-width: 2px; -fx-border-color: #ffffff;" text="Rimuovi azione default" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
