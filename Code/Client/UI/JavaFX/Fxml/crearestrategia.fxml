@@ -10,7 +10,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.UI.JavaFX.View.CreareStrategia">
    <children>
-      <HBox prefHeight="323.0" prefWidth="1920.0">
+      <HBox prefHeight="201.0" prefWidth="1920.0">
          <children>
             <Label prefHeight="323.0" prefWidth="1933.0" style="-fx-background-color: #2196F3;" text="Componi la tua Strategia" textFill="WHITE">
                <font>
@@ -25,15 +25,15 @@
             </Label>
          </children>
       </HBox>
-      <HBox prefHeight="761.0" prefWidth="1777.0">
+      <HBox prefHeight="903.0" prefWidth="1920.0">
          <children>
-            <VBox prefHeight="759.0" prefWidth="1143.0">
+            <VBox prefHeight="915.0" prefWidth="1143.0">
                <children>
-                  <VBox id="pozzo" fx:id="DropPaneTarget" onDragDone="#condDragDone" onDragDropped="#targetDragDropped" onDragEntered="#targetDragEntered" onDragOver="#targetDragOver" prefHeight="692.0" prefWidth="1183.0" style="-fx-background-color: #90CAF9;">
+                  <VBox id="pozzo" fx:id="DropPaneTarget" onDragDone="#condDragDone" onDragDropped="#targetDragDropped" onDragEntered="#targetDragEntered" onDragOver="#targetDragOver" prefHeight="820.0" prefWidth="1143.0" style="-fx-background-color: #90CAF9;">
                      <children>
                         <HBox prefHeight="31.0" prefWidth="1496.0">
                            <children>
-                              <Label prefHeight="29.0" prefWidth="587.0" text="La tua Strategia:" textFill="WHITE">
+                              <Label prefHeight="30.0" prefWidth="328.0" text="La tua Strategia:" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -44,13 +44,13 @@
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <TextArea id="nomeStrategia" fx:id="nomeStrategia" focusTraversable="false" prefHeight="31.0" prefWidth="801.0" />
+                              <TextArea id="nomeStrategia" fx:id="nomeStrategia" focusTraversable="false" prefHeight="31.0" prefWidth="759.0" />
                            </children>
                         </HBox>
                         <VBox id="strategiaVBox" fx:id="strategiaVBox" prefHeight="0.0" prefWidth="1503.0" />
                      </children>
                   </VBox>
-                  <HBox prefHeight="70.0" prefWidth="1352.0">
+                  <HBox prefHeight="84.0" prefWidth="1143.0">
                      <children>
                         <Button mnemonicParsing="false" onMouseClicked="#rimuoviComponente" prefHeight="100.0" prefWidth="677.0" text="Rimuovi ultimo componente">
                            <font>
@@ -66,18 +66,18 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="0.0" prefWidth="778.0">
+            <VBox prefHeight="918.0" prefWidth="778.0">
                <children>
-                  <TabPane prefHeight="937.0" prefWidth="778.0" style="-fx-background-color: #9cf3ff;" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane prefHeight="932.0" prefWidth="778.0" style="-fx-background-color: #9cf3ff;" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="Condizioni">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="840.0" prefWidth="778.0">
                                  <children>
-                                    <VBox prefHeight="728.0" prefWidth="779.0">
+                                    <VBox prefHeight="858.0" prefWidth="779.0">
                                        <children>
-                                          <VBox id="condizioniCreatorVBox" fx:id="condizioniCreatorVBox" prefHeight="664.0" prefWidth="779.0" style="-fx-background-color: #64B5F6;" />
-                                          <ToggleButton fx:id="toggleButton" mnemonicParsing="false" onMouseClicked="#clickToggle" prefHeight="76.0" prefWidth="778.0" text="Premi per le negate">
+                                          <VBox id="condizioniCreatorVBox" fx:id="condizioniCreatorVBox" prefHeight="784.0" prefWidth="779.0" style="-fx-background-color: #64B5F6;" />
+                                          <ToggleButton fx:id="toggleButton" mnemonicParsing="false" onMouseClicked="#clickToggle" prefHeight="79.0" prefWidth="778.0" text="Premi per le negate">
                                              <font>
                                                 <Font name="System Bold" size="24.0" />
                                              </font>
