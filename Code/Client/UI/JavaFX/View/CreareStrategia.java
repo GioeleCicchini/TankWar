@@ -32,6 +32,7 @@ public class CreareStrategia implements Initializable{
     private String where = null;
     public StrategiaPutter strategiaPutter;
     public StrategiaPutter defaultPutter;
+    private boolean messaAzioneDefault=false;
 
     private String ultimaCondizione;
     private boolean prossimaCondAnnidata = false;
@@ -43,10 +44,6 @@ public class CreareStrategia implements Initializable{
         if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
-
-
-
-
         event.consume();
     }
 
@@ -245,23 +242,32 @@ public class CreareStrategia implements Initializable{
 
     public void defDragDropped(DragEvent event) {
         Dragboard db = event.getDragboard();
-        if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ) { //TODO è bruttissimo
-            System.out.println("Hey abbiamo un creator di azione nel default pozzo");
-            ActionCreatorLabel labelDragged = (ActionCreatorLabel) event.getGestureSource();
-            String idTypeAz = labelDragged.getIdType();
-            List<Integer> valori = new ArrayList<Integer>();
-            String idAzioneCreata;
-            idAzioneCreata = CreareStrategiaHandler.getSingletonInstance().scegliAzioneDefault(idTypeAz,valori);
-            String idCondDefault = CreareStrategiaHandler.getSingletonInstance().getStrategiaCorrente()
-            ICustomLabel azioneLabel = labelDragged.makeComponent(idAzioneCreata,)
+        if (!messaAzioneDefault){
+            if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ) { //TODO è bruttissimo
+                System.out.println("Hey abbiamo un creator di azione nel default pozzo");
+                ActionCreatorLabel labelDragged = (ActionCreatorLabel) event.getGestureSource();
+                String idTypeAz = labelDragged.getIdType();
+                List<Integer> valori = new ArrayList<Integer>();
+                String idAzioneCreata;
+                idAzioneCreata = CreareStrategiaHandler.getSingletonInstance().scegliAzioneDefault(idTypeAz,valori);
+                Map strategiaMap = CreareStrategiaHandler.getSingletonInstance().getStrategiaCorrenteMap();
+                String idCondDefault = (String)((Map)strategiaMap.get("defaultCondition")).get("id");
+                ICustomLabel azioneLabel = labelDragged.makeComponent(idAzioneCreata,idCondDefault,true);
+                defaultPutter.addLabel(azioneLabel,false);
+                messaAzioneDefault=true;
             }
         }
 
-    public void defDragEntered(Event event) {
-
     }
 
-    public void defDragOver(Event event) {
+    public void defDragEntered(DragEvent event) {
+        event.consume();
+    }
 
+    public void defDragOver(DragEvent event) {
+        if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()) {
+            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+        }
+        event.consume();
     }
 }

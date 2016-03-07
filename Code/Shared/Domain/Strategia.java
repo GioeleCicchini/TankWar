@@ -191,26 +191,33 @@ public class Strategia implements Serializable {
 	}
 
 	public void rimuoviComponente(String id) {
+		boolean trovato = false;
+		if (this.defaultCondition.getChild().getId().equals(id)) {
+			this.defaultCondition.removeChild();
+			trovato = true;
+		}
 		IStrategiaComponent currentPadreFoglia = null;
         IStrategiaComponent currentFoglia = null;
-        List<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
-        boolean trovato = false;
-        for (int i=0; i<padriFoglie.size() && !trovato; i++) {
-            currentPadreFoglia = padriFoglie.get(i);
-            currentFoglia = currentPadreFoglia;
-            if (currentPadreFoglia.getChild() != null) {
-                currentFoglia = currentPadreFoglia.getChild();
-                if (currentFoglia.getId().equals(id)) {
-                    trovato = true;
-                    currentPadreFoglia.removeChild();
-                }
-            } else {
-                if (currentFoglia.getId().equals(id)) {
-                    trovato = true;
-                    this.conditionBlock.remove(i);
-                }
-            }
-        }
+		if (!trovato){
+			List<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
+			for (int i=0; i<padriFoglie.size() && !trovato; i++) {
+				currentPadreFoglia = padriFoglie.get(i);
+				currentFoglia = currentPadreFoglia;
+				if (currentPadreFoglia.getChild() != null) {
+					currentFoglia = currentPadreFoglia.getChild();
+					if (currentFoglia.getId().equals(id)) {
+						trovato = true;
+						currentPadreFoglia.removeChild();
+					}
+				} else {
+					if (currentFoglia.getId().equals(id)) {
+						trovato = true;
+						this.conditionBlock.remove(i);
+					}
+				}
+			}
+		}
+
 	}
 
 
