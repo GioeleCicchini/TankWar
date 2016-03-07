@@ -1,9 +1,6 @@
 package Client.UI.UIUtils;
 
-import Client.UI.JavaFX.CustomWidget.ActionCreatorLabel;
-import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
-import Client.UI.JavaFX.CustomWidget.ICreatorCustomLabel;
-import Client.UI.JavaFX.CustomWidget.ICustomLabel;
+import Client.UI.JavaFX.CustomWidget.*;
 import Shared.Domain.Creator.ICreator;
 import Shared.Domain.ICatalogo;
 import javafx.event.EventHandler;
@@ -149,5 +146,7 @@ public class LabelsMaker {
         text="Se NON " + text;
         l.setText(text);
     }
+
+    public static ConditionLabel getDefaultConditionLabel ()
 
 }

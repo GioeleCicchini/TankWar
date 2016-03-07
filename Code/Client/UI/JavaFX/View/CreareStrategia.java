@@ -10,12 +10,10 @@ import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,9 +28,11 @@ public class CreareStrategia implements Initializable{
     public VBox strategiaVBox;
     public TextField nomeStrategia;
     public ToggleButton toggleButton;
+    public VBox CondizioneDefaultVBox;
     private int indentazione;
     private String where = null;
     public StrategiaPutter strategiaPutter;
+    public StrategiaPutter defaultPutter;
 
     private String ultimaCondizione;
     private boolean prossimaCondAnnidata = false;
@@ -190,13 +190,25 @@ public class CreareStrategia implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        strategiaPutter= new StrategiaPutter(strategiaVBox);
+        defaultPutter = new StrategiaPutter(CondizioneDefaultVBox);
+
         ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
         ICatalogo cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreator();
 
         List<ICreatorCustomLabel> condCLabels = LabelsMaker.getConditionCreatorLabels(ccc);
         ICreatorCustomLabel currentCLabel;
         for (int i=0; i<condCLabels.size(); i++){
-            condizioniCreatorVBox.getChildren().add((Node) condCLabels.get(i));
+            currentCLabel=condCLabels.get(i);
+            if (currentCLabel.getIdType() != "000"){ //Non vogliamo che ci sia la cond di defaults
+                condizioniCreatorVBox.getChildren().add((Node) condCLabels.get(i));
+            }
+            else {
+                String idCondDef = CreareStrategiaHandler.getSingletonInstance().getStrategiaCorrente().getDefaultCondition().getId();
+                ICustomLabel deafultCondizioneLabel = currentCLabel.makeComponent(idCondDef,null,true);
+                defaultPutter.addLabel(deafultCondizioneLabel,true);
+            }
+
         }
         /*
         GridPutter gridCondPutter = new GridPutter(conditionCreatorGrid);
@@ -223,7 +235,7 @@ public class CreareStrategia implements Initializable{
         }
         */
 
-        strategiaPutter= new StrategiaPutter(strategiaVBox);
+
 
     }
 
