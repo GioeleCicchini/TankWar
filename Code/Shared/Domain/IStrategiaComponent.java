@@ -1,5 +1,7 @@
 package Shared.Domain;
 
+import java.util.Map;
+
 public interface IStrategiaComponent {
 
 	/**
@@ -14,5 +16,6 @@ public interface IStrategiaComponent {
 	void setChild(IStrategiaComponent child);
 	String getId();
     void setId(String id);
+	Map getMap();
 
 }

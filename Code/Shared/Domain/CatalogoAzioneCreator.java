@@ -63,4 +63,13 @@ public class CatalogoAzioneCreator implements ICatalogo {
         key=creator.getIdType();
         this.azioniCreators.put(key,creator);
     }
+
+    @Override
+    public Map getMap() {
+        Map catalogo = new HashMap();
+        for (String key:this.azioniCreators.keySet()) {
+            catalogo.put(key,this.azioniCreators.get(key).getMap());
+        }
+        return catalogo;
+    }
 }

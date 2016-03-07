@@ -5,7 +5,9 @@ import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AvanzaAvantiAzioneCreator implements ICreator,IAzioneCreator {
 
@@ -58,4 +60,13 @@ public class AvanzaAvantiAzioneCreator implements ICreator,IAzioneCreator {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+    @Override
+    public Map getMap() {
+        Map azioneCreator = new HashMap();
+        azioneCreator.put("idType",this.idType);
+        azioneCreator.put("name",this.name);
+        azioneCreator.put("description",this.description);
+        return azioneCreator;
+    }
 }

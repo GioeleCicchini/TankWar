@@ -5,7 +5,9 @@ import Shared.Domain.Condizioni.SullaBombaCondizione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by emanuele on 16/02/16.
@@ -61,5 +63,14 @@ public class SullaBombaCondizioneCreator implements ICreator, ICondizioneCreator
 
     public void setIdType(String idType) {
         this.idType = idType;
+    }
+
+    @Override
+    public Map getMap() {
+        Map condizioneCreator = new HashMap();
+        condizioneCreator.put("idType",this.idType);
+        condizioneCreator.put("name",this.name);
+        condizioneCreator.put("description",this.description);
+        return condizioneCreator;
     }
 }

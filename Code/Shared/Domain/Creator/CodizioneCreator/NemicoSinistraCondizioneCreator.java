@@ -6,7 +6,9 @@ import Shared.Domain.Creator.ICreator;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by beniamino on 15/02/16.
@@ -62,5 +64,14 @@ public class NemicoSinistraCondizioneCreator implements ICreator, ICondizioneCre
 
     public void setIdType(String idType) {
         this.idType = idType;
+    }
+
+    @Override
+    public Map getMap() {
+        Map condizioneCreator = new HashMap();
+        condizioneCreator.put("idType",this.idType);
+        condizioneCreator.put("name",this.name);
+        condizioneCreator.put("description",this.description);
+        return condizioneCreator;
     }
 }

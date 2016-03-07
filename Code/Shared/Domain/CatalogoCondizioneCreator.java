@@ -82,4 +82,14 @@ public class CatalogoCondizioneCreator implements ICatalogo {
         this.condizioniCreators.put(iCreator.getIdType(),iCreator);
 
     }
+
+	@Override
+	public Map getMap() {
+		Map catalogo = new HashMap();
+		for (String key:this.condizioniCreators.keySet()) {
+			catalogo.put(key,this.condizioniCreators.get(key).getMap());
+		}
+        catalogo.put("defaultCreatorKey",this.defaultCreatorKey);
+		return catalogo;
+	}
 }

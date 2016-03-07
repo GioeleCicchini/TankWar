@@ -4,9 +4,7 @@ package Shared.Domain;
 import Shared.Domain.Creator.ICreator;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class Player  implements Serializable{
 
@@ -56,8 +54,18 @@ public class Player  implements Serializable{
 	public void aggiungiStrategia(Strategia strategia){
 
 		this.strategieList.add(strategia);
+	}
 
-
+	public Map getMap() {
+		Map player = new HashMap();
+		List strategie = new ArrayList<>();
+		for (Strategia s: this.strategieList) {
+			strategie.add(s.getMap());
+		}
+		player.put("id",this.id);
+		player.put("nome",this.nome);
+		player.put("strategieList",strategie);
+		return player;
 	}
 
 }

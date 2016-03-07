@@ -5,7 +5,9 @@ import Shared.Domain.IStrategiaComponent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by beniamino on 16/02/16.
@@ -118,5 +120,22 @@ public class OstacoloAdiacenteSinistraCondizione implements ICondizione, IStrate
     @Override
     public void setVera(boolean vera) {
         this.vera = vera;
+    }
+
+    @Override
+    public Map getMap() {
+        Map condizione = new HashMap();
+        List valoriCorrenti = new ArrayList<>();
+        for (Integer v: this.valori) {
+            valoriCorrenti.add(v);
+        }
+        condizione.put("id",this.id);
+        condizione.put("idType",this.idType);
+        condizione.put("name",this.name);
+        condizione.put("description",this.description);
+        condizione.put("vera",this.vera);
+        condizione.put("valori",this.valori);
+        condizione.put("child",this.child.getMap());
+        return condizione;
     }
 }

@@ -7,9 +7,7 @@ import Shared.Domain.Creator.ICreator;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Strategia implements Serializable {
@@ -216,5 +214,17 @@ public class Strategia implements Serializable {
 	}
 
 
-
+	public Map getMap() {
+		Map strategie = new HashMap();
+        List strategiaComponent = new ArrayList<>();
+        for (IStrategiaComponent is: this.conditionBlock) {
+            strategiaComponent.add(is.getMap());
+        }
+		strategie.put("id",this.id);
+		strategie.put("nome",this.nome);
+		strategie.put("isComplete",this.isComplete);
+		strategie.put("defaultCondition",this.defaultCondition.getMap());
+		strategie.put("conditionBlock",strategiaComponent);
+        return strategie;
+	}
 }

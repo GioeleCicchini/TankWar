@@ -4,7 +4,9 @@ import Shared.Domain.IStrategiaComponent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by emanuele on 15/02/16.
@@ -86,5 +88,20 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public Map getMap() {
+        Map azione = new HashMap();
+        List valoriCorrenti = new ArrayList<>();
+        for (Integer v: this.valori) {
+            valoriCorrenti.add(v);
+        }
+        azione.put("id",this.id);
+        azione.put("idTypeAz",this.idTypeAz);
+        azione.put("name",this.name);
+        azione.put("description",this.description);
+        azione.put("valori",this.valori);
+        return azione;
     }
 }

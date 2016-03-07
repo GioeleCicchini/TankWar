@@ -11,5 +11,6 @@ public interface ICatalogo {
     public ICreator getCreator(String idType);
     public Map<String, ICreator> getCreators();
     public void setCreators(Map<String, ICreator> creators);
+    public Map getMap();
 
 }

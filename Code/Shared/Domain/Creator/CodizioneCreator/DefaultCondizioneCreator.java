@@ -8,7 +8,9 @@ import com.sun.org.apache.bcel.internal.generic.ICONST;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by beniamino on 15/02/16.
@@ -67,5 +69,14 @@ public class DefaultCondizioneCreator implements ICreator, ICondizioneCreator {
     public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
         DefaultCondizione defaultCondizione = new DefaultCondizione(this.name,this.description,this.idType,idCond,vera,valori);
         return defaultCondizione;
+    }
+
+    @Override
+    public Map getMap() {
+        Map condizioneCreator = new HashMap();
+        condizioneCreator.put("idType",this.idType);
+        condizioneCreator.put("name",this.name);
+        condizioneCreator.put("description",this.description);
+        return condizioneCreator;
     }
 }

@@ -147,6 +147,4 @@ public class LabelsMaker {
         l.setText(text);
     }
 
-    public static ConditionLabel getDefaultConditionLabel ()
-
 }
