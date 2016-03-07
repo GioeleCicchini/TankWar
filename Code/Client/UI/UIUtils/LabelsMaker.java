@@ -27,39 +27,40 @@ public class LabelsMaker {
 
     //TODO Il metodo seguente non è flessibile, ne vorrei uno unico per Condition e Action. Occorrono pattern?
 
-    public static List<ICreatorCustomLabel> getConditionCreatorLabels(ICatalogo catalogo){
+    public static List<ICreatorCustomLabel> getConditionCreatorLabels(Map<String,Map> catalogo){
         List<ICreatorCustomLabel> customLabels = new ArrayList<>();
-        Map<String, ICreator> creators = catalogo.getCreators();
-        ICreator currentCreator;
-        for (String id: creators.keySet()) {
-            currentCreator = creators.get(id);
-            String name = currentCreator.getName();
-            String description = currentCreator.getDescription();
-            ICreatorCustomLabel myLabel = new ConditionCreatorLabel(id,name,description);//Questa riga crea rigidità
-            ((Label)myLabel).setText(currentCreator.getName());
-            myLabel.setDescription(currentCreator.getDescription());
-            double r = 0.753;
-            double g = 0.902;
-            double b = 0.514;
-            layoutizeLabelCreator(myLabel, r,g,b);
-            setTrue((ConditionCreatorLabel) myLabel);//Non è pulitissimo
-            customLabels.add(myLabel);
+        //Map<String, ICreator> creators = catalogo.getCreators();
+        Map currentCreator;
+        for (String id: catalogo.keySet()) {
+            if (id!="defaultCreatorKey") {
+                currentCreator = catalogo.get(id);
+                String name = (String) currentCreator.get("name");
+                String description = (String) currentCreator.get("description");
+                ICreatorCustomLabel myLabel = new ConditionCreatorLabel(id,name,description);//Questa riga crea rigidità
+                ((Label)myLabel).setText(name);
+                myLabel.setDescription(description);
+                double r = 0.753;
+                double g = 0.902;
+                double b = 0.514;
+                layoutizeLabelCreator(myLabel, r,g,b);
+                setTrue((ConditionCreatorLabel) myLabel);//Non è pulitissimo
+                customLabels.add(myLabel);
+            }
         }
         return customLabels;
     }
 
-    public static List<ICreatorCustomLabel> getActionCreatorLabels(ICatalogo catalogo){
+    public static List<ICreatorCustomLabel> getActionCreatorLabels(Map<String,Map> catalogo){
         List<ICreatorCustomLabel> customLabels = new ArrayList<>();
-        Map<String,ICreator> creators = catalogo.getCreators();
-        ICreator currentCreator;
-        for (String id :
-                creators.keySet()) {
-            currentCreator = creators.get(id);
-            String name = currentCreator.getName();
-            String description = currentCreator.getDescription();
+        //Map<String,ICreator> creators = catalogo.getCreators();
+        Map currentCreator;
+        for (String id :catalogo.keySet()) {
+            currentCreator = catalogo.get(id);
+            String name = (String) currentCreator.get("name");
+            String description = (String) currentCreator.get("description");
             ICreatorCustomLabel myLabel = new ActionCreatorLabel(id,name,description);//RIGIDITA'
-            ((Label)myLabel).setText(currentCreator.getName());
-            myLabel.setDescription(currentCreator.getDescription());
+            ((Label)myLabel).setText(name);
+            myLabel.setDescription(description);
             double r = 0.012;
             double g = 0.61;
             double b = 0.90;

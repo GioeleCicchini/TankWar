@@ -137,7 +137,11 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent,Seria
         condizione.put("description",this.description);
         condizione.put("vera",this.vera);
         condizione.put("valori",this.valori);
-        condizione.put("child",this.child.getMap());
+        if (this.child!=null) {
+            condizione.put("child",this.child.getMap());
+        } else {
+            condizione.put("child",null);
+        }
         return condizione;
     }
 }
