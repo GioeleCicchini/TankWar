@@ -1,9 +1,6 @@
 package Server;
 
-import Server.Controller.ControllerFacade;
-import Server.Controller.ControllerPrelevaStrategiaObserver;
-import Server.Controller.ControllerRegistraPlayerObserver;
-import Server.Controller.ControllerRegistraStrategiaObserver;
+import Server.Controller.*;
 
 public class Main {
 
@@ -12,6 +9,7 @@ public class Main {
         ControllerPrelevaStrategiaObserver prelevaStrategiaObserver = new ControllerPrelevaStrategiaObserver();
         ControllerRegistraPlayerObserver registraPlayerObserver = new ControllerRegistraPlayerObserver();
         ControllerRegistraStrategiaObserver registraStrategiaObserver = new ControllerRegistraStrategiaObserver();
+        ControllerPrelevaPlayerObserver prelevaPlayerObserver = new ControllerPrelevaPlayerObserver();
 
         ControllerFacade controllerFacade = new ControllerFacade();
         ConnectionListner entrataServer = new ConnectionListner();
@@ -21,6 +19,7 @@ public class Main {
         controllerFacade.Attach(prelevaStrategiaObserver);
         controllerFacade.Attach(registraPlayerObserver);
         controllerFacade.Attach(registraStrategiaObserver);
+        controllerFacade.Attach(prelevaPlayerObserver);
 
         entrataServer.StartServer();
 

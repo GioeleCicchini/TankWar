@@ -2,12 +2,11 @@ package Server;
 
 import Server.Controller.ControllerFacade;
 import Server.Controller.Observer;
+import Server.ServerUtil.RispostaMaker;
 import Shared.Domain.Strategia;
 import Shared.Util.DTO;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
@@ -42,10 +41,15 @@ public class ConnectionListner {
             }
 
             ObjectInputStream objectInput = new ObjectInputStream(connectionSocket.getInputStream());
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
             DTO dto = null;
             try {
+
                 dto = (DTO)objectInput.readObject();
                 controllerFacade.ArrivaRichiesta(dto);
+                DTO Risposta = RispostaMaker.getSingletonInstance().PrelevaRisposta();
+                objectOutputStream.writeObject(Risposta);
+
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }finally {

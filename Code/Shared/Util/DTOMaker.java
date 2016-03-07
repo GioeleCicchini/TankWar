@@ -28,6 +28,31 @@ public class DTOMaker {
 
     }
 
+
+    public DTO getDatiLoginServerResponce(boolean trovato,Player player){
+        DTO dto = new DTO();
+        if (trovato== true){
+            dto.setFunzione("UtenteTrovato");
+            dto.aggiungiOggettoPersistente(player);
+        }
+        else{
+            dto.setFunzione("UtenteNonTrovato");
+        }
+
+        return dto;
+    }
+
+
+    public DTO getEffettuaLoginDTO(String username,String password){
+        DTO dto = new DTO();
+        dto.setFunzione("PrelevaPlayer");
+        dto.aggiungiOggettoPersistente(username);
+        dto.aggiungiOggettoPersistente(password);
+        return dto;
+    }
+
+
+
     public DTO getPlayerDTO(){
 
         DTO dto = new DTO();
@@ -44,6 +69,13 @@ public class DTOMaker {
         Player player = CreareStrategiaHandler.getSingletonInstance().getCurrentPlayer();
         dto.aggiungiOggettoPersistente(player.getId());
         dto.aggiungiOggettoPersistente(player.getStrategieList().get(player.getStrategieList().size()-1));
+        return dto;
+
+    }
+    public DTO getStrategiaServerResponceDTO(){
+        DTO dto = new DTO();
+        dto.setFunzione("StrategiaRegistrata");
+
         return dto;
 
     }

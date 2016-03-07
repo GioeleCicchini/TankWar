@@ -57,7 +57,6 @@ public class ControllerFacade implements Controller{
     public void Notify() {
             for(Observer osservatore : OsservatoriRichieste){
                 osservatore.update(this);
-
             }
     }
 

@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
@@ -27,7 +28,7 @@ public class CreareStrategia implements Initializable{
     public VBox condizioniCreatorVBox;
     public VBox azioniCreatorVBox;
     public VBox strategiaVBox;
-    public TextArea nomeStrategia;
+    public TextField nomeStrategia;
     public ToggleButton toggleButton;
     private int indentazione;
     private String where = null;
