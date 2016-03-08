@@ -94,18 +94,14 @@ public class LabelsMaker {
     }
 
     public static void layoutizeLabel(ICustomLabel myLabel, Color color) {
-
         ((Label) myLabel).setBackground(new Background(new BackgroundFill(color, new CornerRadii(3), new Insets(0))));
         ((Label) myLabel).setBorder(Border.EMPTY);
         ((Label) myLabel).setStyle("-fx-border-color: white;");
         ((Label) myLabel).setMinSize(400, 35);
         ((Label) myLabel).setText(myLabel.getName());
         myLabel.setDescription(myLabel.getDescription());
-
-
         ((Label) myLabel).setTextAlignment(TextAlignment.CENTER);
         ((Label) myLabel).setFont(Font.font(20));
-
         ((Label) myLabel).setVisible(true);
     }
 
@@ -114,7 +110,7 @@ public class LabelsMaker {
         Double g = 0.902;
         Double b = 0.514;
         Color color = Color.color(r, g, b);
-        ((Label) l).setBackground(new Background(new BackgroundFill(color, new CornerRadii(3), new Insets(0))));
+        l.setBackground(new Background(new BackgroundFill(color, new CornerRadii(3), new Insets(0))));
         String text = l.getName();
         text = "Se " + text;
         l.setText(text);
@@ -125,7 +121,7 @@ public class LabelsMaker {
         Double g = 0.4;
         Double b = 0.4;
         Color color = Color.color(r, g, b);
-        ((Label) l).setBackground(new Background(new BackgroundFill(color, new CornerRadii(3), new Insets(0))));
+        l.setBackground(new Background(new BackgroundFill(color, new CornerRadii(3), new Insets(0))));
         String text = l.getName();
         text = "Se NON " + text;
         l.setText(text);

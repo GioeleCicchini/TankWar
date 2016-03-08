@@ -118,13 +118,12 @@ public class CreareStrategia implements Initializable {
         nomeStrategia.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue){
+                if (newValue) {
                     System.out.println("Textfield on focus");
-                }
-                else {
+                } else {
                     System.out.println("Textfield out focus");
                     String nome = nomeStrategia.getText();
-                    if (!nome.equals("")){
+                    if (!nome.equals("")) {
                         CreareStrategiaHandler.getSingletonInstance().inserisciNomeStrategia(nome);
                     }
                 }

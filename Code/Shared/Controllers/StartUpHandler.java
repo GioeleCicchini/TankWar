@@ -19,6 +19,7 @@ public class StartUpHandler {
     private Player player;
     private ICatalogo catalogoCondCreator;
     private ICatalogo catalogoAzCreator;
+
     private StartUpHandler() {
         this.catalogoCondCreator = new CatalogoCondizioneCreator();
         this.catalogoAzCreator = new CatalogoAzioneCreator();

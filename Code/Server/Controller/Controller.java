@@ -5,10 +5,10 @@ package Server.Controller;
  */
 public interface Controller {
 
-    public void Attach(Observer o);
+    void Attach(Observer o);
 
-    public void Detach(Observer o);
+    void Detach(Observer o);
 
-    public void Notify();
+    void Notify();
 
 }

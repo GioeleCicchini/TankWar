@@ -4,7 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity"
       prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8"
       fx:controller="Client.UI.JavaFX.View.CreareStrategia">
     <children>
@@ -44,7 +45,7 @@
                                         <Insets/>
                                     </opaqueInsets>
                                     <graphic>
-                                        <TextField fx:id="nomeStrategia" prefHeight="33.0" prefWidth="85.0" />
+                                        <TextField fx:id="nomeStrategia" prefHeight="33.0" prefWidth="85.0"/>
                                     </graphic>
                                 </Label>
                                 <Button mnemonicParsing="false" onMouseClicked="#terminaStrategia" prefHeight="176.0"

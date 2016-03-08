@@ -53,7 +53,6 @@ public class Player implements Serializable {
     }
 
     public void aggiungiStrategia(Strategia strategia) {
-
         this.strategieList.add(strategia);
     }
 

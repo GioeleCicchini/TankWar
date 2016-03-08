@@ -47,7 +47,7 @@ public class StrategiaPutter {
                 HBox nuovaUltimaRiga = (HBox) strategiaVBox.getChildren().get(numRighe - 2);
                 Integer numeroDiRiempimentiNuovaUltimaRiga = nuovaUltimaRiga.getChildren().size() - 1;//-1 perchè una è la label
                 indentazione = numeroDiRiempimentiNuovaUltimaRiga;
-            } else {//A questo punto vul dire che sto togliendo la prima sopra
+            } else {//A questo punto vuol dire che sto togliendo la prima sopra
                 indentazione = 0;
             }
             strategiaVBox.getChildren().remove(numRighe - 1);
