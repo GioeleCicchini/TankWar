@@ -14,20 +14,20 @@ import java.io.IOException;
 public class ViewTransaction {
     private static ViewTransaction ourInstance = new ViewTransaction();
 
+    private ViewTransaction() {
+    }
+
     public static ViewTransaction getSingletonInstance() {
         return ourInstance;
     }
 
-    private ViewTransaction() {
-    }
-
-    public  void goToHome (Node transactionNode){
+    public void goToHome(Node transactionNode) {
         Stage stage;
         Parent root = null;
 
         stage = (Stage) transactionNode.getScene().getWindow();
         try {
-            root= FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/home.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/home.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,13 +38,13 @@ public class ViewTransaction {
         stage.show();
     }
 
-    public  void goToCreareStrategia (Node transactionNode){
+    public void goToCreareStrategia(Node transactionNode) {
         Stage stage;
         Parent root = null;
 
         stage = (Stage) transactionNode.getScene().getWindow();
         try {
-            root= FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/crearestrategia.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/crearestrategia.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,13 +55,13 @@ public class ViewTransaction {
         stage.show();
     }
 
-    public  void goToLogin (Node transactionNode){
+    public void goToLogin(Node transactionNode) {
         Stage stage;
         Parent root = null;
 
         stage = (Stage) transactionNode.getScene().getWindow();
         try {
-            root= FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/login.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,14 +1,13 @@
 package Client.UI.JavaFX.View;
 
+import Client.UI.UIUtils.ViewTransaction;
 import Shared.Controllers.CreareStrategiaHandler;
 import Shared.Controllers.StartUpHandler;
 import Shared.Domain.Player;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -44,19 +43,7 @@ public class Login implements Initializable {
 
         CreareStrategiaHandler.getSingletonInstance().setCurrentPlayer(player);
 
-
-        stage = (Stage) LoginButton.getScene().getWindow();
-        try {
-            System.out.println("Qui");
-            root = FXMLLoader.load(getClass().getResource("../Fxml/home.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
+        ViewTransaction.getSingletonInstance().goToHome(LoginButton);
 
 
     }

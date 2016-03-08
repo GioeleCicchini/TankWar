@@ -43,6 +43,7 @@ public class CreareStrategia implements Initializable {
     public Button indietroButton;
     public StrategiaPutter strategiaPutter;
     public StrategiaPutter defaultPutter;
+    public Button confermaButton;
     private String where = null;
     private boolean messaAzioneDefault = false;
 
@@ -167,6 +168,7 @@ public class CreareStrategia implements Initializable {
 
     public void terminaStrategia(MouseEvent event) throws IOException {
         CreareStrategiaHandler.getSingletonInstance().terminaStrategia();
+        ViewTransaction.getSingletonInstance().goToHome(confermaButton);
     }
 
     public void inserisciNomeStrategia(Event event) {
@@ -248,23 +250,6 @@ public class CreareStrategia implements Initializable {
 
         CreareStrategiaHandler.getSingletonInstance().distruggiStrategiaCorrente();
         ViewTransaction.getSingletonInstance().goToHome(indietroButton);
-
-        /*
-        Stage stage;
-        Parent root = null;
-
-        stage = (Stage) indietroButton.getScene().getWindow();
-        try {
-            root = FXMLLoader.load(getClass().getResource("../Fxml/home.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-        */
 
 
     }

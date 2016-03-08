@@ -1,15 +1,11 @@
 package Client.UI.JavaFX.View;
 
+import Client.UI.UIUtils.ViewTransaction;
 import Shared.Controllers.CreareStrategiaHandler;
 import javafx.event.Event;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,20 +23,8 @@ public class Home implements Initializable {
     public void startDemo(Event event) {
 
         CreareStrategiaHandler.getSingletonInstance().iniziaNuovaStrategia();
-        Stage stage;
-        Parent root = null;
 
-        stage = (Stage) startButton.getScene().getWindow();
-        try {
-            root = FXMLLoader.load(getClass().getResource("../Fxml/crearestrategia.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
+        ViewTransaction.getSingletonInstance().goToCreareStrategia(startButton);
 
 
     }
