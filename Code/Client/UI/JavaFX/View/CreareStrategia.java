@@ -8,6 +8,8 @@ import Client.UI.UIUtils.LabelsMaker;
 import Client.UI.UIUtils.StrategiaPutter;
 import Shared.Controllers.CreareStrategiaHandler;
 import Shared.Controllers.StartUpHandler;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -113,6 +115,22 @@ public class CreareStrategia implements Initializable {
         strategiaPutter = new StrategiaPutter(strategiaVBox);
         defaultPutter = new StrategiaPutter(condizioneDefaultVBox);
 
+        nomeStrategia.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue){
+                    System.out.println("Textfield on focus");
+                }
+                else {
+                    System.out.println("Textfield out focus");
+                    String nome = nomeStrategia.getText();
+                    if (!nome.equals("")){
+                        CreareStrategiaHandler.getSingletonInstance().inserisciNomeStrategia(nome);
+                    }
+                }
+            }
+        });
+
         Map ccc = StartUpHandler.getSingletonInstance().getCatalogoConditionCreatorMap();
         Map cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreatorMap();
 
@@ -152,9 +170,7 @@ public class CreareStrategia implements Initializable {
     }
 
     public void terminaStrategia(MouseEvent event) throws IOException {
-        CreareStrategiaHandler creareStrategiaHandler = CreareStrategiaHandler.getSingletonInstance();
-        creareStrategiaHandler.inserisciNomeStrategia(nomeStrategia.getText());
-        creareStrategiaHandler.terminaStrategia();
+        CreareStrategiaHandler.getSingletonInstance().terminaStrategia();
     }
 
     public void inserisciNomeStrategia(Event event) {

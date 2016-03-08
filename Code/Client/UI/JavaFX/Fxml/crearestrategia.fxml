@@ -44,7 +44,7 @@
                                         <Insets/>
                                     </opaqueInsets>
                                     <graphic>
-                                        <TextField fx:id="nomeStrategia" prefHeight="33.0" prefWidth="85.0"/>
+                                        <TextField fx:id="nomeStrategia" prefHeight="33.0" prefWidth="85.0" />
                                     </graphic>
                                 </Label>
                                 <Button mnemonicParsing="false" onMouseClicked="#terminaStrategia" prefHeight="176.0"
