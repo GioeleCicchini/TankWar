@@ -32,7 +32,6 @@ public class LabelsMaker {
 
     public static List<ICreatorCustomLabel> getConditionCreatorLabels(Map<String, Map> catalogo) {
         List<ICreatorCustomLabel> customLabels = new ArrayList<>();
-        //Map<String, ICreator> creators = catalogo.getCreators();
         Map currentCreator;
         for (String id : catalogo.keySet()) {
             if (id != "defaultCreatorKey") {
@@ -55,7 +54,6 @@ public class LabelsMaker {
 
     public static List<ICreatorCustomLabel> getActionCreatorLabels(Map<String, Map> catalogo) {
         List<ICreatorCustomLabel> customLabels = new ArrayList<>();
-        //Map<String,ICreator> creators = catalogo.getCreators();
         Map currentCreator;
         for (String id : catalogo.keySet()) {
             currentCreator = catalogo.get(id);
@@ -74,37 +72,19 @@ public class LabelsMaker {
     }
 
     private static void layoutizeLabelCreator(ICreatorCustomLabel myLabel, double r, double g, double b) {
-        /*Random rand = new Random();
-        float r = rand.nextFloat();
-        while(r<0.5){
-            r=rand.nextFloat();
-        }
-        float g = rand.nextFloat();
-        while(g<0.5){
-            g=rand.nextFloat();
-        }
-        float b = rand.nextFloat();
-        while(b<0.5){
-            b=rand.nextFloat();
-        }*/
         Color color = Color.color(r, g, b);
         ((Label) myLabel).setBackground(new Background(new BackgroundFill(color, new CornerRadii(3), new Insets(0))));
-        //((ConditionCreatorLabel) myLabel).setLayoutX(1000);
         ((Label) myLabel).setStyle("-fx-border-color: white;");
         ((Label) myLabel).setMinSize(400, 35);
-
-
         ((Label) myLabel).setTextAlignment(TextAlignment.CENTER);
         ((Label) myLabel).setFont(Font.font(20));
-
-
         ((Label) myLabel).setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Dragboard db = ((Label) event.getSource()).startDragAndDrop(TransferMode.ANY);
 
                 ClipboardContent content = new ClipboardContent();
-                content.putString("Qua ci andrà qualcosa per id");
+                content.putString("clipboardString");
                 db.setContent(content);
 
                 event.consume();

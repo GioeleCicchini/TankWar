@@ -1,6 +1,6 @@
 package Shared.Util;
 
-import Shared.Domain.Controllers.CreareStrategiaHandler;
+import Shared.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Player;
 
 /**

@@ -1,6 +1,6 @@
 package Client.UI.JavaFX.View;
 
-import Shared.Domain.Controllers.CreareStrategiaHandler;
+import Shared.Controllers.CreareStrategiaHandler;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

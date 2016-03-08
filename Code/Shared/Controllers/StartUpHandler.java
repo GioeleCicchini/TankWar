@@ -1,4 +1,4 @@
-package Shared.Domain.Controllers;
+package Shared.Controllers;
 
 import Shared.Domain.CatalogoAzioneCreator;
 import Shared.Domain.CatalogoCondizioneCreator;
