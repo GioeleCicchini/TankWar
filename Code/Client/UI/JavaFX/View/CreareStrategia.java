@@ -7,19 +7,17 @@ import Client.UI.JavaFX.CustomWidget.ICustomLabel;
 import Client.UI.UIUtils.LabelsMaker;
 import Client.UI.UIUtils.StrategiaPutter;
 import Client.UI.UIUtils.ViewTransaction;
-import Shared.Domain.Controllers.CreareStrategiaHandler;
-import Shared.Domain.Controllers.StartUpHandler;
+import Shared.Controllers.CreareStrategiaHandler;
+import Shared.Controllers.StartUpHandler;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
@@ -36,7 +34,6 @@ import java.util.ResourceBundle;
 public class CreareStrategia implements Initializable {
 
     public Pane DropPaneTarget;
-    public Label labelFeedback;
     public VBox condizioniCreatorVBox;
     public VBox azioniCreatorVBox;
     public VBox strategiaVBox;
@@ -46,17 +43,11 @@ public class CreareStrategia implements Initializable {
     public Button indietroButton;
     public StrategiaPutter strategiaPutter;
     public StrategiaPutter defaultPutter;
-    private int indentazione;
     private String where = null;
     private boolean messaAzioneDefault = false;
 
-    private String ultimaCondizione;
-    private boolean prossimaCondAnnidata = false;
-
 
     public void targetDragOver(DragEvent event) {
-        System.out.println("onDragOver");
-
         if (event.getGestureSource() != DropPaneTarget && event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
@@ -64,15 +55,11 @@ public class CreareStrategia implements Initializable {
     }
 
     public void targetDragEntered(DragEvent event) {
-        System.out.println("onDragEntered");
         event.consume();
     }
 
 
     public void targetDragDropped(DragEvent event) {
-
-        System.out.println("onDragDropped");
-        Dragboard db = event.getDragboard();
         boolean booleanoDellaCondizione = true;
         if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel")) { //TODO è bruttissimo
             //Caso in cui viene trascinato un CondizioneCreator
@@ -108,18 +95,14 @@ public class CreareStrategia implements Initializable {
                 List<Integer> valori = new ArrayList<Integer>();
                 String idAzioneCreata;
                 idAzioneCreata = CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz, where, valori);
-                ICustomLabel azioneLabel = labelDragged.makeComponent(idAzioneCreata, where, true); //TODO cacca
+                ICustomLabel azioneLabel = labelDragged.makeComponent(idAzioneCreata, where, true);
                 where = null;
                 strategiaPutter.addLabel(azioneLabel, false);
             }
         }
-
-        System.out.println("Lunghezza VBox= " + ((Integer) strategiaVBox.getChildren().size()).toString());
     }
 
     public void condDragDone(DragEvent event) {
-        System.out.println("onDragDone");
-
         event.consume();
     }
 
@@ -132,13 +115,12 @@ public class CreareStrategia implements Initializable {
         nomeStrategia.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue){
+                if (newValue) {
                     System.out.println("Textfield on focus");
-                }
-                else {
+                } else {
                     System.out.println("Textfield out focus");
                     String nome = nomeStrategia.getText();
-                    if (!nome.equals("")){
+                    if (!nome.equals("")) {
                         CreareStrategiaHandler.getSingletonInstance().inserisciNomeStrategia(nome);
                     }
                 }
@@ -162,32 +144,11 @@ public class CreareStrategia implements Initializable {
             }
 
         }
-        /*
-        GridPutter gridCondPutter = new GridPutter(conditionCreatorGrid);
-        for (int i=0; i<condCLabels.size(); i++){
-            if (!gridCondPutter.isFull()){
-                currentCLabel= condCLabels.get(i);
-                gridCondPutter.put((Node)currentCLabel);
-                }
-        }
-        */
 
         List<ICreatorCustomLabel> azioneCLabels = LabelsMaker.getActionCreatorLabels(cac);//Vorrei chiamasse lo stesso metodo di sopra
-        ICreatorCustomLabel currentALabel;
         for (int i = 0; i < azioneCLabels.size(); i++) {
             azioniCreatorVBox.getChildren().add((Node) azioneCLabels.get(i));
         }
-        /*
-        GridPutter gridAzioniPutter = new GridPutter(azioneCreatorGrid);
-        for (int i=0; i<azioneCLabels.size(); i++){
-            if (!gridAzioniPutter.isFull()){
-                currentALabel= azioneCLabels.get(i);
-                gridAzioniPutter.put((Node) currentALabel);
-            }
-        }
-        */
-
-
     }
 
     public void rimuoviComponente(MouseEvent event) {
@@ -201,34 +162,7 @@ public class CreareStrategia implements Initializable {
             where = ultimaInserita.getIdPadre();//La prossima messa andrà al posto di questa
             CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idUltimaInserita);
             strategiaPutter.removeLastLabel();
-            System.out.println("lunghezza VBox= " + this.strategiaVBox.getChildren().size());
         }
-
-        /*Integer lunghezza  = strategiaVBox.getChildren().size();
-        if (lunghezza != 0) {
-            HBox riga = (HBox)strategiaVBox.getChildren().get(lunghezza-1);
-            ICustomLabel label= (ICustomLabel)riga.getChildren().get(riga.getChildren().size()-1);
-            String idComponent = label.getIdComponent();
-            CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idComponent);
-            strategiaVBox.getChildren().remove(riga);
-
-            lunghezza = lunghezza - 1;
-            if (lunghezza != 0) {
-                indentazione = indentazione -1 ;
-                HBox ultimaRiga= (HBox) strategiaVBox.getChildren().get(lunghezza-1);
-                ICustomLabel ultima = (ICustomLabel)(ultimaRiga.getChildren().get(ultimaRiga.getChildren().size()-1));
-                ultimaCondizione = ultima.getIdComponent();
-                if (indentazione == -1) {
-                    indentazione = 0;
-                    prossimaCondAnnidata = false;
-                    System.out.println("Ci sono");
-
-                }
-            } else {
-                ultimaCondizione = null;
-                indentazione = 0;
-            }
-        }*/
     }
 
     public void terminaStrategia(MouseEvent event) throws IOException {
@@ -238,7 +172,6 @@ public class CreareStrategia implements Initializable {
     public void inserisciNomeStrategia(Event event) {
         String nome = nomeStrategia.getText();
         CreareStrategiaHandler.getSingletonInstance().inserisciNomeStrategia(nome);
-        System.out.println(nome);
     }
 
     public void clickToggle(Event event) {
@@ -282,7 +215,6 @@ public class CreareStrategia implements Initializable {
     }
 
     public void defDragDropped(DragEvent event) {
-        Dragboard db = event.getDragboard();
         if (!messaAzioneDefault) {
             if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel")) { //TODO è bruttissimo
                 System.out.println("Hey abbiamo un creator di azione nel default pozzo");

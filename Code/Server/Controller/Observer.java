@@ -5,7 +5,7 @@ package Server.Controller;
  */
 public interface Observer {
 
-    public void update(ControllerFacade controller);
+    void update(ControllerFacade controller);
 
 
 }

@@ -1,4 +1,4 @@
-package Shared.Domain.Controllers;
+package Shared.Controllers;
 
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.Creator.ICreator;
@@ -44,7 +44,7 @@ public class CreareStrategiaHandler {
 
     public String scegliCondizioneAnnidata(String idTypeCond, String idCondPadre, boolean vera, List<Integer> valori) {
         ICatalogo ccc = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
-        ICreator iCondizioneCreator = ccc.getCreator(idTypeCond);//sta riga è poetica
+        ICreator iCondizioneCreator = ccc.getCreator(idTypeCond);
         String NuovoIdCondPadre = this.strategiaCorrente.aggiungiCondizioneAnnidata(iCondizioneCreator, idCondPadre, vera, valori);
         return NuovoIdCondPadre;
     }
@@ -62,7 +62,6 @@ public class CreareStrategiaHandler {
     }
 
     public void iniziaNuovaStrategia() {
-        System.out.println(currentPlayer.getNome());
         ICatalogo catalogoCondizioneCreator = StartUpHandler.getSingletonInstance().getCatalogoCondCreator();
         ICreator condizioneDefaultCreator = ((CatalogoCondizioneCreator) catalogoCondizioneCreator).getCondizioneDefaultCreator();
         this.strategiaCorrente = currentPlayer.iniziaNuovaStrategia(condizioneDefaultCreator);

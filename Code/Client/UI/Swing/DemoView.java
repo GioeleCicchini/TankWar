@@ -1,4 +1,4 @@
-package Shared.Domain;
+package Client.UI.Swing;
 
 import javax.swing.*;
 

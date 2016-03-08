@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ICondizione {
 
-    abstract boolean verificaSeVera();
+    boolean verificaSeVera();
 
     IAzione getAzione();
 

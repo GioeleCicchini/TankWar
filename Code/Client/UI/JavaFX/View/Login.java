@@ -1,7 +1,7 @@
 package Client.UI.JavaFX.View;
 
-import Shared.Domain.Controllers.CreareStrategiaHandler;
-import Shared.Domain.Controllers.StartUpHandler;
+import Shared.Controllers.CreareStrategiaHandler;
+import Shared.Controllers.StartUpHandler;
 import Shared.Domain.Player;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -41,8 +41,6 @@ public class Login implements Initializable {
 
 
         Player player = StartUpHandler.getSingletonInstance().getPlayer(Username.getText(), Password.getText());
-
-        System.out.println(player.getNome());
 
         CreareStrategiaHandler.getSingletonInstance().setCurrentPlayer(player);
 

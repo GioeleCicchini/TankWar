@@ -5,19 +5,19 @@ package Client.UI.JavaFX.CustomWidget;
  */
 public interface ICustomLabel {
 
-    public String getIdComponent();
+    String getIdComponent();
 
-    public void setIdComponent(String idComponent);
+    void setIdComponent(String idComponent);
 
-    public String getName();
+    String getName();
 
-    public void setName(String name);
+    void setName(String name);
 
-    public String getDescription();
+    String getDescription();
 
-    public void setDescription(String description);
+    void setDescription(String description);
 
-    public String getIdPadre();
+    String getIdPadre();
 
-    public void setIdPadre(String idPadre);
+    void setIdPadre(String idPadre);
 }

@@ -12,17 +12,16 @@ import java.util.List;
 public class ControllerFacade implements Controller {
 
     private String funzione;
-    private List<Serializable> OggettiPersistenti;
+    private List<Serializable> oggettiPersistenti;
+    private List<Observer> osservatoriRichieste = new ArrayList<Observer>();
 
-
-    private List<Observer> OsservatoriRichieste = new ArrayList<Observer>();
 
     public List<Observer> getOsservatoriRichieste() {
-        return OsservatoriRichieste;
+        return osservatoriRichieste;
     }
 
     public void setOsservatoriRichieste(List<Observer> osservatoriRichieste) {
-        OsservatoriRichieste = osservatoriRichieste;
+        this.osservatoriRichieste = osservatoriRichieste;
     }
 
     public void ControllerFacade() {
@@ -37,39 +36,39 @@ public class ControllerFacade implements Controller {
 
     public void ArrivaRichiesta(DTO dto) {
         this.funzione = dto.getFunzione();
-        this.OggettiPersistenti = dto.getOggettiPersistenti();
+        this.oggettiPersistenti = dto.getOggettiPersistenti();
 
         this.Notify();
     }
 
     @Override
     public void Attach(Observer o) {
-        OsservatoriRichieste.add(o);
+        osservatoriRichieste.add(o);
     }
 
     @Override
     public void Detach(Observer o) {
-        OsservatoriRichieste.remove(o);
+        osservatoriRichieste.remove(o);
     }
 
     @Override
     public void Notify() {
-        for (Observer osservatore : OsservatoriRichieste) {
+        for (Observer osservatore : osservatoriRichieste) {
             osservatore.update(this);
         }
     }
 
     private void prelevato() {
         this.funzione = null;
-        this.OggettiPersistenti.clear();
+        this.oggettiPersistenti.clear();
 
     }
 
     public List<Serializable> getOggettiPersistenti() {
-        return OggettiPersistenti;
+        return oggettiPersistenti;
     }
 
     public void setOggettiPersistenti(List<Serializable> oggettiPersistenti) {
-        OggettiPersistenti = oggettiPersistenti;
+        this.oggettiPersistenti = oggettiPersistenti;
     }
 }
