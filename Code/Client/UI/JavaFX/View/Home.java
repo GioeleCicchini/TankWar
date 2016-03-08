@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 /**
  * Created by beniamino on 03/03/16.
  */
-public class Inizio implements Initializable {
+public class Home implements Initializable {
     public Button startButton;
 
     @Override

@@ -50,7 +50,7 @@ public class Login implements Initializable {
         stage = (Stage) LoginButton.getScene().getWindow();
         try {
             System.out.println("Qui");
-            root = FXMLLoader.load(getClass().getResource("../Fxml/inizio.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../Fxml/home.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
