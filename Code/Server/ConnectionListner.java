@@ -1,15 +1,14 @@
 package Server;
 
 import Server.Controller.ControllerFacade;
-import Server.Controller.Observer;
 import Server.ServerUtil.RispostaMaker;
-import Shared.Domain.Strategia;
 import Shared.Util.DTO;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.List;
 
 /**
  * Created by gioele on 16/02/16.
@@ -19,11 +18,11 @@ public class ConnectionListner {
     private ControllerFacade controllerFacade;
     private ServerSocket welcomeSocket = null;
 
-    public  ConnectionListner(){
+    public ConnectionListner() {
 
     }
 
-    public void StartServer()  throws IOException {
+    public void StartServer() throws IOException {
 
         try {
             welcomeSocket = new ServerSocket(6789);
@@ -31,7 +30,7 @@ public class ConnectionListner {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        while(true){
+        while (true) {
 
             Socket connectionSocket = null;
             try {
@@ -45,15 +44,15 @@ public class ConnectionListner {
             DTO dto = null;
             try {
 
-                dto = (DTO)objectInput.readObject();
+                dto = (DTO) objectInput.readObject();
                 controllerFacade.ArrivaRichiesta(dto);
                 DTO Risposta = RispostaMaker.getSingletonInstance().PrelevaRisposta();
                 objectOutputStream.writeObject(Risposta);
 
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
-            }finally {
-            connectionSocket.close();
+            } finally {
+                connectionSocket.close();
             }
 
         }

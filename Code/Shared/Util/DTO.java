@@ -9,13 +9,12 @@ import java.util.List;
  */
 public class DTO implements Serializable {
 
-    private static final long serialVersionUID=11;
+    private static final long serialVersionUID = 11;
     private String funzione;
     private List<Serializable> OggettiPersistenti = new ArrayList<Serializable>();
 
 
-
-    public void DTO(){
+    public void DTO() {
 
 
     }
@@ -28,7 +27,7 @@ public class DTO implements Serializable {
         this.funzione = funzione;
     }
 
-    public void aggiungiOggettoPersistente(Serializable Object){
+    public void aggiungiOggettoPersistente(Serializable Object) {
         this.OggettiPersistenti.add(Object);
     }
 

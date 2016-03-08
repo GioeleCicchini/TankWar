@@ -38,10 +38,10 @@ public class ConditionCreatorLabel extends Label implements ICreatorCustomLabel 
 
     @Override
     public ICustomLabel makeComponent(String idCond, String idPadre, boolean vera) {
-        ConditionLabel conditionLabel = new ConditionLabel(name,description,idCond,idPadre,vera);
-        conditionLabel.setPadding(new Insets(0,0,0,20));
-        System.out.println("Senza cast: "+ this.getBackground().getFills().get(0).getFill().toString());
-        System.out.println("Con il cast: "+ ((Color) this.getBackground().getFills().get(0).getFill()).toString());
+        ConditionLabel conditionLabel = new ConditionLabel(name, description, idCond, idPadre, vera);
+        conditionLabel.setPadding(new Insets(0, 0, 0, 20));
+        System.out.println("Senza cast: " + this.getBackground().getFills().get(0).getFill().toString());
+        System.out.println("Con il cast: " + ((Color) this.getBackground().getFills().get(0).getFill()).toString());
         LabelsMaker.layoutizeLabel(conditionLabel, (Color) this.getBackground().getFills().get(0).getFill());
         return conditionLabel;
     }
@@ -70,14 +70,15 @@ public class ConditionCreatorLabel extends Label implements ICreatorCustomLabel 
         this.description = description;
     }
 
-    public Color getColor (){
+    public Color getColor() {
         return (Color) this.getBackground().getFills().get(0).getFill();
     }
 
-    public void setTrue(){
+    public void setTrue() {
         LabelsMaker.setTrue(this);
     }
-    public void setFalse(){
+
+    public void setFalse() {
         LabelsMaker.setFalse(this);
     }
 

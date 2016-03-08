@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="Shared.Domain.Strategia" table="Strategia" >
-        <id name="id" >
-            <column name="Id_Strategia" />
+    <class name="Shared.Domain.Strategia" table="Strategia">
+        <id name="id">
+            <column name="Id_Strategia"/>
         </id>
         <property name="nome" column="Nome"/>
 
 
         <list name="conditionBlock" cascade="all">
             <key column="Strategia_id"/>
-            <list-index column="IDX" />
+            <list-index column="IDX"/>
             <one-to-many class="Shared.Domain.IStrategiaComponent"/>
         </list>
 
 
-
-        <many-to-one name="defaultCondition" column="DefaultCondition" class="Shared.Domain.Condizioni.DefaultCondizione" cascade="all"></many-to-one>
-
-
-
+        <many-to-one name="defaultCondition" column="DefaultCondition"
+                     class="Shared.Domain.Condizioni.DefaultCondizione" cascade="all"></many-to-one>
 
 
     </class>

@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Gioele on 05/03/2016.
  */
-public class Login implements Initializable{
+public class Login implements Initializable {
 
     @FXML
     TextField Username;
@@ -28,7 +28,6 @@ public class Login implements Initializable{
     TextField Password;
     @FXML
     Button LoginButton;
-
 
 
     @Override
@@ -41,24 +40,22 @@ public class Login implements Initializable{
         Parent root = null;
 
 
-
-        Player player = StartUpHandler.getSingletonInstance().getPlayer(Username.getText(),Password.getText());
+        Player player = StartUpHandler.getSingletonInstance().getPlayer(Username.getText(), Password.getText());
 
         System.out.println(player.getNome());
 
         CreareStrategiaHandler.getSingletonInstance().setCurrentPlayer(player);
 
 
-
-        stage=(Stage)LoginButton.getScene().getWindow();
+        stage = (Stage) LoginButton.getScene().getWindow();
         try {
             System.out.println("Qui");
-            root= FXMLLoader.load(getClass().getResource("../Fxml/inizio.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../Fxml/inizio.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Scene scene= new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();

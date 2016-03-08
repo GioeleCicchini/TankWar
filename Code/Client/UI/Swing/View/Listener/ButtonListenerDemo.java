@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by beniamino on 19/02/16.
  */
-public class ButtonListenerDemo implements ActionListener{
+public class ButtonListenerDemo implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 

@@ -1,8 +1,5 @@
 package Shared.Domain.Creator;
 
-import Shared.Domain.IStrategiaComponent;
-
-import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -10,11 +7,17 @@ import java.util.Map;
  */
 public interface ICreator {
     public String getIdType();
+
     public void setIdType(String idType);
+
     public String getName();
+
     public void setName(String name);
+
     public String getDescription();
+
     public void setDescription(String description);
+
     public Map getMap();
     //TODO QUESTO è UN ALTRO PUNTO DI POCA FLESSIBILITà
     /*

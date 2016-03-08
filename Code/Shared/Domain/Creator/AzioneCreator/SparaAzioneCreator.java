@@ -4,8 +4,6 @@ import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Azioni.SparaAzione;
 import Shared.Domain.Creator.ICreator;
 
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +11,7 @@ import java.util.Map;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class SparaAzioneCreator implements ICreator,IAzioneCreator {
+public class SparaAzioneCreator implements ICreator, IAzioneCreator {
 
     private static SparaAzioneCreator singletonInstance = null;
 
@@ -25,19 +23,19 @@ public class SparaAzioneCreator implements ICreator,IAzioneCreator {
         this.name = "Spara";
         this.description = "Il Tank spara nella direzione davanti a se";
         this.idType = "004";
-    };
+    }
 
-    public static SparaAzioneCreator getSingletonInstance ()
-    {
-        if (singletonInstance == null)
-        {
+    ;
+
+    public static SparaAzioneCreator getSingletonInstance() {
+        if (singletonInstance == null) {
             singletonInstance = new SparaAzioneCreator();
         }
         return singletonInstance;
     }
 
     public IAzione doMakeAzione(String idAz, List<Integer> valori) {
-        IAzione sparaAzione = new SparaAzione(this.name,this.description,this.idType,idAz,valori);
+        IAzione sparaAzione = new SparaAzione(this.name, this.description, this.idType, idAz, valori);
         return sparaAzione;
     }
 
@@ -68,9 +66,9 @@ public class SparaAzioneCreator implements ICreator,IAzioneCreator {
     @Override
     public Map getMap() {
         Map azioneCreator = new HashMap();
-        azioneCreator.put("idType",this.idType);
-        azioneCreator.put("name",this.name);
-        azioneCreator.put("description",this.description);
+        azioneCreator.put("idType", this.idType);
+        azioneCreator.put("name", this.name);
+        azioneCreator.put("description", this.description);
         return azioneCreator;
     }
 }

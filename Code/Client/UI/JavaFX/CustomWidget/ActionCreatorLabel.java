@@ -37,9 +37,9 @@ public class ActionCreatorLabel extends Label implements ICreatorCustomLabel {
 
     @Override
     public ICustomLabel makeComponent(String idAz, String idPadre, boolean vera) {
-        ActionLabel actionLabel = new ActionLabel(name,description,idAz,idPadre);
-        actionLabel.setPadding(new Insets(0,0,0,20));
-        LabelsMaker.layoutizeLabel(actionLabel,(Color) this.getBackground().getFills().get(0).getFill());
+        ActionLabel actionLabel = new ActionLabel(name, description, idAz, idPadre);
+        actionLabel.setPadding(new Insets(0, 0, 0, 20));
+        LabelsMaker.layoutizeLabel(actionLabel, (Color) this.getBackground().getFills().get(0).getFill());
         return actionLabel;
 
     }
@@ -68,7 +68,7 @@ public class ActionCreatorLabel extends Label implements ICreatorCustomLabel {
         this.name = name;
     }
 
-    public Color getColor(){
+    public Color getColor() {
         return (Color) this.getBackground().getFills().get(0).getFill();
     }
 }

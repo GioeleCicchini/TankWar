@@ -51,12 +51,12 @@ public class ActionLabel extends Label implements ICustomLabel {
     }
 
     @Override
-    public void setIdPadre(String idPadre) {
-        this.idPadre = idPadre;
+    public String getIdPadre() {
+        return this.idPadre;
     }
 
     @Override
-    public String getIdPadre() {
-        return this.idPadre;
+    public void setIdPadre(String idPadre) {
+        this.idPadre = idPadre;
     }
 }

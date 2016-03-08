@@ -1,8 +1,6 @@
 package Client.UI.JavaFX.View;
 
 import Shared.Domain.Controllers.CreareStrategiaHandler;
-import Shared.Domain.Controllers.StartUpHandler;
-import Shared.Domain.Player;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,14 +30,14 @@ public class Inizio implements Initializable {
         Stage stage;
         Parent root = null;
 
-        stage=(Stage)startButton.getScene().getWindow();
+        stage = (Stage) startButton.getScene().getWindow();
         try {
-            root= FXMLLoader.load(getClass().getResource("../Fxml/crearestrategia.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../Fxml/crearestrategia.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Scene scene= new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();

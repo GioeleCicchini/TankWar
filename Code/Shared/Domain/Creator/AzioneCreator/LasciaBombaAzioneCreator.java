@@ -4,7 +4,6 @@ import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Azioni.LasciaBombaAzione;
 import Shared.Domain.Creator.ICreator;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,7 @@ import java.util.Map;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class LasciaBombaAzioneCreator implements ICreator,IAzioneCreator {
+public class LasciaBombaAzioneCreator implements ICreator, IAzioneCreator {
 
     private static LasciaBombaAzioneCreator singletonInstance = null;
 
@@ -24,19 +23,19 @@ public class LasciaBombaAzioneCreator implements ICreator,IAzioneCreator {
         this.name = "Lascia una bomba";
         this.description = "Quest'azione fa lasciare una bomba al Tank";
         this.idType = "005";
-    };
+    }
 
-    public static LasciaBombaAzioneCreator getSingletonInstance ()
-    {
-        if (singletonInstance == null)
-        {
+    ;
+
+    public static LasciaBombaAzioneCreator getSingletonInstance() {
+        if (singletonInstance == null) {
             singletonInstance = new LasciaBombaAzioneCreator();
         }
         return singletonInstance;
     }
 
     public IAzione doMakeAzione(String idAz, List<Integer> valori) {
-        IAzione lasciaBombaAzione = new LasciaBombaAzione(this.name,this.description,this.idType,idAz,valori);
+        IAzione lasciaBombaAzione = new LasciaBombaAzione(this.name, this.description, this.idType, idAz, valori);
         return lasciaBombaAzione;
     }
 
@@ -67,9 +66,9 @@ public class LasciaBombaAzioneCreator implements ICreator,IAzioneCreator {
     @Override
     public Map getMap() {
         Map azioneCreator = new HashMap();
-        azioneCreator.put("idType",this.idType);
-        azioneCreator.put("name",this.name);
-        azioneCreator.put("description",this.description);
+        azioneCreator.put("idType", this.idType);
+        azioneCreator.put("name", this.name);
+        azioneCreator.put("description", this.description);
         return azioneCreator;
     }
 }

@@ -16,10 +16,8 @@ public class ConcreteRemoteService implements IComRemoteService {
     private static ConcreteRemoteService singletonInstance = null;
 
 
-    public static ConcreteRemoteService getSingletonInstance()
-    {
-        if (singletonInstance == null)
-        {
+    public static ConcreteRemoteService getSingletonInstance() {
+        if (singletonInstance == null) {
             singletonInstance = new ConcreteRemoteService();
         }
         return singletonInstance;
@@ -28,7 +26,7 @@ public class ConcreteRemoteService implements IComRemoteService {
 
     @Override
     public DTO RichiediAlServer(DTO dto) throws IOException {
-        Socket clientSocket = new Socket("localhost",6789);
+        Socket clientSocket = new Socket("localhost", 6789);
         DTO risp = null;
         try {
             ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -36,11 +34,10 @@ public class ConcreteRemoteService implements IComRemoteService {
             ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
 
 
-            risp =(DTO)objectInputStream.readObject();
+            risp = (DTO) objectInputStream.readObject();
 
 
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

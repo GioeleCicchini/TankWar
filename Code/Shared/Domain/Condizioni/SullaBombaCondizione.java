@@ -53,6 +53,11 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
     }
 
     @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
     public void addChild(IStrategiaComponent c) {
         if (this.child == null) {
             this.child = c;
@@ -80,11 +85,6 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
         this.idType = idType;
     }
 
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public List<Integer> getValori() {
         return valori;
     }
@@ -93,14 +93,14 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
         this.valori = valori;
     }
 
-    public void setChild(IStrategiaComponent child) {
-        this.child = child;
-    }
-
     @Override
     public IStrategiaComponent getChild() {
         return this.child;
 
+    }
+
+    public void setChild(IStrategiaComponent child) {
+        this.child = child;
     }
 
     public String getName() {
@@ -125,19 +125,19 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
     public Map getMap() {
         Map condizione = new HashMap();
         List valoriCorrenti = new ArrayList<>();
-        for (Integer v: this.valori) {
+        for (Integer v : this.valori) {
             valoriCorrenti.add(v);
         }
-        condizione.put("id",this.id);
-        condizione.put("idType",this.idType);
-        condizione.put("name",this.name);
-        condizione.put("description",this.description);
-        condizione.put("vera",this.vera);
-        condizione.put("valori",this.valori);
-        if (this.child!=null) {
-            condizione.put("child",this.child.getMap());
+        condizione.put("id", this.id);
+        condizione.put("idType", this.idType);
+        condizione.put("name", this.name);
+        condizione.put("description", this.description);
+        condizione.put("vera", this.vera);
+        condizione.put("valori", this.valori);
+        if (this.child != null) {
+            condizione.put("child", this.child.getMap());
         } else {
-            condizione.put("child",null);
+            condizione.put("child", null);
         }
         return condizione;
     }

@@ -1,11 +1,13 @@
 package Client.UI.JavaFX.View;
 
-import Client.UI.JavaFX.CustomWidget.*;
-import Client.UI.UIUtils.StrategiaPutter;
+import Client.UI.JavaFX.CustomWidget.ActionCreatorLabel;
+import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
+import Client.UI.JavaFX.CustomWidget.ICreatorCustomLabel;
+import Client.UI.JavaFX.CustomWidget.ICustomLabel;
 import Client.UI.UIUtils.LabelsMaker;
+import Client.UI.UIUtils.StrategiaPutter;
 import Shared.Domain.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Controllers.StartUpHandler;
-import Shared.Domain.Player;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,15 +18,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.input.*;
-import javafx.scene.layout.*;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 
-public class CreareStrategia implements Initializable{
+public class CreareStrategia implements Initializable {
 
     public Pane DropPaneTarget;
     public Label labelFeedback;
@@ -35,11 +45,11 @@ public class CreareStrategia implements Initializable{
     public ToggleButton toggleButton;
     public VBox condizioneDefaultVBox;
     public Button indietroButton;
-    private int indentazione;
-    private String where = null;
     public StrategiaPutter strategiaPutter;
     public StrategiaPutter defaultPutter;
-    private boolean messaAzioneDefault=false;
+    private int indentazione;
+    private String where = null;
+    private boolean messaAzioneDefault = false;
 
     private String ultimaCondizione;
     private boolean prossimaCondAnnidata = false;
@@ -58,7 +68,6 @@ public class CreareStrategia implements Initializable{
         System.out.println("onDragEntered");
         event.consume();
     }
-
 
 
     public void targetDragDropped(DragEvent event) {
@@ -81,32 +90,32 @@ public class CreareStrategia implements Initializable{
                 idCondCreata = CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond, booleanoDellaCondizione, valori);
                 ICustomLabel conditionLabel = labelDragged.makeComponent(idCondCreata, where, booleanoDellaCondizione);
                 where = idCondCreata;
-                strategiaPutter.addLabel(conditionLabel,true);
+                strategiaPutter.addLabel(conditionLabel, true);
 
             } else {
                 System.out.println("Cond Annidata");
                 idCondCreata = CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond, where, booleanoDellaCondizione, valori);
                 ICustomLabel conditionLabel = labelDragged.makeComponent(idCondCreata, where, booleanoDellaCondizione);
                 where = idCondCreata;
-                strategiaPutter.addLabel(conditionLabel,false);
+                strategiaPutter.addLabel(conditionLabel, false);
             }
         }
-        if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ) { //TODO è bruttissimo
+        if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel")) { //TODO è bruttissimo
             //Caso in cui viene trascinato un AzioneCreator
-            if (where!=null) {
+            if (where != null) {
                 System.out.println("Hey abbiamo un creator di azione");
                 ActionCreatorLabel labelDragged = (ActionCreatorLabel) event.getGestureSource();
                 String idTypeAz = labelDragged.getIdType();
                 List<Integer> valori = new ArrayList<Integer>();
                 String idAzioneCreata;
-                idAzioneCreata = CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz,where,valori);
-                ICustomLabel azioneLabel = labelDragged.makeComponent(idAzioneCreata,where,true); //TODO cacca
+                idAzioneCreata = CreareStrategiaHandler.getSingletonInstance().associaAzione(idTypeAz, where, valori);
+                ICustomLabel azioneLabel = labelDragged.makeComponent(idAzioneCreata, where, true); //TODO cacca
                 where = null;
-                strategiaPutter.addLabel(azioneLabel,false);
+                strategiaPutter.addLabel(azioneLabel, false);
             }
         }
 
-        System.out.println("Lunghezza VBox= "+ ((Integer)strategiaVBox.getChildren().size()).toString());
+        System.out.println("Lunghezza VBox= " + ((Integer) strategiaVBox.getChildren().size()).toString());
     }
 
     public void condDragDone(DragEvent event) {
@@ -118,7 +127,7 @@ public class CreareStrategia implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        strategiaPutter= new StrategiaPutter(strategiaVBox);
+        strategiaPutter = new StrategiaPutter(strategiaVBox);
         defaultPutter = new StrategiaPutter(condizioneDefaultVBox);
 
         Map ccc = StartUpHandler.getSingletonInstance().getCatalogoConditionCreatorMap();
@@ -126,16 +135,15 @@ public class CreareStrategia implements Initializable{
 
         List<ICreatorCustomLabel> condCLabels = LabelsMaker.getConditionCreatorLabels(ccc);
         ICreatorCustomLabel currentCLabel;
-        for (int i=0; i<condCLabels.size(); i++){
-            currentCLabel=condCLabels.get(i);
-            if (currentCLabel.getIdType() != "000"){ //Non vogliamo che ci sia la cond di defaults
+        for (int i = 0; i < condCLabels.size(); i++) {
+            currentCLabel = condCLabels.get(i);
+            if (currentCLabel.getIdType() != "000") { //Non vogliamo che ci sia la cond di defaults
                 condizioniCreatorVBox.getChildren().add((Node) condCLabels.get(i));
-            }
-            else {
+            } else {
                 Map strategiaCorrente = CreareStrategiaHandler.getSingletonInstance().getStrategiaCorrenteMap();
-                String idCondDef = (String)((Map)strategiaCorrente.get("defaultCondition")).get("id");
-                ICustomLabel deafultCondizioneLabel = currentCLabel.makeComponent(idCondDef,null,true);
-                defaultPutter.addLabel(deafultCondizioneLabel,true);
+                String idCondDef = (String) ((Map) strategiaCorrente.get("defaultCondition")).get("id");
+                ICustomLabel deafultCondizioneLabel = currentCLabel.makeComponent(idCondDef, null, true);
+                defaultPutter.addLabel(deafultCondizioneLabel, true);
             }
 
         }
@@ -149,9 +157,9 @@ public class CreareStrategia implements Initializable{
         }
         */
 
-        List <ICreatorCustomLabel> azioneCLabels = LabelsMaker.getActionCreatorLabels(cac);//Vorrei chiamasse lo stesso metodo di sopra
+        List<ICreatorCustomLabel> azioneCLabels = LabelsMaker.getActionCreatorLabels(cac);//Vorrei chiamasse lo stesso metodo di sopra
         ICreatorCustomLabel currentALabel;
-        for (int i=0; i<azioneCLabels.size(); i++){
+        for (int i = 0; i < azioneCLabels.size(); i++) {
             azioniCreatorVBox.getChildren().add((Node) azioneCLabels.get(i));
         }
         /*
@@ -165,18 +173,17 @@ public class CreareStrategia implements Initializable{
         */
 
 
-
     }
 
     public void rimuoviComponente(MouseEvent event) {
 
         Integer lunghezzaVBox = this.strategiaVBox.getChildren().size();
-        if (lunghezzaVBox > 0){
-            HBox rigaCorrente = (HBox)this.strategiaVBox.getChildren().get(lunghezzaVBox-1);
+        if (lunghezzaVBox > 0) {
+            HBox rigaCorrente = (HBox) this.strategiaVBox.getChildren().get(lunghezzaVBox - 1);
             Integer lunghezzaHBox = rigaCorrente.getChildren().size();
-            ICustomLabel ultimaInserita = (ICustomLabel)rigaCorrente.getChildren().get(lunghezzaHBox-1);
+            ICustomLabel ultimaInserita = (ICustomLabel) rigaCorrente.getChildren().get(lunghezzaHBox - 1);
             String idUltimaInserita = ultimaInserita.getIdComponent();
-            where=ultimaInserita.getIdPadre();//La prossima messa andrà al posto di questa
+            where = ultimaInserita.getIdPadre();//La prossima messa andrà al posto di questa
             CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idUltimaInserita);
             strategiaPutter.removeLastLabel();
             System.out.println("lunghezza VBox= " + this.strategiaVBox.getChildren().size());
@@ -222,21 +229,20 @@ public class CreareStrategia implements Initializable{
     }
 
     public void clickToggle(Event event) {
-        if (toggleButton.isSelected()){
+        if (toggleButton.isSelected()) {
             toggleButton.setText("Premi per le NON negate");
             toggleButton.setStyle("-fx-background-color:#0277BD");
 
             ConditionCreatorLabel currentElement;
-            for (int i=0; i<condizioniCreatorVBox.getChildren().size(); i++){
+            for (int i = 0; i < condizioniCreatorVBox.getChildren().size(); i++) {
                 currentElement = (ConditionCreatorLabel) condizioniCreatorVBox.getChildren().get(i);
                 currentElement.setFalse();
             }
-        }
-        else {
+        } else {
             toggleButton.setText("Premi per le negate");
             toggleButton.setStyle("-fx-background-color:#01579B");
             ConditionCreatorLabel currentElement;
-            for (int i=0; i<condizioniCreatorVBox.getChildren().size(); i++){
+            for (int i = 0; i < condizioniCreatorVBox.getChildren().size(); i++) {
                 currentElement = (ConditionCreatorLabel) condizioniCreatorVBox.getChildren().get(i);
                 currentElement.setTrue();
             }
@@ -249,7 +255,7 @@ public class CreareStrategia implements Initializable{
         if (elementi == 2) {
             HBox riga = (HBox) this.condizioneDefaultVBox.getChildren().get(1);
             Integer lunghezzaHBox = riga.getChildren().size();
-            ICustomLabel label = (ICustomLabel) riga.getChildren().get(lunghezzaHBox-1);
+            ICustomLabel label = (ICustomLabel) riga.getChildren().get(lunghezzaHBox - 1);
             String idLabel = label.getIdComponent();
             messaAzioneDefault = false;
             CreareStrategiaHandler.getSingletonInstance().rimuoviComponente(idLabel);
@@ -264,19 +270,19 @@ public class CreareStrategia implements Initializable{
 
     public void defDragDropped(DragEvent event) {
         Dragboard db = event.getDragboard();
-        if (!messaAzioneDefault){
-            if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel") ) { //TODO è bruttissimo
+        if (!messaAzioneDefault) {
+            if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel")) { //TODO è bruttissimo
                 System.out.println("Hey abbiamo un creator di azione nel default pozzo");
                 ActionCreatorLabel labelDragged = (ActionCreatorLabel) event.getGestureSource();
                 String idTypeAz = labelDragged.getIdType();
                 List<Integer> valori = new ArrayList<Integer>();
                 String idAzioneCreata;
-                idAzioneCreata = CreareStrategiaHandler.getSingletonInstance().scegliAzioneDefault(idTypeAz,valori);
+                idAzioneCreata = CreareStrategiaHandler.getSingletonInstance().scegliAzioneDefault(idTypeAz, valori);
                 Map strategiaMap = CreareStrategiaHandler.getSingletonInstance().getStrategiaCorrenteMap();
-                String idCondDefault = (String)((Map)strategiaMap.get("defaultCondition")).get("id");
-                ICustomLabel azioneLabel = labelDragged.makeComponent(idAzioneCreata,idCondDefault,true);
-                defaultPutter.addLabel(azioneLabel,false);
-                messaAzioneDefault=true;
+                String idCondDefault = (String) ((Map) strategiaMap.get("defaultCondition")).get("id");
+                ICustomLabel azioneLabel = labelDragged.makeComponent(idAzioneCreata, idCondDefault, true);
+                defaultPutter.addLabel(azioneLabel, false);
+                messaAzioneDefault = true;
             }
         }
 
@@ -299,18 +305,17 @@ public class CreareStrategia implements Initializable{
         Stage stage;
         Parent root = null;
 
-        stage=(Stage)indietroButton.getScene().getWindow();
+        stage = (Stage) indietroButton.getScene().getWindow();
         try {
-            root= FXMLLoader.load(getClass().getResource("../Fxml/inizio.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../Fxml/inizio.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Scene scene= new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
-
 
 
     }

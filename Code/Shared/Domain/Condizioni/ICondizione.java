@@ -1,44 +1,42 @@
 package Shared.Domain.Condizioni;
 
 
-
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.IStrategiaComponent;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface ICondizione {
 
-	abstract boolean verificaSeVera();
+    abstract boolean verificaSeVera();
 
-	IAzione getAzione();
+    IAzione getAzione();
 
-	String getName();
+    String getName();
 
-	void setName(String name);
+    void setName(String name);
 
-	String getDescription();
+    String getDescription();
 
-	void setDescription(String description);
+    void setDescription(String description);
 
-	String getIdType();
+    String getIdType();
 
-	void setIdType(String idType);
+    void setIdType(String idType);
 
-	String getId();
+    String getId();
 
-	void setId(String id);
+    void setId(String id);
 
-	List<Integer> getValori();
+    List<Integer> getValori();
 
-	void setValori(List<Integer> valori);
+    void setValori(List<Integer> valori);
 
-	IStrategiaComponent getChild();
+    IStrategiaComponent getChild();
 
-	void setChild(IStrategiaComponent child);
+    void setChild(IStrategiaComponent child);
 
-	void setVera(boolean vera);
+    boolean getVera();
 
-	boolean getVera();
+    void setVera(boolean vera);
 }

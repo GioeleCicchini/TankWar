@@ -4,7 +4,6 @@ import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Azioni.TemporeggiaAzione;
 import Shared.Domain.Creator.ICreator;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,7 @@ import java.util.Map;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class TemporeggiaAzioneCreator implements ICreator,IAzioneCreator {
+public class TemporeggiaAzioneCreator implements ICreator, IAzioneCreator {
 
     private static TemporeggiaAzioneCreator singletonInstance = null;
 
@@ -24,19 +23,19 @@ public class TemporeggiaAzioneCreator implements ICreator,IAzioneCreator {
         this.name = "Temporeggia";
         this.description = "Quest'azione fa passare un turno senza eseguire nulla al Tank";
         this.idType = "006";
-    };
+    }
 
-    public static TemporeggiaAzioneCreator getSingletonInstance ()
-    {
-        if (singletonInstance == null)
-        {
+    ;
+
+    public static TemporeggiaAzioneCreator getSingletonInstance() {
+        if (singletonInstance == null) {
             singletonInstance = new TemporeggiaAzioneCreator();
         }
         return singletonInstance;
     }
 
     public IAzione doMakeAzione(String idAz, List<Integer> valori) {
-        IAzione temporeggiaAzione = new TemporeggiaAzione(this.name,this.description,this.idType,idAz,valori);
+        IAzione temporeggiaAzione = new TemporeggiaAzione(this.name, this.description, this.idType, idAz, valori);
         return temporeggiaAzione;
     }
 
@@ -67,9 +66,9 @@ public class TemporeggiaAzioneCreator implements ICreator,IAzioneCreator {
     @Override
     public Map getMap() {
         Map azioneCreator = new HashMap();
-        azioneCreator.put("idType",this.idType);
-        azioneCreator.put("name",this.name);
-        azioneCreator.put("description",this.description);
+        azioneCreator.put("idType", this.idType);
+        azioneCreator.put("name", this.name);
+        azioneCreator.put("description", this.description);
         return azioneCreator;
     }
 }

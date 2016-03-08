@@ -11,31 +11,24 @@ public class DTOMaker {
     private static DTOMaker singletonInstance = null;
 
 
-    public static DTOMaker getSingletonInstance()
-    {
-        if (singletonInstance == null)
-        {
+    private DTOMaker() {
+
+
+    }
+
+    public static DTOMaker getSingletonInstance() {
+        if (singletonInstance == null) {
             singletonInstance = new DTOMaker();
         }
         return singletonInstance;
     }
 
-
-
-
-    private DTOMaker(){
-
-
-    }
-
-
-    public DTO getDatiLoginServerResponce(boolean trovato,Player player){
+    public DTO getDatiLoginServerResponce(boolean trovato, Player player) {
         DTO dto = new DTO();
-        if (trovato== true){
+        if (trovato == true) {
             dto.setFunzione("UtenteTrovato");
             dto.aggiungiOggettoPersistente(player);
-        }
-        else{
+        } else {
             dto.setFunzione("UtenteNonTrovato");
         }
 
@@ -43,7 +36,7 @@ public class DTOMaker {
     }
 
 
-    public DTO getEffettuaLoginDTO(String username,String password){
+    public DTO getEffettuaLoginDTO(String username, String password) {
         DTO dto = new DTO();
         dto.setFunzione("PrelevaPlayer");
         dto.aggiungiOggettoPersistente(username);
@@ -52,8 +45,7 @@ public class DTOMaker {
     }
 
 
-
-    public DTO getPlayerDTO(){
+    public DTO getPlayerDTO() {
 
         DTO dto = new DTO();
         dto.setFunzione("RegistraPlayer");
@@ -63,16 +55,17 @@ public class DTOMaker {
 
     }
 
-    public DTO getStrategiaDTO(){
+    public DTO getStrategiaDTO() {
         DTO dto = new DTO();
         dto.setFunzione("RegistraStrategia");
         Player player = CreareStrategiaHandler.getSingletonInstance().getCurrentPlayer();
         dto.aggiungiOggettoPersistente(player.getId());
-        dto.aggiungiOggettoPersistente(player.getStrategieList().get(player.getStrategieList().size()-1));
+        dto.aggiungiOggettoPersistente(player.getStrategieList().get(player.getStrategieList().size() - 1));
         return dto;
 
     }
-    public DTO getStrategiaServerResponceDTO(){
+
+    public DTO getStrategiaServerResponceDTO() {
         DTO dto = new DTO();
         dto.setFunzione("StrategiaRegistrata");
 

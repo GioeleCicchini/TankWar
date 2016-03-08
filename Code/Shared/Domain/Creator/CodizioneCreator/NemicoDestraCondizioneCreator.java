@@ -4,7 +4,6 @@ import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Condizioni.NemicoDestraCondizione;
 import Shared.Domain.Creator.ICreator;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,23 +25,25 @@ public class NemicoDestraCondizioneCreator implements ICreator, ICondizioneCreat
         this.description = "Questa condizione controlla se c'è un nemico nel semicampo alla destra del tank";
     }
 
-    public static NemicoDestraCondizioneCreator getSingletonInstance()
-    {
-        if (singletonInstance == null)
-        {
+    public static NemicoDestraCondizioneCreator getSingletonInstance() {
+        if (singletonInstance == null) {
             singletonInstance = new NemicoDestraCondizioneCreator();
         }
         return singletonInstance;
     }
 
     public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
-        NemicoDestraCondizione nemicoDestraCondizione = new NemicoDestraCondizione(this.name,this.description,this.idType,idCond,vera,valori);
+        NemicoDestraCondizione nemicoDestraCondizione = new NemicoDestraCondizione(this.name, this.description, this.idType, idCond, vera, valori);
         return nemicoDestraCondizione;
     }
 
     @Override
     public String getIdType() {
         return this.idType;
+    }
+
+    public void setIdType(String idType) {
+        this.idType = idType;
     }
 
     public String getName() {
@@ -61,16 +62,12 @@ public class NemicoDestraCondizioneCreator implements ICreator, ICondizioneCreat
         this.description = description;
     }
 
-    public void setIdType(String idType) {
-        this.idType = idType;
-    }
-
     @Override
     public Map getMap() {
         Map condizioneCreator = new HashMap();
-        condizioneCreator.put("idType",this.idType);
-        condizioneCreator.put("name",this.name);
-        condizioneCreator.put("description",this.description);
+        condizioneCreator.put("idType", this.idType);
+        condizioneCreator.put("name", this.name);
+        condizioneCreator.put("description", this.description);
         return condizioneCreator;
     }
 }

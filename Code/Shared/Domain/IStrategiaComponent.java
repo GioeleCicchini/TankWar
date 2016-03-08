@@ -4,18 +4,21 @@ import java.util.Map;
 
 public interface IStrategiaComponent {
 
-	/**
-	 *
-	 * @param c
-	 */
-	void addChild(IStrategiaComponent c);
+    /**
+     * @param c
+     */
+    void addChild(IStrategiaComponent c);
 
-	void removeChild();
+    void removeChild();
 
-	IStrategiaComponent getChild();
-	void setChild(IStrategiaComponent child);
-	String getId();
+    IStrategiaComponent getChild();
+
+    void setChild(IStrategiaComponent child);
+
+    String getId();
+
     void setId(String id);
-	Map getMap();
+
+    Map getMap();
 
 }

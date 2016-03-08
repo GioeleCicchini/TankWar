@@ -18,7 +18,7 @@ public class ConditionLabel extends Label implements ICustomLabel {
         if (!this.vera) {
             this.name = "Se NON " + name;
         } else {
-            this.name = "Se "+ name;
+            this.name = "Se " + name;
         }
         this.description = description;
         this.idCond = idCond;
@@ -57,13 +57,13 @@ public class ConditionLabel extends Label implements ICustomLabel {
     }
 
     @Override
-    public void setIdPadre(String idPadre) {
-        this.idPadre = idPadre;
+    public String getIdPadre() {
+        return this.idPadre;
     }
 
     @Override
-    public String getIdPadre() {
-        return this.idPadre;
+    public void setIdPadre(String idPadre) {
+        this.idPadre = idPadre;
     }
 
     public boolean getVera() {

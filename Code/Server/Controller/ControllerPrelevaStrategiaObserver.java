@@ -5,15 +5,14 @@ package Server.Controller;
  */
 public class ControllerPrelevaStrategiaObserver implements Observer {
 
-  public void ControllerPrelevaStrategiaObserver(){
+    public void ControllerPrelevaStrategiaObserver() {
 
-  }
-
+    }
 
 
     @Override
     public void update(ControllerFacade controller) {
-        if(controller.getFunzione() == "Preleva"){
+        if (controller.getFunzione() == "Preleva") {
             System.out.println("Prelevo la strategia");
         }
 

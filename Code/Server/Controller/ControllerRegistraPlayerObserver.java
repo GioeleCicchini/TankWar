@@ -2,17 +2,15 @@ package Server.Controller;
 
 import Server.ServerUtil.HibernateUtil;
 import Shared.Domain.Player;
-import Shared.Domain.Strategia;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 /**
  * Created by gioele on 16/02/16.
  */
-public class ControllerRegistraPlayerObserver implements Observer{
+public class ControllerRegistraPlayerObserver implements Observer {
 
-    public ControllerRegistraPlayerObserver(){
-
+    public ControllerRegistraPlayerObserver() {
 
 
     }
@@ -20,17 +18,16 @@ public class ControllerRegistraPlayerObserver implements Observer{
     @Override
     public void update(ControllerFacade controller) {
 
-        if(controller.getFunzione().equals("RegistraPlayer")){
+        if (controller.getFunzione().equals("RegistraPlayer")) {
 
             Session session = HibernateUtil.getSessionFactory().openSession();
 
             try {
                 session.beginTransaction();
-                session.save((Player)controller.getOggettiPersistenti().get(0));
+                session.save((Player) controller.getOggettiPersistenti().get(0));
 
                 session.getTransaction().commit();
-            }
-            catch (HibernateException e) {
+            } catch (HibernateException e) {
                 e.printStackTrace();
                 session.getTransaction().rollback();
 

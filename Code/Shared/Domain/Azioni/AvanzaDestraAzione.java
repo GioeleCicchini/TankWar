@@ -15,6 +15,18 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
     private String description;
     private List<Integer> valori;
 
+    public AvanzaDestraAzione() {
+
+    }
+
+    public AvanzaDestraAzione(String name, String description, String idTypeAz, String idAz, List<Integer> valori) {
+        this.id = idAz;
+        this.idTypeAz = idTypeAz;
+        this.name = name;
+        this.description = description;
+        this.valori = valori;
+    }
+
     public String getIdTypeAz() {
         return idTypeAz;
     }
@@ -44,18 +56,6 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
     }
 
     public void setValori(List<Integer> valori) {
-        this.valori = valori;
-    }
-
-    public AvanzaDestraAzione() {
-
-    }
-
-    public AvanzaDestraAzione(String name, String description, String idTypeAz, String idAz, List<Integer> valori) {
-        this.id = idAz;
-        this.idTypeAz = idTypeAz;
-        this.name = name;
-        this.description = description;
         this.valori = valori;
     }
 
@@ -91,14 +91,14 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
     public Map getMap() {
         Map azione = new HashMap();
         List valoriCorrenti = new ArrayList<>();
-        for (Integer v: this.valori) {
+        for (Integer v : this.valori) {
             valoriCorrenti.add(v);
         }
-        azione.put("id",this.id);
-        azione.put("idTypeAz",this.idTypeAz);
-        azione.put("name",this.name);
-        azione.put("description",this.description);
-        azione.put("valori",this.valori);
+        azione.put("id", this.id);
+        azione.put("idTypeAz", this.idTypeAz);
+        azione.put("name", this.name);
+        azione.put("description", this.description);
+        azione.put("valori", this.valori);
         return azione;
     }
 }

@@ -4,27 +4,9 @@ package Client;/*
  * and open the template in the editor.
  */
 
-import Shared.Domain.CatalogoCondizioneCreator;
-import Shared.Domain.Controllers.CreareStrategiaHandler;
-import Shared.Domain.Controllers.StartUpHandler;
-import Shared.Domain.Creator.AzioneCreator.AvanzaAvantiAzioneCreator;
-import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
-import Shared.Domain.Creator.CodizioneCreator.NemicoAvantiCondizioneCreator;
-import Shared.Domain.Creator.ICreator;
-import Shared.Domain.ICatalogo;
-import Shared.Domain.Player;
-import Shared.Util.DTO;
-import org.dom4j.io.STAXEventReader;
-
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
- *
  * @author beniamino
  */
 public class TankWar {

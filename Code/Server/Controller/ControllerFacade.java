@@ -9,11 +9,10 @@ import java.util.List;
 /**
  * Created by gioele on 16/02/16.
  */
-public class ControllerFacade implements Controller{
+public class ControllerFacade implements Controller {
 
-        private String funzione;
-        private List<Serializable> OggettiPersistenti;
-
+    private String funzione;
+    private List<Serializable> OggettiPersistenti;
 
 
     private List<Observer> OsservatoriRichieste = new ArrayList<Observer>();
@@ -26,17 +25,17 @@ public class ControllerFacade implements Controller{
         OsservatoriRichieste = osservatoriRichieste;
     }
 
-    public void ControllerFacade(){
+    public void ControllerFacade() {
 
     }
 
 
-    public String getFunzione(){
+    public String getFunzione() {
         return this.funzione;
     }
 
 
-    public void ArrivaRichiesta(DTO dto){
+    public void ArrivaRichiesta(DTO dto) {
         this.funzione = dto.getFunzione();
         this.OggettiPersistenti = dto.getOggettiPersistenti();
 
@@ -45,22 +44,22 @@ public class ControllerFacade implements Controller{
 
     @Override
     public void Attach(Observer o) {
-            OsservatoriRichieste.add(o);
+        OsservatoriRichieste.add(o);
     }
 
     @Override
     public void Detach(Observer o) {
-            OsservatoriRichieste.remove(o);
+        OsservatoriRichieste.remove(o);
     }
 
     @Override
     public void Notify() {
-            for(Observer osservatore : OsservatoriRichieste){
-                osservatore.update(this);
-            }
+        for (Observer osservatore : OsservatoriRichieste) {
+            osservatore.update(this);
+        }
     }
 
-    private void prelevato(){
+    private void prelevato() {
         this.funzione = null;
         this.OggettiPersistenti.clear();
 

@@ -15,33 +15,32 @@ public class GridPutter {
 
     public GridPutter(GridPane grid) {
         this.grid = grid;
-        this.maxXGrid=grid.getColumnConstraints().size();
-        this.maxYGrid=grid.getRowConstraints().size();
-        this.currentX=0;
-        this.currentY=0;
+        this.maxXGrid = grid.getColumnConstraints().size();
+        this.maxYGrid = grid.getRowConstraints().size();
+        this.currentX = 0;
+        this.currentY = 0;
     }
 
-    public void put (Node node){
+    public void put(Node node) {
         System.out.println("La x corrente è " + currentX.toString());
         System.out.println("La y corrente è " + currentY.toString());
 
-        grid.add(node,currentY,currentX);
-        if (currentX+2 >= maxXGrid){
-            if (currentY+2 < maxYGrid){
-                currentY=currentY+2;
-                currentX=0;
+        grid.add(node, currentY, currentX);
+        if (currentX + 2 >= maxXGrid) {
+            if (currentY + 2 < maxYGrid) {
+                currentY = currentY + 2;
+                currentX = 0;
             }
-        }
-        else {
-            currentX=currentX+2;
+        } else {
+            currentX = currentX + 2;
         }
     }
 
-    public boolean isFull (){
+    public boolean isFull() {
         boolean full = false;
-        if (currentX+2 >= maxXGrid){
-            if (currentY+2 >= maxYGrid){
-                full=true;
+        if (currentX + 2 >= maxXGrid) {
+            if (currentY + 2 >= maxYGrid) {
+                full = true;
             }
         }
         return full;

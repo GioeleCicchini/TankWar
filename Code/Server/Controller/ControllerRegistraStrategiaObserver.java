@@ -11,7 +11,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -20,24 +19,21 @@ import java.util.List;
 public class ControllerRegistraStrategiaObserver implements Observer {
 
 
-
-
     @Override
     public void update(ControllerFacade controller) {
-        if(controller.getFunzione().equals("RegistraStrategia")){
+        if (controller.getFunzione().equals("RegistraStrategia")) {
 
 
-
-            String playerId =(String)controller.getOggettiPersistenti().get(0);
-            Strategia strategia = (Strategia)controller.getOggettiPersistenti().get(1);
+            String playerId = (String) controller.getOggettiPersistenti().get(0);
+            Strategia strategia = (Strategia) controller.getOggettiPersistenti().get(1);
             DTO rispostaDTO = null;
 
             Session session = HibernateUtil.getSessionFactory().openSession();
 
             Criteria cr = session.createCriteria(Player.class);
-            cr.add(Restrictions.eq("id",playerId));
+            cr.add(Restrictions.eq("id", playerId));
             List results = cr.list();
-                Player player =(Player)results.get(0);
+            Player player = (Player) results.get(0);
             player.aggiungiStrategia(strategia);
             rispostaDTO = DTOMaker.getSingletonInstance().getStrategiaServerResponceDTO();
             RispostaMaker.getSingletonInstance().ImmettiRisposta(rispostaDTO);
@@ -49,8 +45,7 @@ public class ControllerRegistraStrategiaObserver implements Observer {
                 session.update(player);
 
                 session.getTransaction().commit();
-            }
-            catch (HibernateException e) {
+            } catch (HibernateException e) {
                 e.printStackTrace();
                 session.getTransaction().rollback();
 
@@ -59,10 +54,7 @@ public class ControllerRegistraStrategiaObserver implements Observer {
             System.out.println("Registro una strategia al player");
 
 
-
         }
-
-
 
 
     }

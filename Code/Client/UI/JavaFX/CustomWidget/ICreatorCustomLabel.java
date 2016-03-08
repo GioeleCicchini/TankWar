@@ -8,12 +8,19 @@ import javafx.scene.paint.Color;
 public interface ICreatorCustomLabel {
     //TODO Qui le classi figlie implementano entrambe questo metodo ma alle azioni non interessa assolutamente il parametro vera
     public ICustomLabel makeComponent(String idComponent, String idPadre, boolean vera);
+
     public String getIdType();
+
     public void setIdType(String idType);
+
     public String getName();
+
     public void setName(String name);
+
     public String getDescription();
+
     public void setDescription(String description);
+
     public Color getColor();
 
 }

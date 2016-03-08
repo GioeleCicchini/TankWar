@@ -4,7 +4,6 @@ import Shared.Domain.Azioni.AvanzaSinistraAzione;
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.Creator.ICreator;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,7 @@ import java.util.Map;
 /**
  * Created by emanuele on 15/02/16.
  */
-public class AvanzaSinistraAzioneCreator implements ICreator,IAzioneCreator {
+public class AvanzaSinistraAzioneCreator implements ICreator, IAzioneCreator {
 
     private static AvanzaSinistraAzioneCreator singletonInstance = null;
 
@@ -24,19 +23,19 @@ public class AvanzaSinistraAzioneCreator implements ICreator,IAzioneCreator {
         this.name = "Avanza a Sinistra";
         this.description = "Quest'azione fa avanzare il Tank a sinistra";
         this.idType = "003";
-    };
+    }
 
-    public static AvanzaSinistraAzioneCreator getSingletonInstance ()
-    {
-        if (singletonInstance == null)
-        {
+    ;
+
+    public static AvanzaSinistraAzioneCreator getSingletonInstance() {
+        if (singletonInstance == null) {
             singletonInstance = new AvanzaSinistraAzioneCreator();
         }
         return singletonInstance;
     }
 
     public IAzione doMakeAzione(String idAz, List<Integer> valori) {
-        IAzione avanzaSinistraAzione = new AvanzaSinistraAzione(this.name,this.description,this.idType,idAz,valori);
+        IAzione avanzaSinistraAzione = new AvanzaSinistraAzione(this.name, this.description, this.idType, idAz, valori);
         return avanzaSinistraAzione;
     }
 
@@ -67,9 +66,9 @@ public class AvanzaSinistraAzioneCreator implements ICreator,IAzioneCreator {
     @Override
     public Map getMap() {
         Map azioneCreator = new HashMap();
-        azioneCreator.put("idType",this.idType);
-        azioneCreator.put("name",this.name);
-        azioneCreator.put("description",this.description);
+        azioneCreator.put("idType", this.idType);
+        azioneCreator.put("name", this.name);
+        azioneCreator.put("description", this.description);
         return azioneCreator;
     }
 }

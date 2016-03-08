@@ -3,8 +3,6 @@ package Client.UI.Swing.View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -24,13 +22,13 @@ public class MyFrame extends JFrame {
         super("Flow Layout");
         Container c = this.getContentPane();
         c.add(jl);
-        c.setLayout(new GridLayout(4,4));
-        for (int i=0; i<15; i++){
-            final JButton button= new JButton(String.valueOf(i));
+        c.setLayout(new GridLayout(4, 4));
+        for (int i = 0; i < 15; i++) {
+            final JButton button = new JButton(String.valueOf(i));
             button.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    button.setSize(400,400);
+                    button.setSize(400, 400);
                 }
 
                 @Override
@@ -65,7 +63,7 @@ public class MyFrame extends JFrame {
         c.add(quattro);
         c.add(cinque);
         */
-        this.setSize(500,500);
+        this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 

@@ -5,20 +5,35 @@ import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.ICreator;
 
-
 import java.io.Serializable;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Strategia implements Serializable {
-		private static final long serialVersionUID=1;
-        private List<IStrategiaComponent> conditionBlock;
-		private IStrategiaComponent defaultCondition;
-        private String nome;
-		private boolean isComplete;
+    private static final long serialVersionUID = 1;
+    private List<IStrategiaComponent> conditionBlock;
+    private IStrategiaComponent defaultCondition;
+    private String nome;
+    private boolean isComplete;
 
-		private String id;
+    private String id;
 
+
+    public Strategia(ICreator iCondizioneCreator) {
+
+        String idcond = UUID.randomUUID().toString();
+        System.out.println(idcond);
+        this.id = UUID.randomUUID().toString();
+        this.conditionBlock = new ArrayList<IStrategiaComponent>();
+        List<Integer> valori = new ArrayList<Integer>();
+        //TODO Poca flessibilità
+        this.defaultCondition = (IStrategiaComponent) ((DefaultCondizioneCreator) iCondizioneCreator).doMakeCondizione(idcond, true, valori);
+        this.nome = "";
+        this.isComplete = false;
+
+    }
+
+    public Strategia() {
+    }
 
     public List<IStrategiaComponent> getConditionBlock() {
         return conditionBlock;
@@ -40,6 +55,13 @@ public class Strategia implements Serializable {
         return nome;
     }
 
+    /**
+     * @param nomeStrategia
+     */
+    public void setNome(String nomeStrategia) {
+        this.nome = nomeStrategia;
+    }
+
     public boolean isComplete() {
         return isComplete;
     }
@@ -47,7 +69,6 @@ public class Strategia implements Serializable {
     public void setComplete(boolean complete) {
         isComplete = complete;
     }
-
 
     public String getId() {
         return id;
@@ -57,181 +78,152 @@ public class Strategia implements Serializable {
         this.id = id;
     }
 
-    public Strategia(ICreator iCondizioneCreator) {
-
-        String idcond= UUID.randomUUID().toString();
-		System.out.println(idcond);
-		this.id = UUID.randomUUID().toString();
-        this.conditionBlock = new ArrayList<IStrategiaComponent>();
-        List<Integer> valori = new ArrayList<Integer>();
-		//TODO Poca flessibilità
-        this.defaultCondition = (IStrategiaComponent) ((DefaultCondizioneCreator)iCondizioneCreator).doMakeCondizione(idcond,true,valori);
-        this.nome = "";
-        this.isComplete = false;
-
-    }
-
-	public Strategia() {
-	}
-
-	public String aggiungiAzioneDefault(ICreator iAzioneCreator, List<Integer> valori) {
+    public String aggiungiAzioneDefault(ICreator iAzioneCreator, List<Integer> valori) {
         String idAzione = UUID.randomUUID().toString();
-        IStrategiaComponent azione = (IStrategiaComponent) ((IAzioneCreator)iAzioneCreator).doMakeAzione(idAzione,valori);
+        IStrategiaComponent azione = (IStrategiaComponent) ((IAzioneCreator) iAzioneCreator).doMakeAzione(idAzione, valori);
         this.defaultCondition.addChild(azione);
         return idAzione;
-	}
+    }
 
-	public boolean getIsComplete() {
-		return this.isComplete;
-	}
+    public boolean getIsComplete() {
+        return this.isComplete;
+    }
 
-	/**
-	 * 
-	 * @param isComplete
-	 */
-	public void setIsComplete(boolean isComplete) {
-		this.isComplete=isComplete;
-	}
+    /**
+     * @param isComplete
+     */
+    public void setIsComplete(boolean isComplete) {
+        this.isComplete = isComplete;
+    }
 
-	/**
-	 * 
-	 * @param condizionecreator
-	 * @param valori
-	 */
-	public String aggiungiCondizione(ICreator condizionecreator, boolean vera, List<Integer> valori) {
-		String idcond= UUID.randomUUID().toString();
-		System.out.println(idcond);
+    /**
+     * @param condizionecreator
+     * @param valori
+     */
+    public String aggiungiCondizione(ICreator condizionecreator, boolean vera, List<Integer> valori) {
+        String idcond = UUID.randomUUID().toString();
+        System.out.println(idcond);
 
 
-		IStrategiaComponent condizione = (IStrategiaComponent) ((ICondizioneCreator)condizionecreator).doMakeCondizione(idcond,vera,valori);
-		System.out.println(condizione.getId());
+        IStrategiaComponent condizione = (IStrategiaComponent) ((ICondizioneCreator) condizionecreator).doMakeCondizione(idcond, vera, valori);
+        System.out.println(condizione.getId());
 
-		this.conditionBlock.add(condizione);
-		return idcond;
-	}
+        this.conditionBlock.add(condizione);
+        return idcond;
+    }
 
-	public String aggiungiCondizioneAnnidata(ICreator condizioneCreator, String idCondPadre, boolean vera, List<Integer> valori) {
-		String idcond= UUID.randomUUID().toString();
-		IStrategiaComponent condizione = (IStrategiaComponent) ((ICondizioneCreator)condizioneCreator).doMakeCondizione(idcond,vera,valori);
-		boolean trovato = false;
-		List<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
-		IStrategiaComponent currentfoglia = null;
-		IStrategiaComponent padre = null;
-		for (int i=0; i<padriFoglie.size() && !trovato; i++){
-			padre = padriFoglie.get(i);
-			currentfoglia=padre.getChild();
-			if (currentfoglia != null) {
-				if (currentfoglia.getId().equals(idCondPadre)){
-					trovato=true;
-					currentfoglia.addChild(condizione);
-				}
-			} else {
-				if (padre.getId().equals(idCondPadre)) {
-					trovato = true;
-					padre.addChild(condizione);
-				}
-			}
+    public String aggiungiCondizioneAnnidata(ICreator condizioneCreator, String idCondPadre, boolean vera, List<Integer> valori) {
+        String idcond = UUID.randomUUID().toString();
+        IStrategiaComponent condizione = (IStrategiaComponent) ((ICondizioneCreator) condizioneCreator).doMakeCondizione(idcond, vera, valori);
+        boolean trovato = false;
+        List<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
+        IStrategiaComponent currentfoglia = null;
+        IStrategiaComponent padre = null;
+        for (int i = 0; i < padriFoglie.size() && !trovato; i++) {
+            padre = padriFoglie.get(i);
+            currentfoglia = padre.getChild();
+            if (currentfoglia != null) {
+                if (currentfoglia.getId().equals(idCondPadre)) {
+                    trovato = true;
+                    currentfoglia.addChild(condizione);
+                }
+            } else {
+                if (padre.getId().equals(idCondPadre)) {
+                    trovato = true;
+                    padre.addChild(condizione);
+                }
+            }
 
-		}
-		return idcond;
-	}
+        }
+        return idcond;
+    }
 
-    public List<IStrategiaComponent> getPadriFoglie(){ //It doesn't work
+    public List<IStrategiaComponent> getPadriFoglie() { //It doesn't work
         List<IStrategiaComponent> result = new ArrayList<>();
         IStrategiaComponent padreCurrentLine = null;
-		IStrategiaComponent currentLine = null;
-        for (int i=0; i<conditionBlock.size(); i++){
-            padreCurrentLine=conditionBlock.get(i);
-			currentLine = padreCurrentLine;
-            while (currentLine.getChild() != null){
-                currentLine=currentLine.getChild();
-				if (currentLine.getChild() != null) {
-					padreCurrentLine = currentLine;
-				}
+        IStrategiaComponent currentLine = null;
+        for (int i = 0; i < conditionBlock.size(); i++) {
+            padreCurrentLine = conditionBlock.get(i);
+            currentLine = padreCurrentLine;
+            while (currentLine.getChild() != null) {
+                currentLine = currentLine.getChild();
+                if (currentLine.getChild() != null) {
+                    padreCurrentLine = currentLine;
+                }
             }
             result.add(padreCurrentLine);
         }
         return result;
     }
 
-	/**
-	 * 
-	 * @param az
-	 * @param valori
-	 * @param idCond
-	 */
-	public String aggiungiAzione(ICreator az, List<Integer> valori, String idCond) {
-		List<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
-		String idAz = UUID.randomUUID().toString();
-		IStrategiaComponent azione = (IStrategiaComponent) ((IAzioneCreator)az).doMakeAzione(idAz,valori);
-		boolean trovato = false;
-		IStrategiaComponent currentfoglia = null;
-		for (int i=0; i<padriFoglie.size() && !trovato; i++) {
-			if (padriFoglie.get(i).getChild() != null) {
-				currentfoglia = padriFoglie.get(i).getChild();
-			} else {
-				currentfoglia = padriFoglie.get(i);
-			}
-			if (currentfoglia.getId().equals(idCond)){
-				trovato=true;
-				currentfoglia.addChild(azione);
-			}
-		}
-		return idAz;
+    /**
+     * @param az
+     * @param valori
+     * @param idCond
+     */
+    public String aggiungiAzione(ICreator az, List<Integer> valori, String idCond) {
+        List<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
+        String idAz = UUID.randomUUID().toString();
+        IStrategiaComponent azione = (IStrategiaComponent) ((IAzioneCreator) az).doMakeAzione(idAz, valori);
+        boolean trovato = false;
+        IStrategiaComponent currentfoglia = null;
+        for (int i = 0; i < padriFoglie.size() && !trovato; i++) {
+            if (padriFoglie.get(i).getChild() != null) {
+                currentfoglia = padriFoglie.get(i).getChild();
+            } else {
+                currentfoglia = padriFoglie.get(i);
+            }
+            if (currentfoglia.getId().equals(idCond)) {
+                trovato = true;
+                currentfoglia.addChild(azione);
+            }
+        }
+        return idAz;
 
-	}
+    }
 
-
-	/**
-	 * 
-	 * @param nomeStrategia
-	 */
-	public void setNome(String nomeStrategia) {
-		this.nome = nomeStrategia;
-	}
-
-	public void rimuoviComponente(String id) {
-		boolean trovato = false;
-		if (this.defaultCondition.getChild() != null && this.defaultCondition.getChild().getId().equals(id)) {
-			this.defaultCondition.removeChild();
-			trovato = true;
-		}
-		IStrategiaComponent currentPadreFoglia = null;
+    public void rimuoviComponente(String id) {
+        boolean trovato = false;
+        if (this.defaultCondition.getChild() != null && this.defaultCondition.getChild().getId().equals(id)) {
+            this.defaultCondition.removeChild();
+            trovato = true;
+        }
+        IStrategiaComponent currentPadreFoglia = null;
         IStrategiaComponent currentFoglia = null;
-		if (!trovato){
-			List<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
-			for (int i=0; i<padriFoglie.size() && !trovato; i++) {
-				currentPadreFoglia = padriFoglie.get(i);
-				currentFoglia = currentPadreFoglia;
-				if (currentPadreFoglia.getChild() != null) {
-					currentFoglia = currentPadreFoglia.getChild();
-					if (currentFoglia.getId().equals(id)) {
-						trovato = true;
-						currentPadreFoglia.removeChild();
-					}
-				} else {
-					if (currentFoglia.getId().equals(id)) {
-						trovato = true;
-						this.conditionBlock.remove(i);
-					}
-				}
-			}
-		}
+        if (!trovato) {
+            List<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
+            for (int i = 0; i < padriFoglie.size() && !trovato; i++) {
+                currentPadreFoglia = padriFoglie.get(i);
+                currentFoglia = currentPadreFoglia;
+                if (currentPadreFoglia.getChild() != null) {
+                    currentFoglia = currentPadreFoglia.getChild();
+                    if (currentFoglia.getId().equals(id)) {
+                        trovato = true;
+                        currentPadreFoglia.removeChild();
+                    }
+                } else {
+                    if (currentFoglia.getId().equals(id)) {
+                        trovato = true;
+                        this.conditionBlock.remove(i);
+                    }
+                }
+            }
+        }
 
-	}
+    }
 
 
-	public Map getMap() {
-		Map strategie = new HashMap();
+    public Map getMap() {
+        Map strategie = new HashMap();
         List strategiaComponent = new ArrayList<>();
-        for (IStrategiaComponent is: this.conditionBlock) {
+        for (IStrategiaComponent is : this.conditionBlock) {
             strategiaComponent.add(is.getMap());
         }
-		strategie.put("id",this.id);
-		strategie.put("nome",this.nome);
-		strategie.put("isComplete",this.isComplete);
-		strategie.put("defaultCondition",this.defaultCondition.getMap());
-		strategie.put("conditionBlock",strategiaComponent);
+        strategie.put("id", this.id);
+        strategie.put("nome", this.nome);
+        strategie.put("isComplete", this.isComplete);
+        strategie.put("defaultCondition", this.defaultCondition.getMap());
+        strategie.put("conditionBlock", strategiaComponent);
         return strategie;
-	}
+    }
 }
