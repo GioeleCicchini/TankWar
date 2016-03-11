@@ -89,15 +89,17 @@ public class CreareStrategiaHandler {
         this.strategiaCorrente.rimuoviComponente(id);
     }
 
-    public void terminaStrategia() throws IOException {
-        this.strategiaCorrente.setComplete(true);
+    public boolean terminaStrategia() throws IOException {
+        boolean correttezzaStrategia = this.strategiaCorrente.verificaCompletezza();
+        if (correttezzaStrategia) {
+            this.strategiaCorrente.setComplete(true);
 
-        ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
-        DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
+            ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
+            DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
 
-        DTO risp = (DTO) service.RichiediAlServer(dtoMaker.getStrategiaDTO());
-
-
+            DTO risp = (DTO) service.RichiediAlServer(dtoMaker.getStrategiaDTO());
+        }
+        return this.strategiaCorrente.getComplete();
     }
 
     public void distruggiStrategiaCorrente() {
