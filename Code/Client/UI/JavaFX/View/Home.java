@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
  */
 public class Home implements Initializable {
     public Button startButton;
+    public Button battagliaButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -26,6 +27,11 @@ public class Home implements Initializable {
 
         ViewTransaction.getSingletonInstance().goToCreareStrategia(startButton);
 
+
+    }
+
+    public void startBattaglia(Event event){
+        ViewTransaction.getSingletonInstance().goToBattaglia(battagliaButton);
 
     }
 }
