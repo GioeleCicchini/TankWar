@@ -194,6 +194,33 @@ public class Strategia implements Serializable {
         }
 
     }
+    
+    public boolean verificaCompletezza() {
+        List<IStrategiaComponent> padriFoglie = this.getPadriFoglie();
+        boolean sbagliato=false;
+        for (int i=0;i<padriFoglie.size() && !sbagliato;i++) {
+            IStrategiaComponent figlio = padriFoglie.get(i).getChild();
+            if (figlio == null) {
+                sbagliato = true;
+            } else {
+                Class[] interfaces = figlio.getClass().getInterfaces();
+                boolean azione = false;
+                for (Class interfaccia: interfaces) {
+                    System.out.println(interfaccia);
+                    if (interfaccia.toString().equals("interface Shared.Domain.Azioni.IAzione")) {
+                        azione = true;
+                    }
+                }
+                if (!azione) {
+                    sbagliato = true;
+                }
+            }
+        }
+        if (this.defaultCondition.getChild() == null || this.nome.equals("")) {
+            sbagliato = true;
+        }
+        return !sbagliato;
+    }
 
 
     public Map getMap() {

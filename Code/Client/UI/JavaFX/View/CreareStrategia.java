@@ -14,6 +14,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -167,8 +169,18 @@ public class CreareStrategia implements Initializable {
     }
 
     public void terminaStrategia(MouseEvent event) throws IOException {
-        CreareStrategiaHandler.getSingletonInstance().terminaStrategia();
-        ViewTransaction.getSingletonInstance().goToHome(confermaButton);
+        boolean terminata = CreareStrategiaHandler.getSingletonInstance().terminaStrategia();
+        if (!terminata) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Strategia non corretta");
+            alert.setHeaderText("Errore sintattico sulla strategia");
+            alert.setContentText("Controlla che la Strategia sia completa");
+            alert.showAndWait();
+        } else {
+            System.out.println("passoqui");
+            ViewTransaction.getSingletonInstance().goToHome(confermaButton);
+        }
+
     }
 
     public void inserisciNomeStrategia(Event event) {
