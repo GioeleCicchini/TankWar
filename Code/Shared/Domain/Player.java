@@ -11,15 +11,16 @@ import java.util.Map;
 
 public class Player implements Serializable {
 
-    private String id;
+      private String id;
     private String nome;
     private List<Strategia> strategieList;
+    private Tank tank;
 
     public Player() {
         this.strategieList = new ArrayList<>();
         //this.id =  UUID.randomUUID().toString(); alla fine
 
-        this.id = new String("1");  // Provvisorio quando avremo il login da vedere
+
     }
 
     public Strategia iniziaNuovaStrategia(ICreator condizioneCreator) {
@@ -66,6 +67,14 @@ public class Player implements Serializable {
         player.put("nome", this.nome);
         player.put("strategieList", strategie);
         return player;
+    }
+
+    public Tank getTank() {
+        return tank;
+    }
+
+    public void setTank(Tank tank) {
+        this.tank = tank;
     }
 
 }

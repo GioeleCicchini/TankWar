@@ -1,8 +1,7 @@
 package Client.UI.JavaFX.View;
 
 import Client.UI.UIUtils.ViewTransaction;
-import Shared.Controllers.CreareStrategiaHandler;
-import Shared.Controllers.StartUpHandler;
+import Shared.Controllers.LoginHandler;
 import Shared.Domain.Player;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -29,6 +28,7 @@ public class Login implements Initializable {
     Button LoginButton;
 
 
+    private Player player;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -39,11 +39,15 @@ public class Login implements Initializable {
         Parent root = null;
 
 
-        Player player = StartUpHandler.getSingletonInstance().getPlayer(Username.getText(), Password.getText());
+            try {
+                this.player = LoginHandler.getSingletonInstance().getPlayerFromServer(Username.getText(), Password.getText());
 
-        CreareStrategiaHandler.getSingletonInstance().setCurrentPlayer(player);
+                ViewTransaction.getSingletonInstance().goToHome(LoginButton);
 
-        ViewTransaction.getSingletonInstance().goToHome(LoginButton);
+            }catch (NullPointerException e){
+                System.out.println(e.getMessage());
+
+            }
 
 
     }

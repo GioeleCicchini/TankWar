@@ -21,6 +21,7 @@ public class CreareStrategiaHandler {
     private Strategia strategiaCorrente;
 
     private CreareStrategiaHandler() {
+        this.currentPlayer = LoginHandler.getSingletonInstance().getPlayer();
 
     }
 

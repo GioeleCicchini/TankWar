@@ -72,6 +72,25 @@ public class ViewTransaction {
         stage.show();
     }
 
+    public void goToImpostaBattaglia(Node transactionNode){
+        Stage stage;
+        Parent root = null;
+
+        stage = (Stage) transactionNode.getScene().getWindow();
+        try {
+            root = FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/impostareBattaglia.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+
+
+    }
+
     public void goToBattaglia(Node transactionNode){
         Stage stage;
         Parent root = null;

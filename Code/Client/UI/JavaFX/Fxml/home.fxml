@@ -19,7 +19,7 @@
         </Button>
         <HBox prefHeight="100.0" prefWidth="200.0">
             <children>
-            <Button fx:id="battagliaButton" onMouseClicked="#startBattaglia" mnemonicParsing="false" prefHeight="99.0" prefWidth="203.0" text="Combatti">
+            <Button fx:id="impostabattagliaButton" onMouseClicked="#impostaBattaglia" mnemonicParsing="false" prefHeight="99.0" prefWidth="203.0" text="Combatti">
                <font>
                   <Font size="29.0" />
                </font>

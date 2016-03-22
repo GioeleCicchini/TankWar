@@ -32,22 +32,7 @@ public class StartUpHandler {
         return singletonInstance;
     }
 
-    public Player getPlayer(String username, String password) throws IOException {
 
-        ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
-        DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
-
-        DTO risp = (DTO) service.RichiediAlServer(dtoMaker.getEffettuaLoginDTO(username, password));
-
-
-        if (risp.getFunzione().equals("UtenteTrovato")) {
-            this.player = (Player) risp.getOggettiPersistenti().get(0);
-            System.out.println("Player Ricevuto");
-        }
-
-        return player;
-
-    }
 
     public void setPlayer(Player player) {
         this.player = player;
