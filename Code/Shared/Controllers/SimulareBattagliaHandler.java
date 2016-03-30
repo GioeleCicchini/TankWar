@@ -1,11 +1,9 @@
 package Shared.Controllers;
 
 
-import Shared.Domain.Battaglia;
-import Shared.Domain.Player;
-import Shared.Domain.Strategia;
-import Shared.Domain.Tank;
+import Shared.Domain.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -36,9 +34,13 @@ public class SimulareBattagliaHandler {
 
     public void iniziaImpostareBattaglia(){
 
-        Tank tankPersonale = playerLoggato.getTank();
+        ITank tankPersonale = playerLoggato.getTank();
         this.battaglia = new Battaglia(tankPersonale);
 
+    }
+
+    public void impostaBattaglia() throws IOException {
+        battaglia.scegliAvversario();
     }
 
 

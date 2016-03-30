@@ -11,16 +11,16 @@ import java.io.IOException;
 public class Battaglia {
 
     private boolean terminata;
-    private Tank TankPersonale;
-    private Tank TankAvversario;
+    private ITank tankPersonale;
+    private ITank tankAvversario;
 
     IImpostatoreBattaglia impBattaglia;
 
 
 
-    public Battaglia(Tank tankPersonale){
+    public Battaglia(ITank tankPersonale){
         terminata = false;
-        this.TankPersonale = tankPersonale;
+        this.tankPersonale = tankPersonale;
         impBattaglia=new ImpostatoreBattagliaCasuale();
     }
 
@@ -34,23 +34,23 @@ public class Battaglia {
         this.terminata = terminata;
     }
 
-    public Tank getTankPersonale() {
-        return TankPersonale;
+    public ITank getTankPersonale() {
+        return tankPersonale;
     }
 
     public void setTankPersonale(Tank tankPersonale) {
-        TankPersonale = tankPersonale;
+        this.tankPersonale = tankPersonale;
     }
 
-    public Tank getTankAvversario() {
-        return TankAvversario;
+    public ITank getTankAvversario() {
+        return tankAvversario;
     }
 
     public void setTankAvversario(Tank tankAvversario) {
-        TankAvversario = tankAvversario;
+        this.tankAvversario = tankAvversario;
     }
 
-    public void scegliAvversario(String livello) throws IOException {
-        impBattaglia.getAvversario(livello);
+    public void scegliAvversario() throws IOException {
+        tankAvversario=impBattaglia.getAvversario(tankPersonale.getLivello());
     }
 }
