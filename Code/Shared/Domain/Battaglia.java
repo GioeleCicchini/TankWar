@@ -51,7 +51,7 @@ public class Battaglia {
         this.tankAvversario = tankAvversario;
     }
 
-    public void scegliAvversario() throws IOException {
+    public void scegliAvversario() {
         tankAvversario=impBattaglia.getAvversario(tankPersonale.getLivello());
     }
 
