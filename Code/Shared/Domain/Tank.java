@@ -7,6 +7,8 @@ import java.util.UUID;
  */
 public class Tank implements ITank {
 
+    private Strategia strategia = null;
+
 
     public void Tank(){}
 
@@ -19,5 +21,10 @@ public class Tank implements ITank {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public void setStrategia(Strategia strategia) {
+        this.strategia = strategia;
     }
 }
