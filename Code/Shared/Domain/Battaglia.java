@@ -13,6 +13,7 @@ public class Battaglia {
     private boolean terminata;
     private ITank tankPersonale;
     private ITank tankAvversario;
+    private CampoBattaglia campoBattaglia;
 
     IImpostatoreBattaglia impBattaglia;
 
@@ -52,5 +53,9 @@ public class Battaglia {
 
     public void scegliAvversario() throws IOException {
         tankAvversario=impBattaglia.getAvversario(tankPersonale.getLivello());
+    }
+
+    public void creaCampoBattaglia() {
+        this.campoBattaglia=impBattaglia.getCampoBattaglia(tankPersonale.getLivello());
     }
 }

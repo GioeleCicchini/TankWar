@@ -1,5 +1,6 @@
 package Shared.Domain.StartupBattle;
 
+import Shared.Domain.ITank;
 import Shared.Domain.Player;
 import Shared.Domain.Tank;
 import Shared.TecnicalService.Fondation.ConcreteRemoteService;
@@ -14,8 +15,8 @@ import java.io.IOException;
  */
 public class RandomAvversarioGenerator implements  IGeneratoreAvversario {
 
-    public Tank getAvversario(String livello) throws IOException {
-        Tank tank;
+    public ITank getAvversario(String livello) throws IOException {
+        ITank tank;
 
         ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
         DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
@@ -23,8 +24,8 @@ public class RandomAvversarioGenerator implements  IGeneratoreAvversario {
         DTO risp = (DTO) service.RichiediAlServer(dtoMaker.getPlayerAvversarioRandomDTO(livello));
 
         if (risp.getFunzione().equals("TankTrovato")) {
-            tank= (Tank) risp.getOggettiPersistenti().get(0);
-            System.out.println("Player Ricevuto");
+            tank = (ITank) risp.getOggettiPersistenti().get(0);
+            System.out.println("Tank Ricevuto");
         }
         else {
             throw new NullPointerException("Tank non trovato");

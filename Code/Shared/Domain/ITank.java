@@ -7,4 +7,6 @@ public interface ITank {
 
     void setStrategia(Strategia strategia);
 
+    String getLivello();
+
 }

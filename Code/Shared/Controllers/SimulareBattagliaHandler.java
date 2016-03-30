@@ -41,6 +41,7 @@ public class SimulareBattagliaHandler {
 
     public void impostaBattaglia() throws IOException {
         battaglia.scegliAvversario();
+        battaglia.creaCampoBattaglia();
     }
 
 

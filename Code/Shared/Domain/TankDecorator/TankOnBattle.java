@@ -13,6 +13,6 @@ public class TankOnBattle extends TankDecorator {
 
     @Override
     public void setStrategia(Strategia strategia) {
-        
+
     }
 }

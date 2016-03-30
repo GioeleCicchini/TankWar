@@ -1,7 +1,9 @@
 package Shared.Domain.StartupBattle;
 
+
 import Shared.Domain.ITank;
 import Shared.Domain.Tank;
+import Shared.Domain.CampoBattaglia;
 
 import java.io.IOException;
 
@@ -21,4 +23,8 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
     public void posizionaTank() {
 
     }
+    public CampoBattaglia getCampoBattaglia(String livello) throws IOException {
+        return ((RandomCampoBattagliaGenerator) this.generatoreCampoBattaglia).getCampoBattaglia(livello);
+    }
+
 }

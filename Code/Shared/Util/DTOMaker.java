@@ -81,4 +81,10 @@ public class DTOMaker {
     }
 
 
+    public DTO getCampoBattagliaRandomDTO(String livello) {
+        DTO dto= new DTO();
+        dto.setFunzione("PrelevaCampoBattagliaRandom");
+        dto.aggiungiOggettoPersistente(livello);
+        return dto;
+    }
 }
