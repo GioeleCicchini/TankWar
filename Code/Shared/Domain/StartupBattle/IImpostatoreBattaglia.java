@@ -9,4 +9,5 @@ import java.io.IOException;
  */
 public interface IImpostatoreBattaglia {
     public Tank getAvversario(String livello) throws IOException;
+    public void posizionaTank();
 }
