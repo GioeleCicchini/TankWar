@@ -1,7 +1,7 @@
 package Shared.Controllers;
 
 import Shared.Domain.Player;
-import Shared.TecnicalService.ConcreteRemoteService;
+import Shared.TecnicalService.Fondation.ConcreteRemoteService;
 import Shared.Util.DTO;
 import Shared.Util.DTOMaker;
 

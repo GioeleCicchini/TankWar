@@ -1,5 +1,10 @@
 package Shared.Domain;
 
+import Shared.Domain.StartupBattle.IImpostatoreBattaglia;
+import Shared.Domain.StartupBattle.ImpostatoreBattagliaCasuale;
+
+import java.io.IOException;
+
 /**
  * Created by gioele on 22/03/16.
  */
@@ -9,17 +14,17 @@ public class Battaglia {
     private Tank TankPersonale;
     private Tank TankAvversario;
 
+    IImpostatoreBattaglia impBattaglia;
+
 
 
     public Battaglia(Tank tankPersonale){
         terminata = false;
         this.TankPersonale = tankPersonale;
+        impBattaglia=new ImpostatoreBattagliaCasuale();
     }
 
     public  Battaglia(){}
-
-
-
 
     public boolean isTerminata() {
         return terminata;
@@ -43,5 +48,9 @@ public class Battaglia {
 
     public void setTankAvversario(Tank tankAvversario) {
         TankAvversario = tankAvversario;
+    }
+
+    public void scegliAvversario(String livello) throws IOException {
+        impBattaglia.getAvversario(livello);
     }
 }

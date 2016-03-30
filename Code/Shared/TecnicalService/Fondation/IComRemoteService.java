@@ -1,4 +1,4 @@
-package Shared.TecnicalService;
+package Shared.TecnicalService.Fondation;
 
 import Shared.Util.DTO;
 

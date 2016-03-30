@@ -4,11 +4,7 @@ import Shared.Domain.CatalogoAzioneCreator;
 import Shared.Domain.CatalogoCondizioneCreator;
 import Shared.Domain.ICatalogo;
 import Shared.Domain.Player;
-import Shared.TecnicalService.ConcreteRemoteService;
-import Shared.Util.DTO;
-import Shared.Util.DTOMaker;
 
-import java.io.IOException;
 import java.util.Map;
 
 /**

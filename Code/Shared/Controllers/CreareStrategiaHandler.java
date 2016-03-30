@@ -5,7 +5,7 @@ import Shared.Domain.Creator.ICreator;
 import Shared.Domain.ICatalogo;
 import Shared.Domain.Player;
 import Shared.Domain.Strategia;
-import Shared.TecnicalService.ConcreteRemoteService;
+import Shared.TecnicalService.Fondation.ConcreteRemoteService;
 import Shared.Util.DTO;
 import Shared.Util.DTOMaker;
 
