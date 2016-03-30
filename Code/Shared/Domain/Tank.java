@@ -13,7 +13,20 @@ public class Tank implements ITank {
     public void Tank(){}
 
     private String id= UUID.randomUUID().toString();
+    private Integer livello;
 
+    public Integer getLivello() {
+        return livello;
+    }
+
+    public void setLivello(Integer livello) {
+        this.livello = livello;
+    }
+
+    public Strategia getStrategia() {
+
+        return strategia;
+    }
 
     public String getId() {
         return id;
