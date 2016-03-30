@@ -3,7 +3,12 @@ package Shared.Controllers;
 
 import Shared.Domain.Battaglia;
 import Shared.Domain.Player;
+import Shared.Domain.Strategia;
 import Shared.Domain.Tank;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by gioele on 22/03/16.
@@ -31,7 +36,7 @@ public class SimulareBattagliaHandler {
 
     public void iniziaImpostareBattaglia(){
 
-       Tank tankPersonale = playerLoggato.getTank();
+        Tank tankPersonale = playerLoggato.getTank();
         this.battaglia = new Battaglia(tankPersonale);
 
     }
@@ -43,5 +48,18 @@ public class SimulareBattagliaHandler {
 
     public void setPlayerLoggato(Player playerLoggato) {
         playerLoggato = playerLoggato;
+    }
+
+    public void scegliStrategia(String idStrategia) {
+        this.playerLoggato.scegliStrategia(idStrategia);
+    }
+
+    public List getStrategieList() {
+        List<Strategia> strategieList =  this.playerLoggato.getStrategieList();
+        List strategie = new ArrayList<>();
+        for (Strategia s : strategieList) {
+            strategie.add(s.getMap());
+        }
+        return strategie;
     }
 }

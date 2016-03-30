@@ -14,7 +14,7 @@ public class Player implements Serializable {
       private String id;
     private String nome;
     private List<Strategia> strategieList;
-    private Tank tank;
+    private ITank tank;
 
     public Player() {
         this.strategieList = new ArrayList<>();
@@ -69,7 +69,7 @@ public class Player implements Serializable {
         return player;
     }
 
-    public Tank getTank() {
+    public ITank getTank() {
         return tank;
     }
 
@@ -77,4 +77,15 @@ public class Player implements Serializable {
         this.tank = tank;
     }
 
+    public void scegliStrategia(String idStrategia) {
+        boolean trovato = false;
+        Strategia strategiaCorrente = new Strategia();
+        for (int i=0;i<this.strategieList.size() && !trovato;i++) {
+            strategiaCorrente = this.strategieList.get(i);
+            if (strategiaCorrente.getId().equals(idStrategia)) {
+                trovato = true;
+            }
+        }
+        this.tank.scegliStrategia(strategiaCorrente);
+    }
 }
