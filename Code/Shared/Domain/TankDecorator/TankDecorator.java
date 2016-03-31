@@ -17,4 +17,8 @@ public abstract class TankDecorator implements ITank{
     public Integer getLivello() {
         return this.component.getLivello();
     }
+
+    public String getId() {
+        return this.component.getId();
+    }
 }

@@ -15,6 +15,7 @@ public class Battaglia {
     private ITank tankPersonale;
     private ITank tankAvversario;
     private CampoBattaglia campoBattaglia;
+    private Turno turno;
     IImpostatoreBattaglia impBattaglia;
 
 
@@ -63,10 +64,14 @@ public class Battaglia {
     }
 
     public void posizionaTank() {
-        this.impBattaglia.posizionaTank();
+        this.impBattaglia.posizionaTank(this.tankPersonale,this.tankAvversario,this.campoBattaglia);
     }
 
     public void impostaTurni() {
-
+        String idTankPersonale = this.tankPersonale.getId();
+        String idTankAvversario = this.tankAvversario.getId();
+        this.turno = new Turno(idTankPersonale,idTankAvversario);
+        String idTankInizio = this.impBattaglia.decidiTurno(idTankPersonale,idTankAvversario);
+        this.turno.setaChiTocca(idTankInizio);
     }
 }
