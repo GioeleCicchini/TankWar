@@ -9,4 +9,6 @@ public interface ITank {
 
     Integer getLivello();
 
+    String getId();
 }
+

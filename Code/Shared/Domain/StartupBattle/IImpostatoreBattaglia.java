@@ -15,4 +15,6 @@ public interface IImpostatoreBattaglia {
     public void posizionaTank(ITank tankCasa, ITank tankTrasferta, CampoBattaglia campo);
 
     public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException;
+
+    String decidiTurno(String idTankPersonale, String idTankAvversario);
 }
