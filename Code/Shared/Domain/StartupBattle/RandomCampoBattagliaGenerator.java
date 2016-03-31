@@ -21,7 +21,7 @@ public class RandomCampoBattagliaGenerator implements  IGeneratoreCampoBattaglia
         DTO risp = (DTO) service.RichiediAlServer(dtoMaker.getCampoBattagliaRandomDTO(livello));
 
         if (risp.getFunzione().equals("CampoBattagliaTrovato")) {
-            campoBattaglia = (CampoBattaglia) risp.getOggettiPersistenti().get(0);
+            campoBattaglia = (CampoBattaglia) risp.getOggettiTrasferimento().get(0);
             System.out.println("Campo Battaglia Ricevuto");
         }
         else {

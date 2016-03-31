@@ -1,11 +1,12 @@
 package Shared.Domain;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * Created by beniamino on 22/03/16.
  */
-public class Tank implements ITank {
+public class Tank implements ITank,Serializable {
 
     private Strategia strategia = null;
 
@@ -23,15 +24,16 @@ public class Tank implements ITank {
         this.livello = livello;
     }
 
+    @Override
     public Strategia getStrategia() {
-
         return strategia;
     }
 
+    @Override
     public String getId() {
         return id;
     }
-
+    @Override
     public void setId(String id) {
         this.id = id;
     }
@@ -39,5 +41,15 @@ public class Tank implements ITank {
     @Override
     public void setStrategia(Strategia strategia) {
         this.strategia = strategia;
+    }
+
+    @Override
+    public ITank getTank() {
+        return null;
+    }
+
+    @Override
+    public void setTank(Tank tank) {
+
     }
 }

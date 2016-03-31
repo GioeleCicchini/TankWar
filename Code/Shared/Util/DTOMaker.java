@@ -2,6 +2,7 @@ package Shared.Util;
 
 import Shared.Controllers.CreareStrategiaHandler;
 import Shared.Domain.Player;
+import Shared.Domain.Tank;
 
 /**
  * Created by gioele on 04/03/16.
@@ -27,7 +28,7 @@ public class DTOMaker {
         DTO dto = new DTO();
         if (trovato == true) {
             dto.setFunzione("UtenteTrovato");
-            dto.aggiungiOggettoPersistente(player);
+            dto.aggiungiOggettoTrasferimento(player);
         } else {
             dto.setFunzione("UtenteNonTrovato");
         }
@@ -39,8 +40,8 @@ public class DTOMaker {
     public DTO getEffettuaLoginDTO(String username, String password) {
         DTO dto = new DTO();
         dto.setFunzione("PrelevaPlayer");
-        dto.aggiungiOggettoPersistente(username);
-        dto.aggiungiOggettoPersistente(password);
+        dto.aggiungiOggettoTrasferimento(username);
+        dto.aggiungiOggettoTrasferimento(password);
         return dto;
     }
 
@@ -49,7 +50,7 @@ public class DTOMaker {
 
         DTO dto = new DTO();
         dto.setFunzione("RegistraPlayer");
-        dto.aggiungiOggettoPersistente(CreareStrategiaHandler.getSingletonInstance().getCurrentPlayer());
+        dto.aggiungiOggettoTrasferimento(CreareStrategiaHandler.getSingletonInstance().getCurrentPlayer());
 
         return dto;
 
@@ -59,8 +60,8 @@ public class DTOMaker {
         DTO dto = new DTO();
         dto.setFunzione("RegistraStrategia");
         Player player = CreareStrategiaHandler.getSingletonInstance().getCurrentPlayer();
-        dto.aggiungiOggettoPersistente(player.getId());
-        dto.aggiungiOggettoPersistente(player.getStrategieList().get(player.getStrategieList().size() - 1));
+        dto.aggiungiOggettoTrasferimento(player.getId());
+        dto.aggiungiOggettoTrasferimento(player.getStrategieList().get(player.getStrategieList().size() - 1));
         return dto;
 
     }
@@ -73,10 +74,20 @@ public class DTOMaker {
 
     }
 
-    public DTO getPlayerAvversarioRandomDTO(Integer livello){
+
+
+    public DTO getPlayerAvversarioTankRandomResponce(Tank tank){
         DTO dto= new DTO();
-        dto.setFunzione("PrelevaPlayerAvversarioRandom");
-        dto.aggiungiOggettoPersistente(livello);
+        dto.setFunzione("TankAvversarioRandomPrelevato");
+        dto.aggiungiOggettoTrasferimento(tank);
+        return dto;
+    }
+
+
+    public DTO getPlayerAvversarioTankRandomDTO(Integer livello){
+        DTO dto= new DTO();
+        dto.setFunzione("PrelevaPlayerAvversarioTankRandom");
+        dto.aggiungiOggettoTrasferimento(livello);
         return dto;
     }
 
@@ -84,7 +95,7 @@ public class DTOMaker {
     public DTO getCampoBattagliaRandomDTO(Integer livello) {
         DTO dto= new DTO();
         dto.setFunzione("PrelevaCampoBattagliaRandom");
-        dto.aggiungiOggettoPersistente(livello);
+        dto.aggiungiOggettoTrasferimento(livello);
         return dto;
     }
 }

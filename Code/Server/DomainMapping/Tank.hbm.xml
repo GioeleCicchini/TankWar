@@ -9,6 +9,10 @@
             <generator class="assigned"/>
         </id>
 
+        <property name="livello" column="Livello"></property>
+
+        <many-to-one name="Strategia" column="Strategia" class="Shared.Domain.Strategia" cascade="all"></many-to-one>
+
 
 
     </class>

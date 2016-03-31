@@ -36,7 +36,7 @@ public class Home implements Initializable {
 
     public void impostaBattaglia(Event event){
 
-        SimulareBattagliaHandler.getSingletonInstance().iniziaImpostareBattaglia();
+        SimulareBattagliaHandler.getSingletonInstance().iniziaImpostareBattagliaCasuale();
         ViewTransaction.getSingletonInstance().goToImpostaBattaglia(impostabattagliaButton);
 
     }

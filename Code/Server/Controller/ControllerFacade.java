@@ -36,7 +36,7 @@ public class ControllerFacade implements Controller {
 
     public void ArrivaRichiesta(DTO dto) {
         this.funzione = dto.getFunzione();
-        this.oggettiPersistenti = dto.getOggettiPersistenti();
+        this.oggettiPersistenti = dto.getOggettiTrasferimento();
 
         this.Notify();
     }

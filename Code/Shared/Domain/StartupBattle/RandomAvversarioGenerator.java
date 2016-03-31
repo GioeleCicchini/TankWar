@@ -1,8 +1,6 @@
 package Shared.Domain.StartupBattle;
 
 import Shared.Domain.ITank;
-import Shared.Domain.Player;
-import Shared.Domain.Tank;
 import Shared.TecnicalService.Fondation.ConcreteRemoteService;
 import Shared.Util.DTO;
 import Shared.Util.DTOMaker;
@@ -21,10 +19,10 @@ public class RandomAvversarioGenerator implements  IGeneratoreAvversario {
         ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
         DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
 
-        DTO risp = (DTO) service.RichiediAlServer(dtoMaker.getPlayerAvversarioRandomDTO(livello));
+        DTO risp = (DTO) service.RichiediAlServer(dtoMaker.getPlayerAvversarioTankRandomDTO(livello));
 
         if (risp.getFunzione().equals("TankTrovato")) {
-            tank = (ITank) risp.getOggettiPersistenti().get(0);
+            tank = (ITank) risp.getOggettiTrasferimento().get(0);
             System.out.println("Tank Ricevuto");
         }
         else {

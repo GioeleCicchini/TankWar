@@ -2,6 +2,7 @@ package Shared.Domain.TankDecorator;
 
 import Shared.Domain.ITank;
 import Shared.Domain.Strategia;
+import Shared.Domain.Tank;
 
 /**
  * Created by beniamino on 22/03/16.
@@ -17,7 +18,27 @@ public class TankOnBattle extends TankDecorator {
     }
 
     @Override
+    public Strategia getStrategia() {
+        return null;
+    }
+
+    @Override
+    public ITank getTank() {
+        return null;
+    }
+
+    @Override
+    public void setTank(Tank tank) {
+
+    }
+
+    @Override
     public Integer getLivello() {
         return super.getLivello();
+    }
+
+    @Override
+    public void setId(String id) {
+
     }
 }

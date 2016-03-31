@@ -6,9 +6,14 @@ package Shared.Domain;
 public interface ITank {
 
     void setStrategia(Strategia strategia);
+    Strategia getStrategia();
+
+    ITank getTank();
+    void setTank(Tank tank);
 
     Integer getLivello();
 
     String getId();
+    void setId(String id);
 }
 

@@ -86,6 +86,6 @@ public class Player implements Serializable {
                 trovato = true;
             }
         }
-        this.tank.scegliStrategia(strategiaCorrente);
+        this.tank.setStrategia(strategiaCorrente);
     }
 }

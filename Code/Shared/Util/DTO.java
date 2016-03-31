@@ -27,15 +27,15 @@ public class DTO implements Serializable {
         this.funzione = funzione;
     }
 
-    public void aggiungiOggettoPersistente(Serializable Object) {
+    public void aggiungiOggettoTrasferimento(Serializable Object) {
         this.OggettiPersistenti.add(Object);
     }
 
-    public List<Serializable> getOggettiPersistenti() {
+    public List<Serializable> getOggettiTrasferimento() {
         return OggettiPersistenti;
     }
 
-    public void setOggettiPersistenti(List<Serializable> oggettiPersistenti) {
+    public void setOggettiTrasferimento(List<Serializable> oggettiPersistenti) {
         OggettiPersistenti = oggettiPersistenti;
     }
 }

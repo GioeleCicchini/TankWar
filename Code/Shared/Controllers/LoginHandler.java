@@ -37,7 +37,7 @@ public class LoginHandler {
 
 
         if (risp.getFunzione().equals("UtenteTrovato")) {
-            this.player = (Player) risp.getOggettiPersistenti().get(0);
+            this.player = (Player) risp.getOggettiTrasferimento().get(0);
             System.out.println("Player Ricevuto");
         }
         else {
