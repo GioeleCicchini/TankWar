@@ -12,7 +12,7 @@ public interface IImpostatoreBattaglia {
 
     public ITank getAvversario(String livello) throws IOException;
 
-    public void posizionaTank();
+    public void posizionaTank(ITank tankCasa, ITank tankTrasferta, CampoBattaglia campo);
 
     public CampoBattaglia getCampoBattaglia(String livello) throws IOException;
 }

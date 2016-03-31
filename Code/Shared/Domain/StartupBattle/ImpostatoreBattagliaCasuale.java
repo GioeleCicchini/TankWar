@@ -20,9 +20,10 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
     }
 
     @Override
-    public void posizionaTank() {
+    public void posizionaTank(ITank tankCasa, ITank tankTrasferta, CampoBattaglia campo) {
 
     }
+
     public CampoBattaglia getCampoBattaglia(String livello) throws IOException {
         return ((RandomCampoBattagliaGenerator) this.generatoreCampoBattaglia).getCampoBattaglia(livello);
     }
