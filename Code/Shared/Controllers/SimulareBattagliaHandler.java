@@ -32,11 +32,10 @@ public class SimulareBattagliaHandler {
 
 
 
-    public void iniziaImpostareBattaglia(){
-
+    public void iniziaImpostareBattagliaCasuale(){
         ITank tankPersonale = playerLoggato.getTank();
         this.battaglia = new Battaglia(tankPersonale);
-
+        this.battaglia.setImpostatoreBattagliaCasuale();
     }
 
     public void impostaBattaglia() throws IOException {

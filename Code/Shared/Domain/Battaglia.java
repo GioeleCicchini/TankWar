@@ -14,7 +14,6 @@ public class Battaglia {
     private ITank tankPersonale;
     private ITank tankAvversario;
     private CampoBattaglia campoBattaglia;
-
     IImpostatoreBattaglia impBattaglia;
 
 
@@ -22,7 +21,10 @@ public class Battaglia {
     public Battaglia(ITank tankPersonale){
         terminata = false;
         this.tankPersonale = tankPersonale;
-        impBattaglia=new ImpostatoreBattagliaCasuale();
+    }
+
+    public void setImpostatoreBattagliaCasuale() {
+        this.impBattaglia=new ImpostatoreBattagliaCasuale();
     }
 
     public  Battaglia(){}
@@ -51,11 +53,11 @@ public class Battaglia {
         this.tankAvversario = tankAvversario;
     }
 
-    public void scegliAvversario() {
+    public void scegliAvversario() throws IOException {
         tankAvversario=impBattaglia.getAvversario(tankPersonale.getLivello());
     }
 
-    public void creaCampoBattaglia() {
+    public void creaCampoBattaglia() throws IOException {
         this.campoBattaglia=impBattaglia.getCampoBattaglia(tankPersonale.getLivello());
     }
 }
