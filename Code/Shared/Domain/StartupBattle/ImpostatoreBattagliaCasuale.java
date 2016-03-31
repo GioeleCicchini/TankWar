@@ -15,7 +15,7 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
     private IGeneratoreAvversario generatoreAvversario = new RandomAvversarioGenerator();
     private IGeneratoreCampoBattaglia generatoreCampoBattaglia = new RandomCampoBattagliaGenerator();
 
-    public ITank getAvversario(String livello) throws IOException {
+    public ITank getAvversario(Integer livello) throws IOException {
         return ((RandomAvversarioGenerator) this.generatoreAvversario).getAvversario(livello);
     }
 
@@ -23,8 +23,7 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
     public void posizionaTank(ITank tankCasa, ITank tankTrasferta, CampoBattaglia campo) {
 
     }
-
-    public CampoBattaglia getCampoBattaglia(String livello) throws IOException {
+    public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException {
         return ((RandomCampoBattagliaGenerator) this.generatoreCampoBattaglia).getCampoBattaglia(livello);
     }
 

@@ -15,4 +15,9 @@ public class TankOnBattle extends TankDecorator {
     public void setStrategia(Strategia strategia) {
 
     }
+
+    @Override
+    public Integer getLivello() {
+        return super.getLivello();
+    }
 }

@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class RandomAvversarioGenerator implements  IGeneratoreAvversario {
 
-    public ITank getAvversario(String livello) throws IOException {
+    public ITank getAvversario(Integer livello) throws IOException {
         ITank tank;
 
         ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();

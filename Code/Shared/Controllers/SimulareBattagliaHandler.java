@@ -36,6 +36,8 @@ public class SimulareBattagliaHandler {
         ITank tankPersonale = playerLoggato.getTank();
         this.battaglia = new Battaglia(tankPersonale);
         this.battaglia.setImpostatoreBattagliaCasuale();
+        this.battaglia.posizionaTank();
+        this.battaglia.impostaTurni();
     }
 
     public void impostaBattaglia() throws IOException {

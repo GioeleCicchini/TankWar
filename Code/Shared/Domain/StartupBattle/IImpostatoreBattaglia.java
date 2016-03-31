@@ -10,9 +10,9 @@ import java.io.IOException;
  */
 public interface IImpostatoreBattaglia {
 
-    public ITank getAvversario(String livello) throws IOException;
+    public ITank getAvversario(Integer livello) throws IOException;
 
     public void posizionaTank(ITank tankCasa, ITank tankTrasferta, CampoBattaglia campo);
 
-    public CampoBattaglia getCampoBattaglia(String livello) throws IOException;
+    public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException;
 }

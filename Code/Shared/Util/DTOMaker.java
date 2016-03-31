@@ -73,7 +73,7 @@ public class DTOMaker {
 
     }
 
-    public DTO getPlayerAvversarioRandomDTO(String livello){
+    public DTO getPlayerAvversarioRandomDTO(Integer livello){
         DTO dto= new DTO();
         dto.setFunzione("PrelevaPlayerAvversarioRandom");
         dto.aggiungiOggettoPersistente(livello);
@@ -81,7 +81,7 @@ public class DTOMaker {
     }
 
 
-    public DTO getCampoBattagliaRandomDTO(String livello) {
+    public DTO getCampoBattagliaRandomDTO(Integer livello) {
         DTO dto= new DTO();
         dto.setFunzione("PrelevaCampoBattagliaRandom");
         dto.aggiungiOggettoPersistente(livello);
