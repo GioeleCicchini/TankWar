@@ -2,6 +2,7 @@ package Shared.Domain;
 
 import Shared.Domain.StartupBattle.IImpostatoreBattaglia;
 import Shared.Domain.StartupBattle.ImpostatoreBattagliaCasuale;
+import Shared.Domain.TankDecorator.TankOnBattle;
 
 import java.io.IOException;
 
@@ -20,7 +21,7 @@ public class Battaglia {
 
     public Battaglia(ITank tankPersonale){
         terminata = false;
-        this.tankPersonale = tankPersonale;
+        this.tankPersonale = new TankOnBattle(tankPersonale);
     }
 
     public void setImpostatoreBattagliaCasuale() {
@@ -42,7 +43,7 @@ public class Battaglia {
     }
 
     public void setTankPersonale(Tank tankPersonale) {
-        this.tankPersonale = tankPersonale;
+        this.tankPersonale = new TankOnBattle(tankPersonale);
     }
 
     public ITank getTankAvversario() {
@@ -50,7 +51,7 @@ public class Battaglia {
     }
 
     public void setTankAvversario(Tank tankAvversario) {
-        this.tankAvversario = tankAvversario;
+        this.tankAvversario = new TankOnBattle(tankAvversario);
     }
 
     public void scegliAvversario() throws IOException {
@@ -59,5 +60,13 @@ public class Battaglia {
 
     public void creaCampoBattaglia() throws IOException {
         this.campoBattaglia=impBattaglia.getCampoBattaglia(tankPersonale.getLivello());
+    }
+
+    public void posizionaTank() {
+        this.impBattaglia.posizionaTank();
+    }
+
+    public void impostaTurni() {
+
     }
 }

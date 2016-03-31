@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class RandomCampoBattagliaGenerator implements  IGeneratoreCampoBattaglia {
 
-    public CampoBattaglia getCampoBattaglia(String livello) throws IOException {
+    public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException {
         CampoBattaglia campoBattaglia;
 
         ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
