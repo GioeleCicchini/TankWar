@@ -13,4 +13,9 @@ import java.util.Map;
  */
 public class MuroCasella implements ICasella {
     private Map caselleVicine = new HashMap< OrientamentoEnum,ICasella>();
+
+    @Override
+    public boolean isDisponibile() {
+        return false;
+    }
 }

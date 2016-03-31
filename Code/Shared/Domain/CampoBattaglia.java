@@ -12,4 +12,12 @@ public class CampoBattaglia {
     public void posizionaTank (ITank tank, int x, int y){
 
     }
+
+    public int getDimensioneX(){
+        return campo.length;
+    }
+
+    public int getDimensioneY(){
+        return campo[0].length;
+    }
 }
