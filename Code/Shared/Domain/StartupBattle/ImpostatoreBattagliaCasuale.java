@@ -23,13 +23,15 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
 
     @Override
     public void posizionaTank(ITank tankCasa, ITank tankTrasferta, CampoBattaglia campo) {
+
         int dimX=campo.getDimensioneX();
         int dimY=campo.getDimensioneY();
 
-        Random r = new Random();
+        int posX=RandomMinMax.randInt(0,dimX-1);
+        int posY=RandomMinMax.randInt(0,dimY-1);
 
-        int posX=r.nextInt()
-        campo.posizionaTank(tankCasa);
+        
+        campo.posizionaTank(tankCasa,posX,posY);
     }
     public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException {
         return ((RandomCampoBattagliaGenerator) this.generatoreCampoBattaglia).getCampoBattaglia(livello);
