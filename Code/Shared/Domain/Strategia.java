@@ -236,4 +236,8 @@ public class Strategia implements Serializable {
         strategie.put("conditionBlock", strategiaComponent);
         return strategie;
     }
+
+    public void faiMossa(ITank mioTank, ITank altroTank, CampoBattaglia campo){
+
+    }
 }

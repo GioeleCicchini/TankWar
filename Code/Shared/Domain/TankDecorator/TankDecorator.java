@@ -7,7 +7,7 @@ import Shared.Domain.ITank;
  */
 public abstract class TankDecorator implements ITank{
 
-    private ITank component;
+    protected ITank component;
 
     public TankDecorator(ITank component) {
         this.component = component;
