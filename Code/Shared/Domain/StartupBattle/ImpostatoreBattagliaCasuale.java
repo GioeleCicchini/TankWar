@@ -1,12 +1,15 @@
 package Shared.Domain.StartupBattle;
 
 
+import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.ITank;
 import Shared.Domain.Tank;
 import Shared.Domain.CampoBattaglia;
 import Shared.Util.RandomMinMax;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -24,14 +27,32 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
     @Override
     public void posizionaTank(ITank tankCasa, ITank tankTrasferta, CampoBattaglia campo) {
 
+        List<ITank> tank = new ArrayList<>();
+        tank.add(tankCasa);
+        tank.add(tankTrasferta);
         int dimX=campo.getDimensioneX();
         int dimY=campo.getDimensioneY();
+<<<<<<< HEAD
 
         int posX=RandomMinMax.randInt(0,dimX-1);
         int posY=RandomMinMax.randInt(0,dimY-1);
 
 
         campo.posizionaTank(tankCasa,posX,posY);
+=======
+        ICasella casellaAttuale;
+        int posX;
+        int posY;
+        for (ITank t: tank) {
+            do {
+                posX=RandomMinMax.randInt(0,dimX-1);
+                posY=RandomMinMax.randInt(0,dimY-1);
+                casellaAttuale = campo.getCasella(posX,posY);
+            } while(!casellaAttuale.isDisponibile());
+            campo.posizionaTank(t,posX,posY);
+            t.setCasellaPosizione(casellaAttuale);
+        }
+>>>>>>> origin/master
     }
     public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException {
         return ((RandomCampoBattagliaGenerator) this.generatoreCampoBattaglia).getCampoBattaglia(livello);

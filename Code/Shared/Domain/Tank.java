@@ -1,5 +1,7 @@
 package Shared.Domain;
 
+import Shared.Domain.Caselle.ICasella;
+
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -36,6 +38,16 @@ public class Tank implements ITank,Serializable {
     @Override
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public ICasella getCasellaPosizione() {
+        return null;
+    }
+
+    @Override
+    public void setCasellaPosizione(ICasella casellaPosizione) {
+
     }
 
     @Override

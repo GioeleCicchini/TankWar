@@ -1,5 +1,6 @@
 package Shared.Domain.TankDecorator;
 
+import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.ITank;
 import Shared.Domain.Strategia;
 import Shared.Domain.Tank;
@@ -8,6 +9,9 @@ import Shared.Domain.Tank;
  * Created by beniamino on 22/03/16.
  */
 public class TankOnBattle extends TankDecorator {
+
+    private ICasella casellaPosizione;
+
     public TankOnBattle(ITank component) {
         super(component);
     }
@@ -41,4 +45,15 @@ public class TankOnBattle extends TankDecorator {
     public void setId(String id) {
 
     }
+
+    @Override
+    public ICasella getCasellaPosizione() {
+        return casellaPosizione;
+    }
+
+    @Override
+    public void setCasellaPosizione(ICasella casellaPosizione) {
+        this.casellaPosizione = casellaPosizione;
+    }
+
 }
