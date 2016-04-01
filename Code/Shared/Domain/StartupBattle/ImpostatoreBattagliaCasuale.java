@@ -32,14 +32,6 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
         tank.add(tankTrasferta);
         int dimX=campo.getDimensioneX();
         int dimY=campo.getDimensioneY();
-<<<<<<< HEAD
-
-        int posX=RandomMinMax.randInt(0,dimX-1);
-        int posY=RandomMinMax.randInt(0,dimY-1);
-
-
-        campo.posizionaTank(tankCasa,posX,posY);
-=======
         ICasella casellaAttuale;
         int posX;
         int posY;
@@ -52,7 +44,6 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
             campo.posizionaTank(t,posX,posY);
             t.setCasellaPosizione(casellaAttuale);
         }
->>>>>>> origin/master
     }
     public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException {
         return ((RandomCampoBattagliaGenerator) this.generatoreCampoBattaglia).getCampoBattaglia(livello);
