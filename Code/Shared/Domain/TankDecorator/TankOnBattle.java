@@ -1,5 +1,6 @@
 package Shared.Domain.TankDecorator;
 
+import Shared.Domain.CampoBattaglia;
 import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.ITank;
 import Shared.Domain.Strategia;
@@ -11,6 +12,8 @@ import Shared.Domain.Tank;
 public class TankOnBattle extends TankDecorator {
 
     private ICasella casellaPosizione;
+
+    private boolean vivo = true;
 
     public TankOnBattle(ITank component) {
         super(component);
@@ -54,6 +57,16 @@ public class TankOnBattle extends TankDecorator {
     @Override
     public void setCasellaPosizione(ICasella casellaPosizione) {
         this.casellaPosizione = casellaPosizione;
+    }
+
+    @Override
+    public void faiMossa(ITank altroTank, CampoBattaglia campo) {
+        this.getStrategia().faiMossa(this,altroTank,campo);
+    }
+
+    @Override
+    public boolean seiMorto() {
+        return !vivo;
     }
 
 }

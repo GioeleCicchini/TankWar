@@ -45,6 +45,15 @@ public class SimulareBattagliaHandler {
         battaglia.creaCampoBattaglia();
     }
 
+    public void faiMossa(){
+        if (!battaglia.isTerminata()){
+            battaglia.faiMossa();
+        }
+    }
+
+    public void getState(){
+        battaglia.getState();
+    }
 
     public Player getPlayerLoggato() {
         return playerLoggato;

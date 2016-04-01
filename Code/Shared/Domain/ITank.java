@@ -21,5 +21,11 @@ public interface ITank {
     ICasella getCasellaPosizione();
 
     void setCasellaPosizione(ICasella casellaPosizione);
+
+    void faiMossa(ITank altroTank, CampoBattaglia campo);
+
+    boolean seiMorto();
+
+
 }
 
