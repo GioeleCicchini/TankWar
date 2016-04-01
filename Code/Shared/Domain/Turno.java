@@ -13,11 +13,13 @@ public class Turno {
     private String idTankAvversario;
     private String aChiTocca;
     private Integer numeroTurno;
+    private Integer maxTurni;
 
-    public Turno(String idTankPersonale, String idTankAvversario) {
+    public Turno(String idTankPersonale, String idTankAvversario, Integer turni) {
         this.idTankPersonale = idTankPersonale;
         this.idTankAvversario = idTankAvversario;
         numeroTurno = 0;
+        maxTurni=turni*2;//Todo al posto del 2 ci andrà il numero di partecipanti
     }
 
     public String getIdTankPersonale() {
@@ -36,7 +38,7 @@ public class Turno {
         this.idTankAvversario = idTankAvversario;
     }
 
-    public String getaChiTocca() {
+    public String aChiTocca() {
         return aChiTocca;
     }
 
@@ -50,5 +52,24 @@ public class Turno {
 
     public void setNumeroTurno(Integer numeroTurno) {
         this.numeroTurno = numeroTurno;
+    }
+
+    public void increment(){
+        numeroTurno++;
+        //todo da quì in poi alti livelli di bruttezza
+        if (aChiTocca.equals(idTankPersonale)){
+            aChiTocca=idTankAvversario;
+        }
+        else {
+            aChiTocca=idTankAvversario;
+        }
+    }
+
+    public boolean isFinitaPartita(){
+        boolean finita = false;
+        if (numeroTurno>=maxTurni){
+            finita=true;
+        }
+        return finita;
     }
 }

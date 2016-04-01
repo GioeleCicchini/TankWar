@@ -2,7 +2,9 @@ package Shared.Domain.Condizioni;
 
 
 import Shared.Domain.Azioni.IAzione;
+import Shared.Domain.CampoBattaglia;
 import Shared.Domain.IStrategiaComponent;
+import Shared.Domain.ITank;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -40,8 +42,8 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent, Seri
     }
 
     @Override
-    public boolean verificaSeVera() {
-        return false;
+    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+        return true;
     }
 
     @Override

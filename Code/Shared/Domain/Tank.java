@@ -51,6 +51,16 @@ public class Tank implements ITank,Serializable {
     }
 
     @Override
+    public void setBombeRimanenti(Integer bombeRimanenti) {
+
+    }
+
+    @Override
+    public Integer getBombeRimanenti() {
+        return null;
+    }
+
+    @Override
     public void setStrategia(Strategia strategia) {
         this.strategia = strategia;
     }

@@ -5,6 +5,8 @@ import Shared.Domain.StartupBattle.ImpostatoreBattagliaCasuale;
 import Shared.Domain.TankDecorator.TankOnBattle;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gioele on 22/03/16.
@@ -17,6 +19,7 @@ public class Battaglia {
     private CampoBattaglia campoBattaglia;
     private Turno turno;
     IImpostatoreBattaglia impBattaglia;
+    private String risultato = "in corso";
 
 
 
@@ -70,8 +73,44 @@ public class Battaglia {
     public void impostaTurni() {
         String idTankPersonale = this.tankPersonale.getId();
         String idTankAvversario = this.tankAvversario.getId();
-        this.turno = new Turno(idTankPersonale,idTankAvversario);
+        this.turno = new Turno(idTankPersonale,idTankAvversario,500);//todo questo 500 diverrà flessibile?
         String idTankInizio = this.impBattaglia.decidiTurno(idTankPersonale,idTankAvversario);
         this.turno.setaChiTocca(idTankInizio);
+    }
+
+    public void faiMossa(){
+        String idAChiTocca = turno.aChiTocca();
+        List<ITank> partecipanti = new ArrayList<>();
+        partecipanti.add(tankPersonale);
+        partecipanti.add(tankAvversario);
+        //TODO Nota: occorrerrebbe una estensione al caso con più di 2 giocatori
+        ITank tankAttuale;
+        ITank tankAltro;
+        if (idAChiTocca.equals(tankPersonale.getId())){
+            tankAttuale=tankPersonale;
+            tankAltro=tankAvversario;
+        }
+        else {
+            tankAttuale=tankAvversario;
+            tankAltro=tankPersonale;
+        }
+        tankAttuale.faiMossa(tankAltro,campoBattaglia);
+        if (tankAvversario.seiMorto()){
+            risultato="vittoria";
+            terminata=true;
+        }
+        if (tankPersonale.seiMorto()){
+            risultato="sconfitta";
+            terminata=true;
+        }
+        if (turno.isFinitaPartita()){
+            risultato="pareggio";
+            terminata=true;
+        }
+
+    }
+
+    public void getState(){
+
     }
 }

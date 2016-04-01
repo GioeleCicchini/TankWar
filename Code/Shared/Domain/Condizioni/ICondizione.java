@@ -2,13 +2,15 @@ package Shared.Domain.Condizioni;
 
 
 import Shared.Domain.Azioni.IAzione;
+import Shared.Domain.CampoBattaglia;
 import Shared.Domain.IStrategiaComponent;
+import Shared.Domain.ITank;
 
 import java.util.List;
 
 public interface ICondizione {
 
-    boolean verificaSeVera();
+    boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo);
 
     IAzione getAzione();
 

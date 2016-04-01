@@ -43,6 +43,8 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
             } while(!casellaAttuale.isDisponibile());
             campo.posizionaTank(t,posX,posY);
             t.setCasellaPosizione(casellaAttuale);
+            int or = RandomMinMax.randInt(0,3);
+            t.setOrientamento(or);
         }
     }
     public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException {

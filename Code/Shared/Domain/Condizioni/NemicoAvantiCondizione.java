@@ -1,7 +1,11 @@
 package Shared.Domain.Condizioni;
 
 import Shared.Domain.Azioni.IAzione;
+import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.IStrategiaComponent;
+import Shared.Domain.ITank;
+import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,8 +42,13 @@ public class NemicoAvantiCondizione implements ICondizione, IStrategiaComponent,
     }
 
     @Override
-    public boolean verificaSeVera() {
-        return false;
+    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+        boolean verifica = false;
+        ICasella posizioneTankTurno = tankTurno.getCasellaPosizione();
+        ICasella posizioneTankAvversario = tankTurno.getCasellaPosizione();
+        OrientamentoEnum orientamentoTankTurno = tankTurno.getOrientamento();
+        OrientamentoEnum orientamentoTankAvversario = tankAvversario.getOrientamento();
+        return verifica;
     }
 
     @Override
