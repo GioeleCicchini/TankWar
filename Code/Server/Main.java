@@ -14,6 +14,7 @@ public class Main {
 
 
 
+
         ControllerFacade controllerFacade = new ControllerFacade();
         ConnectionListner entrataServer = new ConnectionListner();
 
@@ -25,7 +26,15 @@ public class Main {
         controllerFacade.Attach(prelevaPlayerObserver);
         controllerFacade.Attach(prelevaRandomAvversarioObserver);
 
+
+        GeneraCampoBattagliaDemo campoBattagliaDemo = new GeneraCampoBattagliaDemo();
+
         entrataServer.StartServer();
+
+
+
+
+
 
 
     }

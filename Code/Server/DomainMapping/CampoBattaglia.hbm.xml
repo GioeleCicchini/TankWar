@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Shared.Domain.CampoBattaglia" table="CampiBattaglia">
+        <id name="id" column="id">
+        <generator class="assigned"/>
+        </id>
+
+        <list name="caselleMonodimensionali" cascade="all">
+            <key column="CampoBattagliaId"/>
+            <list-index column="IDX"/>
+            <one-to-many class="Shared.Domain.Caselle.ICasella"/>
+        </list>
+
+
+    </class>
+</hibernate-mapping>
