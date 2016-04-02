@@ -42,10 +42,14 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
     @Override
     public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         boolean verifica = false;
-        if (tankCasa.getBombeRimanenti() != 0) {
+        if (tankTurno.getBombeRimanenti() != 0) {
            verifica = true;
         }
-        return verifica;
+        if (this.vera) {
+            return verifica;
+        } else {
+            return !verifica;
+        }
     }
 
     @Override
