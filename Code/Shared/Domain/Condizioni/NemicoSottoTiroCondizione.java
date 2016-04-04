@@ -1,7 +1,12 @@
 package Shared.Domain.Condizioni;
 
 import Shared.Domain.Azioni.IAzione;
+import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.IStrategiaComponent;
+import Shared.Domain.ITank;
+import Shared.Domain.Posizione;
+import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,8 +43,24 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
     }
 
     @Override
-    public boolean verificaSeVera() {
-        return false;
+    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+        boolean verifica = false;
+        Integer maxVisioneSparoTankTurno = tankTurno.getMaxVisioneSparo();
+        ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
+        ICasella casellaTankAvversario = tankTurno.getCasellaPosizione();
+        OrientamentoEnum orientamentoTankTurno = tankTurno.getOrientamento();
+        List campoDirezione = campo.getCaselleByOrienamento(casellaTankTurno,orientamentoTankTurno);
+        int i = 0;
+        while (i<maxVisioneSparoTankTurno && !verifica) {
+            if (casellaTankAvversario.equals(campoDirezione.get(i))) {
+                verifica = true;
+            }
+            i++;
+        }
+        if (!this.vera) {
+            verifica = !verifica;
+        }
+        return verifica;
     }
 
     @Override

@@ -1,7 +1,9 @@
 package Shared.Domain.Condizioni;
 
 import Shared.Domain.Azioni.IAzione;
+import Shared.Domain.CampoBattaglia;
 import Shared.Domain.IStrategiaComponent;
+import Shared.Domain.ITank;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
     }
 
     @Override
-    public boolean verificaSeVera() {
+    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         return false;
     }
 

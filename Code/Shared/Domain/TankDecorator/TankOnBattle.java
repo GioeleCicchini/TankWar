@@ -12,6 +12,8 @@ import Shared.Util.OrientamentoEnum;
  */
 public class TankOnBattle extends TankDecorator {
 
+
+    private static final Integer maxVisioneSparo = 3;
     private ICasella casellaPosizione;
     private Integer bombeRimanenti;
     private OrientamentoEnum orientamento;
@@ -84,17 +86,8 @@ public class TankOnBattle extends TankDecorator {
     }
 
     @Override
-    public void setOrientamento(int orientamento) {
-        switch (orientamento) {
-            case 0: this.orientamento = OrientamentoEnum.N;
-                break;
-            case 1: this.orientamento = OrientamentoEnum.E;
-                break;
-            case 2: this.orientamento = OrientamentoEnum.S;
-                break;
-            case 3: this.orientamento = OrientamentoEnum.O;
-                break;
-        }
+    public void setOrientamento(Integer orientamento) {
+        this.orientamento = OrientamentoEnum.getEnumByNumero(orientamento);
     }
 
     @Override
@@ -105,6 +98,11 @@ public class TankOnBattle extends TankDecorator {
     @Override
     public boolean seiMorto() {
         return !vivo;
+    }
+
+    @Override
+    public Integer getMaxVisioneSparo() {
+        return maxVisioneSparo;
     }
 
 }

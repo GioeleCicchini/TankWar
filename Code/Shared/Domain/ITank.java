@@ -31,11 +31,13 @@ public interface ITank {
 
     OrientamentoEnum getOrientamento();
 
-    void setOrientamento(int orientamento);
+    void setOrientamento(Integer orientamento);
 
     void faiMossa(ITank altroTank, CampoBattaglia campo);
 
     boolean seiMorto();
+
+    Integer getMaxVisioneSparo();
 
 }
 

@@ -1,8 +1,10 @@
 package Shared.Domain;
 
 import Shared.Domain.Caselle.ICasella;
+import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,5 +79,43 @@ public class CampoBattaglia implements Serializable {
     public Posizione getPosizioneCasella(ICasella casella) {
         Posizione posizione = casella.getPosizione();
         return posizione;
+    }
+
+    public List getCaselleByOrienamento(ICasella casella, OrientamentoEnum orientamento) {
+        Posizione posizioneCasella = casella.getPosizione();
+        ICasella [] colonnaAttuale;
+        ICasella [] rigaAttuale = new ICasella[this.campo.length];
+        List campoAttuale = new ArrayList();
+        switch (orientamento.toString()) {
+            case "N":
+              colonnaAttuale = this.campo[posizioneCasella.getX()];
+                for (int y = posizioneCasella.getY()+1;y<colonnaAttuale.length;y++) {
+                    campoAttuale.add(colonnaAttuale[y]);
+                }
+                break;
+            case "O":
+                for (int x = 0;x<this.campo.length;x++) {
+                    rigaAttuale[x] = this.campo[x][posizioneCasella.getY()];
+                }
+                for (int x = posizioneCasella.getX()+1;x<rigaAttuale.length;x++) {
+                    campoAttuale.add(rigaAttuale[x]);
+                }
+                break;
+            case "S":
+                colonnaAttuale = this.campo[posizioneCasella.getX()];
+                for (int y = posizioneCasella.getY()-1;y>=0;y--) {
+                    campoAttuale.add(colonnaAttuale[y]);
+                }
+                break;
+            case "E":
+                for (int x = 0;x<this.campo.length;x++) {
+                    rigaAttuale[x] = this.campo[x][posizioneCasella.getY()];
+                }
+                for (int x = posizioneCasella.getX()-1;x>=0;x--) {
+                    campoAttuale.add(rigaAttuale[x]);
+                }
+                break;
+        }
+        return campoAttuale;
     }
 }
