@@ -45,11 +45,10 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
         if (tankTurno.getBombeRimanenti() != 0) {
            verifica = true;
         }
-        if (this.vera) {
-            return verifica;
-        } else {
-            return !verifica;
+        if (!this.vera) {
+            verifica = !verifica;
         }
+        return verifica;
     }
 
     @Override

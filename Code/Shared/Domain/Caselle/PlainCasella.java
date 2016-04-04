@@ -1,6 +1,7 @@
 package Shared.Domain.Caselle;
 
 import Shared.Domain.ITank;
+import Shared.Domain.Posizione;
 
 import java.io.Serializable;
 
@@ -9,10 +10,14 @@ import java.io.Serializable;
  */
 public class PlainCasella implements ICasella,Serializable {
 
-    public boolean disponibile = true;
-
+    private boolean disponibile = true;
+    private Posizione posizione;
     private String id;
     public ITank tankOccupanteCasella = null;
+
+    public PlainCasella(Posizione posizione) {
+        this.posizione = posizione;
+    }
 
     public ITank getTank() {
         return tankOccupanteCasella;
@@ -36,5 +41,15 @@ public class PlainCasella implements ICasella,Serializable {
     @Override
     public boolean isDisponibile() {
         return disponibile;
+    }
+
+    @Override
+    public Posizione getPosizione() {
+        return posizione;
+    }
+
+    @Override
+    public void setPosizione(Posizione posizione) {
+        this.posizione = posizione;
     }
 }

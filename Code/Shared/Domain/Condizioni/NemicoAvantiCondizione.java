@@ -5,6 +5,7 @@ import Shared.Domain.CampoBattaglia;
 import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
+import Shared.Domain.Posizione;
 import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
@@ -44,10 +45,26 @@ public class NemicoAvantiCondizione implements ICondizione, IStrategiaComponent,
     @Override
     public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         boolean verifica = false;
-        ICasella posizioneTankTurno = tankTurno.getCasellaPosizione();
-        ICasella posizioneTankAvversario = tankTurno.getCasellaPosizione();
+        ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
+        ICasella casellaTankAvversario = tankTurno.getCasellaPosizione();
+        Posizione posizioneTankTurno = casellaTankTurno.getPosizione();
+        Posizione posizioneTankAvversario = casellaTankAvversario.getPosizione();
         OrientamentoEnum orientamentoTankTurno = tankTurno.getOrientamento();
-        OrientamentoEnum orientamentoTankAvversario = tankAvversario.getOrientamento();
+        if (orientamentoTankTurno.toString().equals("N") && posizioneTankTurno.getY()<posizioneTankAvversario.getY()) {
+            verifica = true;
+        }
+        if (orientamentoTankTurno.toString().equals("O") && posizioneTankTurno.getX()<posizioneTankAvversario.getX()) {
+            verifica = true;
+        }
+        if (orientamentoTankTurno.toString().equals("S") && posizioneTankTurno.getY()>posizioneTankAvversario.getY()) {
+            verifica = true;
+        }
+        if (orientamentoTankTurno.toString().equals("E") && posizioneTankTurno.getX()>posizioneTankAvversario.getX()) {
+            verifica = true;
+        }
+        if (!this.vera) {
+            verifica = !verifica;
+        }
         return verifica;
     }
 

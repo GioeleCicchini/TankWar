@@ -48,7 +48,9 @@ public class CampoBattaglia implements Serializable {
         this.campo = new ICasella[x][y];
     }
 
-    public void posizionaTank (ITank tank, int x, int y){
+    public void posizionaTank (ITank tank, Posizione posizione){
+        Integer x = posizione.getX();
+        Integer y = posizione.getY();
         campo[x][y].setTank(tank);
     }
 
@@ -60,11 +62,20 @@ public class CampoBattaglia implements Serializable {
         return campo[0].length;
     }
 
-    public void setCasella(ICasella casella, int x, int y){
+    public void setCasella(ICasella casella, Posizione posizione){
+        Integer x = posizione.getX();
+        Integer y = posizione.getY();
         this.campo [x][y]  = casella;
     }
 
-    public ICasella getCasella(int x, int y){
+    public ICasella getCasella(Posizione posizione){
+        Integer x = posizione.getX();
+        Integer y = posizione.getY();
         return this.campo[x][y];
+    }
+
+    public Posizione getPosizioneCasella(ICasella casella) {
+        Posizione posizione = casella.getPosizione();
+        return posizione;
     }
 }
