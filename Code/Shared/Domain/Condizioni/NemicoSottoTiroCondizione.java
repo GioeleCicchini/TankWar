@@ -5,7 +5,6 @@ import Shared.Domain.CampoBattaglia;
 import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
-import Shared.Domain.Posizione;
 import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
@@ -49,7 +48,7 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
         ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
         ICasella casellaTankAvversario = tankTurno.getCasellaPosizione();
         OrientamentoEnum orientamentoTankTurno = tankTurno.getOrientamento();
-        List campoDirezione = campo.getCaselleByOrienamento(casellaTankTurno,orientamentoTankTurno);
+        List campoDirezione = campo.getCaselleByOrientamento(casellaTankTurno,orientamentoTankTurno);
         int i = 0;
         while (i<maxVisioneSparoTankTurno && !verifica) {
             if (casellaTankAvversario.equals(campoDirezione.get(i))) {

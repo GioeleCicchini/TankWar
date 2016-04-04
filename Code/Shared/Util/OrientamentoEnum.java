@@ -5,9 +5,10 @@ package Shared.Util;
  */
 public enum OrientamentoEnum {
     N(0),
-    O(1),
-    E(2),
-    S(3);
+    E(1),
+    S(2),
+    O(3);
+
 
     private Integer numero;
 
