@@ -1,5 +1,7 @@
 package Shared.Domain;
 
+import Shared.Domain.Azioni.IAzione;
+import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
 import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
@@ -238,6 +240,25 @@ public class Strategia implements Serializable {
     }
 
     public void faiMossa(ITank mioTank, ITank altroTank, CampoBattaglia campo){
-
+        int blocksize = conditionBlock.size();
+        boolean trovataUnaVera = false;
+        IStrategiaComponent currentComponent;
+        for (int i=0; i<blocksize && !trovataUnaVera; i++){
+            currentComponent=conditionBlock.get(i);
+            while (currentComponent.verificaSeVera(mioTank,altroTank,campo)){
+                currentComponent=currentComponent.getChild();
+            }
+            if (currentComponent instanceof IAzione){
+                (IAzione)currentComponent.esegui();
+                trovataUnaVera=true;
+            }
+        }
+        if (!trovataUnaVera){
+            IAzione azione;
+            if (defaultCondition.getChild() != null){
+                azione=(IAzione) defaultCondition.getChild();
+                azione.esegui();
+            }
+        }
     }
 }

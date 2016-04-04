@@ -21,4 +21,6 @@ public interface IStrategiaComponent {
 
     Map getMap();
 
+    boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo);
+
 }
