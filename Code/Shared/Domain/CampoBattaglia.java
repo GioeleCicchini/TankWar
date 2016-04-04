@@ -81,7 +81,7 @@ public class CampoBattaglia implements Serializable {
         return posizione;
     }
 
-    public List getCaselleByOrienamento(ICasella casella, OrientamentoEnum orientamento) {
+    public List getCaselleByOrientamento(ICasella casella, OrientamentoEnum orientamento) {
         Posizione posizioneCasella = casella.getPosizione();
         ICasella [] colonnaAttuale;
         ICasella [] rigaAttuale = new ICasella[this.campo.length];
@@ -93,7 +93,7 @@ public class CampoBattaglia implements Serializable {
                     campoAttuale.add(colonnaAttuale[y]);
                 }
                 break;
-            case "O":
+            case "E":
                 for (int x = 0;x<this.campo.length;x++) {
                     rigaAttuale[x] = this.campo[x][posizioneCasella.getY()];
                 }
@@ -107,11 +107,11 @@ public class CampoBattaglia implements Serializable {
                     campoAttuale.add(colonnaAttuale[y]);
                 }
                 break;
-            case "E":
+            case "O":
                 for (int x = 0;x<this.campo.length;x++) {
                     rigaAttuale[x] = this.campo[x][posizioneCasella.getY()];
                 }
-                for (int x = posizioneCasella.getX()-1;x>=0;x--) {
+                for (int x = posizioneCasella.getX()-1;x>=0;x++) {
                     campoAttuale.add(rigaAttuale[x]);
                 }
                 break;
