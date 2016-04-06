@@ -36,13 +36,26 @@ public class SimulareBattagliaHandler {
         ITank tankPersonale = playerLoggato.getTank();
         this.battaglia = new Battaglia(tankPersonale);
         this.battaglia.setImpostatoreBattagliaCasuale();
-        this.battaglia.posizionaTank();
-        this.battaglia.impostaTurni();
+
     }
 
     public void impostaBattaglia() throws IOException {
-        battaglia.scegliAvversario();
-        battaglia.creaCampoBattaglia();
+
+        try{this.battaglia.scegliAvversario();
+        }catch (NullPointerException e){
+            throw new NullPointerException("Tank avversario non trovato");
+        }
+
+
+        try {
+            this.battaglia.creaCampoBattaglia();
+        }catch (NullPointerException e){
+            throw new NullPointerException("Campo Battaglia non trovato");
+        }
+
+
+        this.battaglia.posizionaTank();
+        this.battaglia.impostaTurni();
     }
 
     public void faiMossa(){

@@ -1,6 +1,8 @@
 package Shared.Domain.Azioni;
 
+import Shared.Domain.CampoBattaglia;
 import Shared.Domain.IStrategiaComponent;
+import Shared.Domain.ITank;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -105,5 +107,14 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
         return azione;
     }
 
+    @Override
+    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+        return false;
+    }
 
+
+    @Override
+    public void esegui() {
+
+    }
 }

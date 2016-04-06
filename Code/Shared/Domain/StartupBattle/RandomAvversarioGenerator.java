@@ -26,7 +26,7 @@ public class RandomAvversarioGenerator implements  IGeneratoreAvversario {
             System.out.println("Tank Ricevuto");
         }
         else {
-            throw new NullPointerException("Tank non trovato");
+            throw new NullPointerException("Tank avversario non trovato");
         }
 
         return tank;

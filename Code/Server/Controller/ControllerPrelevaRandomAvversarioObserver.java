@@ -20,7 +20,7 @@ public class ControllerPrelevaRandomAvversarioObserver implements Observer {
     @Override
     public void update(ControllerFacade controller) {
 
-        if (controller.getFunzione() == "PrelevaPlayerAvversarioTankRandom") {
+        if (controller.getFunzione().equals("PrelevaPlayerAvversarioTankRandom")) {
             System.out.println("Prelevo il tank di un avversario casuale");
 
             Integer livello = (Integer)controller.getOggettiPersistenti().get(0);
@@ -41,22 +41,18 @@ public class ControllerPrelevaRandomAvversarioObserver implements Observer {
 
             // Scelta casuale di un risultato
 
-            Integer c = ((results.size())+1);
+            Integer c = ((results.size()));
             Random random = new Random();
+
+
             Integer Casuale = random.nextInt(c);
 
 
 
             rispostaDTO = DTOMaker.getSingletonInstance().getPlayerAvversarioTankRandomResponce((Tank)results.get(Casuale));
 
+        
             RispostaMaker.getSingletonInstance().ImmettiRisposta(rispostaDTO);
-
-
-
-
-
-
-
 
 
 

@@ -12,7 +12,7 @@
             <column name="Nome"></column>
         </property>
 
-        <many-to-one name="tank" class="Shared.Domain.Tank">
+        <many-to-one name="tank" class="Shared.Domain.Tank" fetch="join">
             <column name="Tank"></column>
         </many-to-one>
         

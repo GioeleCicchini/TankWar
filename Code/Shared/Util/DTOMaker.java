@@ -1,6 +1,7 @@
 package Shared.Util;
 
 import Shared.Controllers.CreareStrategiaHandler;
+import Shared.Domain.CampoBattaglia;
 import Shared.Domain.Player;
 import Shared.Domain.Tank;
 
@@ -78,7 +79,7 @@ public class DTOMaker {
 
     public DTO getPlayerAvversarioTankRandomResponce(Tank tank){
         DTO dto= new DTO();
-        dto.setFunzione("TankAvversarioRandomPrelevato");
+        dto.setFunzione("TankTrovato");
         dto.aggiungiOggettoTrasferimento(tank);
         return dto;
     }
@@ -96,6 +97,13 @@ public class DTOMaker {
         DTO dto= new DTO();
         dto.setFunzione("PrelevaCampoBattagliaRandom");
         dto.aggiungiOggettoTrasferimento(livello);
+        return dto;
+    }
+
+    public DTO getCampoBattagliaRandomResponce(CampoBattaglia campoBattaglia) {
+        DTO dto= new DTO();
+        dto.setFunzione("CampoBattagliaRandomPrelevato");
+        dto.aggiungiOggettoTrasferimento(campoBattaglia);
         return dto;
     }
 }

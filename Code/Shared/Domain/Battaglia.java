@@ -59,11 +59,21 @@ public class Battaglia {
     }
 
     public void scegliAvversario() throws IOException {
-        tankAvversario=impBattaglia.getAvversario(tankPersonale.getLivello());
+        try{  tankAvversario=impBattaglia.getAvversario(tankPersonale.getLivello());
+        }catch (NullPointerException e){
+            throw new NullPointerException("Tank avversario non trovato");
+        }
+
     }
 
     public void creaCampoBattaglia() throws IOException {
-        this.campoBattaglia=impBattaglia.getCampoBattaglia(tankPersonale.getLivello());
+        try {
+            this.campoBattaglia=impBattaglia.getCampoBattaglia(tankPersonale.getLivello());
+        }catch (NullPointerException e){
+            throw new NullPointerException("Campo Battaglia non trovato");
+        }
+
+
     }
 
     public void posizionaTank() {

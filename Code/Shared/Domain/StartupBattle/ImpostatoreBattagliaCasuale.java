@@ -3,6 +3,7 @@ package Shared.Domain.StartupBattle;
 
 import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.ITank;
+import Shared.Domain.Posizione;
 import Shared.Domain.Tank;
 import Shared.Domain.CampoBattaglia;
 import Shared.Util.RandomMinMax;
@@ -21,7 +22,12 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
     private IGeneratoreCampoBattaglia generatoreCampoBattaglia = new RandomCampoBattagliaGenerator();
 
     public ITank getAvversario(Integer livello) throws IOException {
-        return ((RandomAvversarioGenerator) this.generatoreAvversario).getAvversario(livello);
+        try{  return ((RandomAvversarioGenerator) this.generatoreAvversario).getAvversario(livello);
+        }catch (NullPointerException e){
+            throw new NullPointerException("Tank avversario non trovato");
+        }
+
+
     }
 
     @Override
@@ -33,22 +39,34 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
         int dimX=campo.getDimensioneX();
         int dimY=campo.getDimensioneY();
         ICasella casellaAttuale;
-        int posX;
-        int posY;
+        Integer posX;
+        Integer posY;
+        Posizione posizione;
         for (ITank t: tank) {
             do {
                 posX=RandomMinMax.randInt(0,dimX-1);
                 posY=RandomMinMax.randInt(0,dimY-1);
-                casellaAttuale = campo.getCasella(posX,posY);
+                 posizione = new Posizione(posX,posY);
+                casellaAttuale = campo.getCasella(posizione);
             } while(!casellaAttuale.isDisponibile());
-            campo.posizionaTank(t,posX,posY);
+            campo.posizionaTank(t,posizione);
             t.setCasellaPosizione(casellaAttuale);
             Integer or = RandomMinMax.randInt(0,3);
             t.setOrientamento(or);
         }
     }
     public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException {
-        return ((RandomCampoBattagliaGenerator) this.generatoreCampoBattaglia).getCampoBattaglia(livello);
+        CampoBattaglia campoBattaglia = null;
+        try {
+            campoBattaglia = ((RandomCampoBattagliaGenerator) this.generatoreCampoBattaglia).getCampoBattaglia(livello);
+        }catch (NullPointerException e){
+            throw new NullPointerException("Campo Battaglia non trovato");
+        }
+
+
+            return campoBattaglia;
+
+
     }
 
     @Override

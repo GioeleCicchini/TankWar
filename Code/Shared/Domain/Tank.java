@@ -1,6 +1,7 @@
 package Shared.Domain;
 
 import Shared.Domain.Caselle.ICasella;
+import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -57,6 +58,36 @@ public class Tank implements ITank,Serializable {
 
     @Override
     public Integer getBombeRimanenti() {
+        return null;
+    }
+
+    @Override
+    public void setOrientamento(OrientamentoEnum orientamento) {
+
+    }
+
+    @Override
+    public OrientamentoEnum getOrientamento() {
+        return null;
+    }
+
+    @Override
+    public void setOrientamento(Integer orientamento) {
+
+    }
+
+    @Override
+    public void faiMossa(ITank altroTank, CampoBattaglia campo) {
+
+    }
+
+    @Override
+    public boolean seiMorto() {
+        return false;
+    }
+
+    @Override
+    public Integer getMaxVisioneSparo() {
         return null;
     }
 

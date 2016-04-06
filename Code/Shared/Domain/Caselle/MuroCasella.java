@@ -20,6 +20,7 @@ public class MuroCasella implements ICasella,Serializable {
     private String id;
     private Posizione posizione;
 
+    public MuroCasella(){}
     public MuroCasella(Posizione posizione) {
         this.posizione = posizione;
     }

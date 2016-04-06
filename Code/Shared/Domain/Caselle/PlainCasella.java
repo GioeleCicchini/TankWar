@@ -15,6 +15,7 @@ public class PlainCasella implements ICasella,Serializable {
     private String id;
     public ITank tankOccupanteCasella = null;
 
+    public PlainCasella(){}
     public PlainCasella(Posizione posizione) {
         this.posizione = posizione;
     }

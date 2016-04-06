@@ -46,6 +46,7 @@ public class ConnectionListner {
 
                 dto = (DTO) objectInput.readObject();
                 controllerFacade.ArrivaRichiesta(dto);
+                System.out.println("Arrivata Una Richesta");
                 DTO Risposta = RispostaMaker.getSingletonInstance().PrelevaRisposta();
                 objectOutputStream.writeObject(Risposta);
 

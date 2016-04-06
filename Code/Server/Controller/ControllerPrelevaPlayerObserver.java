@@ -2,6 +2,7 @@ package Server.Controller;
 
 import Server.ServerUtil.HibernateUtil;
 import Server.ServerUtil.RispostaMaker;
+
 import Shared.Domain.Player;
 import Shared.Util.DTO;
 import Shared.Util.DTOMaker;
@@ -18,7 +19,7 @@ public class ControllerPrelevaPlayerObserver implements Observer {
     @Override
     public void update(ControllerFacade controller) {
         if (controller.getFunzione().equals("PrelevaPlayer")) {
-
+            System.out.println("Prelevo Il Player");
             Session session = HibernateUtil.getSessionFactory().openSession();
 
             String Username = (String) controller.getOggettiPersistenti().get(0);
@@ -36,7 +37,7 @@ public class ControllerPrelevaPlayerObserver implements Observer {
             }
 
             RispostaMaker.getSingletonInstance().ImmettiRisposta(rispostaDTO);
-            System.out.println("Player Immesso nella risposta");
+
 
 
         }

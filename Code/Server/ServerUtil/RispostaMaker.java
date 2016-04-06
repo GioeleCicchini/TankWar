@@ -22,13 +22,10 @@ public class RispostaMaker {
     }
 
     public void ImmettiRisposta(DTO dto) {
-        System.out.println("Immetto La risposta");
-
         this.risposta = dto;
     }
 
     public DTO PrelevaRisposta() {
-        System.out.println("Prelevo La risposta");
         DTO risp = this.risposta;
         this.risposta = null;
         return risp;

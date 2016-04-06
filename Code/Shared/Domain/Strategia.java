@@ -249,7 +249,7 @@ public class Strategia implements Serializable {
                 currentComponent=currentComponent.getChild();
             }
             if (currentComponent instanceof IAzione){
-                (IAzione)currentComponent.esegui();
+                ((IAzione) currentComponent).esegui();
                 trovataUnaVera=true;
             }
         }

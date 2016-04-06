@@ -1,10 +1,12 @@
 package Client.UI.JavaFX.View;
 
 import Client.UI.UIUtils.ViewTransaction;
+import Shared.Controllers.SimulareBattagliaHandler;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,7 +23,20 @@ public class ImpostareBattaglia implements Initializable {
 
 
 
-    public void startBattaglia(Event event){
+    public void startBattaglia(Event event) throws IOException {
+
+        SimulareBattagliaHandler simulareBattagliaHandler = SimulareBattagliaHandler.getSingletonInstance();
+        simulareBattagliaHandler.iniziaImpostareBattagliaCasuale();
+        try {
+            simulareBattagliaHandler.impostaBattaglia();
+        }
+        catch (NullPointerException e){
+            System.out.println(e.getMessage());
+        }
+
+
+
+
         ViewTransaction.getSingletonInstance().goToBattaglia(startBattagliaButton);
 
     }
