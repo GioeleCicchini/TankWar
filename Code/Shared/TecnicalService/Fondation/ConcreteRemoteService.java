@@ -43,7 +43,6 @@ public class ConcreteRemoteService implements IComRemoteService {
             e.printStackTrace();
         } finally {
             clientSocket.close();
-            System.out.println("Inviato al server");
         }
 
 

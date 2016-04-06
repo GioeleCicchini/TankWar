@@ -51,7 +51,7 @@ public class ControllerPrelevaRandomAvversarioObserver implements Observer {
 
             rispostaDTO = DTOMaker.getSingletonInstance().getPlayerAvversarioTankRandomResponce((Tank)results.get(Casuale));
 
-        
+
             RispostaMaker.getSingletonInstance().ImmettiRisposta(rispostaDTO);
 
 

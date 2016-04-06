@@ -60,6 +60,7 @@ public class Battaglia {
 
     public void scegliAvversario() throws IOException {
         try{  tankAvversario=impBattaglia.getAvversario(tankPersonale.getLivello());
+            this.setTankAvversario((Tank)tankAvversario);
         }catch (NullPointerException e){
             throw new NullPointerException("Tank avversario non trovato");
         }
@@ -69,6 +70,7 @@ public class Battaglia {
     public void creaCampoBattaglia() throws IOException {
         try {
             this.campoBattaglia=impBattaglia.getCampoBattaglia(tankPersonale.getLivello());
+
         }catch (NullPointerException e){
             throw new NullPointerException("Campo Battaglia non trovato");
         }
@@ -77,7 +79,12 @@ public class Battaglia {
     }
 
     public void posizionaTank() {
+        System.out.println("(Carico i preset della battaglia) Tank Personale : "+tankPersonale.getId()+" , Tank Avversario : "+tankAvversario.getId()+" , Campo di Battaglia Id : "+campoBattaglia.getId());
         this.impBattaglia.posizionaTank(this.tankPersonale,this.tankAvversario,this.campoBattaglia);
+
+        System.out.println("Posizione TankPersonale : ("+this.tankPersonale.getCasellaPosizione().getPosizione().getX().toString()+","+this.tankPersonale.getCasellaPosizione().getPosizione().getY().toString()+")"+
+                " , Posizione TankAvversario : ("+this.tankAvversario.getCasellaPosizione().getPosizione().getX().toString()+","+this.tankAvversario.getCasellaPosizione().getPosizione().getY().toString()+")");
+
     }
 
     public void impostaTurni() {

@@ -28,8 +28,7 @@ public class Main {
         controllerFacade.Attach(prelevaRandomAvversarioObserver);
         controllerFacade.Attach(prelevaCampoBattagliaRandomObserver);
 
-
-      //  GeneraCampoBattagliaDemo campoBattagliaDemo = new GeneraCampoBattagliaDemo();
+        //GeneraCampoBattagliaDemo campoBattagliaDemo = new GeneraCampoBattagliaDemo();
 
         entrataServer.StartServer();
 

@@ -32,6 +32,7 @@ public class GeneraCampoBattagliaDemo {
         campo = new ICasella[dimensioneCampo][dimensioneCampo];
         campomonodimensionale = new ICasella[dimensioneCampo*dimensioneCampo];
 
+        campoBattaglia.setDimesioneCampo(dimensioneCampo);
         for(int i=0;i<dimensioneCampo;i=i+1){
             for(int j=0;j<dimensioneCampo;j=j+1){
                 ICasella casellaConcreta = new PlainCasella();
@@ -56,6 +57,7 @@ public class GeneraCampoBattagliaDemo {
         for(int j=0;j<campomonodimensionale.length;j=j+1){
             caselleMonodimensionali.add(campomonodimensionale[j]);
         }
+
 
 
         campoBattaglia.setCaselleMonodimensionali(caselleMonodimensionali);

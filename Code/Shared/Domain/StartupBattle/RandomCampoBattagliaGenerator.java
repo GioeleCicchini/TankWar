@@ -20,12 +20,17 @@ public class RandomCampoBattagliaGenerator implements  IGeneratoreCampoBattaglia
 
         DTO risp = (DTO) service.RichiediAlServer(dtoMaker.getCampoBattagliaRandomDTO(livello));
 
-        if (risp.getFunzione().equals("CampoBattagliaTrovato")) {
+        if (risp.getFunzione().equals("CampoBattagliaRandomTrovato")) {
             campoBattaglia = (CampoBattaglia) risp.getOggettiTrasferimento().get(0);
-            System.out.println("Campo Battaglia Ricevuto");
+
+            //Conversione da ArrayList ad ArrayBidimensionale
+            campoBattaglia.ConvertiDaArrayListAdArray();
+
+
+
         }
         else {
-            throw new NullPointerException("Campo Battaglia non trovato");
+            throw new NullPointerException("Campo Battaglia casuale non trovato");
         }
 
         return campoBattaglia;

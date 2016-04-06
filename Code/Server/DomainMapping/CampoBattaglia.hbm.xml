@@ -9,7 +9,10 @@
         <generator class="assigned"/>
         </id>
 
-        <list name="caselleMonodimensionali" cascade="all">
+        <property name="dimesioneCampo">
+            <column name="DimensioneCampo"></column>
+        </property>
+        <list name="caselleMonodimensionali" cascade="all" fetch="join">
             <key column="CampoBattagliaId"/>
             <list-index column="IDX"/>
             <one-to-many class="Shared.Domain.Caselle.ICasella"/>

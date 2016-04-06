@@ -36,8 +36,10 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
         List<ITank> tank = new ArrayList<>();
         tank.add(tankCasa);
         tank.add(tankTrasferta);
+
         int dimX=campo.getDimensioneX();
         int dimY=campo.getDimensioneY();
+
         ICasella casellaAttuale;
         Integer posX;
         Integer posY;
@@ -50,10 +52,12 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
                 casellaAttuale = campo.getCasella(posizione);
             } while(!casellaAttuale.isDisponibile());
             campo.posizionaTank(t,posizione);
+            casellaAttuale.setPosizione(posizione);
             t.setCasellaPosizione(casellaAttuale);
             Integer or = RandomMinMax.randInt(0,3);
             t.setOrientamento(or);
         }
+
     }
     public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException {
         CampoBattaglia campoBattaglia = null;

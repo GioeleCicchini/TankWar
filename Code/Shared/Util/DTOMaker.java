@@ -102,7 +102,7 @@ public class DTOMaker {
 
     public DTO getCampoBattagliaRandomResponce(CampoBattaglia campoBattaglia) {
         DTO dto= new DTO();
-        dto.setFunzione("CampoBattagliaRandomPrelevato");
+        dto.setFunzione("CampoBattagliaRandomTrovato");
         dto.aggiungiOggettoTrasferimento(campoBattaglia);
         return dto;
     }

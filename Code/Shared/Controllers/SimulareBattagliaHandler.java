@@ -49,13 +49,18 @@ public class SimulareBattagliaHandler {
 
         try {
             this.battaglia.creaCampoBattaglia();
+
         }catch (NullPointerException e){
             throw new NullPointerException("Campo Battaglia non trovato");
         }
 
 
+        // la parte di Seguito è buggata
+
         this.battaglia.posizionaTank();
+
         this.battaglia.impostaTurni();
+
     }
 
     public void faiMossa(){

@@ -29,6 +29,7 @@ public class ImpostareBattaglia implements Initializable {
         simulareBattagliaHandler.iniziaImpostareBattagliaCasuale();
         try {
             simulareBattagliaHandler.impostaBattaglia();
+
         }
         catch (NullPointerException e){
             System.out.println(e.getMessage());

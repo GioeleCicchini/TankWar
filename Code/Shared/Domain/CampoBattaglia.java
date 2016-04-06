@@ -16,6 +16,7 @@ public class CampoBattaglia implements Serializable {
 
     private ICasella [][] campo;
 
+    private Integer DimesioneCampo;
     private List<ICasella> caselleMonodimensionali;
 
     public CampoBattaglia() {
@@ -117,5 +118,25 @@ public class CampoBattaglia implements Serializable {
                 break;
         }
         return campoAttuale;
+    }
+
+
+    public void ConvertiDaArrayListAdArray(){
+
+        this.campo = new ICasella[DimesioneCampo][DimesioneCampo];
+        for(int i=0;i<(this.DimesioneCampo*this.DimesioneCampo);i++){
+             Integer x = i % this.DimesioneCampo;
+             Integer y = (i-x)/this.DimesioneCampo;
+            campo[x][y] = caselleMonodimensionali.get(i);
+        }
+
+    }
+
+    public Integer getDimesioneCampo() {
+        return DimesioneCampo;
+    }
+
+    public void setDimesioneCampo(Integer dimesioneCampo) {
+        DimesioneCampo = dimesioneCampo;
     }
 }

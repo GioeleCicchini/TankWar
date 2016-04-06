@@ -63,6 +63,8 @@ public class TankOnBattle extends TankDecorator {
     @Override
     public void setCasellaPosizione(ICasella casellaPosizione) {
         this.casellaPosizione = casellaPosizione;
+        this.casellaPosizione.getPosizione().setX(casellaPosizione.getPosizione().getX());
+        this.casellaPosizione.getPosizione().setY(casellaPosizione.getPosizione().getY());
     }
 
     @Override
