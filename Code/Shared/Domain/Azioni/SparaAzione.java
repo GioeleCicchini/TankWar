@@ -1,8 +1,10 @@
 package Shared.Domain.Azioni;
 
 import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
+import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -115,6 +117,17 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
 
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
-        return false;
+        ICasella miaCasella = tankTurno.getCasellaPosizione();
+        OrientamentoEnum mioOrientamento = tankTurno.getOrientamento();
+        List<ICasella> caselleDavanti = campo.getCaselleByOrientamento(miaCasella,mioOrientamento);
+        Integer raggioSparo= tankTurno.getMaxVisioneSparo();
+        if (!caselleDavanti.isEmpty()){
+            boolean esci = false;
+            for (int i=0; i<raggioSparo && !esci; i++ ){
+                if (caselleDavanti.get(i).getTank() != null){
+                    
+                }
+            }
+        }
     }
 }
