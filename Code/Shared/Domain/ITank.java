@@ -41,5 +41,7 @@ public interface ITank {
 
     void colpito (Integer danno);
 
+    Integer getPotenzaArma();
+
 }
 
