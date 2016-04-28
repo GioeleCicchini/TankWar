@@ -39,5 +39,7 @@ public interface ITank {
 
     Integer getMaxVisioneSparo();
 
+    void colpito (Integer danno);
+
 }
 

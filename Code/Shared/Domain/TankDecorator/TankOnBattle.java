@@ -17,6 +17,7 @@ public class TankOnBattle extends TankDecorator {
     private ICasella casellaPosizione;
     private Integer bombeRimanenti;
     private OrientamentoEnum orientamento;
+    private Integer vita = 1;
 
     private boolean vivo = true;
 
@@ -105,6 +106,14 @@ public class TankOnBattle extends TankDecorator {
     @Override
     public Integer getMaxVisioneSparo() {
         return maxVisioneSparo;
+    }
+
+    @Override
+    public void colpito(Integer danno) {
+        vita = vita-danno;
+        if (vita <= 0){
+            vivo=false;
+        }
     }
 
 }

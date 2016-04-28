@@ -121,12 +121,16 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
         if (!caselleDavanti.isEmpty()){
             casellaDestinazione=caselleDavanti.get(0);
             if (casellaDestinazione.isDisponibile()){
+
                 tankTurno.setCasellaPosizione(casellaDestinazione);
 
                 casellaDestinazione.setTank(tankTurno);
 
                 casellaPartenza.togliTank();
 
+                if (casellaDestinazione.getBombaTank() == tankAvversario){ //NullPonterException?
+                    casellaDestinazione.togliBombaTank();
+                    tankTurno.colpito(1);
             }
         }
 
