@@ -18,6 +18,7 @@ public class TankOnBattle extends TankDecorator {
     private Integer bombeRimanenti;
     private OrientamentoEnum orientamento;
     private Integer vita = 1;
+    private Integer potenzaArma = 1;
 
     private boolean vivo = true;
 
@@ -114,6 +115,10 @@ public class TankOnBattle extends TankDecorator {
         if (vita <= 0){
             vivo=false;
         }
+    }
+
+    public Integer getPotenzaArma(){
+        return potenzaArma;
     }
 
 }

@@ -125,8 +125,16 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
             boolean esci = false;
             for (int i=0; i<raggioSparo && !esci; i++ ){
                 if (caselleDavanti.get(i).getTank() != null){
-                    
+                    Integer potenzaArma = tankTurno.getPotenzaArma();
+                    caselleDavanti.get(i).getTank().colpito(potenzaArma);
+                    esci=true;
                 }
+                else {
+                    if (!caselleDavanti.get(i).isDisponibile()){
+                        esci=true;
+                    }
+                }
+
             }
         }
     }
