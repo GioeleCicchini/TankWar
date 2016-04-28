@@ -49,12 +49,14 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
         ICasella casellaTankAvversario = tankTurno.getCasellaPosizione();
         OrientamentoEnum orientamentoTankTurno = tankTurno.getOrientamento();
         List campoDirezione = campo.getCaselleByOrientamento(casellaTankTurno,orientamentoTankTurno);
-        int i = 0;
-        while (i<maxVisioneSparoTankTurno && !verifica) {
-            if (casellaTankAvversario.equals(campoDirezione.get(i))) {
-                verifica = true;
+        if (!campoDirezione.isEmpty()) {
+            int i = 0;
+            while (i<maxVisioneSparoTankTurno && !verifica) {
+                if (casellaTankAvversario.equals(campoDirezione.get(i))) {
+                    verifica = true;
+                }
+                i++;
             }
-            i++;
         }
         if (!this.vera) {
             verifica = !verifica;

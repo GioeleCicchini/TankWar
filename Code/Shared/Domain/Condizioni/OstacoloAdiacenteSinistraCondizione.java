@@ -2,8 +2,10 @@ package Shared.Domain.Condizioni;
 
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
+import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -42,7 +44,19 @@ public class OstacoloAdiacenteSinistraCondizione implements ICondizione, IStrate
 
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
-        return false;
+        boolean verifica = false;
+        ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
+        OrientamentoEnum orientamentoTankTurno = tankTurno.getOrientamento();
+        OrientamentoEnum orientamentoSinistra = OrientamentoEnum.getSinistra(orientamentoTankTurno);
+        List campoDirezione = campo.getCaselleByOrientamento(casellaTankTurno,orientamentoSinistra);
+        if (!campoDirezione.isEmpty()) {
+            ICasella primaCasella = (ICasella) campoDirezione.get(0);
+            verifica = !primaCasella.isDisponibile();
+        }
+        if (!this.vera) {
+            verifica = !verifica;
+        }
+        return verifica;
     }
 
     @Override

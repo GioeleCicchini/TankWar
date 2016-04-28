@@ -19,6 +19,18 @@ public enum OrientamentoEnum {
         return this.numero;
     }
 
+    public static OrientamentoEnum getDestra(OrientamentoEnum orientamento) {
+        return OrientamentoEnum.getEnumByNumero((orientamento.getNumero()+1)%4);
+    }
+
+    public static OrientamentoEnum getSinistra(OrientamentoEnum orientamento) {
+        return OrientamentoEnum.getEnumByNumero((orientamento.getNumero()-1)%4);
+    }
+
+    public static OrientamentoEnum getDietro(OrientamentoEnum orientamento) {
+        return OrientamentoEnum.getEnumByNumero((orientamento.getNumero()+2)%4);
+    }
+
     public static OrientamentoEnum getEnumByNumero(Integer numero) {
         OrientamentoEnum orientamento = null;
         switch (numero) {
@@ -33,4 +45,6 @@ public enum OrientamentoEnum {
         }
         return orientamento;
     }
+
+
 }
