@@ -44,7 +44,7 @@ public class NemicoDestraCondizione implements ICondizione, IStrategiaComponent,
     }
 
     @Override
-    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+    public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         boolean verifica = false;
         ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
         ICasella casellaTankAvversario = tankTurno.getCasellaPosizione();
@@ -89,6 +89,15 @@ public class NemicoDestraCondizione implements ICondizione, IStrategiaComponent,
         if (this.child == null) {
             this.child = c;
         }
+    }
+
+    @Override
+    public boolean hasChild() {
+        boolean risultato=false;
+        if (this.child != null) {
+            risultato = true;
+        }
+        return risultato;
     }
 
     @Override

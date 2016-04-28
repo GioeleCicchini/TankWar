@@ -40,7 +40,7 @@ public class OstacoloAdiacenteAvantiCondizione implements ICondizione, IStrategi
     }
 
     @Override
-    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+    public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         return false;
     }
 
@@ -65,6 +65,15 @@ public class OstacoloAdiacenteAvantiCondizione implements ICondizione, IStrategi
             this.child = c;
         }
 
+    }
+
+    @Override
+    public boolean hasChild() {
+        boolean risultato=false;
+        if (this.child != null) {
+            risultato = true;
+        }
+        return risultato;
     }
 
     @Override

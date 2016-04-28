@@ -42,7 +42,7 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent, Seri
     }
 
     @Override
-    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+    public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         return true;
     }
 
@@ -91,7 +91,15 @@ public class DefaultCondizione implements ICondizione, IStrategiaComponent, Seri
     @Override
     public IStrategiaComponent getChild() {
         return this.child;
+    }
 
+    @Override
+    public boolean hasChild() {
+        boolean risultato=false;
+        if (this.child != null) {
+            risultato = true;
+        }
+        return risultato;
     }
 
     public void setChild(IStrategiaComponent child) {

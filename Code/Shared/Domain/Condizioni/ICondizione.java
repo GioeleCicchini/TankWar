@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ICondizione {
 
-    boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo);
+    boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo);
 
     IAzione getAzione();
 

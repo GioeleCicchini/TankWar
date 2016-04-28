@@ -13,6 +13,8 @@ public interface IStrategiaComponent {
 
     IStrategiaComponent getChild();
 
+    boolean hasChild();
+
     void setChild(IStrategiaComponent child);
 
     String getId();
@@ -21,6 +23,6 @@ public interface IStrategiaComponent {
 
     Map getMap();
 
-    boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo);
+    boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo);
 
 }

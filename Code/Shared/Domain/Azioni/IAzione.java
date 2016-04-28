@@ -1,8 +1,11 @@
 package Shared.Domain.Azioni;
 
 
+import Shared.Domain.CampoBattaglia;
+import Shared.Domain.ITank;
+
 public interface IAzione {
 
-    void esegui();
+    boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo);
 
 }

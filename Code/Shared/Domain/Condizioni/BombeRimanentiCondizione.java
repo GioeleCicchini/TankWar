@@ -40,7 +40,7 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
     }
 
     @Override
-    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+    public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         boolean verifica = false;
         if (tankTurno.getBombeRimanenti() != 0) {
            verifica = true;
@@ -112,6 +112,15 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
     public IStrategiaComponent getChild() {
         return this.child;
 
+    }
+
+    @Override
+    public boolean hasChild() {
+        boolean risultato=false;
+        if (this.child != null) {
+            risultato = true;
+        }
+        return risultato;
     }
 
     @Override

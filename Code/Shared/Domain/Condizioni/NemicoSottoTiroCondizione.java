@@ -42,7 +42,7 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
     }
 
     @Override
-    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+    public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         boolean verifica = false;
         Integer maxVisioneSparoTankTurno = tankTurno.getMaxVisioneSparo();
         ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
@@ -82,6 +82,15 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
         if (this.child == null) {
             this.child = c;
         }
+    }
+
+    @Override
+    public boolean hasChild() {
+        boolean risultato=false;
+        if (this.child != null) {
+            risultato = true;
+        }
+        return risultato;
     }
 
     @Override

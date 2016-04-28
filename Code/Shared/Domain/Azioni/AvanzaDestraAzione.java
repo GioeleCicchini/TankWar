@@ -77,6 +77,11 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
     }
 
     @Override
+    public boolean hasChild() {
+        return false;
+    }
+
+    @Override
     public void setChild(IStrategiaComponent child) {
 
     }
@@ -105,12 +110,8 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
     }
 
     @Override
-    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+    public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         return false;
     }
 
-    @Override
-    public void esegui() {
-
-    }
 }

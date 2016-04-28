@@ -41,7 +41,7 @@ public class OstacoloAdiacenteSinistraCondizione implements ICondizione, IStrate
     }
 
     @Override
-    public boolean verificaSeVera(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+    public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         return false;
     }
 
@@ -65,6 +65,15 @@ public class OstacoloAdiacenteSinistraCondizione implements ICondizione, IStrate
         if (this.child == null) {
             this.child = c;
         }
+    }
+
+    @Override
+    public boolean hasChild() {
+        boolean risultato=false;
+        if (this.child != null) {
+            risultato = true;
+        }
+        return risultato;
     }
 
     @Override
