@@ -51,6 +51,11 @@ public class MuroCasella implements ICasella,Serializable {
     }
 
     @Override
+    public void togliTank() {
+
+    }
+
+    @Override
     public Posizione getPosizione() {
         return posizione;
     }

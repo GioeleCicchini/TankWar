@@ -254,12 +254,5 @@ public class Strategia implements Serializable {
                 trovataUnaVera=true;
             }
         }
-        if (!trovataUnaVera){
-            IAzione azione;
-            if (defaultCondition.getChild() != null){
-                azione=(IAzione) defaultCondition.getChild();
-                azione.esegui();
-            }
-        }
     }
 }
