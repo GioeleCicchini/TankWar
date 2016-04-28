@@ -69,6 +69,11 @@ public class SimulareBattagliaHandler {
         }
     }
 
+    public Map getCampoBattaglia(){
+        return battaglia.getCampoBattaglia().getMap();
+    }
+
+
     public void getState(){
         battaglia.getState();
     }

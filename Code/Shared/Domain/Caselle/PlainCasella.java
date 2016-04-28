@@ -4,6 +4,8 @@ import Shared.Domain.ITank;
 import Shared.Domain.Posizione;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by beniamino on 31/03/16.
@@ -70,6 +72,32 @@ public class PlainCasella implements ICasella,Serializable {
     @Override
     public Posizione getPosizione() {
         return posizione;
+    }
+
+    @Override
+    public Map getMap() {
+        Map casella = new HashMap();
+
+        casella.put("Id",this.id);
+        casella.put("Posizione",this.posizione);
+        casella.put("Disponibile",this.disponibile);
+        casella.put("Tipo","PlainCasella");
+/*
+        if(this.tankOccupanteCasella != null) {
+            casella.put("tankOccupanteCasella", this.tankOccupanteCasella.getMap());
+        }
+        else{
+            casella.put("tankOccupanteCasella", null);
+        }
+*/
+        if(this.bombaTank != null) {
+            casella.put("bombaTank", this.bombaTank.getMap());
+        }
+        else{
+            casella.put("bombaTank", null);
+        }
+
+        return casella;
     }
 
     @Override

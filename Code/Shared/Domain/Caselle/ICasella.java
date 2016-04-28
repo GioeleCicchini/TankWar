@@ -3,6 +3,8 @@ package Shared.Domain.Caselle;
 import Shared.Domain.ITank;
 import Shared.Domain.Posizione;
 
+import java.util.Map;
+
 /**
  * Created by gioele on 22/03/16.
  */
@@ -21,4 +23,5 @@ public interface ICasella {
     public void togliTank();
     public void setPosizione(Posizione posizione);
     public Posizione getPosizione();
+    public Map getMap();
 }

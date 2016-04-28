@@ -77,6 +77,17 @@ public class MuroCasella implements ICasella,Serializable {
     }
 
     @Override
+    public Map getMap() {
+        Map casella = new HashMap();
+
+        casella.put("Tipo","MuroCasella");
+        casella.put("Id",this.id);
+        casella.put("Posizione",this.posizione);
+
+        return casella;
+    }
+
+    @Override
     public void setPosizione(Posizione posizione) {
         this.posizione = posizione;
     }

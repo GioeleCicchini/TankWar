@@ -2,6 +2,8 @@ package Shared.Domain;
 
 import Shared.Util.RandomMinMax;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -71,5 +73,18 @@ public class Turno {
             finita=true;
         }
         return finita;
+    }
+
+    public Map getMap(){
+
+        Map turno = new HashMap();
+
+        turno.put("idTankPersonale",this.idTankPersonale);
+        turno.put("idTankAvversario",this.idTankAvversario);
+        turno.put("AchiTocca",this.aChiTocca);
+        turno.put("NumeroTurno",this.numeroTurno);
+        turno.put("MaxTurni",this.maxTurni);
+
+        return turno;
     }
 }
