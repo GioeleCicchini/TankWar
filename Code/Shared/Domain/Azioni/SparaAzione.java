@@ -129,5 +129,7 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
                 }
             }
         }
+
+        return false;
     }
 }

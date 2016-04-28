@@ -62,6 +62,11 @@ public class MuroCasella implements ICasella,Serializable {
 
     }
 
+    @Override
+    public void togliBombaTank() {
+
+    }
+
     public void togliTank() {
 
     }

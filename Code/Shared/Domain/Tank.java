@@ -92,6 +92,11 @@ public class Tank implements ITank,Serializable {
     }
 
     @Override
+    public void colpito(Integer danno) {
+
+    }
+
+    @Override
     public void setStrategia(Strategia strategia) {
         this.strategia = strategia;
     }
