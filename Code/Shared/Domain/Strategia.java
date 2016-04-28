@@ -245,11 +245,12 @@ public class Strategia implements Serializable {
         IStrategiaComponent currentComponent;
         for (int i=0; i<blocksize && !trovataUnaVera; i++){
             currentComponent=conditionBlock.get(i);
-            while (currentComponent.verificaSeVera(mioTank,altroTank,campo)){
+            boolean figlio = true;
+            while (currentComponent.eseguiti(mioTank,altroTank,campo) && figlio){
                 currentComponent=currentComponent.getChild();
+                figlio=currentComponent.hasChild();
             }
-            if (currentComponent instanceof IAzione){
-                ((IAzione) currentComponent).esegui();
+            if (!figlio){
                 trovataUnaVera=true;
             }
         }
