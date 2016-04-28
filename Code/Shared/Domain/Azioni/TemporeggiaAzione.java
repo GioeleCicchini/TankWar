@@ -115,7 +115,7 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
 
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
-        return false;
+        return true;
     }
 
 }

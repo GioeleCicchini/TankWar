@@ -1,6 +1,7 @@
 package Shared.Domain.Azioni;
 
 import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
 
@@ -114,7 +115,13 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
 
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
-        return false;
+        Integer bombeTankTurno = tankTurno.getBombeRimanenti();
+        if (bombeTankTurno > 0) {
+            ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
+            casellaTankTurno.setBombaTank(tankTurno);
+            tankTurno.setBombeRimanenti(bombeTankTurno--);
+        }
+        return true;
     }
 
 }

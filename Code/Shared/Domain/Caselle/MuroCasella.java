@@ -15,6 +15,7 @@ import java.util.Map;
  * Created by gioele on 22/03/16.
  */
 public class MuroCasella implements ICasella,Serializable {
+
     private Map caselleVicine = new HashMap< OrientamentoEnum,ICasella>();
 
     private String id;

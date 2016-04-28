@@ -117,10 +117,10 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
         ICasella casellaPartenza = tankTurno.getCasellaPosizione();
         ICasella casellaDestinazione;
         OrientamentoEnum mioOrientamento = tankTurno.getOrientamento();
-        List <ICasella> caselleDavanti = campo.getCaselleByOrientamento(casellaPartenza,mioOrientamento);
-        if (!caselleDavanti.isEmpty()){
-            casellaDestinazione=caselleDavanti.get(0);
-            if (casellaDestinazione.isDisponibile()){
+        List<ICasella> caselleDavanti = campo.getCaselleByOrientamento(casellaPartenza, mioOrientamento);
+        if (!caselleDavanti.isEmpty()) {
+            casellaDestinazione = caselleDavanti.get(0);
+            if (casellaDestinazione.isDisponibile()) {
 
                 tankTurno.setCasellaPosizione(casellaDestinazione);
 
@@ -128,13 +128,12 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
 
                 casellaPartenza.togliTank();
 
-                if (casellaDestinazione.getBombaTank() == tankAvversario){ //NullPonterException?
+                if (casellaDestinazione.getBombaTank() == tankAvversario) { //NullPonterException?
                     casellaDestinazione.togliBombaTank();
                     tankTurno.colpito(1);
+                }
             }
         }
-
         return true;
     }
-
 }

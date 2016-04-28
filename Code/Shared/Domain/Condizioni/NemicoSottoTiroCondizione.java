@@ -3,6 +3,7 @@ package Shared.Domain.Condizioni;
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.CampoBattaglia;
 import Shared.Domain.Caselle.ICasella;
+import Shared.Domain.Caselle.MuroCasella;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
 import Shared.Util.OrientamentoEnum;
@@ -44,6 +45,7 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         boolean verifica = false;
+        boolean visioneFinita = false;
         Integer maxVisioneSparoTankTurno = tankTurno.getMaxVisioneSparo();
         ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
         ICasella casellaTankAvversario = tankTurno.getCasellaPosizione();
@@ -51,9 +53,13 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
         List campoDirezione = campo.getCaselleByOrientamento(casellaTankTurno,orientamentoTankTurno);
         if (!campoDirezione.isEmpty()) {
             int i = 0;
-            while (i<maxVisioneSparoTankTurno && !verifica) {
-                if (casellaTankAvversario.equals(campoDirezione.get(i))) {
-                    verifica = true;
+            while (i<maxVisioneSparoTankTurno && !verifica && !visioneFinita) {
+                if (!((ICasella)campoDirezione.get(i)).isDisponibile()) {
+                    if (casellaTankAvversario == campoDirezione.get(i)) {
+                        verifica = true;
+                    } else {
+                        visioneFinita = true;
+                    }
                 }
                 i++;
             }
