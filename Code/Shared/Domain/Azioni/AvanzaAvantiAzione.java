@@ -1,8 +1,10 @@
 package Shared.Domain.Azioni;
 
 import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
+import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -112,7 +114,23 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
 
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
-        return false;
+        ICasella casellaPartenza = tankTurno.getCasellaPosizione();
+        ICasella casellaDestinazione;
+        OrientamentoEnum mioOrientamento = tankTurno.getOrientamento();
+        List <ICasella> caselleDavanti = campo.getCaselleByOrientamento(casellaPartenza,mioOrientamento);
+        if (!caselleDavanti.isEmpty()){
+            casellaDestinazione=caselleDavanti.get(0);
+            if (casellaDestinazione.isDisponibile()){
+                tankTurno.setCasellaPosizione(casellaDestinazione);
+
+                casellaDestinazione.setTank(tankTurno);
+
+                casellaPartenza.togliTank();
+
+            }
+        }
+
+        return true;
     }
 
 }

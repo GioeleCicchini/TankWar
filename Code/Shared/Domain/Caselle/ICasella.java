@@ -18,6 +18,7 @@ public interface ICasella {
     public ITank getBombaTank();
     public void setBombaTank(ITank tank);
     public void togliBombaTank();
+    public void togliTank();
     public void setPosizione(Posizione posizione);
     public Posizione getPosizione();
 }

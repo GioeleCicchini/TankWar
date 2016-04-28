@@ -32,6 +32,11 @@ public class PlainCasella implements ICasella,Serializable {
         this.disponibile=false;
     }
 
+    public void togliTank(){
+        tankOccupanteCasella=null;
+        disponibile=true;
+    }
+
     @Override
     public ITank getBombaTank() {
         return bombaTank;
