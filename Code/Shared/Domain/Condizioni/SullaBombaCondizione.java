@@ -2,8 +2,10 @@ package Shared.Domain.Condizioni;
 
 import Shared.Domain.Azioni.IAzione;
 import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
+import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -41,7 +43,15 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
 
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
-        return false;
+        boolean verifica = false;
+        ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
+        if (casellaTankTurno.getBombaTank() == tankTurno) {
+            verifica = true;
+        }
+        if (!this.vera) {
+            verifica = !verifica;
+        }
+        return verifica;
     }
 
     @Override

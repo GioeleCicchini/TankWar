@@ -14,6 +14,9 @@ public class PlainCasella implements ICasella,Serializable {
     private Posizione posizione;
     private String id;
     public ITank tankOccupanteCasella = null;
+    public ITank bombaTank = null;
+
+
 
     public PlainCasella(){}
     public PlainCasella(Posizione posizione) {
@@ -27,6 +30,21 @@ public class PlainCasella implements ICasella,Serializable {
     public void setTank(ITank tank) {
         this.tankOccupanteCasella = tank;
         this.disponibile=false;
+    }
+
+    @Override
+    public ITank getBombaTank() {
+        return bombaTank;
+    }
+
+    @Override
+    public void setBombaTank(ITank bombaTank) {
+        this.bombaTank = bombaTank;
+    }
+
+    @Override
+    public void togliBombaTank() {
+        this.bombaTank = null;
     }
 
     @Override

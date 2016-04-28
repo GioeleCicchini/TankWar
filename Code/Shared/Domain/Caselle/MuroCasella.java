@@ -51,6 +51,16 @@ public class MuroCasella implements ICasella,Serializable {
     }
 
     @Override
+    public ITank getBombaTank() {
+        return null;
+    }
+
+    @Override
+    public void setBombaTank(ITank tank) {
+
+    }
+
+    @Override
     public Posizione getPosizione() {
         return posizione;
     }

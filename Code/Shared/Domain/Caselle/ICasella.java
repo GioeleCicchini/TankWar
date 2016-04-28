@@ -15,6 +15,9 @@ public interface ICasella {
     public boolean isDisponibile();
     public ITank getTank();
     public void setTank(ITank tank);
+    public ITank getBombaTank();
+    public void setBombaTank(ITank tank);
+    public void togliBombaTank();
     public void setPosizione(Posizione posizione);
     public Posizione getPosizione();
 }
