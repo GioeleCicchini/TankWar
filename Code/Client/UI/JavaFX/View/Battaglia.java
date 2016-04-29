@@ -37,6 +37,9 @@ public class Battaglia implements Initializable {
 
         SimulareBattagliaHandler simulareBattagliaHandler = SimulareBattagliaHandler.getSingletonInstance();
 
+
+        //QUI INIZIA IL SETTAGGIO DELLA GRAFICA
+
        Map Battaglia = simulareBattagliaHandler.getCampoBattaglia();
 
 
@@ -89,6 +92,17 @@ public class Battaglia implements Initializable {
 
 
         CampoBattagliaGrid.add(Player, 5, 5 );
+
+        //QUI FINISCE IL SETTAGGIO GRAFICA
+
+        //Si battaglia ragazzi
+        Integer i=0;
+        
+        while (!SimulareBattagliaHandler.getSingletonInstance().isFinita()){
+            SimulareBattagliaHandler.getSingletonInstance().faiMossa();
+            System.out.println("Ciclo fatto" + i + "mosse");
+            i++;
+        }
 
 
 

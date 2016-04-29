@@ -3,13 +3,13 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping>
+<hibernate-mapping default-lazy="false">
     <class name="Shared.Domain.IStrategiaComponent" table="StrategiaComponent">
         <id name="id" column="id">
             <generator class="assigned"/>
         </id>
         <discriminator column="Component_type" type="string"/>
-        <many-to-one name="child" class="Shared.Domain.IStrategiaComponent" cascade="all">
+        <many-to-one name="child" class="Shared.Domain.IStrategiaComponent" cascade="all" fetch="join">
 
         </many-to-one>
     </class>

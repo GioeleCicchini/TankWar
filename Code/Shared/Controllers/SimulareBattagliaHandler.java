@@ -65,6 +65,10 @@ public class SimulareBattagliaHandler {
         }
     }
 
+    public boolean isFinita(){
+        return battaglia.isTerminata();
+    }
+
     public Map getCampoBattaglia(){
         return battaglia.getCampoBattaglia().getMap();
     }
