@@ -6,7 +6,9 @@ import Shared.Domain.TankDecorator.TankOnBattle;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by gioele on 22/03/16.
@@ -16,6 +18,9 @@ public class Battaglia {
     private boolean terminata;
     private ITank tankPersonale;
     private ITank tankAvversario;
+
+
+
     private CampoBattaglia campoBattaglia;
     private Turno turno;
     IImpostatoreBattaglia impBattaglia;
@@ -33,6 +38,15 @@ public class Battaglia {
     }
 
     public  Battaglia(){}
+
+
+    public CampoBattaglia getCampoBattaglia() {
+        return campoBattaglia;
+    }
+
+    public void setCampoBattaglia(CampoBattaglia campoBattaglia) {
+        this.campoBattaglia = campoBattaglia;
+    }
 
     public boolean isTerminata() {
         return terminata;
@@ -124,6 +138,21 @@ public class Battaglia {
             risultato="pareggio";
             terminata=true;
         }
+
+    }
+
+    public void getMap(){
+        Map Battaglia = new HashMap();
+
+        Battaglia.put("TankPersonale",this.tankPersonale.getMap());
+        Battaglia.put("TankAvversario",this.tankAvversario.getMap());
+        Battaglia.put("Terminata",this.terminata);
+        Battaglia.put("CampoBattaglia",this.campoBattaglia.getMap());
+        Battaglia.put("Risultato",this.risultato);
+        Battaglia.put("Turno",this.turno.getMap());
+
+
+
 
     }
 

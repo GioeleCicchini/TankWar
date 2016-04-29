@@ -1,5 +1,8 @@
 package Shared.Util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by emanuele on 22/03/16.
  */

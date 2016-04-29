@@ -5,7 +5,9 @@ import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by gioele on 22/03/16.
@@ -139,4 +141,23 @@ public class CampoBattaglia implements Serializable {
     public void setDimesioneCampo(Integer dimesioneCampo) {
         DimesioneCampo = dimesioneCampo;
     }
+
+
+    public Map getMap(){
+        Map CampoBattaglia = new HashMap();
+
+        List caselle = new ArrayList<>();
+        for(ICasella cas : caselleMonodimensionali){
+            caselle.add(cas.getMap());
+        }
+
+        CampoBattaglia.put("DimensioneCampo",this.DimesioneCampo);
+        CampoBattaglia.put("Id",this.id);
+        CampoBattaglia.put("CampoBattaglia",caselle);
+
+
+        return CampoBattaglia;
+    }
+
+
 }

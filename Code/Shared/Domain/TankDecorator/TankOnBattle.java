@@ -7,6 +7,9 @@ import Shared.Domain.Strategia;
 import Shared.Domain.Tank;
 import Shared.Util.OrientamentoEnum;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by beniamino on 22/03/16.
  */
@@ -119,6 +122,21 @@ public class TankOnBattle extends TankDecorator {
 
     public Integer getPotenzaArma(){
         return potenzaArma;
+    }
+
+    @Override
+    public Map getMap() {
+        Map tankOnBattle = new HashMap();
+
+            tankOnBattle.put("MaxVisioneSparo",maxVisioneSparo);
+            tankOnBattle.put("CasellaPosizione",this.casellaPosizione.getMap());
+            tankOnBattle.put("BombeRimanenti",this.bombeRimanenti);
+            tankOnBattle.put("Orientamento",this.orientamento.getNumero());
+            tankOnBattle.put("Vita",this.vita);
+            tankOnBattle.put("PotenzaArma",this.potenzaArma);
+            tankOnBattle.put("Vivo",this.vivo);
+
+        return tankOnBattle;
     }
 
 }

@@ -1,12 +1,13 @@
 package Client.UI.JavaFX.View;
 
 import Client.UI.UIUtils.ViewTransaction;
-import Shared.Domain.CampoBattaglia;
+import Shared.Controllers.SimulareBattagliaHandler;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
@@ -15,7 +16,7 @@ import javafx.scene.layout.RowConstraints;
 
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created by gioele on 22/03/16.
@@ -32,8 +33,28 @@ public class Battaglia implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
       dimensioneCampoPixel = CampoBattagliaGrid.getPrefWidth();
 
-        for(int i=0; i<dimensioneCampoCelle ; i++){
 
+        SimulareBattagliaHandler simulareBattagliaHandler = SimulareBattagliaHandler.getSingletonInstance();
+
+       Map Battaglia = simulareBattagliaHandler.getCampoBattaglia();
+
+
+        List<HashMap> CampoBat = new ArrayList<HashMap>((List)Battaglia.get("CampoBattaglia"));
+
+        Map[][] campo = new HashMap[10][10];
+
+
+
+        for(int i=0;i<(10*10);i++){
+            Integer x = i % 10;
+            Integer y = (i-x)/10;
+            campo[x][y] = CampoBat.get(i);
+        }
+
+
+
+
+        for(int i=0; i<dimensioneCampoCelle ; i++){
             ColumnConstraints colonna = new ColumnConstraints();
             colonna.setPercentWidth(100/dimensioneCampoCelle);
 
@@ -42,8 +63,26 @@ public class Battaglia implements Initializable {
             RowConstraints riga = new RowConstraints();
             riga.setPercentHeight(100/dimensioneCampoCelle);
             CampoBattagliaGrid.getRowConstraints().add(riga);
-
         }
+
+
+        for(int i =0 ; i< 10 ; i++){
+            for(int j=0 ; j<10; j++){
+                Map elemento = campo[i][j];
+                if(elemento.get("Tipo").equals("MuroCasella")){
+                    Label Muro = new Label();
+                    Muro.setPrefHeight(100);
+                    Muro.setPrefWidth(100);
+                    Muro.setStyle("-fx-background-color: #000000");
+
+
+                    CampoBattagliaGrid.add(Muro,i,j);
+                }
+            }
+        }
+
+
+
 
         Label Player = new Label();
 

@@ -3,6 +3,8 @@ package Shared.Domain;
 import Shared.Domain.Caselle.ICasella;
 import Shared.Util.OrientamentoEnum;
 
+import java.util.Map;
+
 /**
  * Created by beniamino on 22/03/16.
  */
@@ -42,6 +44,8 @@ public interface ITank {
     void colpito (Integer danno);
 
     Integer getPotenzaArma();
+
+    Map getMap();
 
 }
 

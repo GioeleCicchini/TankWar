@@ -4,6 +4,8 @@ import Shared.Domain.Caselle.ICasella;
 import Shared.Util.OrientamentoEnum;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -99,6 +101,15 @@ public class Tank implements ITank,Serializable {
     @Override
     public Integer getPotenzaArma() {
         return null;
+    }
+
+    @Override
+    public Map getMap() {
+        Map tank = new HashMap();
+
+        tank.put("Strategia",this.strategia.getMap());
+
+        return tank;
     }
 
     @Override
