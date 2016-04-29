@@ -97,6 +97,11 @@ public class Tank implements ITank,Serializable {
     }
 
     @Override
+    public Integer getPotenzaArma() {
+        return null;
+    }
+
+    @Override
     public void setStrategia(Strategia strategia) {
         this.strategia = strategia;
     }
