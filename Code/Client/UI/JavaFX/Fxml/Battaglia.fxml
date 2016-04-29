@@ -28,7 +28,7 @@
       <HBox prefHeight="179.0" prefWidth="1920.0" style="-fx-background-color: #01579B;">
          <children>
             <VBox prefHeight="4.0" prefWidth="507.0" style="-fx-background-color: #01579B;" />
-            <GridPane fx:id="CampoBattagliaGrid" prefHeight="1000" prefWidth="1000" style="-fx-grid-lines-visible: true; -fx-border-width: 2px; -fx-border-style: solid;" />
+            <GridPane fx:id="CampoBattagliaGrid" prefHeight="800" prefWidth="800" style="-fx-grid-lines-visible: true; -fx-border-width: 2px; -fx-border-style: solid;" />
             <VBox prefHeight="18.0" prefWidth="599.0" style="-fx-background-color: #01579B;" />
          </children>
       </HBox>
