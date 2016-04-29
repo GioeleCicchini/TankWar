@@ -120,9 +120,9 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
         ICasella casellaDestinazione;
         OrientamentoEnum mioOrientamento = tankTurno.getOrientamento();
         mioOrientamento = OrientamentoEnum.getSinistra(mioOrientamento);
-        List<ICasella> caselleDestra = campo.getCaselleByOrientamento(casellaPartenza, mioOrientamento);
-        if (!caselleDestra.isEmpty()) {
-            casellaDestinazione = caselleDestra.get(0);
+        List<ICasella> caselleSinistra = campo.getCaselleByOrientamento(casellaPartenza, mioOrientamento);
+        if (!caselleSinistra.isEmpty()) {
+            casellaDestinazione = caselleSinistra.get(0);
             if (casellaDestinazione.isDisponibile()) {
 
                 tankTurno.setCasellaPosizione(casellaDestinazione);

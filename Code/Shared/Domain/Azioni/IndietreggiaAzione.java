@@ -120,9 +120,9 @@ public class IndietreggiaAzione implements IAzione, IStrategiaComponent, Seriali
         ICasella casellaDestinazione;
         OrientamentoEnum mioOrientamento = tankTurno.getOrientamento();
         mioOrientamento = OrientamentoEnum.getDietro(mioOrientamento);
-        List<ICasella> caselleDestra = campo.getCaselleByOrientamento(casellaPartenza, mioOrientamento);
-        if (!caselleDestra.isEmpty()) {
-            casellaDestinazione = caselleDestra.get(0);
+        List<ICasella> caselleDietro = campo.getCaselleByOrientamento(casellaPartenza, mioOrientamento);
+        if (!caselleDietro.isEmpty()) {
+            casellaDestinazione = caselleDietro.get(0);
             if (casellaDestinazione.isDisponibile()) {
 
                 tankTurno.setCasellaPosizione(casellaDestinazione);
