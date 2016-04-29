@@ -93,10 +93,10 @@ public class CreareStrategiaHandler {
     public boolean terminaStrategia() throws IOException {
         boolean correttezzaStrategia = this.strategiaCorrente.verificaCompletezza();
         if (correttezzaStrategia) {
+            this.strategiaCorrente.setComplete(true);
             ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
             DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
             DTO risp = (DTO) service.RichiediAlServer(dtoMaker.getStrategiaDTO());
-            this.strategiaCorrente.setComplete(true);
         }
         return this.strategiaCorrente.getComplete();
     }
