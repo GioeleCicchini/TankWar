@@ -25,7 +25,7 @@ public class Battaglia implements Initializable {
 
     public Button indietroButton;
     public GridPane CampoBattagliaGrid;
-    public static double dimensioneCampoCelle = 20;
+    public static double dimensioneCampoCelle = 10;
     public static double dimensioneCampoPixel ;
 
 
