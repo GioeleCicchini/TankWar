@@ -111,6 +111,7 @@ public class Battaglia {
 
     public void faiMossa(){
         String idAChiTocca = turno.aChiTocca();
+
         List<ITank> partecipanti = new ArrayList<>();
         partecipanti.add(tankPersonale);
         partecipanti.add(tankAvversario);
@@ -139,6 +140,10 @@ public class Battaglia {
             terminata=true;
         }
 
+        System.out.println("Posizione Tank Personale: ("+ tankPersonale.getCasellaPosizione().getPosizione().getX() +","+tankPersonale.getCasellaPosizione().getPosizione().getY()+","+tankPersonale.getOrientamento()+
+                ") Posizione Tank Avversario: (" + tankAvversario.getCasellaPosizione().getPosizione().getX()+ ","+tankAvversario.getCasellaPosizione().getPosizione().getY()+","+tankAvversario.getOrientamento()+")");
+
+        turno.increment();
     }
 
     public void getMap(){

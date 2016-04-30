@@ -10,6 +10,8 @@
             <generator class="assigned"/>
         </id>
 
+
+
         <discriminator column="Caselle_type" type="string"/>
 
     </class>
@@ -18,15 +20,17 @@
               discriminator-value="MuroCasella">
         <join table="MuroCasella">
             <key column="Id"></key>
-
+            <many-to-one name="Posizione" column="Posizione" class="Shared.Domain.Posizione" cascade="all" lazy="false"></many-to-one>
         </join>
+
+
     </subclass>
 
     <subclass name="Shared.Domain.Caselle.PlainCasella" extends="Shared.Domain.Caselle.ICasella"
               discriminator-value="PlainCasella">
         <join table="PlainCasella">
             <key column="Id"></key>
-
+            <many-to-one name="Posizione" column="Posizione" class="Shared.Domain.Posizione" cascade="all" lazy="false"></many-to-one>
         </join>
     </subclass>
 

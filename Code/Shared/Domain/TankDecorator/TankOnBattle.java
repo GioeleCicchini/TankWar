@@ -37,7 +37,8 @@ public class TankOnBattle extends TankDecorator {
 
     @Override
     public Strategia getStrategia() {
-        return null;
+       return this.component.getStrategia();
+
     }
 
     @Override
@@ -100,6 +101,7 @@ public class TankOnBattle extends TankDecorator {
     @Override
     public void faiMossa(ITank altroTank, CampoBattaglia campo) {
         this.getStrategia().faiMossa(this,altroTank,campo);
+
     }
 
     @Override

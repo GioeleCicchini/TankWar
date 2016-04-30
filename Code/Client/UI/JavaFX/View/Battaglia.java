@@ -100,7 +100,8 @@ public class Battaglia implements Initializable {
         
         while (!SimulareBattagliaHandler.getSingletonInstance().isFinita()){
             SimulareBattagliaHandler.getSingletonInstance().faiMossa();
-            System.out.println("Ciclo fatto" + i + "mosse");
+
+          //  System.out.println("Ciclo fatto " + i + " mosse");
             i++;
         }
 

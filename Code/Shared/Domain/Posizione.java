@@ -1,12 +1,19 @@
 package Shared.Domain;
 
+import java.io.Serializable;
+import java.util.UUID;
+
 /**
  * Created by emanuele on 03/04/16.
  */
-public class Posizione {
+public class Posizione implements Serializable{
 
+
+    private String id = UUID.randomUUID().toString();
     private Integer x;
     private Integer y;
+
+    public Posizione(){};
 
     public Posizione(Integer x, Integer y) {
         if (x>=0 && y>=0) {
@@ -30,4 +37,13 @@ public class Posizione {
     public void setY(Integer y) {
         this.y = y;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }

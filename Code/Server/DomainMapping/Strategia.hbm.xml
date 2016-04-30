@@ -10,7 +10,7 @@
         <property name="nome" column="Nome"/>
 
 
-        <list name="conditionBlock" cascade="all">
+        <list name="conditionBlock" cascade="all" lazy="false">
             <key column="Strategia_id"/>
             <list-index column="IDX"/>
             <one-to-many class="Shared.Domain.IStrategiaComponent"/>
@@ -18,7 +18,7 @@
 
 
         <many-to-one name="defaultCondition" column="DefaultCondition"
-                     class="Shared.Domain.Condizioni.DefaultCondizione" cascade="all"></many-to-one>
+                     class="Shared.Domain.Condizioni.DefaultCondizione" cascade="all" lazy="false"></many-to-one>
 
 
     </class>

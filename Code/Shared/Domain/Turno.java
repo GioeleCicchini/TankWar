@@ -69,7 +69,7 @@ public class Turno {
 
     public boolean isFinitaPartita(){
         boolean finita = false;
-        if (numeroTurno>=maxTurni){
+        if (numeroTurno>=maxTurni-1){
             finita=true;
         }
         return finita;

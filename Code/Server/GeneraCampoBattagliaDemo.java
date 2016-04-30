@@ -6,6 +6,7 @@ import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.Caselle.MuroCasella;
 import Shared.Domain.Caselle.PlainCasella;
 import Shared.Domain.Player;
+import Shared.Domain.Posizione;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -37,6 +38,7 @@ public class GeneraCampoBattagliaDemo {
             for(int j=0;j<dimensioneCampo;j=j+1){
                 ICasella casellaConcreta = new PlainCasella();
                 casellaConcreta.setId(UUID.randomUUID().toString());
+                casellaConcreta.setPosizione(new Posizione(i,j));
                 campo[i][j] = casellaConcreta;
                 campomonodimensionale[i+j*dimensioneCampo]= casellaConcreta;
             }
@@ -48,6 +50,7 @@ public class GeneraCampoBattagliaDemo {
                 Integer y = random.nextInt(10);
             ICasella casellaMuroConcreta = new MuroCasella();
             casellaMuroConcreta.setId(UUID.randomUUID().toString());
+            casellaMuroConcreta.setPosizione(new Posizione(x,y));
             campo[x][y] = casellaMuroConcreta;
             campomonodimensionale[x+y*dimensioneCampo]= casellaMuroConcreta;
 
