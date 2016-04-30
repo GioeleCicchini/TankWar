@@ -36,6 +36,8 @@ public class ImpostareBattaglia implements Initializable {
         }
 
 
+        System.out.println("Sono qui inizio");
+
 
 
         ViewTransaction.getSingletonInstance().goToBattaglia(startBattagliaButton);
