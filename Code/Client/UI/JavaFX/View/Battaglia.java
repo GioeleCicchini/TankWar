@@ -2,6 +2,7 @@ package Client.UI.JavaFX.View;
 
 import Client.UI.UIUtils.ViewTransaction;
 import Shared.Controllers.SimulareBattagliaHandler;
+import Shared.Domain.Strategia;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -36,6 +37,9 @@ public class Battaglia implements Initializable {
 
         SimulareBattagliaHandler simulareBattagliaHandler = SimulareBattagliaHandler.getSingletonInstance();
 
+
+        //QUI INIZIA IL SETTAGGIO DELLA GRAFICA
+
        Map Battaglia = simulareBattagliaHandler.getCampoBattaglia();
 
 
@@ -43,17 +47,11 @@ public class Battaglia implements Initializable {
 
         Map[][] campo = new HashMap[10][10];
 
-
-
         for(int i=0;i<(10*10);i++){
             Integer x = i % 10;
             Integer y = (i-x)/10;
             campo[x][y] = CampoBat.get(i);
         }
-
-
-
-
         for(int i=0; i<dimensioneCampoCelle ; i++){
             ColumnConstraints colonna = new ColumnConstraints();
             colonna.setPercentWidth(100/dimensioneCampoCelle);
@@ -64,8 +62,6 @@ public class Battaglia implements Initializable {
             riga.setPercentHeight(100/dimensioneCampoCelle);
             CampoBattagliaGrid.getRowConstraints().add(riga);
         }
-
-
         for(int i =0 ; i< 10 ; i++){
             for(int j=0 ; j<10; j++){
                 Map elemento = campo[i][j];
@@ -80,10 +76,6 @@ public class Battaglia implements Initializable {
                 }
             }
         }
-
-
-
-
         Label Player = new Label();
 
         Image immagine = new Image("Client/UI/JavaFX/View/Image/tank.png");
@@ -101,21 +93,28 @@ public class Battaglia implements Initializable {
 
         CampoBattagliaGrid.add(Player, 5, 5 );
 
+        //QUI FINISCE IL SETTAGGIO GRAFICA
 
-
+        //Si battaglia ragazzi
+        Integer i=0;
+        
+        while (!SimulareBattagliaHandler.getSingletonInstance().isFinita()){
+            SimulareBattagliaHandler.getSingletonInstance().faiMossa();
+            System.out.println("Ciclo fatto" + i + "mosse");
+            i++;
+        }
 
 
 
 
     }
 
+    public void inizio(){
+        SimulareBattagliaHandler.getSingletonInstance().iniziaImpostareBattagliaCasuale();
+        List<Strategia> strategias = SimulareBattagliaHandler.getSingletonInstance().getStrategieList();
 
 
-
-
-
-
-
+    }
 
     public void indietro(Event event){
         ViewTransaction.getSingletonInstance().goToHome(indietroButton);

@@ -45,16 +45,12 @@ public class SimulareBattagliaHandler {
         }catch (NullPointerException e){
             throw new NullPointerException("Tank avversario non trovato");
         }
-
-
         try {
             this.battaglia.creaCampoBattaglia();
 
         }catch (NullPointerException e){
             throw new NullPointerException("Campo Battaglia non trovato");
         }
-
-
         // la parte di Seguito è buggata
 
         this.battaglia.posizionaTank();
@@ -67,6 +63,10 @@ public class SimulareBattagliaHandler {
         if (!battaglia.isTerminata()){
             battaglia.faiMossa();
         }
+    }
+
+    public boolean isFinita(){
+        return battaglia.isTerminata();
     }
 
     public Map getCampoBattaglia(){
