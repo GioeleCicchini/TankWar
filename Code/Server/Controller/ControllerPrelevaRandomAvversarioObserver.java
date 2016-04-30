@@ -47,6 +47,9 @@ public class ControllerPrelevaRandomAvversarioObserver implements Observer {
 
             Integer Casuale = random.nextInt(c);
 
+            if (Casuale == 0){
+                Casuale = 1;
+            }
 
 
             rispostaDTO = DTOMaker.getSingletonInstance().getPlayerAvversarioTankRandomResponce((Tank)results.get(Casuale));

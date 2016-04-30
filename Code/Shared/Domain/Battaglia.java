@@ -144,6 +144,7 @@ public class Battaglia {
                 ") Posizione Tank Avversario: (" + tankAvversario.getCasellaPosizione().getPosizione().getX()+ ","+tankAvversario.getCasellaPosizione().getPosizione().getY()+","+tankAvversario.getOrientamento()+")");
 
         turno.increment();
+
     }
 
     public void getMap(){

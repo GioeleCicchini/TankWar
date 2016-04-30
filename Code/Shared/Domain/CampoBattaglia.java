@@ -114,7 +114,7 @@ public class CampoBattaglia implements Serializable {
                 for (int x = 0;x<this.campo.length;x++) {
                     rigaAttuale[x] = this.campo[x][posizioneCasella.getY()];
                 }
-                for (int x = posizioneCasella.getX()-1;x>=0;x++) {
+                for (int x = posizioneCasella.getX()-1;x>=0;x--) {
                     campoAttuale.add(rigaAttuale[x]);
                 }
                 break;

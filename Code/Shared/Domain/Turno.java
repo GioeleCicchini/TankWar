@@ -61,9 +61,11 @@ public class Turno {
         //todo da quì in poi alti livelli di bruttezza
         if (aChiTocca.equals(idTankPersonale)){
             aChiTocca=idTankAvversario;
+            System.out.println("Passo il turno all'avversario");
         }
         else {
-            aChiTocca=idTankAvversario;
+            aChiTocca=idTankPersonale;
+            System.out.println("Passo il turno al mio tank");
         }
     }
 
