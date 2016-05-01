@@ -123,7 +123,7 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
             if (casellaDestinazione.isDisponibile()) {
 
                 tankTurno.setCasellaPosizione(casellaDestinazione);
-
+                tankTurno.setOrientamento(mioOrientamento);
                 casellaDestinazione.setTank(tankTurno);
 
                 casellaPartenza.togliTank();
