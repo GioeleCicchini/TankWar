@@ -39,7 +39,7 @@ public class Battaglia implements Initializable {
       dimensioneCampoPixel = CampoBattagliaGrid.getPrefWidth();
 
 
-        SimulareBattagliaHandler simulareBattagliaHandler = SimulareBattagliaHandler.getSingletonInstance();
+        final SimulareBattagliaHandler simulareBattagliaHandler = SimulareBattagliaHandler.getSingletonInstance();
 
 
         //QUI INIZIA IL SETTAGGIO DELLA GRAFICA
@@ -83,7 +83,7 @@ public class Battaglia implements Initializable {
         }
 
         // Creazione 1 Player
-        Label PlayerCorrente = new Label();
+        final Label PlayerCorrente = new Label();
         Image immagine = new Image("Client/UI/JavaFX/View/Image/tank.png");
         ImageView imageView = new ImageView(immagine);
         imageView.setPreserveRatio(true);
@@ -97,7 +97,7 @@ public class Battaglia implements Initializable {
 
         // Creazione Secondo Player
 
-        Label PlayerAvversario = new Label();
+        final Label PlayerAvversario = new Label();
         Image immagineAvversario = new Image("Client/UI/JavaFX/View/Image/tankAvversario.png");
         ImageView imageViewAvversario = new ImageView(immagineAvversario);
         imageViewAvversario.setPreserveRatio(true);
@@ -216,7 +216,7 @@ public class Battaglia implements Initializable {
                     }
                     PlayerAvversario.setRotate(OrientamentoGradiTankAvversarioThread);
 
-                    Map PosizioneTankAvversarioThread = (Map)CasellaPosizioneTankAvversarioThread.get("Posizione");
+                    final Map PosizioneTankAvversarioThread = (Map)CasellaPosizioneTankAvversarioThread.get("Posizione");
 
 
 
