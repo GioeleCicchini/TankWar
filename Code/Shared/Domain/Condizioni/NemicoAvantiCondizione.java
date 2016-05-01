@@ -46,20 +46,20 @@ public class NemicoAvantiCondizione implements ICondizione, IStrategiaComponent,
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         boolean verifica = false;
         ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
-        ICasella casellaTankAvversario = tankTurno.getCasellaPosizione();
+        ICasella casellaTankAvversario = tankAvversario.getCasellaPosizione();
         Posizione posizioneTankTurno = casellaTankTurno.getPosizione();
         Posizione posizioneTankAvversario = casellaTankAvversario.getPosizione();
         OrientamentoEnum orientamentoTankTurno = tankTurno.getOrientamento();
-        if (orientamentoTankTurno.toString().equals("N") && posizioneTankTurno.getY()<posizioneTankAvversario.getY()) {
+        if (orientamentoTankTurno.getNumero() == 0 && posizioneTankTurno.getY()<posizioneTankAvversario.getY()) {
             verifica = true;
         }
-        if (orientamentoTankTurno.toString().equals("E") && posizioneTankTurno.getX()<posizioneTankAvversario.getX()) {
+        if (orientamentoTankTurno.getNumero() == 1 && posizioneTankTurno.getX()<posizioneTankAvversario.getX()) {
             verifica = true;
         }
-        if (orientamentoTankTurno.toString().equals("S") && posizioneTankTurno.getY()>posizioneTankAvversario.getY()) {
+        if (orientamentoTankTurno.getNumero() == 2 && posizioneTankTurno.getY()>posizioneTankAvversario.getY()) {
             verifica = true;
         }
-        if (orientamentoTankTurno.toString().equals("O") && posizioneTankTurno.getX()>posizioneTankAvversario.getX()) {
+        if (orientamentoTankTurno.getNumero() == 3 && posizioneTankTurno.getX()>posizioneTankAvversario.getX()) {
             verifica = true;
         }
         if (!this.vera) {

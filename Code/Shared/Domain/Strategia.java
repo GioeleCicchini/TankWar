@@ -255,8 +255,8 @@ public class Strategia implements Serializable {
             }
 
         }
-        if(trovataUnaVera == false){
-            defaultCondition.eseguiti(mioTank,altroTank,campo);
+        if(!trovataUnaVera){
+            defaultCondition.getChild().eseguiti(mioTank,altroTank,campo);
         }
 
     }
