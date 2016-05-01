@@ -82,7 +82,7 @@ public class MuroCasella implements ICasella,Serializable {
 
         casella.put("Tipo","MuroCasella");
         casella.put("Id",this.id);
-        casella.put("Posizione",this.posizione);
+        casella.put("Posizione",this.posizione.getMap());
 
         return casella;
     }

@@ -1,6 +1,8 @@
 package Shared.Domain;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -44,6 +46,17 @@ public class Posizione implements Serializable{
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Map getMap(){
+
+        Map posizione = new HashMap();
+
+        posizione.put("X",this.x);
+        posizione.put("Y",this.y);
+
+        return posizione;
+
     }
 
 }

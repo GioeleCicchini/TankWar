@@ -147,7 +147,7 @@ public class Battaglia {
 
     }
 
-    public void getMap(){
+    public Map getMap(){
         Map Battaglia = new HashMap();
 
         Battaglia.put("TankPersonale",this.tankPersonale.getMap());
@@ -157,7 +157,7 @@ public class Battaglia {
         Battaglia.put("Risultato",this.risultato);
         Battaglia.put("Turno",this.turno.getMap());
 
-
+        return  Battaglia;
 
 
     }

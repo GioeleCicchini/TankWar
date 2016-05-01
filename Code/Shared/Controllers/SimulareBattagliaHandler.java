@@ -70,7 +70,7 @@ public class SimulareBattagliaHandler {
     }
 
     public Map getCampoBattaglia(){
-        return battaglia.getCampoBattaglia().getMap();
+        return battaglia.getMap();
     }
 
 
