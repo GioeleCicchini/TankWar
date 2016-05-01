@@ -226,19 +226,20 @@ public class Battaglia implements Initializable {
                         public void run() {
 
                             label.setText("" + finalI);
+                            CampoBattagliaGrid.getChildren().remove(PlayerCorrente);
+                            CampoBattagliaGrid.getChildren().remove(PlayerAvversario);
 
                             System.out.println( (int)PosizioneTankPersonaleThread.get("X")+" "+ (int)PosizioneTankPersonaleThread.get("Y"));
                             CampoBattagliaGrid.add(PlayerCorrente, (int)PosizioneTankPersonaleThread.get("X"), (int)PosizioneTankPersonaleThread.get("Y"));
                             CampoBattagliaGrid.add(PlayerAvversario, (int)PosizioneTankAvversarioThread.get("X"), (int)PosizioneTankAvversarioThread.get("Y"));
-                           // CampoBattagliaGrid.getChildren().remove(PlayerCorrente);
-                           // CampoBattagliaGrid.getChildren().remove(PlayerAvversario);
+
 
 
 
                         }
                     });
                     i++;
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
 
 
                     /*
