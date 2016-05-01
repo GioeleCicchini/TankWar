@@ -240,7 +240,7 @@ public class Battaglia implements Initializable {
                     i++;
                     Thread.sleep(1000);
 
-                    
+
                     /*
                     CampoBattagliaGrid.add(PlayerCorrente, (int)PosizioneTankPersonaleThread.get("X"), (int)PosizioneTankPersonaleThread.get("Y"));
 

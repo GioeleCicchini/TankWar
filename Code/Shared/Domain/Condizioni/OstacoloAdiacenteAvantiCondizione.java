@@ -50,6 +50,8 @@ public class OstacoloAdiacenteAvantiCondizione implements ICondizione, IStrategi
         if (!campoDirezione.isEmpty()) {
             ICasella primaCasella = (ICasella) campoDirezione.get(0);
             verifica = !primaCasella.isDisponibile();
+        } else {
+            verifica = true;
         }
         if (!this.vera) {
             verifica = !verifica;
