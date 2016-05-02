@@ -136,6 +136,7 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
                 casellaPartenza.togliTank();
 
                 if (casellaDestinazione.getBombaTank() == tankAvversario) { //NullPonterException?
+                    System.out.println("Esplosa in ("+ casellaDestinazione.getPosizione().getX()+","+casellaDestinazione.getPosizione().getY()+")");
                     casellaDestinazione.togliBombaTank();
                     tankTurno.colpito(1);
                 }

@@ -53,7 +53,7 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
         List campoDirezione = campo.getCaselleByOrientamento(casellaTankTurno,orientamentoTankTurno);
         if (!campoDirezione.isEmpty()) {
             int i = 0;
-            while (i<maxVisioneSparoTankTurno && !verifica && !visioneFinita) {
+            while (i<maxVisioneSparoTankTurno && !verifica && !visioneFinita && i<campoDirezione.size()) {
                 if (!((ICasella)campoDirezione.get(i)).isDisponibile()) {
                     if (casellaTankAvversario == campoDirezione.get(i)) {
                         verifica = true;
