@@ -239,7 +239,7 @@ public class Battaglia implements Initializable {
                         }
                     });
                     i++;
-                    Thread.sleep(500);
+                    Thread.sleep(100);
 
 
                     /*
