@@ -91,7 +91,7 @@ public class PlainCasella implements ICasella,Serializable {
         }
 */
         if(this.bombaTank != null) {
-            casella.put("bombaTank", this.bombaTank.getMap());
+            casella.put("bombaTank", this.bombaTank.getId());
         }
         else{
             casella.put("bombaTank", null);

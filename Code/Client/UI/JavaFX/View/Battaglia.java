@@ -238,6 +238,7 @@ public class Battaglia implements Initializable {
                                 CampoBattagliaGrid.getChildren().remove(PlayerCorrente);
                                 CampoBattagliaGrid.getChildren().remove(PlayerAvversario);
 
+
                                 CampoBattagliaGrid.add(PlayerCorrente, (int) PosizioneTankPersonaleThread.get("X"), (int) PosizioneTankPersonaleThread.get("Y"));
                                 CampoBattagliaGrid.add(PlayerAvversario, (int) PosizioneTankAvversarioThread.get("X"), (int) PosizioneTankAvversarioThread.get("Y"));
 

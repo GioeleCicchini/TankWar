@@ -60,6 +60,7 @@ public class SimulareBattagliaHandler {
     }
 
     public void faiMossa(){
+        System.out.println("Siamo nell'handler");
         if (!battaglia.isTerminata()){
             battaglia.faiMossa();
         }

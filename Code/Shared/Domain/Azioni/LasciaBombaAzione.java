@@ -118,8 +118,9 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         Integer bombeTankTurno = tankTurno.getBombeRimanenti();
-        if (bombeTankTurno > 0) {
-            ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
+        ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
+        if (bombeTankTurno > 0 && casellaTankTurno.getBombaTank() != tankTurno) {
+            System.out.println("BOMBA LASCIATA NELLA CASELLA " + casellaTankTurno.getPosizione().getX() + "," + casellaTankTurno.getPosizione().getY());
             casellaTankTurno.setBombaTank(tankTurno);
             tankTurno.setBombeRimanenti(bombeTankTurno--);
         }
