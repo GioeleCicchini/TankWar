@@ -47,7 +47,7 @@
                   <Insets />
                </opaqueInsets>
                <HBox.margin>
-                  <Insets top="20.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
          </children>
