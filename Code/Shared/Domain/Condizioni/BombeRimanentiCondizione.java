@@ -43,7 +43,10 @@ public class BombeRimanentiCondizione implements ICondizione, IStrategiaComponen
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         boolean verifica = false;
         if (tankTurno.getBombeRimanenti() != 0) {
+            System.out.println("HO BOMBE RIMANENTI");
            verifica = true;
+        } else {
+            System.out.println("NON HO BOMBE RIMANENTI");
         }
         if (!this.vera) {
             verifica = !verifica;

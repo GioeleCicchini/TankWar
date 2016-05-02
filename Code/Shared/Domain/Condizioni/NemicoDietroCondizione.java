@@ -62,6 +62,11 @@ public class NemicoDietroCondizione implements ICondizione, IStrategiaComponent,
         if (orientamentoTankTurno.getNumero() == 3 && posizioneTankTurno.getX()<posizioneTankAvversario.getX()) {
             verifica = true;
         }
+        if (verifica) {
+            System.out.println("NEMICO DIETRO");
+        } else {
+            System.out.println("NEMICO NON DIETRO");
+        }
         if (!this.vera) {
             verifica = !verifica;
         }

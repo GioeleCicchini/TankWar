@@ -122,6 +122,7 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
         tankTurno.setOrientamento(mioOrientamento);
         List<ICasella> caselleDestra = campo.getCaselleByOrientamento(casellaPartenza, mioOrientamento);
         if (!caselleDestra.isEmpty()) {
+            System.out.println("Avanzo a DESTRA");
             casellaDestinazione = caselleDestra.get(0);
             if (casellaDestinazione.isDisponibile()) {
 
@@ -132,6 +133,7 @@ public class AvanzaDestraAzione implements IAzione, IStrategiaComponent, Seriali
                 casellaPartenza.togliTank();
 
                 if (casellaDestinazione.getBombaTank() == tankAvversario) { //NullPonterException?
+                    System.out.println("Esplosa in ("+ casellaDestinazione.getPosizione().getX()+","+casellaDestinazione.getPosizione().getY()+")");
                     casellaDestinazione.togliBombaTank();
                     tankTurno.colpito(1);
                 }

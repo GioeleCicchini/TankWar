@@ -58,9 +58,9 @@ public class ImpostareBattaglia implements Initializable {
 
         List<Map> strategias = SimulareBattagliaHandler.getSingletonInstance().getStrategieList();
 
-        for(Map strategia : strategias){
-            boolean premuto = false;
-            Button nomeStrategia = new Button((String) strategia.get("nome"));
+        for(final Map strategia : strategias){
+            final boolean premuto = false;
+            final Button nomeStrategia = new Button((String) strategia.get("nome"));
             nomeStrategia.setPrefHeight(76.0);
             nomeStrategia.setPrefWidth(313.0);
             nomeStrategia.setStyle("-fx-background-color: #F63C1A;-fx-border-width:2px;-fx-border-color:black;");
