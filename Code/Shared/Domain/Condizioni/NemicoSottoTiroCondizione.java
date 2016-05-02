@@ -162,8 +162,10 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
     public Map getMap() {
         Map condizione = new HashMap();
         List valoriCorrenti = new ArrayList<>();
-        for (Integer v : this.valori) {
-            valoriCorrenti.add(v);
+        if(valori != null) {
+            for (Integer v : this.valori) {
+                valoriCorrenti.add(v);
+            }
         }
         condizione.put("id", this.id);
         condizione.put("idType", this.idType);
