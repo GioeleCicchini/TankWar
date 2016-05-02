@@ -5,17 +5,23 @@ import Shared.Controllers.SimulareBattagliaHandler;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
  * Created by gioele on 22/03/16.
  */
 public class ImpostareBattaglia implements Initializable {
+    public VBox StrategieSpace;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        inizio();
 
     }
 
@@ -36,12 +42,18 @@ public class ImpostareBattaglia implements Initializable {
         }
 
 
-        System.out.println("Sono qui inizio");
-
-
 
         ViewTransaction.getSingletonInstance().goToBattaglia(startBattagliaButton);
 
+    }
+
+
+    public void inizio(){
+
+        List<Map> strategias = SimulareBattagliaHandler.getSingletonInstance().getStrategieList();
+
+
+        System.out.println("qui");
     }
 
 

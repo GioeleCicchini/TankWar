@@ -54,13 +54,13 @@ public class NemicoSinistraCondizione implements ICondizione, IStrategiaComponen
         if (orientamentoTankTurno.getNumero() == 0 && posizioneTankTurno.getX()>posizioneTankAvversario.getX()) {
             verifica = true;
         }
-        if (orientamentoTankTurno.getNumero() == 1 && posizioneTankTurno.getY()<posizioneTankAvversario.getY()) {
+        if (orientamentoTankTurno.getNumero() == 1 && posizioneTankTurno.getY()>posizioneTankAvversario.getY()) {
             verifica = true;
         }
         if (orientamentoTankTurno.getNumero() == 2 && posizioneTankTurno.getX()<posizioneTankAvversario.getX()) {
             verifica = true;
         }
-        if (orientamentoTankTurno.getNumero() == 3 && posizioneTankTurno.getY()>posizioneTankAvversario.getY()) {
+        if (orientamentoTankTurno.getNumero() == 3 && posizioneTankTurno.getY()<posizioneTankAvversario.getY()) {
             verifica = true;
         }
         if (!this.vera) {

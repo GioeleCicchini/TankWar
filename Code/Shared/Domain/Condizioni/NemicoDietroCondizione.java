@@ -50,13 +50,13 @@ public class NemicoDietroCondizione implements ICondizione, IStrategiaComponent,
         Posizione posizioneTankTurno = casellaTankTurno.getPosizione();
         Posizione posizioneTankAvversario = casellaTankAvversario.getPosizione();
         OrientamentoEnum orientamentoTankTurno = tankTurno.getOrientamento();
-        if (orientamentoTankTurno.getNumero() == 0 && posizioneTankTurno.getY()>posizioneTankAvversario.getY()) {
+        if (orientamentoTankTurno.getNumero() == 0 && posizioneTankTurno.getY()<posizioneTankAvversario.getY()) {
             verifica = true;
         }
         if (orientamentoTankTurno.getNumero() == 1 && posizioneTankTurno.getX()>posizioneTankAvversario.getX()) {
             verifica = true;
         }
-        if (orientamentoTankTurno.getNumero() == 2 && posizioneTankTurno.getY()<posizioneTankAvversario.getY()) {
+        if (orientamentoTankTurno.getNumero() == 2 && posizioneTankTurno.getY()>posizioneTankAvversario.getY()) {
             verifica = true;
         }
         if (orientamentoTankTurno.getNumero() == 3 && posizioneTankTurno.getX()<posizioneTankAvversario.getX()) {

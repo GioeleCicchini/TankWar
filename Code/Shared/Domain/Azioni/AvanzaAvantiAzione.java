@@ -101,8 +101,10 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
     public Map getMap() {
         Map azione = new HashMap();
         List valoriCorrenti = new ArrayList<>();
-        for (Integer v : this.valori) {
-            valoriCorrenti.add(v);
+        if(valori != null) {
+            for (Integer v : this.valori) {
+                valoriCorrenti.add(v);
+            }
         }
         azione.put("id", this.id);
         azione.put("idTypeAz", this.idTypeAz);

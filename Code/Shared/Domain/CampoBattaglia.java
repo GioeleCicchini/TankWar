@@ -92,7 +92,7 @@ public class CampoBattaglia implements Serializable {
         switch (orientamento.toString()) {
             case "N":
               colonnaAttuale = this.campo[posizioneCasella.getX()];
-                for (int y = posizioneCasella.getY()+1;y<colonnaAttuale.length;y++) {
+                for (int y = posizioneCasella.getY()-1;y>=0;y--) {
                     campoAttuale.add(colonnaAttuale[y]);
                 }
                 break;
@@ -106,7 +106,7 @@ public class CampoBattaglia implements Serializable {
                 break;
             case "S":
                 colonnaAttuale = this.campo[posizioneCasella.getX()];
-                for (int y = posizioneCasella.getY()-1;y>=0;y--) {
+                for (int y = posizioneCasella.getY()+1;y<colonnaAttuale.length;y++) {
                     campoAttuale.add(colonnaAttuale[y]);
                 }
                 break;
