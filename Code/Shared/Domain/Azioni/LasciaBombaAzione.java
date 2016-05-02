@@ -123,6 +123,8 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
             System.out.println("BOMBA LASCIATA NELLA CASELLA " + casellaTankTurno.getPosizione().getX() + "," + casellaTankTurno.getPosizione().getY());
             casellaTankTurno.setBombaTank(tankTurno);
             tankTurno.setBombeRimanenti(bombeTankTurno--);
+        } else {
+            System.out.println("Non lascio una bomba in " + casellaTankTurno.getPosizione().getX() + "," + casellaTankTurno.getPosizione().getY());
         }
         return true;
     }
