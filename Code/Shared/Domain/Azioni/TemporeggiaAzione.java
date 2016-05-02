@@ -117,6 +117,7 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
 
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+        System.out.println("Sto temporeggiando");
         return true;
     }
 

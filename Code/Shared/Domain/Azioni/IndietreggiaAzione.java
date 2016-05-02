@@ -134,6 +134,8 @@ public class IndietreggiaAzione implements IAzione, IStrategiaComponent, Seriali
 
                 casellaPartenza.togliTank();
 
+                System.out.println("Sto indietreggiando");
+
                 if (casellaDestinazione.getBombaTank() == tankAvversario) { //NullPonterException?
                     casellaDestinazione.togliBombaTank();
                     tankTurno.colpito(1);
