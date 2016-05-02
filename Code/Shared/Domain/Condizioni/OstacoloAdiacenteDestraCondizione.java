@@ -55,6 +55,11 @@ public class OstacoloAdiacenteDestraCondizione implements ICondizione, IStrategi
         } else {
             verifica = true;
         }
+        if (verifica) {
+            System.out.println("OSTACOLO DESTRA");
+        } else {
+            System.out.println("OSTACOLO NON DESTRA");
+        }
         if (!this.vera) {
             verifica = !verifica;
         }
