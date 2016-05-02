@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -12,6 +13,16 @@
             <Label prefHeight="238.0" prefWidth="522.0" text="Imposta Battaglia">
                <font>
                   <Font size="38.0" />
+               </font>
+            </Label>
+            <Label prefHeight="172.0" prefWidth="222.0" text="Strategia selezionata">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="StrategiaSelezionata" prefHeight="139.0" prefWidth="298.0" text="Label">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
@@ -27,11 +38,17 @@
       </HBox>
       <HBox prefHeight="253.0" prefWidth="1920.0">
          <children>
-            <VBox prefHeight="253.0" prefWidth="637.0" fx:id="StrategieSpace" />
+            <VBox fx:id="StrategieSpace" prefHeight="253.0" prefWidth="637.0" />
             <Button fx:id="startBattagliaButton" mnemonicParsing="false" onMouseClicked="#startBattaglia" prefHeight="249.0" prefWidth="446.0" text="Combatti">
                <font>
                   <Font size="43.0" />
                </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
             </Button>
          </children>
       </HBox>
