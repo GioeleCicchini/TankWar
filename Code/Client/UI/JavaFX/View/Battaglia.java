@@ -94,7 +94,7 @@ public class Battaglia implements Initializable {
         PlayerCorrente.setPrefHeight(10);
         PlayerCorrente.setPrefWidth(10);
 
-        PlayerCorrente.setPadding(new Insets(0,0,0,(dimensioneCampoPixel/dimensioneCampoCelle)/4));
+      //  PlayerCorrente.setPadding(new Insets(0,0,0,(dimensioneCampoPixel/dimensioneCampoCelle)/4));
 
         // Creazione Secondo Player
 
@@ -108,7 +108,7 @@ public class Battaglia implements Initializable {
         PlayerAvversario.setPrefHeight(10);
         PlayerAvversario.setPrefWidth(10);
 
-        PlayerAvversario.setPadding(new Insets(0,0,0,(dimensioneCampoPixel/dimensioneCampoCelle)/4));
+     //   PlayerAvversario.setPadding(new Insets(0,0,0,(dimensioneCampoPixel/dimensioneCampoCelle)/4));
 
         // Posizionamento Tank
 
@@ -246,7 +246,7 @@ public class Battaglia implements Initializable {
                             }
                         });
                         i++;
-                        Thread.sleep(500);
+                        Thread.sleep(100);
 
                     }
                     else{

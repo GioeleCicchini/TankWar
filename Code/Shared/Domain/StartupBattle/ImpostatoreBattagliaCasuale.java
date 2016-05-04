@@ -40,16 +40,26 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
         int dimX=campo.getDimensioneX();
         int dimY=campo.getDimensioneY();
 
+
         ICasella casellaAttuale;
         Integer posX;
         Integer posY;
         Posizione posizione;
+        int PosizionamentoDestraSinistra = 0;
+
         for (ITank t: tank) {
             do {
-                posX=RandomMinMax.randInt(0,dimX-1);
+
+                if((PosizionamentoDestraSinistra%2) == 0) {
+                    posX = 0;
+                }
+                else{
+                    posX = dimX-1;
+                }
                 posY=RandomMinMax.randInt(0,dimY-1);
                  posizione = new Posizione(posX,posY);
                 casellaAttuale = campo.getCasella(posizione);
+                PosizionamentoDestraSinistra++;
             } while(!casellaAttuale.isDisponibile());
             campo.posizionaTank(t,posizione);
             casellaAttuale.setPosizione(posizione);
