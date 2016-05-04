@@ -13,9 +13,11 @@ import java.util.Map;
 public class SparaEvento implements IEvento {
 
     private List<ICasella> casellePropagazione = new ArrayList<>();
+    private ICasella casellaTank;
 
-    public SparaEvento(List casellePropagazione) {
+    public SparaEvento(List casellePropagazione,ICasella casellaTank) {
         this.casellePropagazione = casellePropagazione;
+        this.casellaTank = casellaTank;
     }
 
     @Override
@@ -26,6 +28,11 @@ public class SparaEvento implements IEvento {
             caselleCorrenti.add(c);
         }
         evento.put("casellePropagazione",caselleCorrenti);
+        if (casellaTank != null) {
+            evento.put("casellaTank",casellaTank.getMap());
+        } else {
+            evento.put("casellaTank",null);
+        }
         evento.put("nomeEvento","SparaEvento");
         return evento;
     }

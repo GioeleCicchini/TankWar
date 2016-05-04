@@ -1,7 +1,10 @@
 package Shared.Domain.Azioni;
 
+import Shared.Controllers.SimulareBattagliaHandler;
 import Shared.Domain.CampoBattaglia;
 import Shared.Domain.Caselle.ICasella;
+import Shared.Domain.Eventi.IEvento;
+import Shared.Domain.Eventi.SparaEvento;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
 import Shared.Util.OrientamentoEnum;
@@ -123,6 +126,8 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
         OrientamentoEnum mioOrientamento = tankTurno.getOrientamento();
         List<ICasella> caselleDavanti = campo.getCaselleByOrientamento(miaCasella,mioOrientamento);
         Integer raggioSparo= tankTurno.getMaxVisioneSparo();
+        List<ICasella> caselle = new ArrayList<>();
+        ICasella casellaTank = null;
         if (!caselleDavanti.isEmpty()){
             boolean esci = false;
             for (int i=0; i<raggioSparo && !esci; i++ ){
@@ -130,7 +135,8 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
                     Integer potenzaArma = tankTurno.getPotenzaArma();
                     caselleDavanti.get(i).getTank().colpito(potenzaArma);
                     esci=true;
-                    System.out.println("L'Ho PRESOOOOOOOOOOOO");
+                    casellaTank = caselleDavanti.get(i);
+                    System.out.println("L'HO PRESOOOOOOOOOOOO");
                 }
                 else {
                     if (!caselleDavanti.get(i).isDisponibile()){
@@ -138,10 +144,20 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
                         System.out.println("Sparo e Mancato il bersaglio");
                     }
                 }
-
+                if (!esci) {
+                    caselle.add(caselleDavanti.get(i));
+                }
             }
         }
+        IEvento evento = new SparaEvento(caselle,casellaTank);
+        List<IEvento> eventi = new ArrayList<>();
+        eventi.add(evento);
+        this.fireEvent(eventi);
+        return true;
+    }
 
-        return false;
+    @Override
+    public void fireEvent(List eventi) {
+        SimulareBattagliaHandler.getSingletonInstance().setUltimoEvento(eventi);
     }
 }

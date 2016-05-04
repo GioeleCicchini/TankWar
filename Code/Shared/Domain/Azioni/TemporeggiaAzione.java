@@ -1,6 +1,9 @@
 package Shared.Domain.Azioni;
 
+import Shared.Controllers.SimulareBattagliaHandler;
 import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Eventi.IEvento;
+import Shared.Domain.Eventi.TemporeggiaEvento;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
 
@@ -118,7 +121,16 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         System.out.println("Sto temporeggiando");
+        IEvento evento = new TemporeggiaEvento();
+        List<IEvento> eventi = new ArrayList<>();
+        eventi.add(evento);
+        this.fireEvent(eventi);
         return true;
+    }
+
+    @Override
+    public void fireEvent(List eventi) {
+        SimulareBattagliaHandler.getSingletonInstance().setUltimoEvento(eventi);
     }
 
 }

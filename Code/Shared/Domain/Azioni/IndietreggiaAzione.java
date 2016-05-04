@@ -1,7 +1,10 @@
 package Shared.Domain.Azioni;
 
+import Shared.Controllers.SimulareBattagliaHandler;
 import Shared.Domain.CampoBattaglia;
 import Shared.Domain.Caselle.ICasella;
+import Shared.Domain.Eventi.IEvento;
+import Shared.Domain.Eventi.MovimentoEvento;
 import Shared.Domain.IStrategiaComponent;
 import Shared.Domain.ITank;
 import Shared.Util.OrientamentoEnum;
@@ -143,7 +146,15 @@ public class IndietreggiaAzione implements IAzione, IStrategiaComponent, Seriali
                 }
             }
         }
+        IEvento evento = new MovimentoEvento(tankTurno);
+        List<IEvento> eventi = new ArrayList<>();
+        eventi.add(evento);
+        this.fireEvent(eventi);
         return true;
     }
 
+    @Override
+    public void fireEvent(List eventi) {
+        SimulareBattagliaHandler.getSingletonInstance().setUltimoEvento(eventi);
+    }
 }

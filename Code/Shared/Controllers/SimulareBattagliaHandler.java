@@ -2,9 +2,11 @@ package Shared.Controllers;
 
 
 import Shared.Domain.*;
+import Shared.Domain.Eventi.IEvento;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +27,7 @@ public class SimulareBattagliaHandler {
 
     private Player playerLoggato;
     private Battaglia battaglia = null;
+    private List<IEvento> eventi = new ArrayList<>();
 
     private SimulareBattagliaHandler() {
         this.playerLoggato = LoginHandler.getSingletonInstance().getPlayer();
@@ -72,6 +75,20 @@ public class SimulareBattagliaHandler {
 
     public Map getCampoBattaglia(){
         return battaglia.getMap();
+    }
+
+    public Map getEventi() {
+        Map map = new HashMap();
+        List<Map> eventiCorrenti = new ArrayList<>();
+        for (IEvento evento: this.eventi) {
+            eventiCorrenti.add(evento.getMap());
+        }
+        map.put("eventi",eventiCorrenti);
+        return map;
+    }
+
+    public void setUltimoEvento(List eventi) {
+        this.eventi = eventi;
     }
 
 
