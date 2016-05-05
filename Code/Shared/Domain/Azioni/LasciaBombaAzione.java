@@ -124,7 +124,7 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
         IEvento eventoCasella = null;
         Integer bombeTankTurno = tankTurno.getBombeRimanenti();
         ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
-        IEvento evento;
+        IEvento evento = null;
         if (bombeTankTurno > 0 && casellaTankTurno.getBombaTank() == null) {
             System.out.println("BOMBA LASCIATA NELLA CASELLA " + casellaTankTurno.getPosizione().getX() + "," + casellaTankTurno.getPosizione().getY());
             ICasella bombaCasella = new BombaCasella(casellaTankTurno.getPosizione());
@@ -134,7 +134,9 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
             tankTurno.setBombeRimanenti(bombeTankTurno--);
         }
         List<IEvento> eventi = new ArrayList<>();
-        eventi.add(evento);
+        if(evento != null) {
+            eventi.add(evento);
+        }
         this.fireEvent(eventi);
         return true;
     }
