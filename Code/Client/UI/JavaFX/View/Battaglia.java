@@ -1,6 +1,7 @@
 
 package Client.UI.JavaFX.View;
 
+import Client.UI.JavaFX.View.VEventi.VMovimentoEvento;
 import Client.UI.UIUtils.ViewTransaction;
 import Shared.Controllers.SimulareBattagliaHandler;
 import Shared.Domain.Strategia;
@@ -108,11 +109,15 @@ public class Battaglia implements Initializable {
         PlayerAvversario.setPrefHeight(10);
         PlayerAvversario.setPrefWidth(10);
 
+
      //   PlayerAvversario.setPadding(new Insets(0,0,0,(dimensioneCampoPixel/dimensioneCampoCelle)/4));
 
         // Posizionamento Tank
 
         Map TankPersonale = (Map)Battaglia.get("TankPersonale");
+
+        PlayerCorrente.setId((String) TankPersonale.get("id"));
+
         Map CasellaPosizioneTankPersonale = (Map)TankPersonale.get("CasellaPosizione");
         int OrientamentoTankPersonale = (int)TankPersonale.get("Orientamento");
         double OrientamentoGradiTankPersonale = 0;
@@ -133,6 +138,9 @@ public class Battaglia implements Initializable {
 
 
         Map TankAvversario = (Map)Battaglia.get("TankAvversario");
+
+        PlayerAvversario.setId((String) TankAvversario.get("id"));
+
         Map CasellaPosizioneTankAvversario = (Map)TankAvversario.get("CasellaPosizione");
         int OrientamentoTankAvversario = (int)TankAvversario.get("Orientamento");
         double OrientamentoGradiTankAvversario = 0;
@@ -157,7 +165,9 @@ public class Battaglia implements Initializable {
         CampoBattagliaGrid.add(PlayerAvversario, (int)PosizioneTankAvversario.get("X"), (int)PosizioneTankAvversario.get("Y"));
 
 
-
+        List PlayerLabel = new ArrayList<>();
+        PlayerLabel.add(TankPersonale);
+        PlayerLabel.add(TankAvversario);
 
 
         //QUI FINISCE IL SETTAGGIO GRAFICA
@@ -181,67 +191,12 @@ public class Battaglia implements Initializable {
 
                         Map BattagliaThread = simulareBattagliaHandler.getCampoBattaglia();
 
-
-                        Map TankPersonaleThread = (Map) BattagliaThread.get("TankPersonale");
-                        Map CasellaPosizioneTankPersonaleThread = (Map) TankPersonaleThread.get("CasellaPosizione");
-                        int OrientamentoTankPersonaleThread = (int) TankPersonaleThread.get("Orientamento");
-                        double OrientamentoGradiTankPersonaleThread = 0;
-                        switch (OrientamentoTankPersonaleThread) {
-                            case 0:
-                                OrientamentoGradiTankPersonaleThread = 0;
-                                break;
-                            case 1:
-                                OrientamentoGradiTankPersonaleThread = 90;
-                                break;
-                            case 2:
-                                OrientamentoGradiTankPersonaleThread = 180;
-                                break;
-                            case 3:
-                                OrientamentoGradiTankPersonaleThread = -90;
-
-                        }
-
-
-                        PlayerCorrente.setRotate(OrientamentoGradiTankPersonaleThread);
-
-                        final Map PosizioneTankPersonaleThread = (Map) CasellaPosizioneTankPersonaleThread.get("Posizione");
-
-
-                        Map TankAvversarioThread = (Map) BattagliaThread.get("TankAvversario");
-                        Map CasellaPosizioneTankAvversarioThread = (Map) TankAvversarioThread.get("CasellaPosizione");
-                        int OrientamentoTankAvversarioThread = (int) TankAvversarioThread.get("Orientamento");
-                        double OrientamentoGradiTankAvversarioThread = 0;
-                        switch (OrientamentoTankAvversarioThread) {
-                            case 0:
-                                OrientamentoGradiTankAvversarioThread = 0;
-                                break;
-                            case 1:
-                                OrientamentoGradiTankAvversarioThread = 90;
-                                break;
-                            case 2:
-                                OrientamentoGradiTankAvversarioThread = 180;
-                                break;
-                            case 3:
-                                OrientamentoGradiTankAvversarioThread = -90;
-
-                        }
-                        PlayerAvversario.setRotate(OrientamentoGradiTankAvversarioThread);
-
-                        final Map PosizioneTankAvversarioThread = (Map) CasellaPosizioneTankAvversarioThread.get("Posizione");
-
+                        VMovimentoEvento prova = new VMovimentoEvento(CampoBattagliaGrid);
 
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-
                                 label.setText("" + finalI);
-                                CampoBattagliaGrid.getChildren().remove(PlayerCorrente);
-                                CampoBattagliaGrid.getChildren().remove(PlayerAvversario);
-
-
-                                CampoBattagliaGrid.add(PlayerCorrente, (int) PosizioneTankPersonaleThread.get("X"), (int) PosizioneTankPersonaleThread.get("Y"));
-                                CampoBattagliaGrid.add(PlayerAvversario, (int) PosizioneTankAvversarioThread.get("X"), (int) PosizioneTankAvversarioThread.get("Y"));
-
 
                             }
                         });
