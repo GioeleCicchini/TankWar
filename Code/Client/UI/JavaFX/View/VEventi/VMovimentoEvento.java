@@ -17,9 +17,10 @@ public class VMovimentoEvento implements VEvento{
 
     private GridPane CampoBattaglia;
 
-    public VMovimentoEvento(GridPane campoBattaglia){
-        this.CampoBattaglia = campoBattaglia;
+    public VMovimentoEvento(){
+
     }
+
 
 
     @Override
@@ -65,6 +66,10 @@ public class VMovimentoEvento implements VEvento{
 
     }
 
+    @Override
+    public void setGrid(GridPane grid) {
+        this.CampoBattaglia = grid;
+    }
 
 
 }

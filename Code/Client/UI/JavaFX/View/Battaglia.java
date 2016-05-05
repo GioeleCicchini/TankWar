@@ -1,6 +1,7 @@
 
 package Client.UI.JavaFX.View;
 
+import Client.UI.JavaFX.View.VEventi.VEvento;
 import Client.UI.JavaFX.View.VEventi.VMovimentoEvento;
 import Client.UI.UIUtils.ViewTransaction;
 import Shared.Controllers.SimulareBattagliaHandler;
@@ -116,7 +117,7 @@ public class Battaglia implements Initializable {
 
         Map TankPersonale = (Map)Battaglia.get("TankPersonale");
 
-        PlayerCorrente.setId((String) TankPersonale.get("id"));
+        PlayerCorrente.setId((String) TankPersonale.get("Id"));
 
         Map CasellaPosizioneTankPersonale = (Map)TankPersonale.get("CasellaPosizione");
         int OrientamentoTankPersonale = (int)TankPersonale.get("Orientamento");
@@ -139,7 +140,7 @@ public class Battaglia implements Initializable {
 
         Map TankAvversario = (Map)Battaglia.get("TankAvversario");
 
-        PlayerAvversario.setId((String) TankAvversario.get("id"));
+        PlayerAvversario.setId((String) TankAvversario.get("Id"));
 
         Map CasellaPosizioneTankAvversario = (Map)TankAvversario.get("CasellaPosizione");
         int OrientamentoTankAvversario = (int)TankAvversario.get("Orientamento");
@@ -166,8 +167,8 @@ public class Battaglia implements Initializable {
 
 
         List PlayerLabel = new ArrayList<>();
-        PlayerLabel.add(TankPersonale);
-        PlayerLabel.add(TankAvversario);
+        PlayerLabel.add(PlayerCorrente);
+        PlayerLabel.add(PlayerAvversario);
 
 
         //QUI FINISCE IL SETTAGGIO GRAFICA
@@ -189,9 +190,16 @@ public class Battaglia implements Initializable {
 
                         SimulareBattagliaHandler.getSingletonInstance().faiMossa();
 
-                        Map BattagliaThread = simulareBattagliaHandler.getCampoBattaglia();
+                        List<Map> Eventi = (List)simulareBattagliaHandler.getEventiMap().get("eventi");
 
-                        VMovimentoEvento prova = new VMovimentoEvento(CampoBattagliaGrid);
+
+                        for (Map e : Eventi){
+                            Class classe = Class.forName("Client.UI.JavaFX.View.VEventi.V"+e.get("nomeEvento"));
+                            VEvento eventoIstanziato = (VEvento) classe.newInstance();
+                            eventoIstanziato.setGrid(CampoBattagliaGrid);
+                            eventoIstanziato.eseguiti(e,PlayerLabel);
+
+                        }
 
                         Platform.runLater(new Runnable() {
                             @Override
