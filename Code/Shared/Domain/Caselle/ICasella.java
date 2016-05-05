@@ -25,4 +25,6 @@ public interface ICasella {
     public ITank getBombaTank();
     public Map getMap();
     public IEvento eseguiti(CampoBattaglia campo);
+
+    void setBombaTank(ITank tank);
 }

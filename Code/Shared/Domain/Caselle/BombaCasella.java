@@ -108,4 +108,9 @@ public class BombaCasella implements ICasella {
         }
         return risultato;
     }
+
+    @Override
+    public void setBombaTank(ITank tank) {
+        this.bombaTank = tank;
+    }
 }

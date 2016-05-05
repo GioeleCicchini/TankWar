@@ -88,6 +88,11 @@ public class PlainCasella implements ICasella,Serializable {
     }
 
     @Override
+    public void setBombaTank(ITank tank) {
+
+    }
+
+    @Override
     public void setPosizione(Posizione posizione) {
         this.posizione = posizione;
     }
