@@ -2,24 +2,20 @@
 package Client.UI.JavaFX.View;
 
 import Client.UI.JavaFX.View.VEventi.VEvento;
-import Client.UI.JavaFX.View.VEventi.VMovimentoEvento;
 import Client.UI.UIUtils.ViewTransaction;
 import Shared.Controllers.SimulareBattagliaHandler;
-import Shared.Domain.Strategia;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
+
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import org.hibernate.annotations.SourceType;
 
 
 import java.net.URL;
@@ -34,7 +30,7 @@ public class Battaglia implements Initializable {
     public GridPane CampoBattagliaGrid;
     public static double dimensioneCampoCelle = 10;
     public static double dimensioneCampoPixel ;
-    public Label label;
+    public Label numeroTurni;
 
 
     @Override
@@ -171,10 +167,17 @@ public class Battaglia implements Initializable {
         PlayerLabel.add(PlayerAvversario);
 
 
+
+
         //QUI FINISCE IL SETTAGGIO GRAFICA
 
         //Si battaglia ragazzi
         Integer i=0;
+
+            // Inizializzo tutti I parametri NODE da passare ai vari eventi
+        List<Node> ParametriEventi = new ArrayList<>();
+        ParametriEventi.add(CampoBattagliaGrid);
+        ParametriEventi.add(numeroTurni);
 
 
         Task task = new Task<Void>() {
@@ -194,30 +197,18 @@ public class Battaglia implements Initializable {
 
 
                         for (Map e : Eventi){
-                            if(!e.get("nomeEvento").equals("InCorsoEvento")) {
                                 Class classe = Class.forName("Client.UI.JavaFX.View.VEventi.V" + e.get("nomeEvento"));
                                 VEvento eventoIstanziato = (VEvento) classe.newInstance();
-                                eventoIstanziato.setGrid(CampoBattagliaGrid);
+                                eventoIstanziato.setParametriGui(ParametriEventi);
                                 eventoIstanziato.eseguiti(e, PlayerLabel);
-                            }
 
                         }
 
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                label.setText("" + finalI);
-
-                            }
-                        });
                         i++;
                         Thread.sleep(100);
 
                     }
-                    else{
 
-
-                    }
                 }
             }
         };

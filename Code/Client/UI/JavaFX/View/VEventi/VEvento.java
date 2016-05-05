@@ -1,5 +1,6 @@
 package Client.UI.JavaFX.View.VEventi;
 
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
@@ -13,7 +14,7 @@ public interface VEvento {
 
    void eseguiti(Map Evento, List<Label> Player);
 
-    void setGrid(GridPane grid);
+    void setParametriGui(List<Node> Parametri);
 
 
 

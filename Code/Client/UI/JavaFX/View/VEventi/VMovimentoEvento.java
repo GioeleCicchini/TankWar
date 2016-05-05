@@ -55,14 +55,12 @@ public class VMovimentoEvento implements VEvento{
 
                 final Map PosizioneTank = (Map) CasellaPosizioneTank.get("Posizione");
 
-                //CampoBattaglia.add(new Button(),1,1);
-
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         CampoBattaglia.getChildren().remove(playerLabel);
                         CampoBattaglia.add(playerLabel,(int)PosizioneTank.get("X"),(int)PosizioneTank.get("Y"));
-                        
+
                     }
                 });
 
@@ -77,9 +75,14 @@ public class VMovimentoEvento implements VEvento{
 
     }
 
-    @Override
     public void setGrid(GridPane grid) {
         this.CampoBattaglia = grid;
+    }
+
+
+    @Override
+    public void setParametriGui(List<Node> Parametri) {
+        setGrid((GridPane)Parametri.get(0));
     }
 
 

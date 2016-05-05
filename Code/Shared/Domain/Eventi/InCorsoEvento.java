@@ -19,7 +19,7 @@ public class InCorsoEvento implements IEvento {
     @Override
     public Map getMap() {
         Map evento = new HashMap();
-        evento.put("turno",turno);
+        evento.put("turno",turno.getMap());
         evento.put("nomeEvento","InCorsoEvento");
         return evento;
     }

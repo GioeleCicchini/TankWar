@@ -21,7 +21,7 @@
                   <Font size="58.0" />
                </font>
             </Label>
-            <Label prefHeight="73.0" prefWidth="123.0" text="Label" fx:id="label" />
+            <Label prefHeight="73.0" prefWidth="200.0" text="" fx:id="numeroTurni" />
          </children>
       </HBox>
       <VBox prefHeight="862.0" prefWidth="490.0" style="-fx-background-color: #01579B;" />
