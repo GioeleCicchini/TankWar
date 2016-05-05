@@ -67,12 +67,6 @@ public class VMovimentoEvento implements VEvento{
             }
         }
 
-
-
-
-
-
-
     }
 
     public void setGrid(GridPane grid) {
@@ -83,6 +77,11 @@ public class VMovimentoEvento implements VEvento{
     @Override
     public void setParametriGui(List<Node> Parametri) {
         setGrid((GridPane)Parametri.get(0));
+    }
+
+    @Override
+    public void setTankOnBattleGui(Map tankOnBattleGui) {
+
     }
 
 

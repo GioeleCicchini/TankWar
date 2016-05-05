@@ -180,6 +180,11 @@ public class Battaglia implements Initializable {
         ParametriEventi.add(numeroTurni);
 
 
+        final Map TankInBattle = new HashMap<>();
+        TankInBattle.put("TankPersonale",TankPersonale);
+        TankInBattle.put("TankAvversario",TankAvversario);
+
+
         Task task = new Task<Void>() {
             @Override
             public Void call() throws Exception {
@@ -200,6 +205,7 @@ public class Battaglia implements Initializable {
                                 Class classe = Class.forName("Client.UI.JavaFX.View.VEventi.V" + e.get("nomeEvento"));
                                 VEvento eventoIstanziato = (VEvento) classe.newInstance();
                                 eventoIstanziato.setParametriGui(ParametriEventi);
+                                eventoIstanziato.setTankOnBattleGui(TankInBattle);
                                 eventoIstanziato.eseguiti(e, PlayerLabel);
 
                         }

@@ -86,6 +86,7 @@ public class BombaCasella implements ICasella {
         else{
             casella.put("tankOccupanteCasella", null);
         }
+
         if(this.bombaTank != null) {
             casella.put("bombaTank", this.bombaTank.getId());
         }

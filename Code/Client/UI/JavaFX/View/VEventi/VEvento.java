@@ -16,6 +16,8 @@ public interface VEvento {
 
     void setParametriGui(List<Node> Parametri);
 
+    void setTankOnBattleGui(Map tankOnBattleGui);
+
 
 
 

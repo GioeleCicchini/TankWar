@@ -51,4 +51,9 @@ public class VInCorsoEvento implements VEvento {
         setNumeroTurni((Label)Parametri.get(1));
     }
 
+    @Override
+    public void setTankOnBattleGui(Map tankOnBattleGui) {
+
+    }
+
 }
