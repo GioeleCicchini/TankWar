@@ -194,10 +194,12 @@ public class Battaglia implements Initializable {
 
 
                         for (Map e : Eventi){
-                            Class classe = Class.forName("Client.UI.JavaFX.View.VEventi.V"+e.get("nomeEvento"));
-                            VEvento eventoIstanziato = (VEvento) classe.newInstance();
-                            eventoIstanziato.setGrid(CampoBattagliaGrid);
-                            eventoIstanziato.eseguiti(e,PlayerLabel);
+                            if(!e.get("nomeEvento").equals("InCorsoEvento")) {
+                                Class classe = Class.forName("Client.UI.JavaFX.View.VEventi.V" + e.get("nomeEvento"));
+                                VEvento eventoIstanziato = (VEvento) classe.newInstance();
+                                eventoIstanziato.setGrid(CampoBattagliaGrid);
+                                eventoIstanziato.eseguiti(e, PlayerLabel);
+                            }
 
                         }
 

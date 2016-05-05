@@ -1,5 +1,7 @@
 package Client.UI.JavaFX.View.VEventi;
 
+import Client.UI.JavaFX.View.Runnable;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,7 +31,7 @@ public class VMovimentoEvento implements VEvento{
         Map tankTurno = (Map)Evento.get("tankTurno");
 
         for(Label playerLabel : Player){
-            if(playerLabel.getId().equals(tankTurno.get("id"))){
+            if(playerLabel.getId().equals(tankTurno.get("Id"))){
                 Map CasellaPosizioneTank = (Map) tankTurno.get("CasellaPosizione");
                 int OrientamentoTank = (int) tankTurno.get("Orientamento");
                 double OrientamentoGradiTank = 0;
@@ -53,8 +55,17 @@ public class VMovimentoEvento implements VEvento{
 
                 final Map PosizioneTank = (Map) CasellaPosizioneTank.get("Posizione");
 
-                CampoBattaglia.getChildren().remove(Player);
-                CampoBattaglia.add(playerLabel,(int)PosizioneTank.get("X"),(int)PosizioneTank.get("Y"));
+                //CampoBattaglia.add(new Button(),1,1);
+
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        CampoBattaglia.getChildren().remove(playerLabel);
+                        CampoBattaglia.add(playerLabel,(int)PosizioneTank.get("X"),(int)PosizioneTank.get("Y"));
+                        
+                    }
+                });
+
             }
         }
 
