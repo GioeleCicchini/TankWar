@@ -121,7 +121,6 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
 
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
-        IEvento eventoCasella = null;
         Integer bombeTankTurno = tankTurno.getBombeRimanenti();
         ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
         IEvento evento;
@@ -129,6 +128,7 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
             System.out.println("BOMBA LASCIATA NELLA CASELLA " + casellaTankTurno.getPosizione().getX() + "," + casellaTankTurno.getPosizione().getY());
             ICasella bombaCasella = new BombaCasella(casellaTankTurno.getPosizione());
             bombaCasella.setTank(tankTurno);
+            bombaCasella.setBombaTank(tankTurno);
             campo.setCasella(bombaCasella,casellaTankTurno.getPosizione());
             evento = new PiazzamentoBombaEvento(casellaTankTurno);
             tankTurno.setBombeRimanenti(bombeTankTurno--);
