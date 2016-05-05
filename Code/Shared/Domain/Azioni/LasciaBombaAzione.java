@@ -2,6 +2,7 @@ package Shared.Domain.Azioni;
 
 import Shared.Controllers.SimulareBattagliaHandler;
 import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Caselle.BombaCasella;
 import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.Eventi.PiazzamentoBombaEvento;
 import Shared.Domain.Eventi.IEvento;
@@ -120,11 +121,14 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
 
     @Override
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
+        IEvento eventoCasella = null;
         Integer bombeTankTurno = tankTurno.getBombeRimanenti();
         ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
         if (bombeTankTurno > 0 && casellaTankTurno.getBombaTank() != tankTurno) {
             System.out.println("BOMBA LASCIATA NELLA CASELLA " + casellaTankTurno.getPosizione().getX() + "," + casellaTankTurno.getPosizione().getY());
-            casellaTankTurno.setBombaTank(tankTurno);
+            ICasella bombaCasella = new BombaCasella(casellaTankTurno.getPosizione());
+            bombaCasella.setTank(tankTurno);
+            campo.setCasella(bombaCasella,casellaTankTurno.getPosizione());
             tankTurno.setBombeRimanenti(bombeTankTurno--);
         }
         IEvento evento = new PiazzamentoBombaEvento(casellaTankTurno);

@@ -1,5 +1,8 @@
 package Shared.Domain.Caselle;
 
+import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Eventi.EsplosioneBombaEvento;
+import Shared.Domain.Eventi.IEvento;
 import Shared.Domain.ITank;
 import Shared.Domain.Posizione;
 
@@ -16,6 +19,12 @@ public class BombaCasella implements ICasella {
     private String id;
     public ITank tankOccupanteCasella = null;
     public ITank bombaTank = null;
+
+    public BombaCasella() {}
+
+    public BombaCasella(Posizione posizione) {
+        this.posizione = posizione;
+    }
 
     @Override
     public String getId() {
@@ -44,21 +53,6 @@ public class BombaCasella implements ICasella {
     }
 
     @Override
-    public ITank getBombaTank() {
-        return bombaTank;
-    }
-
-    @Override
-    public void setBombaTank(ITank tank) {
-        this.bombaTank = tank;
-    }
-
-    @Override
-    public void togliBombaTank() {
-        this.bombaTank = null;
-    }
-
-    @Override
     public void togliTank() {
         this.tankOccupanteCasella = null;
         this.disponibile = true;
@@ -72,6 +66,11 @@ public class BombaCasella implements ICasella {
     @Override
     public Posizione getPosizione() {
         return posizione;
+    }
+
+    @Override
+    public ITank getBombaTank() {
+        return bombaTank;
     }
 
     @Override
@@ -94,5 +93,19 @@ public class BombaCasella implements ICasella {
             casella.put("bombaTank", null);
         }
         return casella;
+    }
+
+    @Override
+    public IEvento eseguiti(CampoBattaglia campo) {
+        IEvento risultato = null;
+        if (this.bombaTank != this.tankOccupanteCasella) {
+            System.out.println("Esplosa in ("+ this.posizione.getX()+","+this.posizione.getY()+")");
+            this.tankOccupanteCasella.colpito(1);
+            ICasella plainCasella = new PlainCasella(this.posizione);
+            plainCasella.setTank(this.tankOccupanteCasella);
+            campo.setCasella(plainCasella,this.posizione);
+            risultato = new EsplosioneBombaEvento(plainCasella);
+        }
+        return risultato;
     }
 }

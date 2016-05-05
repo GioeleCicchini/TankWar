@@ -1,7 +1,9 @@
 package Shared.Domain.Caselle;
 
 
+import Shared.Domain.CampoBattaglia;
 import Shared.Domain.Caselle.ICasella;
+import Shared.Domain.Eventi.IEvento;
 import Shared.Domain.ITank;
 import Shared.Domain.Posizione;
 import Shared.Util.OrientamentoEnum;
@@ -51,22 +53,6 @@ public class MuroCasella implements ICasella,Serializable {
 
     }
 
-    @Override
-
-    public ITank getBombaTank() {
-        return null;
-    }
-
-    @Override
-    public void setBombaTank(ITank tank) {
-
-    }
-
-    @Override
-    public void togliBombaTank() {
-
-    }
-
     public void togliTank() {
 
     }
@@ -74,6 +60,11 @@ public class MuroCasella implements ICasella,Serializable {
     @Override
     public Posizione getPosizione() {
         return posizione;
+    }
+
+    @Override
+    public ITank getBombaTank() {
+        return null;
     }
 
     @Override
@@ -85,6 +76,11 @@ public class MuroCasella implements ICasella,Serializable {
         casella.put("Posizione",this.posizione.getMap());
 
         return casella;
+    }
+
+    @Override
+    public IEvento eseguiti(CampoBattaglia campo) {
+        return null;
     }
 
     @Override

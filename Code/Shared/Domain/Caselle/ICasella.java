@@ -1,5 +1,7 @@
 package Shared.Domain.Caselle;
 
+import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Eventi.IEvento;
 import Shared.Domain.ITank;
 import Shared.Domain.Posizione;
 
@@ -17,11 +19,10 @@ public interface ICasella {
     public boolean isDisponibile();
     public ITank getTank();
     public void setTank(ITank tank);
-    public ITank getBombaTank();
-    public void setBombaTank(ITank tank);
-    public void togliBombaTank();
     public void togliTank();
     public void setPosizione(Posizione posizione);
     public Posizione getPosizione();
+    public ITank getBombaTank();
     public Map getMap();
+    public IEvento eseguiti(CampoBattaglia campo);
 }

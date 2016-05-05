@@ -1,5 +1,7 @@
 package Shared.Domain.Caselle;
 
+import Shared.Domain.CampoBattaglia;
+import Shared.Domain.Eventi.IEvento;
 import Shared.Domain.ITank;
 import Shared.Domain.Posizione;
 
@@ -16,7 +18,6 @@ public class PlainCasella implements ICasella,Serializable {
     private Posizione posizione;
     private String id;
     private ITank tankOccupanteCasella = null;
-    private ITank bombaTank = null;
 
 
 
@@ -40,21 +41,6 @@ public class PlainCasella implements ICasella,Serializable {
     }
 
     @Override
-    public ITank getBombaTank() {
-        return bombaTank;
-    }
-
-    @Override
-    public void setBombaTank(ITank bombaTank) {
-        this.bombaTank = bombaTank;
-    }
-
-    @Override
-    public void togliBombaTank() {
-        this.bombaTank = null;
-    }
-
-    @Override
     public String getId() {
         return id;
     }
@@ -75,6 +61,11 @@ public class PlainCasella implements ICasella,Serializable {
     }
 
     @Override
+    public ITank getBombaTank() {
+        return null;
+    }
+
+    @Override
     public Map getMap() {
         Map casella = new HashMap();
 
@@ -88,13 +79,12 @@ public class PlainCasella implements ICasella,Serializable {
         else{
             casella.put("tankOccupanteCasella", null);
         }
-        if(this.bombaTank != null) {
-            casella.put("bombaTank", this.bombaTank.getId());
-        }
-        else{
-            casella.put("bombaTank", null);
-        }
         return casella;
+    }
+
+    @Override
+    public IEvento eseguiti(CampoBattaglia campo) {
+        return null;
     }
 
     @Override

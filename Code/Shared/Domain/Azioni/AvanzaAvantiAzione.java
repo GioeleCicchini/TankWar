@@ -121,6 +121,7 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
     public boolean eseguiti(ITank tankTurno, ITank tankAvversario, CampoBattaglia campo) {
         ICasella casellaPartenza = tankTurno.getCasellaPosizione();
         ICasella casellaDestinazione;
+        IEvento eventoCasella = null;
         OrientamentoEnum mioOrientamento = tankTurno.getOrientamento();
         List<ICasella> caselleDavanti = campo.getCaselleByOrientamento(casellaPartenza, mioOrientamento);
         if (!caselleDavanti.isEmpty()) {
@@ -133,18 +134,17 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
 
                 casellaPartenza.togliTank();
 
-                System.out.println("Avanzo avanti");
+                eventoCasella = casellaDestinazione.eseguiti(campo);
 
-                if (casellaDestinazione.getBombaTank() == tankAvversario) { //NullPonterException?
-                    System.out.println("Esplosa in ("+ casellaDestinazione.getPosizione().getX()+","+casellaDestinazione.getPosizione().getY()+")");
-                    casellaDestinazione.togliBombaTank();
-                    tankTurno.colpito(1);
-                }
+                System.out.println("Avanzo avanti");
             }
         }
         IEvento evento = new MovimentoEvento(tankTurno);
         List<IEvento> eventi = new ArrayList<>();
         eventi.add(evento);
+        if (eventoCasella != null) {
+            eventi.add(eventoCasella);
+        }
         this.fireEvent(eventi);
         return true;
     }

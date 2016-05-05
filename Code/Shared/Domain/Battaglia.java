@@ -147,7 +147,7 @@ public class Battaglia {
                 } else {
                     risultato = "inCorso";
                     terminata = false;
-                    evento = new InCorsoEvento();
+                    evento = new InCorsoEvento(turno);
                 }
             }
         }
