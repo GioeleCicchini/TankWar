@@ -131,7 +131,9 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
             bombaCasella.setBombaTank(tankTurno);
             campo.setCasella(bombaCasella,casellaTankTurno.getPosizione());
             evento = new PiazzamentoBombaEvento(casellaTankTurno);
-            tankTurno.setBombeRimanenti(bombeTankTurno--);
+            bombeTankTurno--;
+            tankTurno.setBombeRimanenti(bombeTankTurno);
+            tankTurno.setCasellaPosizione(bombaCasella);
         }
         List<IEvento> eventi = new ArrayList<>();
         if(evento != null) {

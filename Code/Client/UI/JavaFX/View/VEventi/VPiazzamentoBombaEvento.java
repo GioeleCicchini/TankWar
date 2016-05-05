@@ -3,6 +3,7 @@ package Client.UI.JavaFX.View.VEventi;
 import Client.UI.JavaFX.View.Runnable;
 import Shared.Domain.CampoBattaglia;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -21,11 +22,14 @@ public class VPiazzamentoBombaEvento implements VEvento {
     @Override
     public void eseguiti(Map Evento, List<Label> Player) {
 
-        Map casella = (Map)Evento.get("casella");
-        Map PosizioneCasella = (Map) casella.get("Posizione");
+        final Map casella = (Map)Evento.get("casella");
+        final Map PosizioneCasella = (Map) casella.get("Posizione");
 
-        Label Bomba = new Label();
+        final Label Bomba = new Label();
         Bomba.setStyle("-fx-background-color: green");
+        Bomba.setPrefHeight(10);
+        Bomba.setPrefWidth(10);
+        Bomba.setPadding(new Insets(0,0,0,10));
 
         Platform.runLater(new Runnable() {
             @Override

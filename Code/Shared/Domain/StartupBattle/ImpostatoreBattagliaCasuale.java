@@ -42,6 +42,7 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
 
 
         ICasella casellaAttuale;
+        ICasella casellaPrecedente = null;
         Integer posX;
         Integer posY;
         Posizione posizione;
@@ -59,7 +60,10 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
                 posY=RandomMinMax.randInt(0,dimY-1);
                  posizione = new Posizione(posX,posY);
                 casellaAttuale = campo.getCasella(posizione);
-                PosizionamentoDestraSinistra++;
+                if (casellaPrecedente==null || casellaPrecedente.isDisponibile()) {
+                    PosizionamentoDestraSinistra++;
+                }
+                casellaPrecedente = casellaAttuale;
             } while(!casellaAttuale.isDisponibile());
             campo.posizionaTank(t,posizione);
             casellaAttuale.setPosizione(posizione);

@@ -162,7 +162,7 @@ public class Battaglia implements Initializable {
         CampoBattagliaGrid.add(PlayerAvversario, (int)PosizioneTankAvversario.get("X"), (int)PosizioneTankAvversario.get("Y"));
 
 
-        List PlayerLabel = new ArrayList<>();
+        final List PlayerLabel = new ArrayList<>();
         PlayerLabel.add(PlayerCorrente);
         PlayerLabel.add(PlayerAvversario);
 
@@ -175,7 +175,7 @@ public class Battaglia implements Initializable {
         Integer i=0;
 
             // Inizializzo tutti I parametri NODE da passare ai vari eventi
-        List<Node> ParametriEventi = new ArrayList<>();
+        final List<Node> ParametriEventi = new ArrayList<>();
         ParametriEventi.add(CampoBattagliaGrid);
         ParametriEventi.add(numeroTurni);
 

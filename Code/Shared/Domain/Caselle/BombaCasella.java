@@ -104,6 +104,7 @@ public class BombaCasella implements ICasella {
             ICasella plainCasella = new PlainCasella(this.posizione);
             plainCasella.setTank(this.tankOccupanteCasella);
             campo.setCasella(plainCasella,this.posizione);
+            tankOccupanteCasella.setCasellaPosizione(plainCasella);
             risultato = new EsplosioneBombaEvento(plainCasella);
         }
         return risultato;

@@ -22,7 +22,7 @@ public class VInCorsoEvento implements VEvento {
 
         Map Turno = (Map)Evento.get("turno");
 
-        int NumeroTurno = (int)Turno.get("NumeroTurno");
+        final int NumeroTurno = (int)Turno.get("NumeroTurno");
 
         Platform.runLater(new Runnable() {
             @Override

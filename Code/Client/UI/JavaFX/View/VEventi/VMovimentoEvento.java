@@ -30,7 +30,7 @@ public class VMovimentoEvento implements VEvento{
 
         Map tankTurno = (Map)Evento.get("tankTurno");
 
-        for(Label playerLabel : Player){
+        for(final Label playerLabel : Player){
             if(playerLabel.getId().equals(tankTurno.get("Id"))){
                 Map CasellaPosizioneTank = (Map) tankTurno.get("CasellaPosizione");
                 int OrientamentoTank = (int) tankTurno.get("Orientamento");
