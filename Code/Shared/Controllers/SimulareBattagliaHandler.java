@@ -77,7 +77,7 @@ public class SimulareBattagliaHandler {
         return battaglia.getMap();
     }
 
-    public Map getEventi() {
+    public Map getEventiMap() {
         Map map = new HashMap();
         List<Map> eventiCorrenti = new ArrayList<>();
         for (IEvento evento: this.eventi) {
@@ -87,7 +87,11 @@ public class SimulareBattagliaHandler {
         return map;
     }
 
-    public void setUltimoEvento(List eventi) {
+    public List<IEvento> getEventi() {
+        return eventi;
+    }
+
+    public void setEventi(List eventi) {
         this.eventi = eventi;
     }
 

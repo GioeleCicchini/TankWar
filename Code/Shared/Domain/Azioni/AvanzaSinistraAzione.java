@@ -154,7 +154,7 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
 
     @Override
     public void fireEvent(List eventi) {
-        SimulareBattagliaHandler.getSingletonInstance().setUltimoEvento(eventi);
+        SimulareBattagliaHandler.getSingletonInstance().setEventi(eventi);
     }
 
 }

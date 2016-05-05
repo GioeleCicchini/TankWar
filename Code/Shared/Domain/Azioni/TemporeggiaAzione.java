@@ -130,7 +130,7 @@ public class TemporeggiaAzione implements IAzione, IStrategiaComponent, Serializ
 
     @Override
     public void fireEvent(List eventi) {
-        SimulareBattagliaHandler.getSingletonInstance().setUltimoEvento(eventi);
+        SimulareBattagliaHandler.getSingletonInstance().setEventi(eventi);
     }
 
 }
