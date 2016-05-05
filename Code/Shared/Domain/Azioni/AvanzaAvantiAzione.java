@@ -151,6 +151,6 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
 
     @Override
     public void fireEvent(List eventi) {
-        SimulareBattagliaHandler.getSingletonInstance().setUltimoEvento(eventi);
+        SimulareBattagliaHandler.getSingletonInstance().setEventi(eventi);
     }
 }

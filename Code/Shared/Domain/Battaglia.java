@@ -1,5 +1,7 @@
 package Shared.Domain;
 
+import Shared.Controllers.SimulareBattagliaHandler;
+import Shared.Domain.Eventi.*;
 import Shared.Domain.StartupBattle.IImpostatoreBattaglia;
 import Shared.Domain.StartupBattle.ImpostatoreBattagliaCasuale;
 import Shared.Domain.TankDecorator.TankOnBattle;
@@ -127,19 +129,31 @@ public class Battaglia {
             tankAltro=tankPersonale;
         }
         tankAttuale.faiMossa(tankAltro,campoBattaglia);
+        IEvento evento;
         if (tankAvversario.seiMorto()){
             risultato="vittoria";
             terminata=true;
+            evento = new VittoriaEvento();
+        } else {
+            if (tankPersonale.seiMorto()) {
+                risultato = "sconfitta";
+                terminata = true;
+                evento = new SconfittaEvento();
+            } else {
+                if (turno.isFinitaPartita()) {
+                    risultato = "pareggio";
+                    terminata = true;
+                    evento = new PareggioEvento();
+                } else {
+                    risultato = "inCorso";
+                    terminata = false;
+                    evento = new InCorsoEvento();
+                }
+            }
         }
-        if (tankPersonale.seiMorto()){
-            risultato="sconfitta";
-            terminata=true;
-        }
-        if (turno.isFinitaPartita()){
-            risultato="pareggio";
-            terminata=true;
-        }
-
+        List eventi = SimulareBattagliaHandler.getSingletonInstance().getEventi();
+        eventi.add(evento);
+        SimulareBattagliaHandler.getSingletonInstance().setEventi(eventi);
         System.out.println("Posizione Tank Personale: ("+ tankPersonale.getCasellaPosizione().getPosizione().getX() +","+tankPersonale.getCasellaPosizione().getPosizione().getY()+","+tankPersonale.getOrientamento()+
                 ") Posizione Tank Avversario: (" + tankAvversario.getCasellaPosizione().getPosizione().getX()+ ","+tankAvversario.getCasellaPosizione().getPosizione().getY()+","+tankAvversario.getOrientamento()+")");
 
