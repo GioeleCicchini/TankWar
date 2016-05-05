@@ -14,12 +14,12 @@ import java.util.UUID;
 public class Tank implements ITank,Serializable {
 
     private Strategia strategia = null;
-
+    private String id= UUID.randomUUID().toString();
+    private Integer livello;
 
     public void Tank(){}
 
-    private String id= UUID.randomUUID().toString();
-    private Integer livello;
+
 
     public Integer getLivello() {
         return livello;
@@ -106,7 +106,8 @@ public class Tank implements ITank,Serializable {
     @Override
     public Map getMap() {
         Map tank = new HashMap();
-
+        tank.put("Id",this.id);
+        tank.put("Livello",this.livello);
         tank.put("Strategia",this.strategia.getMap());
 
         return tank;

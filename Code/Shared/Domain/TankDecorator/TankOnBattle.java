@@ -129,7 +129,9 @@ public class TankOnBattle extends TankDecorator {
     @Override
     public Map getMap() {
         Map tankOnBattle = new HashMap();
-
+        tankOnBattle.put("Id",this.getId());
+        tankOnBattle.put("Livello",this.getLivello());
+        tankOnBattle.put("Strategia",this.getStrategia().getMap());
             tankOnBattle.put("MaxVisioneSparo",maxVisioneSparo);
             tankOnBattle.put("CasellaPosizione",this.casellaPosizione.getMap());
             tankOnBattle.put("BombeRimanenti",this.bombeRimanenti);
