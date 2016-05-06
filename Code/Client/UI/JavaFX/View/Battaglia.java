@@ -29,6 +29,8 @@ public class Battaglia implements Initializable {
     public Button indietroButton;
     public GridPane CampoBattagliaGrid;
     public static double dimensioneCampoCelle = 10;
+
+
     public static double dimensioneCampoPixel ;
     public Label numeroTurni;
 
@@ -185,6 +187,10 @@ public class Battaglia implements Initializable {
         TankInBattle.put("TankAvversario",TankAvversario);
 
 
+        final Map dimensioneCampo = new HashMap<>();
+        dimensioneCampo.put("dimensioneCampoCelle",dimensioneCampoCelle);
+        dimensioneCampo.put("dimensioneCampoPixel",dimensioneCampoPixel);
+
         Task task = new Task<Void>() {
             @Override
             public Void call() throws Exception {
@@ -206,12 +212,13 @@ public class Battaglia implements Initializable {
                                 VEvento eventoIstanziato = (VEvento) classe.newInstance();
                                 eventoIstanziato.setParametriGui(ParametriEventi);
                                 eventoIstanziato.setTankOnBattleGui(TankInBattle);
+                                eventoIstanziato.setDimesioneCampo(dimensioneCampo);
                                 eventoIstanziato.eseguiti(e, PlayerLabel);
 
                         }
 
                         i++;
-                        Thread.sleep(100);
+                        Thread.sleep(80);
 
                     }
 

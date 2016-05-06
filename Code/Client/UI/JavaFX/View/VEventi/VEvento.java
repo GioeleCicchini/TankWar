@@ -12,11 +12,13 @@ import java.util.Map;
  */
 public interface VEvento {
 
-   void eseguiti(Map Evento, List<Label> Player);
+   void eseguiti(Map Evento, List<Label> Player) throws InterruptedException;
 
     void setParametriGui(List<Node> Parametri);
 
     void setTankOnBattleGui(Map tankOnBattleGui);
+
+    void setDimesioneCampo(Map dimesioneCampo);
 
 
 

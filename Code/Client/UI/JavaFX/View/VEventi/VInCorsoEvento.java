@@ -56,4 +56,9 @@ public class VInCorsoEvento implements VEvento {
 
     }
 
+    @Override
+    public void setDimesioneCampo(Map dimesioneCampo) {
+
+    }
+
 }

@@ -147,9 +147,10 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
                 if (!esci) {
                     caselle.add(caselleDavanti.get(i));
                 }
+
             }
         }
-        IEvento evento = new SparaEvento(caselle,casellaTank);
+        IEvento evento = new SparaEvento(caselle,casellaTank,tankTurno);
         List<IEvento> eventi = new ArrayList<>();
         eventi.add(evento);
         this.fireEvent(eventi);

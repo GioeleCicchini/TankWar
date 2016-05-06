@@ -84,5 +84,10 @@ public class VMovimentoEvento implements VEvento{
 
     }
 
+    @Override
+    public void setDimesioneCampo(Map dimesioneCampo) {
+
+    }
+
 
 }

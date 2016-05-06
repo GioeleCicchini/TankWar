@@ -23,6 +23,9 @@ public class VPiazzamentoBombaEvento implements VEvento {
     Map tankPersonale;
     Map tankAvversario;
 
+    public static double dimensioneCampoCelle ;
+    public static double dimensioneCampoPixel ;
+
     @Override
     public void eseguiti(Map Evento, List<Label> Player) {
 
@@ -59,6 +62,12 @@ public class VPiazzamentoBombaEvento implements VEvento {
 
     }
 
+    @Override
+    public void setDimesioneCampo(Map dimesioneCampo) {
+        dimensioneCampoCelle = (Double) dimesioneCampo.get("dimensioneCampoCelle");
+        dimensioneCampoPixel = (Double) dimesioneCampo.get("dimensioneCampoPixel");
+    }
+
 
     private Label CreaBomba(String TankOccupante){
 
@@ -78,7 +87,7 @@ public class VPiazzamentoBombaEvento implements VEvento {
         Bomba.setGraphic(imageView);
         Bomba.setPrefHeight(10);
         Bomba.setPrefWidth(10);
-        Bomba.setPadding(new Insets(0,0,0,20));
+        Bomba.setPadding(new Insets(0,0,0,((dimensioneCampoPixel/dimensioneCampoCelle)/4)));
 
 
         return Bomba;
