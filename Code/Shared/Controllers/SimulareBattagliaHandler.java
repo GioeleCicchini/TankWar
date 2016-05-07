@@ -88,7 +88,7 @@ public class SimulareBattagliaHandler {
     }
 
     public void faiSimulazioniStatistiche(Integer numeroVolte) throws IOException {
-        ITank tankPersonale = playerLoggato.getTank();
+        ITank tankPersonale = battaglia.getTankPersonale();
         ITank tankAvversario = this.battaglia.getTankAvversario();
         Integer vittorie = 0;
         Integer sconfitte = 0;
