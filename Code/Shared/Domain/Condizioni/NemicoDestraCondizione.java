@@ -63,11 +63,6 @@ public class NemicoDestraCondizione implements ICondizione, IStrategiaComponent,
         if (orientamentoTankTurno.getNumero() == 3 && posizioneTankTurno.getY()>posizioneTankAvversario.getY()) {
             verifica = true;
         }
-        if (verifica) {
-            System.out.println("NEMICO DESTRA");
-        } else {
-            System.out.println("NEMICO NON DESTRA");
-        }
         if (!this.vera) {
             verifica = !verifica;
         }

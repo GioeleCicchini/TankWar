@@ -43,8 +43,6 @@ public class SimulareBattagliaHandler {
 
     public void iniziaImpostareBattagliaRipetuta() {
         this.battaglie = new ArrayList<>();
-        ITank tankAvversario = this.battaglia.getTankAvversario();
-        this.battaglia.setImpostatoreBattagliaRipetuta(tankAvversario);
     }
 
     public void impostaBattaglia() throws IOException {
@@ -84,7 +82,6 @@ public class SimulareBattagliaHandler {
     }
 
     public void faiMossa(){
-        System.out.println("Siamo nell'handler");
         if (!battaglia.isTerminata()){
             battaglia.faiMossa();
         }
@@ -92,14 +89,31 @@ public class SimulareBattagliaHandler {
 
     public void faiSimulazioniStatistiche(Integer numeroVolte) throws IOException {
         ITank tankPersonale = playerLoggato.getTank();
+        ITank tankAvversario = this.battaglia.getTankAvversario();
+        Integer vittorie = 0;
+        Integer sconfitte = 0;
+        Integer pareggio = 0;
         for (int i=0;i<numeroVolte;i++) {
             Battaglia b = new Battaglia(tankPersonale);
             this.battaglie.add(b);
+            b.setImpostatoreBattagliaRipetuta(tankAvversario);
             impostaBattagliaRipetuta(i);
             while (!b.isTerminata()) {
-                faiMossa();
+                b.faiMossa();
+            }
+            if (b.isTerminata()) {
+                String risultato;
+                risultato = b.getRisultato();
+                switch (risultato) {
+                    case "vittoria": vittorie++;
+                        break;
+                    case "pareggio": pareggio++;
+                        break;
+                    case "sconfitta": sconfitte++;
+                }
             }
         }
+        System.out.println("FINITOOOOO. Vittorie: "+vittorie+", Pareggi: "+ pareggio + ", Sconfitte: "+sconfitte );
     }
 
     public boolean isFinita(){

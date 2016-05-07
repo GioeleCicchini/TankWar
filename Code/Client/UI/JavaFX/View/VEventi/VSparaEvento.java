@@ -67,7 +67,7 @@ public class VSparaEvento implements VEvento {
         Map CasellaTankColpito = (Map)Evento.get("casellaTank");
         if(CasellaTankColpito!= null){
 
-            for(Label PlayerCorrente : Player){
+            for(final Label PlayerCorrente : Player){
                 if(PlayerCorrente.getId().equals((String)CasellaTankColpito.get("tankOccupanteCasella"))){
                     Platform.runLater(new Runnable() {
                         @Override

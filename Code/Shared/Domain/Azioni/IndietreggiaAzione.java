@@ -138,8 +138,6 @@ public class IndietreggiaAzione implements IAzione, IStrategiaComponent, Seriali
 
                 casellaPartenza.togliTank();
 
-                System.out.println("Sto indietreggiando");
-
                 eventoCasella = casellaDestinazione.eseguiti(campo);
             }
         }

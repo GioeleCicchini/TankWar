@@ -130,18 +130,16 @@ public class SparaAzione implements IAzione, IStrategiaComponent, Serializable {
         ICasella casellaTank = null;
         if (!caselleDavanti.isEmpty()){
             boolean esci = false;
-            for (int i=0; i<raggioSparo && !esci; i++ ){
+            for (int i=0; i<raggioSparo && i<caselleDavanti.size() && !esci; i++ ){
                 if (caselleDavanti.get(i).getTank() != null){
                     Integer potenzaArma = tankTurno.getPotenzaArma();
                     caselleDavanti.get(i).getTank().colpito(potenzaArma);
                     esci=true;
                     casellaTank = caselleDavanti.get(i);
-                    System.out.println("L'HO PRESOOOOOOOOOOOO");
                 }
                 else {
                     if (!caselleDavanti.get(i).isDisponibile()){
                         esci=true;
-                        System.out.println("Sparo e Mancato il bersaglio");
                     }
                 }
                 if (!esci) {

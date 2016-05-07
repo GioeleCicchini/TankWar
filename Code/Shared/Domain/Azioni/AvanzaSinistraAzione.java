@@ -129,7 +129,6 @@ public class AvanzaSinistraAzione implements IAzione, IStrategiaComponent, Seria
         tankTurno.setOrientamento(mioOrientamento);
         List<ICasella> caselleSinistra = campo.getCaselleByOrientamento(casellaPartenza, mioOrientamento);
         if (!caselleSinistra.isEmpty()) {
-            System.out.println("Avanzo a Sinistra");
             casellaDestinazione = caselleSinistra.get(0);
             if (casellaDestinazione.isDisponibile()) {
 

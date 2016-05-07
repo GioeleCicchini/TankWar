@@ -65,11 +65,6 @@ public class NemicoAvantiCondizione implements ICondizione, IStrategiaComponent,
         if (!this.vera) {
             verifica = !verifica;
         }
-        if (verifica) {
-            System.out.println("NEMICO AVANTI");
-        } else {
-            System.out.println("NEMICO NON AVANTI");
-        }
         return verifica;
     }
 

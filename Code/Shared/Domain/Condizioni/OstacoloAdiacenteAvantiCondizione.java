@@ -53,11 +53,6 @@ public class OstacoloAdiacenteAvantiCondizione implements ICondizione, IStrategi
         } else {
             verifica = true;
         }
-        if (verifica) {
-            System.out.println("OSTACOLO AVANTI");
-        } else {
-            System.out.println("OSTACOLO NON AVANTI");
-        }
         if (!this.vera) {
             verifica = !verifica;
         }

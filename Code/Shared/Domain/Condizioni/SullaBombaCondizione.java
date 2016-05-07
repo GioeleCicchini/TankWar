@@ -48,11 +48,6 @@ public class SullaBombaCondizione implements ICondizione, IStrategiaComponent, S
         if (casellaTankTurno.getBombaTank() == tankTurno) {
             verifica = true;
         }
-        if (verifica) {
-            System.out.println("SULLA BOMBA");
-        } else {
-            System.out.println("NON SULLA BOMBA");
-        }
         if (!this.vera) {
             verifica = !verifica;
         }

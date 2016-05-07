@@ -125,7 +125,6 @@ public class LasciaBombaAzione implements IAzione, IStrategiaComponent, Serializ
         ICasella casellaTankTurno = tankTurno.getCasellaPosizione();
         IEvento evento = null;
         if (bombeTankTurno > 0 && casellaTankTurno.getBombaTank() == null) {
-            System.out.println("BOMBA LASCIATA NELLA CASELLA " + casellaTankTurno.getPosizione().getX() + "," + casellaTankTurno.getPosizione().getY());
             ICasella bombaCasella = new BombaCasella(casellaTankTurno.getPosizione());
             bombaCasella.setTank(tankTurno);
             bombaCasella.setBombaTank(tankTurno);

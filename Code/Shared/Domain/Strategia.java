@@ -240,7 +240,6 @@ public class Strategia implements Serializable {
     }
 
     public void faiMossa(ITank mioTank, ITank altroTank, CampoBattaglia campo){
-        System.out.println("Fatto turno");
         int blocksize = conditionBlock.size();
         boolean trovataUnaVera = false;
         IStrategiaComponent currentComponent;

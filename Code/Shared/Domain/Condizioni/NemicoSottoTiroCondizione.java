@@ -64,11 +64,6 @@ public class NemicoSottoTiroCondizione implements ICondizione, IStrategiaCompone
                 i++;
             }
         }
-        if (verifica) {
-            System.out.println("NEMICO SOTTO TIRO");
-        } else {
-            System.out.println("NEMICO NON SOTTO TIRO");
-        }
         if (!this.vera) {
             verifica = !verifica;
         }

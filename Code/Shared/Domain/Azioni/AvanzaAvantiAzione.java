@@ -135,8 +135,6 @@ public class AvanzaAvantiAzione implements IAzione, IStrategiaComponent, Seriali
                 casellaPartenza.togliTank();
 
                 eventoCasella = casellaDestinazione.eseguiti(campo);
-
-                System.out.println("Avanzo avanti");
             }
         }
         IEvento evento = new MovimentoEvento(tankTurno);

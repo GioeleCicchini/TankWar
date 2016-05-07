@@ -103,7 +103,6 @@ public class ImpostareBattaglia implements Initializable {
             StrategieSpace.getChildren().add(nomeStrategia);
         }
 
-        System.out.println("qui");
     }
 
     public void graficaStrategia(String idStrategia){

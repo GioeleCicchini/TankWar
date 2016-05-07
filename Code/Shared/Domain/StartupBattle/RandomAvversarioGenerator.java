@@ -23,7 +23,6 @@ public class RandomAvversarioGenerator implements  IGeneratoreAvversario {
 
         if (risp.getFunzione().equals("TankTrovato")) {
             tank = (ITank) risp.getOggettiTrasferimento().get(0);
-            System.out.println("Tank Avversario casuale Ricevuto, Id del Tank : "+tank.getId());
         }
         else {
             throw new NullPointerException("Tank avversario casuale non trovato");

@@ -43,6 +43,9 @@ public class Battaglia {
 
     public  Battaglia(){}
 
+    public String getRisultato() {
+        return risultato;
+    }
 
     public CampoBattaglia getCampoBattaglia() {
         return campoBattaglia;
@@ -72,13 +75,13 @@ public class Battaglia {
         return tankAvversario;
     }
 
-    public void setTankAvversario(Tank tankAvversario) {
+    public void setTankAvversario(ITank tankAvversario) {
         this.tankAvversario = new TankOnBattle(tankAvversario);
     }
 
     public void scegliAvversario() throws IOException {
         try{  tankAvversario=impBattaglia.getAvversario(tankPersonale.getLivello());
-            this.setTankAvversario((Tank)tankAvversario);
+            this.setTankAvversario(tankAvversario);
         }catch (NullPointerException e){
             throw new NullPointerException("Tank avversario non trovato");
         }
@@ -97,12 +100,7 @@ public class Battaglia {
     }
 
     public void posizionaTank() {
-        System.out.println("(Carico i preset della battaglia) Tank Personale : "+tankPersonale.getId()+" , Tank Avversario : "+tankAvversario.getId()+" , Campo di Battaglia Id : "+campoBattaglia.getId());
         this.impBattaglia.posizionaTank(this.tankPersonale,this.tankAvversario,this.campoBattaglia);
-
-        System.out.println("Posizione TankPersonale : ("+this.tankPersonale.getCasellaPosizione().getPosizione().getX().toString()+","+this.tankPersonale.getCasellaPosizione().getPosizione().getY().toString()+")"+
-                " , Posizione TankAvversario : ("+this.tankAvversario.getCasellaPosizione().getPosizione().getX().toString()+","+this.tankAvversario.getCasellaPosizione().getPosizione().getY().toString()+")");
-
     }
 
     public void impostaTurni() {
@@ -156,9 +154,6 @@ public class Battaglia {
         List eventi = SimulareBattagliaHandler.getSingletonInstance().getEventi();
         eventi.add(evento);
         SimulareBattagliaHandler.getSingletonInstance().setEventi(eventi);
-        System.out.println("Posizione Tank Personale: ("+ tankPersonale.getCasellaPosizione().getPosizione().getX() +","+tankPersonale.getCasellaPosizione().getPosizione().getY()+","+tankPersonale.getOrientamento()+
-                ") Posizione Tank Avversario: (" + tankAvversario.getCasellaPosizione().getPosizione().getX()+ ","+tankAvversario.getCasellaPosizione().getPosizione().getY()+","+tankAvversario.getOrientamento()+")");
-
         turno.increment();
 
     }

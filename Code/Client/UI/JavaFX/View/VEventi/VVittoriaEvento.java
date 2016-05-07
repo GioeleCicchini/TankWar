@@ -1,6 +1,7 @@
 package Client.UI.JavaFX.View.VEventi;
 
 import Client.UI.JavaFX.View.Runnable;
+import Shared.Controllers.SimulareBattagliaHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -57,8 +59,13 @@ public class VVittoriaEvento implements VEvento {
 
                 // Qui ci va il codice per simulare le 100 partite!
 
-
-
+                SimulareBattagliaHandler simulareBattagliaHandler = SimulareBattagliaHandler.getSingletonInstance();
+                simulareBattagliaHandler.iniziaImpostareBattagliaRipetuta();
+                try {
+                    simulareBattagliaHandler.faiSimulazioniStatistiche(100);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
             }

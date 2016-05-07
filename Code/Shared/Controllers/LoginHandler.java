@@ -38,7 +38,6 @@ public class LoginHandler {
 
         if (risp.getFunzione().equals("UtenteTrovato")) {
             this.player = (Player) risp.getOggettiTrasferimento().get(0);
-            System.out.println("Player Ricevuto");
         }
         else {
             throw new NullPointerException("Utente non trovato");

@@ -160,9 +160,6 @@ public class Battaglia implements Initializable {
 
         Map PosizioneTankAvversario = (Map)CasellaPosizioneTankAvversario.get("Posizione");
 
-
-        System.out.println(PosizioneTankPersonale.get("X")+"  "+PosizioneTankPersonale.get("Y"));
-
         CampoBattagliaGrid.add(PlayerCorrente, (int)PosizioneTankPersonale.get("X"), (int)PosizioneTankPersonale.get("Y"));
         CampoBattagliaGrid.add(PlayerAvversario, (int)PosizioneTankAvversario.get("X"), (int)PosizioneTankAvversario.get("Y"));
 

@@ -31,7 +31,7 @@ public class VEsplosioneBombaEvento implements VEvento {
         String idTankOccupanteCasellaEsplosa = (String)casellaEsplosa.get("tankOccupanteCasella");
         Map posizioneTankEsploso = (Map)casellaEsplosa.get("Posizione");
 
-        for(Label PlayerCorrente : Player){
+        for(final Label PlayerCorrente : Player){
             if(PlayerCorrente.getId().equals(idTankOccupanteCasellaEsplosa)){
                 Platform.runLater(new Runnable() {
                     @Override
