@@ -231,7 +231,6 @@ public class CreareStrategia implements Initializable {
     public void defDragDropped(DragEvent event) {
         if (!messaAzioneDefault) {
             if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel")) { //TODO è bruttissimo
-                System.out.println("Hey abbiamo un creator di azione nel default pozzo");
                 ActionCreatorLabel labelDragged = (ActionCreatorLabel) event.getGestureSource();
                 String idTypeAz = labelDragged.getIdType();
                 List<Integer> valori = new ArrayList<Integer>();

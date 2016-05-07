@@ -1,7 +1,14 @@
 package Client.UI.JavaFX.View;
 
+import Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel;
+import Client.UI.JavaFX.CustomWidget.ICreatorCustomLabel;
+import Client.UI.JavaFX.CustomWidget.ICustomLabel;
+import Client.UI.UIUtils.LabelsMaker;
+import Client.UI.UIUtils.StrategiaPutter;
 import Client.UI.UIUtils.ViewTransaction;
+import Shared.Controllers.CreareStrategiaHandler;
 import Shared.Controllers.SimulareBattagliaHandler;
+import Shared.Controllers.StartUpHandler;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -14,6 +21,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -24,10 +32,18 @@ import java.util.ResourceBundle;
 public class ImpostareBattaglia implements Initializable {
     public VBox StrategieSpace;
     public Label StrategiaSelezionata;
+    public VBox strategiaVBox;
+    public StrategiaPutter strategiaPutter;
+
+    public Button indietroButton;
+
+    private String where = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         inizio();
+
+        strategiaPutter = new StrategiaPutter(strategiaVBox);
 
     }
 
@@ -75,7 +91,7 @@ public class ImpostareBattaglia implements Initializable {
                         StrategiaSelezionata.setText((String) strategia.get("nome"));
                         nomeStrategia.setStyle("-fx-background-color: #1AF63C;-fx-border-width:2px;-fx-border-color:black;");
                         SimulareBattagliaHandler.getSingletonInstance().scegliStrategia((String) strategia.get("id"));
-
+                        graficaStrategia((String) strategia.get("id"));
 
 
                     }
@@ -90,5 +106,119 @@ public class ImpostareBattaglia implements Initializable {
         System.out.println("qui");
     }
 
+    public void graficaStrategia(String idStrategia){
+
+        strategiaVBox.getChildren().clear();
+
+        Map ccc = StartUpHandler.getSingletonInstance().getCatalogoConditionCreatorMap();
+        Map cac = StartUpHandler.getSingletonInstance().getCatalogoAzCreatorMap();
+
+        List<ICreatorCustomLabel> condCLabels = LabelsMaker.getConditionCreatorLabels(ccc);
+        List<ICreatorCustomLabel> azioneCLabels = LabelsMaker.getActionCreatorLabels(cac);
+
+        ICreatorCustomLabel currentCLabel;
+        ICreatorCustomLabel currentActionLabel;
+
+
+
+       List<Map> Strategie= SimulareBattagliaHandler.getSingletonInstance().getStrategieList();
+        Map StrategiaSelezionata = null;
+
+
+        for(Map Strategia : Strategie){
+                if(Strategia.get("id").equals(idStrategia)) {
+                    Map condidizioneDefault = (Map) Strategia.get("defaultCondition");
+                    List<Map> conditionBlock = (List) Strategia.get("conditionBlock");
+                    for (Map CondizioneCorrente : conditionBlock) {
+                        String id = (String) CondizioneCorrente.get("id");
+                        String idType = (String) CondizioneCorrente.get("idType");
+                        boolean vera = (boolean) CondizioneCorrente.get("vera");
+                        Map child = (Map)CondizioneCorrente.get("child");
+
+                        boolean nonAnnidata= false;
+                        boolean azione = false;
+                        while(child != null) {
+                            for (int i = 0; ((child != null) && (i < condCLabels.size())) ; i++) {
+                                currentCLabel = condCLabels.get(i);
+                                if(azione == false) {
+                                    if (currentCLabel.getIdType().equals(idType)) {
+                                        ICustomLabel conditionLabel = currentCLabel.makeComponent(idType, where, (boolean) vera);
+                                        where = id;
+                                        if(child.get("idTypeAz") != null){
+                                            azione = true;
+                                        }
+                                        else{
+                                            idType = (String)child.get("idType");
+                                            vera = (boolean)child.get("vera");
+                                            if(child.get("child") != null){
+                                                child = (Map)child.get("child");
+
+                                            }
+
+                                        }
+                                        if (nonAnnidata == false) {
+                                            strategiaPutter.addLabel(conditionLabel, true);
+                                            nonAnnidata = true;
+                                        } else {
+                                            strategiaPutter.addLabel(conditionLabel, false);
+                                        }
+                                    }
+                                }
+                                else{
+                                    for (int j = 0; j < azioneCLabels.size(); j++) {
+                                        currentActionLabel = azioneCLabels.get(j);
+                                        if (child != null && currentActionLabel.getIdType().equals(child.get("idTypeAz"))) {
+                                            ICustomLabel azioneLabel = currentActionLabel.makeComponent((String) child.get("id"), where, true);
+                                            where = null;
+                                            strategiaPutter.addLabel(azioneLabel, false);
+                                            child = null;
+                                            azione = false;
+                                        }
+
+                                    }
+
+                                }
+                            }
+                        }
+
+                    }
+
+                    for (int i = 0; i < condCLabels.size(); i++) {
+                        currentCLabel = condCLabels.get(i);
+                        if (currentCLabel.getIdType() == "000") { //Non vogliamo che ci sia la cond di defaults
+                            String idCondDef = (String) condidizioneDefault.get("id");
+                            ICustomLabel deafultCondizioneLabel = currentCLabel.makeComponent(idCondDef, null, true);
+                            strategiaPutter.addLabel(deafultCondizioneLabel, true);
+                            Map child = (Map)condidizioneDefault.get("child");
+                            for (int j = 0; j < azioneCLabels.size(); j++) {
+                                currentActionLabel = azioneCLabels.get(j);
+                                if (child != null && currentActionLabel.getIdType().equals(child.get("idTypeAz"))) {
+                                    ICustomLabel azioneLabel = currentActionLabel.makeComponent((String) child.get("id"), where, true);
+                                    where = null;
+                                    strategiaPutter.addLabel(azioneLabel, false);
+                                }
+
+                            }
+
+
+                        }
+                }
+
+
+
+            }
+
+
+
+
+            }
+
+    }
+
+
+    public void indietro(Event event){
+        ViewTransaction.getSingletonInstance().goToHome(indietroButton);
+
+    }
 
 }

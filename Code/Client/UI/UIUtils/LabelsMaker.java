@@ -71,6 +71,8 @@ public class LabelsMaker {
         return customLabels;
     }
 
+
+
     private static void layoutizeLabelCreator(ICreatorCustomLabel myLabel, double r, double g, double b) {
         Color color = Color.color(r, g, b);
         ((Label) myLabel).setBackground(new Background(new BackgroundFill(color, new CornerRadii(3), new Insets(0))));
