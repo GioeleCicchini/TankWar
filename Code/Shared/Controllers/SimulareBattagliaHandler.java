@@ -93,6 +93,7 @@ public class SimulareBattagliaHandler {
         Integer vittorie = 0;
         Integer sconfitte = 0;
         Integer pareggio = 0;
+        long iniziato = System.currentTimeMillis();
         for (int i=0;i<numeroVolte;i++) {
             Battaglia b = new Battaglia(tankPersonale);
             this.battaglie.add(b);
@@ -113,7 +114,9 @@ public class SimulareBattagliaHandler {
                 }
             }
         }
-        System.out.println("FINITOOOOO. Vittorie: "+vittorie+", Pareggi: "+ pareggio + ", Sconfitte: "+sconfitte );
+        long finito = System.currentTimeMillis();
+        long diff = finito - iniziato;
+        System.out.println("FINITOOOOO in "+diff+". Vittorie: "+vittorie+", Pareggi: "+ pareggio + ", Sconfitte: "+sconfitte );
     }
 
     public boolean isFinita(){
