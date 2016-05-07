@@ -33,7 +33,7 @@ public class VPiazzamentoBombaEvento implements VEvento {
         final String TankOccup = (String) casella.get("tankOccupanteCasella");
         final Map PosizioneCasella = (Map) casella.get("Posizione");
 
-        Label Bomba = CreaBomba(TankOccup);
+        final Label Bomba = CreaBomba(TankOccup);
 
 
         Platform.runLater(new Runnable() {

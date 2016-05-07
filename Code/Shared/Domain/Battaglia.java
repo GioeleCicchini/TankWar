@@ -4,6 +4,7 @@ import Shared.Controllers.SimulareBattagliaHandler;
 import Shared.Domain.Eventi.*;
 import Shared.Domain.StartupBattle.IImpostatoreBattaglia;
 import Shared.Domain.StartupBattle.ImpostatoreBattagliaCasuale;
+import Shared.Domain.StartupBattle.ImpostatoreBattagliaRipetuta;
 import Shared.Domain.TankDecorator.TankOnBattle;
 
 import java.io.IOException;
@@ -20,12 +21,9 @@ public class Battaglia {
     private boolean terminata;
     private ITank tankPersonale;
     private ITank tankAvversario;
-
-
-
     private CampoBattaglia campoBattaglia;
     private Turno turno;
-    IImpostatoreBattaglia impBattaglia;
+    private IImpostatoreBattaglia impBattaglia;
     private String risultato = "in corso";
 
 
@@ -37,6 +35,10 @@ public class Battaglia {
 
     public void setImpostatoreBattagliaCasuale() {
         this.impBattaglia=new ImpostatoreBattagliaCasuale();
+    }
+
+    public void setImpostatoreBattagliaRipetuta(ITank tankAvversario) {
+        this.impBattaglia = new ImpostatoreBattagliaRipetuta(tankAvversario);
     }
 
     public  Battaglia(){}
