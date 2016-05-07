@@ -71,4 +71,14 @@ public class ActionCreatorLabel extends Label implements ICreatorCustomLabel {
     public Color getColor() {
         return (Color) this.getBackground().getFills().get(0).getFill();
     }
+
+    @Override
+    public void setTrue() {
+
+    }
+
+    @Override
+    public void setFalse() {
+
+    }
 }

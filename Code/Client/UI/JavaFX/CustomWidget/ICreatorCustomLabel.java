@@ -23,4 +23,7 @@ public interface ICreatorCustomLabel {
 
     Color getColor();
 
+    void setTrue();
+
+    void setFalse();
 }

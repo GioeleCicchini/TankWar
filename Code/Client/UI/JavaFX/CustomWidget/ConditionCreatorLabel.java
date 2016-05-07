@@ -72,10 +72,11 @@ public class ConditionCreatorLabel extends Label implements ICreatorCustomLabel 
         return (Color) this.getBackground().getFills().get(0).getFill();
     }
 
+    @Override
     public void setTrue() {
         LabelsMaker.setTrue(this);
     }
-
+    @Override
     public void setFalse() {
         LabelsMaker.setFalse(this);
     }

@@ -12,7 +12,7 @@ import java.util.Map;
 public class VTemporeggiaEvento implements VEvento {
     @Override
     public void eseguiti(Map Evento, List<Label> Player) throws InterruptedException {
-        
+
     }
 
     @Override

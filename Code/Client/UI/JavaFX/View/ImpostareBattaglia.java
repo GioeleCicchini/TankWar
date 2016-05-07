@@ -79,17 +79,17 @@ public class ImpostareBattaglia implements Initializable {
             final Button nomeStrategia = new Button((String) strategia.get("nome"));
             nomeStrategia.setPrefHeight(76.0);
             nomeStrategia.setPrefWidth(313.0);
-            nomeStrategia.setStyle("-fx-background-color: #F63C1A;-fx-border-width:2px;-fx-border-color:black;");
+            nomeStrategia.setStyle("-fx-background-color: #F63C1A;-fx-border-width:2px;-fx-border-color:white; -fx-text-fill:white;-fx-font-size: 22px; ");
             StrategieSpace.setMargin(nomeStrategia,new Insets(10,0,0,20));
             nomeStrategia.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     if(premuto == false) {
                         for(Node ButtonLista : StrategieSpace.getChildren()){
-                            ButtonLista.setStyle("-fx-background-color: #F63C1A;-fx-border-width:2px;-fx-border-color:black;");
+                            ButtonLista.setStyle("-fx-background-color: #F63C1A;-fx-border-width:2px;-fx-border-color:white;-fx-text-fill:white;-fx-font-size: 22px;");
                         }
                         StrategiaSelezionata.setText((String) strategia.get("nome"));
-                        nomeStrategia.setStyle("-fx-background-color: #1AF63C;-fx-border-width:2px;-fx-border-color:black;");
+                        nomeStrategia.setStyle("-fx-background-color: #1AF63C;-fx-border-width:2px;-fx-border-color:white;-fx-text-fill:black;-fx-font-size: 22px;");
                         SimulareBattagliaHandler.getSingletonInstance().scegliStrategia((String) strategia.get("id"));
                         graficaStrategia((String) strategia.get("id"));
 
@@ -140,9 +140,13 @@ public class ImpostareBattaglia implements Initializable {
                         while(child != null) {
                             for (int i = 0; ((child != null) && (i < condCLabels.size())) ; i++) {
                                 currentCLabel = condCLabels.get(i);
+
                                 if(azione == false) {
                                     if (currentCLabel.getIdType().equals(idType)) {
-                                        ICustomLabel conditionLabel = currentCLabel.makeComponent(idType, where, (boolean) vera);
+                                        if(vera == false){
+                                            currentCLabel.setFalse();
+                                        }
+                                        ICustomLabel conditionLabel = currentCLabel.makeComponent(idType, where, vera);
                                         where = id;
                                         if(child.get("idTypeAz") != null){
                                             azione = true;

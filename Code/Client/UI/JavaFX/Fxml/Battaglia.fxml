@@ -21,18 +21,37 @@
                   <Font size="58.0" />
                </font>
             </Label>
-            <Label prefHeight="73.0" prefWidth="200.0" text="" fx:id="numeroTurni" />
+            <Label fx:id="numeroTurni" prefHeight="73.0" prefWidth="200.0" text="" />
          </children>
       </HBox>
-      <VBox prefHeight="862.0" prefWidth="490.0" style="-fx-background-color: #01579B;" />
+      <VBox prefHeight="338.0" prefWidth="1920.0" style="-fx-background-color: #01579B;" />
       <HBox prefHeight="179.0" prefWidth="1920.0" style="-fx-background-color: #01579B;">
          <children>
-            <VBox prefHeight="4.0" prefWidth="507.0" style="-fx-background-color: #01579B;" />
+            <VBox prefHeight="115.0" prefWidth="147.0" style="-fx-background-color: #01579B;" />
             <GridPane fx:id="CampoBattagliaGrid" prefHeight="700" prefWidth="700" style="-fx-grid-lines-visible: true; -fx-border-width: 2px; -fx-border-style: solid;" />
-            <VBox prefHeight="18.0" prefWidth="599.0" style="-fx-background-color: #01579B;" />
+            <VBox prefHeight="115.0" prefWidth="1071.0" style="-fx-background-color: #01579B;">
+               <children>
+                  <HBox fx:id="RisultatoHbox" prefHeight="132.0" prefWidth="1011.0">
+                     <children>
+                        <Label prefHeight="115.0" prefWidth="227.0" text="Risultato :" textFill="WHITE">
+                           <font>
+                              <Font size="43.0" />
+                           </font>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="risultatoBattaglia" prefHeight="115.0" prefWidth="222.0" textFill="WHITE">
+                           <font>
+                              <Font size="43.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children></VBox>
          </children>
       </HBox>
-      <VBox prefHeight="862.0" prefWidth="483.0" style="-fx-background-color: #01579B;" />
-      <HBox prefHeight="89.0" prefWidth="1920.0" style="-fx-background-color: #01579B;" />
+      <VBox prefHeight="579.0" prefWidth="1920.0" style="-fx-background-color: #01579B;" />
+      <HBox prefHeight="155.0" prefWidth="1920.0" style="-fx-background-color: #01579B;" />
    </children>
 </VBox>

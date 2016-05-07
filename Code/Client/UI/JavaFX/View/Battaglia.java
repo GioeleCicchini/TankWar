@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 
 
@@ -33,6 +34,8 @@ public class Battaglia implements Initializable {
 
     public static double dimensioneCampoPixel ;
     public Label numeroTurni;
+    public Label risultatoBattaglia;
+    public HBox RisultatoHbox;
 
 
     @Override
@@ -180,6 +183,8 @@ public class Battaglia implements Initializable {
         final List<Node> ParametriEventi = new ArrayList<>();
         ParametriEventi.add(CampoBattagliaGrid);
         ParametriEventi.add(numeroTurni);
+        ParametriEventi.add(risultatoBattaglia);
+        ParametriEventi.add(RisultatoHbox);
 
 
         final Map TankInBattle = new HashMap<>();

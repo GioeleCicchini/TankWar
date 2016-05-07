@@ -65,4 +65,14 @@ public class PlayerCreatorLabel implements ICreatorCustomLabel,ICustomLabel {
     public Color getColor() {
         return null;
     }
+
+    @Override
+    public void setTrue() {
+
+    }
+
+    @Override
+    public void setFalse() {
+
+    }
 }

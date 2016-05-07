@@ -52,6 +52,7 @@ public class VSparaEvento implements VEvento {
                 });
                 Thread.sleep(10);
             }
+
         Thread.sleep(10);
         Platform.runLater(new Runnable() {
             @Override
@@ -63,10 +64,35 @@ public class VSparaEvento implements VEvento {
         });
 
 
+        Map CasellaTankColpito = (Map)Evento.get("casellaTank");
+        if(CasellaTankColpito!= null){
+
+            for(Label PlayerCorrente : Player){
+                if(PlayerCorrente.getId().equals((String)CasellaTankColpito.get("tankOccupanteCasella"))){
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            PlayerCorrente.setGraphic(getTankEsploso());
+                        }
+                    });
+
+                }
+            }
+
+
+        }
 
     }
 
 
+    private ImageView getTankEsploso(){
+        Image immagineTankEsploso = new Image("Client/UI/JavaFX/View/Image/TankEsploso.png");
+        ImageView imageView = new ImageView(immagineTankEsploso);
+        imageView.setPreserveRatio(true);
+        imageView.setFitHeight(dimensioneCampoPixel/dimensioneCampoCelle-10);
+
+        return imageView;
+    }
 
 
     public void setGrid(GridPane grid) {
