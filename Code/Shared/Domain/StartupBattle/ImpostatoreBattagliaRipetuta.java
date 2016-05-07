@@ -1,38 +1,34 @@
 package Shared.Domain.StartupBattle;
 
-
+import Shared.Domain.CampoBattaglia;
 import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.ITank;
 import Shared.Domain.Posizione;
-import Shared.Domain.Tank;
-import Shared.Domain.CampoBattaglia;
 import Shared.Util.RandomMinMax;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
- * Created by gioele on 22/03/16.
+ * Created by emanuele on 07/05/16.
  */
-public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
+public class ImpostatoreBattagliaRipetuta implements IImpostatoreBattaglia {
 
-    private IGeneratoreAvversario generatoreAvversario = new RandomAvversarioGenerator();
+    private ITank tankAvversario;
     private IGeneratoreCampoBattaglia generatoreCampoBattaglia = new RandomCampoBattagliaGenerator();
 
+    public ImpostatoreBattagliaRipetuta(ITank tankAvversario) {
+        this.tankAvversario = tankAvversario;
+    }
+
+    @Override
     public ITank getAvversario(Integer livello) throws IOException {
-        try{  return ((RandomAvversarioGenerator) this.generatoreAvversario).getAvversario(livello);
-        }catch (NullPointerException e){
-            throw new NullPointerException("Tank avversario non trovato");
-        }
-
-
+        return this.tankAvversario;
     }
 
     @Override
     public void posizionaTank(ITank tankCasa, ITank tankTrasferta, CampoBattaglia campo) {
-
         List<ITank> tank = new ArrayList<>();
         tank.add(tankCasa);
         tank.add(tankTrasferta);
@@ -57,8 +53,8 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
                 else{
                     posX = dimX-1;
                 }
-                posY=RandomMinMax.randInt(0,dimY-1);
-                 posizione = new Posizione(posX,posY);
+                posY= RandomMinMax.randInt(0,dimY-1);
+                posizione = new Posizione(posX,posY);
                 casellaAttuale = campo.getCasella(posizione);
                 if (casellaPrecedente==null || casellaPrecedente.isDisponibile()) {
                     PosizionamentoDestraSinistra++;
@@ -71,8 +67,9 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
             Integer or = RandomMinMax.randInt(0,3);
             t.setOrientamento(or);
         }
-
     }
+
+    @Override
     public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException {
         CampoBattaglia campoBattaglia = null;
         try {
@@ -94,5 +91,4 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
         }
         return idInizio;
     }
-
 }
