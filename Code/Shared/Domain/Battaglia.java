@@ -106,14 +106,13 @@ public class Battaglia {
     public void impostaTurni() {
         String idTankPersonale = this.tankPersonale.getId();
         String idTankAvversario = this.tankAvversario.getId();
-        this.turno = new Turno(idTankPersonale,idTankAvversario,500);//todo questo 500 diverrà flessibile?
+        this.turno = new Turno(idTankPersonale,idTankAvversario,100);//todo questo 500 diverrà flessibile?
         String idTankInizio = this.impBattaglia.decidiTurno(idTankPersonale,idTankAvversario);
         this.turno.setaChiTocca(idTankInizio);
     }
 
     public void faiMossa(){
         String idAChiTocca = turno.aChiTocca();
-
         List<ITank> partecipanti = new ArrayList<>();
         partecipanti.add(tankPersonale);
         partecipanti.add(tankAvversario);
@@ -153,8 +152,12 @@ public class Battaglia {
         }
         List eventi = SimulareBattagliaHandler.getSingletonInstance().getEventi();
         eventi.add(evento);
-        SimulareBattagliaHandler.getSingletonInstance().setEventi(eventi);
         turno.increment();
+        if (this.turno.getNumeroTurno()%20 == 0) {
+            IEvento togliMuro = this.campoBattaglia.rimuoviMuroCasuale();
+            eventi.add(togliMuro);
+        }
+        SimulareBattagliaHandler.getSingletonInstance().setEventi(eventi);
 
     }
 

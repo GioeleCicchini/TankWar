@@ -1,7 +1,12 @@
 package Shared.Domain;
 
 import Shared.Domain.Caselle.ICasella;
+import Shared.Domain.Caselle.MuroCasella;
+import Shared.Domain.Caselle.PlainCasella;
+import Shared.Domain.Eventi.IEvento;
+import Shared.Domain.Eventi.TogliMuroEvento;
 import Shared.Util.OrientamentoEnum;
+import Shared.Util.RandomMinMax;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,6 +25,7 @@ public class CampoBattaglia implements Serializable {
 
     private Integer DimesioneCampo;
     private List<ICasella> caselleMonodimensionali;
+    private List<ICasella> muri;
 
     public CampoBattaglia() {
     }
@@ -38,6 +44,7 @@ public class CampoBattaglia implements Serializable {
 
     public void setCampo(ICasella[][] campo) {
         this.campo = campo;
+        this.muri = this.getMuri();
     }
 
     public List<ICasella> getCaselleMonodimensionali() {
@@ -159,5 +166,34 @@ public class CampoBattaglia implements Serializable {
         return CampoBattaglia;
     }
 
+    public List<ICasella> getMuri() {
+        List<ICasella> muri = new ArrayList<>();
+        for (int x=0;x<this.campo.length;x++) {
+            ICasella [] colonnaAttuale = this.campo[x];
+            for (int y=0;y<colonnaAttuale.length;y++) {
+                ICasella casellaAttuale = colonnaAttuale[y];
+                if (casellaAttuale instanceof MuroCasella) {
+                    muri.add(casellaAttuale);
+                }
+            }
+        }
+        return muri;
+    }
 
+    public IEvento rimuoviMuroCasuale() {
+        IEvento evento = null;
+        if (this.muri != null) {
+            Integer grandezza = this.muri.size();
+            Integer togliere = RandomMinMax.randInt(0,grandezza-1);
+            ICasella muroDaTogliere = this.muri.get(togliere);
+            Posizione posizioneMuro = muroDaTogliere.getPosizione();
+            this.muri.remove(muroDaTogliere);
+            ICasella plainCasella = new PlainCasella(posizioneMuro);
+            this.campo[posizioneMuro.getX()][posizioneMuro.getY()] = plainCasella;
+            evento = new TogliMuroEvento(muroDaTogliere);
+        } else {
+            evento = new TogliMuroEvento();
+        }
+        return evento;
+    }
 }
