@@ -23,7 +23,7 @@ public class CampoBattaglia implements Serializable {
 
     private ICasella [][] campo;
 
-    private Integer DimesioneCampo;
+    private Integer dimensioneCampo;
     private List<ICasella> caselleMonodimensionali;
     private List<ICasella> muri;
 
@@ -132,21 +132,21 @@ public class CampoBattaglia implements Serializable {
 
     public void ConvertiDaArrayListAdArray(){
 
-        this.campo = new ICasella[DimesioneCampo][DimesioneCampo];
-        for(int i=0;i<(this.DimesioneCampo*this.DimesioneCampo);i++){
-             Integer x = i % this.DimesioneCampo;
-             Integer y = (i-x)/this.DimesioneCampo;
+        this.campo = new ICasella[dimensioneCampo][dimensioneCampo];
+        for(int i = 0; i<(this.dimensioneCampo *this.dimensioneCampo); i++){
+             Integer x = i % this.dimensioneCampo;
+             Integer y = (i-x)/this.dimensioneCampo;
             campo[x][y] = caselleMonodimensionali.get(i);
         }
-
+        this.muri = this.getMuri();
     }
 
-    public Integer getDimesioneCampo() {
-        return DimesioneCampo;
+    public Integer getDimensioneCampo() {
+        return dimensioneCampo;
     }
 
-    public void setDimesioneCampo(Integer dimesioneCampo) {
-        DimesioneCampo = dimesioneCampo;
+    public void setDimensioneCampo(Integer dimensioneCampo) {
+        this.dimensioneCampo = dimensioneCampo;
     }
 
 
@@ -158,7 +158,7 @@ public class CampoBattaglia implements Serializable {
             caselle.add(cas.getMap());
         }
 
-        CampoBattaglia.put("DimensioneCampo",this.DimesioneCampo);
+        CampoBattaglia.put("DimensioneCampo",this.dimensioneCampo);
         CampoBattaglia.put("Id",this.id);
         CampoBattaglia.put("CampoBattaglia",caselle);
 

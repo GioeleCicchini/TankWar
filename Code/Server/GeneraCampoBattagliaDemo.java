@@ -5,12 +5,10 @@ import Shared.Domain.CampoBattaglia;
 import Shared.Domain.Caselle.ICasella;
 import Shared.Domain.Caselle.MuroCasella;
 import Shared.Domain.Caselle.PlainCasella;
-import Shared.Domain.Player;
 import Shared.Domain.Posizione;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-import java.rmi.server.UID;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -33,7 +31,7 @@ public class GeneraCampoBattagliaDemo {
         campo = new ICasella[dimensioneCampo][dimensioneCampo];
         campomonodimensionale = new ICasella[dimensioneCampo*dimensioneCampo];
 
-        campoBattaglia.setDimesioneCampo(dimensioneCampo);
+        campoBattaglia.setDimensioneCampo(dimensioneCampo);
         for(int i=0;i<dimensioneCampo;i=i+1){
             for(int j=0;j<dimensioneCampo;j=j+1){
                 ICasella casellaConcreta = new PlainCasella();
