@@ -56,7 +56,7 @@ public class VPareggioEvento implements VEvento {
                 SimulareBattagliaHandler simulareBattagliaHandler = SimulareBattagliaHandler.getSingletonInstance();
                 simulareBattagliaHandler.iniziaImpostareBattagliaRipetuta();
                 try {
-                    simulareBattagliaHandler.faiSimulazioniStatistiche(100000);
+                    simulareBattagliaHandler.faiSimulazioniStatistiche(10000);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
