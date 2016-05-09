@@ -28,7 +28,7 @@ public class VTogliMuroEvento implements VEvento {
 
         Map Muro = (Map) Evento.get("muro");
 
-        Map PosizioneMuro = (Map)Muro.get("Posizione");
+        final Map PosizioneMuro = (Map)Muro.get("Posizione");
 
 
         Platform.runLater(new Runnable() {

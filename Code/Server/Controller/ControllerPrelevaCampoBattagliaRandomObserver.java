@@ -20,20 +20,11 @@ public class ControllerPrelevaCampoBattagliaRandomObserver implements Observer {
     @Override
     public void update(ControllerFacade controller) {
         if (controller.getFunzione().equals("PrelevaCampoBattagliaRandom")) {
-
-            System.out.println("Prelevo un campo random");
-
             Integer livello = (Integer)controller.getOggettiPersistenti().get(0);
-
-
             DTO rispostaDTO = null;
-
             Session session = HibernateUtil.getSessionFactory().openSession();
-
             Criteria cr = session.createCriteria(CampoBattaglia.class);
-
             List results = cr.list();
-
             // Scelta casuale di un risultato
 
             Integer c = ((results.size()));
@@ -41,9 +32,6 @@ public class ControllerPrelevaCampoBattagliaRandomObserver implements Observer {
 
 
             Integer Casuale = random.nextInt(c);
-
-            System.out.println("server "+results.size());
-
             rispostaDTO = DTOMaker.getSingletonInstance().getCampoBattagliaRandomResponce((CampoBattaglia) results.get(Casuale));
 
 

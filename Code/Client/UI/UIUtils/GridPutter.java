@@ -22,8 +22,6 @@ public class GridPutter {
     }
 
     public void put(Node node) {
-        System.out.println("La x corrente è " + currentX.toString());
-        System.out.println("La y corrente è " + currentY.toString());
 
         grid.add(node, currentY, currentX);
         if (currentX + 2 >= maxXGrid) {

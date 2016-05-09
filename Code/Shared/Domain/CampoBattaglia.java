@@ -182,7 +182,7 @@ public class CampoBattaglia implements Serializable {
 
     public IEvento rimuoviMuroCasuale() {
         IEvento evento = null;
-        if (this.muri != null) {
+        if (this.muri.size()!=0 && this.muri != null) {
             Integer grandezza = this.muri.size();
             Integer togliere = RandomMinMax.randInt(0,grandezza-1);
             ICasella muroDaTogliere = this.muri.get(togliere);

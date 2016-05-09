@@ -30,7 +30,7 @@ public class VEsplosioneBombaEvento implements VEvento {
         Map tankEsploso = (Map)Evento.get("TankEsploso");
         String idTankOccupanteCasellaEsplosa = (String)tankEsploso.get("Id");
         Map casellaPosizioneTankEsploso = (Map)tankEsploso.get("CasellaPosizione");
-        Map posizioneTankEsploso = (Map)casellaPosizioneTankEsploso.get("Posizione");
+        final Map posizioneTankEsploso = (Map)casellaPosizioneTankEsploso.get("Posizione");
         boolean vivo = (boolean)tankEsploso.get("Vivo");
 
 
