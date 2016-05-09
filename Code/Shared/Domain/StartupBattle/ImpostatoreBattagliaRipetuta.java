@@ -16,14 +16,15 @@ import java.util.List;
 public class ImpostatoreBattagliaRipetuta implements IImpostatoreBattaglia {
 
     private ITank tankAvversario;
-    private IGeneratoreCampoBattaglia generatoreCampoBattaglia = new RandomCampoBattagliaGenerator();
+    private CampoBattaglia campoBattaglia;
 
-    public ImpostatoreBattagliaRipetuta(ITank tankAvversario) {
+    public ImpostatoreBattagliaRipetuta(ITank tankAvversario, CampoBattaglia campo) {
         this.tankAvversario = tankAvversario;
+        this.campoBattaglia = campo;
     }
 
     @Override
-    public ITank getAvversario(Integer livello) throws IOException {
+    public ITank getAvversario(Integer livello) {
         return this.tankAvversario;
     }
 
@@ -70,14 +71,8 @@ public class ImpostatoreBattagliaRipetuta implements IImpostatoreBattaglia {
     }
 
     @Override
-    public CampoBattaglia getCampoBattaglia(Integer livello) throws IOException {
-        CampoBattaglia campoBattaglia = null;
-        try {
-            campoBattaglia = ((RandomCampoBattagliaGenerator) this.generatoreCampoBattaglia).getCampoBattaglia(livello);
-        }catch (NullPointerException e){
-            throw new NullPointerException("Campo Battaglia non trovato");
-        }
-        return campoBattaglia;
+    public CampoBattaglia getCampoBattaglia(Integer livello) {
+        return this.campoBattaglia;
     }
 
     @Override

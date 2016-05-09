@@ -8,6 +8,7 @@
             <column name="Id_Strategia"/>
         </id>
         <property name="nome" column="Nome"/>
+        <property name="complete" column="Completa"/>
 
 
         <list name="conditionBlock" cascade="all" lazy="false">
