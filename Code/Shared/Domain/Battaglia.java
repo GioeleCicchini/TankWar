@@ -106,7 +106,7 @@ public class Battaglia {
     public void impostaTurni() {
         String idTankPersonale = this.tankPersonale.getId();
         String idTankAvversario = this.tankAvversario.getId();
-        this.turno = new Turno(idTankPersonale,idTankAvversario,500);//todo questo 500 diverrà flessibile?
+        this.turno = new Turno(idTankPersonale,idTankAvversario,50);//todo questo 500 diverrà flessibile?
         String idTankInizio = this.impBattaglia.decidiTurno(idTankPersonale,idTankAvversario);
         this.turno.setaChiTocca(idTankInizio);
     }
