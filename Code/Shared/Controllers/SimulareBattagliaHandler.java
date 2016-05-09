@@ -29,6 +29,7 @@ public class SimulareBattagliaHandler {
     private Battaglia battaglia = null;
     private List<Battaglia> battaglie = null;
     private List<IEvento> eventi = new ArrayList<>();
+    private CampoBattaglia campoScelto;
     private SimulareBattagliaHandler() {
         this.playerLoggato = LoginHandler.getSingletonInstance().getPlayer();
     }
@@ -53,6 +54,7 @@ public class SimulareBattagliaHandler {
         }
         try {
             this.battaglia.creaCampoBattaglia();
+            this.campoScelto = this.battaglia.getCampoBattaglia();
 
         }catch (NullPointerException e){
             throw new NullPointerException("Campo Battaglia non trovato");
@@ -65,19 +67,9 @@ public class SimulareBattagliaHandler {
     }
 
     public void impostaBattagliaRipetuta(Integer numeroPartita) throws IOException {
-        try{this.battaglie.get(numeroPartita).scegliAvversario();
-        }catch (NullPointerException e){
-            throw new NullPointerException("Tank avversario non trovato");
-        }
-        try {
-            this.battaglie.get(numeroPartita).creaCampoBattaglia();
-
-        }catch (NullPointerException e){
-            throw new NullPointerException("Campo Battaglia non trovato");
-        }
-
+        this.battaglie.get(numeroPartita).scegliAvversario();
+        this.battaglie.get(numeroPartita).creaCampoBattaglia();
         this.battaglie.get(numeroPartita).posizionaTank();
-
         this.battaglie.get(numeroPartita).impostaTurni();
     }
 
@@ -97,7 +89,7 @@ public class SimulareBattagliaHandler {
         for (int i=0;i<numeroVolte;i++) {
             Battaglia b = new Battaglia(tankPersonale);
             this.battaglie.add(b);
-            b.setImpostatoreBattagliaRipetuta(tankAvversario);
+            b.setImpostatoreBattagliaRipetuta(tankAvversario,this.campoScelto);
             impostaBattagliaRipetuta(i);
             while (!b.isTerminata()) {
                 b.faiMossa();

@@ -37,8 +37,8 @@ public class Battaglia {
         this.impBattaglia=new ImpostatoreBattagliaCasuale();
     }
 
-    public void setImpostatoreBattagliaRipetuta(ITank tankAvversario) {
-        this.impBattaglia = new ImpostatoreBattagliaRipetuta(tankAvversario);
+    public void setImpostatoreBattagliaRipetuta(ITank tankAvversario,CampoBattaglia campoScelto) {
+        this.impBattaglia = new ImpostatoreBattagliaRipetuta(tankAvversario,campoScelto);
     }
 
     public  Battaglia(){}
