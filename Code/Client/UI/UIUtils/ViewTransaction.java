@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -34,7 +35,11 @@ public class ViewTransaction {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true);
+
+        stage.setFullScreenExitHint("");
+
+       stage.setFullScreen(true);
+
         stage.show();
     }
 
@@ -51,7 +56,9 @@ public class ViewTransaction {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true);
+
+        stage.setFullScreenExitHint("");
+       stage.setFullScreen(true);
         stage.show();
     }
 
@@ -68,6 +75,8 @@ public class ViewTransaction {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
+
+
         stage.setFullScreen(true);
         stage.show();
     }
@@ -85,7 +94,11 @@ public class ViewTransaction {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true);
+
+        stage.setFullScreenExitHint("");
+
+       stage.setFullScreen(true);
+
         stage.show();
 
 
@@ -104,7 +117,9 @@ public class ViewTransaction {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true);
+
+        stage.setFullScreenExitHint("");
+       stage.setFullScreen(true);
         stage.show();
 
 
