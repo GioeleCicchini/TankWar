@@ -1,6 +1,5 @@
 package Client.UI.JavaFX.View.VEventi;
 
-import Client.UI.JavaFX.View.Runnable;
 import Shared.Controllers.SimulareBattagliaHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -10,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Paint;
 
 import java.io.IOException;
 import java.util.List;

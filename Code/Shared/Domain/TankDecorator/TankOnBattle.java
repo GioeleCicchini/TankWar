@@ -20,7 +20,7 @@ public class TankOnBattle extends TankDecorator {
     private ICasella casellaPosizione;
     private Integer bombeRimanenti;
     private OrientamentoEnum orientamento;
-    private Integer vita = 1;
+    private Integer vita = 3;
     private Integer potenzaArma = 1;
 
     private boolean vivo = true;

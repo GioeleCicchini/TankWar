@@ -100,13 +100,12 @@ public class BombaCasella implements ICasella {
     public IEvento eseguiti(CampoBattaglia campo) {
         IEvento risultato = null;
         if (this.bombaTank != this.tankOccupanteCasella) {
-            System.out.println("Esplosa in ("+ this.posizione.getX()+","+this.posizione.getY()+")");
             this.tankOccupanteCasella.colpito(1);
             ICasella plainCasella = new PlainCasella(this.posizione);
             plainCasella.setTank(this.tankOccupanteCasella);
             campo.setCasella(plainCasella,this.posizione);
             tankOccupanteCasella.setCasellaPosizione(plainCasella);
-            risultato = new EsplosioneBombaEvento(plainCasella);
+            risultato = new EsplosioneBombaEvento(this.tankOccupanteCasella);
         }
         return risultato;
     }

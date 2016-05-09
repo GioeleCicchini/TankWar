@@ -37,6 +37,8 @@ public class Battaglia implements Initializable {
     public Label risultatoBattaglia;
     public HBox RisultatoHbox;
 
+    Thread th;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -193,19 +195,19 @@ public class Battaglia implements Initializable {
         dimensioneCampo.put("dimensioneCampoCelle",dimensioneCampoCelle);
         dimensioneCampo.put("dimensioneCampoPixel",dimensioneCampoPixel);
 
+
         Task task = new Task<Void>() {
             @Override
             public Void call() throws Exception {
                 int i = 0;
-                while (true) {
-
-                    if(!SimulareBattagliaHandler.getSingletonInstance().isFinita()) {
+                while (!SimulareBattagliaHandler.getSingletonInstance().isFinita()) {
 
                         final int finalI = i;
 
 
                         SimulareBattagliaHandler.getSingletonInstance().faiMossa();
 
+                        // su questa lista ci sono gli eventi avvenuti nel dominio
                         List<Map> Eventi = (List)simulareBattagliaHandler.getEventiMap().get("eventi");
 
 
@@ -222,13 +224,17 @@ public class Battaglia implements Initializable {
                         i++;
                         Thread.sleep(80);
 
-                    }
+
 
                 }
+                return null;
             }
         };
-        Thread th = new Thread(task);
-        th.setDaemon(true);
+
+
+
+
+        th = new Thread(task);
         th.start();
 
 
@@ -237,8 +243,11 @@ public class Battaglia implements Initializable {
 
 
 
-    public void indietro(Event event){
+    public void indietro(Event event) throws InterruptedException {
+
         ViewTransaction.getSingletonInstance().goToHome(indietroButton);
+        th.interrupt();
+        System.out.println("Stato thread Campo Battaglia : "+th.getState().toString());
 
     }
 }

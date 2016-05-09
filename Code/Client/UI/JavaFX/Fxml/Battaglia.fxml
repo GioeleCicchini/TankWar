@@ -33,7 +33,7 @@
                <children>
                   <HBox fx:id="RisultatoHbox" prefHeight="132.0" prefWidth="1011.0">
                      <children>
-                        <Label prefHeight="115.0" prefWidth="227.0" text="Risultato :" textFill="WHITE">
+                        <Label prefHeight="115.0" prefWidth="279.0" text="Risultato :" textFill="WHITE">
                            <font>
                               <Font size="43.0" />
                            </font>
@@ -41,7 +41,7 @@
                               <Insets left="20.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="risultatoBattaglia" prefHeight="115.0" prefWidth="222.0" textFill="WHITE">
+                        <Label fx:id="risultatoBattaglia" prefHeight="115.0" prefWidth="206.0" textFill="WHITE">
                            <font>
                               <Font size="43.0" />
                            </font>

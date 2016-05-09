@@ -1,7 +1,5 @@
 package Client.UI.JavaFX.View.VEventi;
 
-import Client.UI.JavaFX.View.Runnable;
-import Shared.Domain.CampoBattaglia;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -50,10 +48,10 @@ public class VSparaEvento implements VEvento {
                     }
 
                 });
-                Thread.sleep(10);
+                Thread.sleep(20);
             }
 
-        Thread.sleep(10);
+        Thread.sleep(20);
         Platform.runLater(new Runnable() {
             @Override
             public void run() {

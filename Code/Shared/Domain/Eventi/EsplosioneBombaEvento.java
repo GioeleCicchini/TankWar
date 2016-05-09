@@ -1,6 +1,7 @@
 package Shared.Domain.Eventi;
 
 import Shared.Domain.Caselle.ICasella;
+import Shared.Domain.ITank;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,16 +11,16 @@ import java.util.Map;
  */
 public class EsplosioneBombaEvento implements IEvento {
 
-    private ICasella casellaEsplosa;
+    private ITank tankOccupantteCasella;
 
-    public EsplosioneBombaEvento(ICasella casellaEsplosa) {
-        this.casellaEsplosa = casellaEsplosa;
+    public EsplosioneBombaEvento(ITank tankOccupanteCasella) {
+        this.tankOccupantteCasella = tankOccupanteCasella;
     }
 
     @Override
     public Map getMap() {
         Map evento = new HashMap();
-        evento.put("casellaEsplosa",this.casellaEsplosa.getMap());
+        evento.put("TankEsploso",this.tankOccupantteCasella.getMap());
         evento.put("nomeEvento","EsplosioneBombaEvento");
         return evento;
     }
