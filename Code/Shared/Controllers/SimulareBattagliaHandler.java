@@ -29,6 +29,7 @@ public class SimulareBattagliaHandler {
     private Battaglia battaglia = null;
     private List<Battaglia> battaglie = null;
     private List<IEvento> eventi = new ArrayList<>();
+    private CampoBattaglia campoScelto;
     private SimulareBattagliaHandler() {
         this.playerLoggato = LoginHandler.getSingletonInstance().getPlayer();
     }
@@ -53,6 +54,7 @@ public class SimulareBattagliaHandler {
         }
         try {
             this.battaglia.creaCampoBattaglia();
+            this.campoScelto = this.battaglia.getCampoBattaglia().clone();
 
         }catch (NullPointerException e){
             throw new NullPointerException("Campo Battaglia non trovato");
@@ -65,19 +67,9 @@ public class SimulareBattagliaHandler {
     }
 
     public void impostaBattagliaRipetuta(Integer numeroPartita) throws IOException {
-        try{this.battaglie.get(numeroPartita).scegliAvversario();
-        }catch (NullPointerException e){
-            throw new NullPointerException("Tank avversario non trovato");
-        }
-        try {
-            this.battaglie.get(numeroPartita).creaCampoBattaglia();
-
-        }catch (NullPointerException e){
-            throw new NullPointerException("Campo Battaglia non trovato");
-        }
-
+        this.battaglie.get(numeroPartita).scegliAvversario();
+        this.battaglie.get(numeroPartita).creaCampoBattaglia();
         this.battaglie.get(numeroPartita).posizionaTank();
-
         this.battaglie.get(numeroPartita).impostaTurni();
     }
 
@@ -90,14 +82,18 @@ public class SimulareBattagliaHandler {
     public void faiSimulazioniStatistiche(Integer numeroVolte) throws IOException {
         ITank tankPersonale = battaglia.getTankPersonale();
         ITank tankAvversario = this.battaglia.getTankAvversario();
-        Integer vittorie = 0;
-        Integer sconfitte = 0;
-        Integer pareggio = 0;
+        double vittorie = 0;
+        double sconfitte = 0;
+        double pareggio = 0;
         long iniziato = System.currentTimeMillis();
         for (int i=0;i<numeroVolte;i++) {
             Battaglia b = new Battaglia(tankPersonale);
             this.battaglie.add(b);
-            b.setImpostatoreBattagliaRipetuta(tankAvversario);
+
+            CampoBattaglia campoCopia = this.campoScelto.clone();
+
+
+            b.setImpostatoreBattagliaRipetuta(tankAvversario,campoCopia);
             impostaBattagliaRipetuta(i);
             while (!b.isTerminata()) {
                 b.faiMossa();
@@ -116,11 +112,15 @@ public class SimulareBattagliaHandler {
         }
         long finito = System.currentTimeMillis();
         long diff = finito - iniziato;
-        System.out.println("FINITOOOOO in "+diff+". Vittorie: "+vittorie+", Pareggi: "+ pareggio + ", Sconfitte: "+sconfitte );
+        System.out.println("FINITOOOOO in "+diff+" Millisecondi. Vittorie: "+vittorie+", Pareggi: "+ pareggio + ", Sconfitte: "+sconfitte + " Rapporto di vincita Vinte/Perse: "+ (float)(vittorie/sconfitte));
     }
 
     public boolean isFinita(){
         return battaglia.isTerminata();
+    }
+
+    public String statoBattaglia() {
+        return this.battaglia.getRisultato();
     }
 
     public Map getCampoBattaglia(){

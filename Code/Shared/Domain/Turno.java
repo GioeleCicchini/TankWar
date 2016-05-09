@@ -20,7 +20,7 @@ public class Turno {
     public Turno(String idTankPersonale, String idTankAvversario, Integer turni) {
         this.idTankPersonale = idTankPersonale;
         this.idTankAvversario = idTankAvversario;
-        numeroTurno = 0;
+        numeroTurno = 1;
         maxTurni=turni*2;//Todo al posto del 2 ci andrà il numero di partecipanti
     }
 
@@ -69,7 +69,7 @@ public class Turno {
 
     public boolean isFinitaPartita(){
         boolean finita = false;
-        if (numeroTurno>=maxTurni-1){
+        if (numeroTurno>=maxTurni){
             finita=true;
         }
         return finita;

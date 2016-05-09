@@ -57,6 +57,12 @@ public class Player implements Serializable {
         this.strategieList.add(strategia);
     }
 
+    public void eliminaUltimaStrategia(){
+
+        strategieList.remove(strategieList.size()-1);
+
+    }
+
     public Map getMap() {
         Map player = new HashMap();
         List strategie = new ArrayList<>();

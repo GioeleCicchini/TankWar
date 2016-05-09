@@ -16,11 +16,13 @@ public class SparaEvento implements IEvento {
     private List<ICasella> casellePropagazione = new ArrayList<>();
     private ICasella casellaTank;
     private ITank tankTurno;
+    private ITank tankColpito;
 
-    public SparaEvento(List casellePropagazione, ICasella casellaTank, ITank tankTurno) {
+    public SparaEvento(List casellePropagazione, ICasella casellaTank, ITank tankTurno,ITank tankColpito) {
         this.casellePropagazione = casellePropagazione;
         this.casellaTank = casellaTank;
         this.tankTurno = tankTurno;
+        this.tankColpito = tankColpito;
     }
 
     @Override
@@ -33,10 +35,13 @@ public class SparaEvento implements IEvento {
         evento.put("casellePropagazione",caselleCorrenti);
         if (casellaTank != null) {
             evento.put("casellaTank",casellaTank.getMap());
+            evento.put("TankColpito",tankColpito.getMap());
+
         } else {
             evento.put("casellaTank",null);
+            evento.put("TankColpito",null);
         }
-        evento.put("idTankCheSpara",tankTurno.getId());
+        evento.put("TankCheSpara",tankTurno.getMap());
         evento.put("nomeEvento","SparaEvento");
 
         return evento;

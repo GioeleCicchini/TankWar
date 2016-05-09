@@ -1,7 +1,5 @@
 package Client.UI.JavaFX.View.VEventi;
 
-import Client.UI.JavaFX.View.Runnable;
-import Shared.Domain.CampoBattaglia;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -30,9 +28,11 @@ public class VSparaEvento implements VEvento {
     public void eseguiti(Map Evento, List<Label> Player) throws InterruptedException {
 
         List<Map> caselleSparoPropagazione = (List)Evento.get("casellePropagazione");
-        String TankCheSpara = (String)Evento.get("idTankCheSpara");
 
-        final Label colpo = creaColpo(TankCheSpara);
+       Map tankColpito= (Map)Evento.get("TankColpito");
+        boolean vivo = (boolean)tankColpito.get("Vivo");
+
+        final Label colpo = creaColpo();
 
             for(Map casellaPropagazione : caselleSparoPropagazione){
 
@@ -50,10 +50,10 @@ public class VSparaEvento implements VEvento {
                     }
 
                 });
-                Thread.sleep(10);
+                Thread.sleep(50);
             }
 
-        Thread.sleep(10);
+        Thread.sleep(20);
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -69,13 +69,14 @@ public class VSparaEvento implements VEvento {
 
             for(final Label PlayerCorrente : Player){
                 if(PlayerCorrente.getId().equals((String)CasellaTankColpito.get("tankOccupanteCasella"))){
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            PlayerCorrente.setGraphic(getTankEsploso());
-                        }
-                    });
-
+                    if(!vivo) {
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                PlayerCorrente.setGraphic(getTankEsploso());
+                            }
+                        });
+                    }
                 }
             }
 
@@ -120,7 +121,7 @@ public class VSparaEvento implements VEvento {
     }
 
 
-    private Label creaColpo(String TankCheSpara){
+    private Label creaColpo(){
 
         Label Colpo = new Label();
         Image immagine = null;

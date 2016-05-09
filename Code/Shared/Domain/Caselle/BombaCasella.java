@@ -6,13 +6,14 @@ import Shared.Domain.Eventi.IEvento;
 import Shared.Domain.ITank;
 import Shared.Domain.Posizione;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by emanuele on 05/05/16.
  */
-public class BombaCasella implements ICasella {
+public class BombaCasella implements ICasella,Serializable {
 
     private boolean disponibile = true;
     private Posizione posizione;
@@ -34,6 +35,13 @@ public class BombaCasella implements ICasella {
     @Override
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public ICasella clone() {
+        ICasella casella = new BombaCasella();
+        casella.setPosizione(this.posizione);
+        return casella;
     }
 
     @Override
@@ -105,7 +113,7 @@ public class BombaCasella implements ICasella {
             plainCasella.setTank(this.tankOccupanteCasella);
             campo.setCasella(plainCasella,this.posizione);
             tankOccupanteCasella.setCasellaPosizione(plainCasella);
-            risultato = new EsplosioneBombaEvento(plainCasella);
+            risultato = new EsplosioneBombaEvento(this.tankOccupanteCasella);
         }
         return risultato;
     }
@@ -113,5 +121,17 @@ public class BombaCasella implements ICasella {
     @Override
     public void setBombaTank(ITank tank) {
         this.bombaTank = tank;
+    }
+
+    public void setDisponibile(boolean disponibile) {
+        this.disponibile = disponibile;
+    }
+
+    public ITank getTankOccupanteCasella() {
+        return tankOccupanteCasella;
+    }
+
+    public void setTankOccupanteCasella(ITank tankOccupanteCasella) {
+        this.tankOccupanteCasella = tankOccupanteCasella;
     }
 }

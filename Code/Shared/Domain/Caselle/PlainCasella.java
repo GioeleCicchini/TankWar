@@ -51,6 +51,13 @@ public class PlainCasella implements ICasella,Serializable {
     }
 
     @Override
+    public ICasella clone() {
+        ICasella casella = new PlainCasella();
+        casella.setPosizione(this.posizione);
+        return casella;
+    }
+
+    @Override
     public boolean isDisponibile() {
         return disponibile;
     }
@@ -95,5 +102,17 @@ public class PlainCasella implements ICasella,Serializable {
     @Override
     public void setPosizione(Posizione posizione) {
         this.posizione = posizione;
+    }
+
+    public void setDisponibile(boolean disponibile) {
+        this.disponibile = disponibile;
+    }
+
+    public ITank getTankOccupanteCasella() {
+        return tankOccupanteCasella;
+    }
+
+    public void setTankOccupanteCasella(ITank tankOccupanteCasella) {
+        this.tankOccupanteCasella = tankOccupanteCasella;
     }
 }

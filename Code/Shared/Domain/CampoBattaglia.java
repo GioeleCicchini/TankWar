@@ -1,7 +1,12 @@
 package Shared.Domain;
 
 import Shared.Domain.Caselle.ICasella;
+import Shared.Domain.Caselle.MuroCasella;
+import Shared.Domain.Caselle.PlainCasella;
+import Shared.Domain.Eventi.IEvento;
+import Shared.Domain.Eventi.TogliMuroEvento;
 import Shared.Util.OrientamentoEnum;
+import Shared.Util.RandomMinMax;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,10 +23,26 @@ public class CampoBattaglia implements Serializable {
 
     private ICasella [][] campo;
 
-    private Integer DimesioneCampo;
+    private Integer dimensioneCampo;
     private List<ICasella> caselleMonodimensionali;
+    private List<ICasella> muri;
 
     public CampoBattaglia() {
+    }
+
+    public CampoBattaglia clone() {
+        CampoBattaglia campoCopia = new CampoBattaglia();
+        ICasella [][] appoggio = new ICasella[dimensioneCampo][dimensioneCampo];
+        for (ICasella [] x:this.campo) {
+            for (ICasella y:x) {
+                appoggio[y.getPosizione().getX()][y.getPosizione().getY()] = this.getCasella(y.getPosizione()).clone();
+            }
+        }
+        campoCopia.setCampo(appoggio);
+        campoCopia.setId(this.id);
+        campoCopia.setDimensioneCampo(this.dimensioneCampo);
+        campoCopia.setMuri(campoCopia.getMuri());
+        return campoCopia;
     }
 
     public String getId() {
@@ -38,6 +59,7 @@ public class CampoBattaglia implements Serializable {
 
     public void setCampo(ICasella[][] campo) {
         this.campo = campo;
+        this.muri = this.getMuri();
     }
 
     public List<ICasella> getCaselleMonodimensionali() {
@@ -125,21 +147,21 @@ public class CampoBattaglia implements Serializable {
 
     public void ConvertiDaArrayListAdArray(){
 
-        this.campo = new ICasella[DimesioneCampo][DimesioneCampo];
-        for(int i=0;i<(this.DimesioneCampo*this.DimesioneCampo);i++){
-             Integer x = i % this.DimesioneCampo;
-             Integer y = (i-x)/this.DimesioneCampo;
+        this.campo = new ICasella[dimensioneCampo][dimensioneCampo];
+        for(int i = 0; i<(this.dimensioneCampo *this.dimensioneCampo); i++){
+             Integer x = i % this.dimensioneCampo;
+             Integer y = (i-x)/this.dimensioneCampo;
             campo[x][y] = caselleMonodimensionali.get(i);
         }
-
+        this.muri = this.getMuri();
     }
 
-    public Integer getDimesioneCampo() {
-        return DimesioneCampo;
+    public Integer getDimensioneCampo() {
+        return dimensioneCampo;
     }
 
-    public void setDimesioneCampo(Integer dimesioneCampo) {
-        DimesioneCampo = dimesioneCampo;
+    public void setDimensioneCampo(Integer dimensioneCampo) {
+        this.dimensioneCampo = dimensioneCampo;
     }
 
 
@@ -151,7 +173,7 @@ public class CampoBattaglia implements Serializable {
             caselle.add(cas.getMap());
         }
 
-        CampoBattaglia.put("DimensioneCampo",this.DimesioneCampo);
+        CampoBattaglia.put("DimensioneCampo",this.dimensioneCampo);
         CampoBattaglia.put("Id",this.id);
         CampoBattaglia.put("CampoBattaglia",caselle);
 
@@ -159,5 +181,38 @@ public class CampoBattaglia implements Serializable {
         return CampoBattaglia;
     }
 
+    public List<ICasella> getMuri() {
+        List<ICasella> muri = new ArrayList<>();
+        for (int x=0;x<this.campo.length;x++) {
+            ICasella [] colonnaAttuale = this.campo[x];
+            for (int y=0;y<colonnaAttuale.length;y++) {
+                ICasella casellaAttuale = colonnaAttuale[y];
+                if (casellaAttuale instanceof MuroCasella) {
+                    muri.add(casellaAttuale);
+                }
+            }
+        }
+        return muri;
+    }
 
+    public void setMuri(List<ICasella> muri) {
+        this.muri = muri;
+    }
+
+    public IEvento rimuoviMuroCasuale() {
+        IEvento evento = null;
+        if (this.muri.size()!=0 && this.muri != null) {
+            Integer grandezza = this.muri.size();
+            Integer togliere = RandomMinMax.randInt(0,grandezza-1);
+            ICasella muroDaTogliere = this.muri.get(togliere);
+            Posizione posizioneMuro = muroDaTogliere.getPosizione();
+            this.muri.remove(muroDaTogliere);
+            ICasella plainCasella = new PlainCasella(posizioneMuro);
+            this.campo[posizioneMuro.getX()][posizioneMuro.getY()] = plainCasella;
+            evento = new TogliMuroEvento(muroDaTogliere);
+        } else {
+            evento = new TogliMuroEvento();
+        }
+        return evento;
+    }
 }

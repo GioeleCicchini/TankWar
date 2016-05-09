@@ -9,7 +9,7 @@
         <generator class="assigned"/>
         </id>
 
-        <property name="dimesioneCampo">
+        <property name="dimensioneCampo">
             <column name="DimensioneCampo"></column>
         </property>
         <list name="caselleMonodimensionali" cascade="all" fetch="join">

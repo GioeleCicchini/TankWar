@@ -1,6 +1,5 @@
 package Client.UI.JavaFX.View.VEventi;
 
-import Client.UI.JavaFX.View.Runnable;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.Label;

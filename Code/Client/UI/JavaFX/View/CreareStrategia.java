@@ -66,7 +66,6 @@ public class CreareStrategia implements Initializable {
         boolean booleanoDellaCondizione = true;
         if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ConditionCreatorLabel")) { //TODO è bruttissimo
             //Caso in cui viene trascinato un CondizioneCreator
-            System.out.println("Hey abbiamo un creator di condizione");
             ConditionCreatorLabel labelDragged = (ConditionCreatorLabel) event.getGestureSource();
             String idTypeCond = labelDragged.getIdType();
             List<Integer> valori = new ArrayList<Integer>();
@@ -75,14 +74,12 @@ public class CreareStrategia implements Initializable {
                 booleanoDellaCondizione = false;
             }
             if (where == null) { //è una condizione direttamente figlia di strategia
-                System.out.println("Cond non Annidata!");
                 idCondCreata = CreareStrategiaHandler.getSingletonInstance().scegliCondizione(idTypeCond, booleanoDellaCondizione, valori);
                 ICustomLabel conditionLabel = labelDragged.makeComponent(idCondCreata, where, booleanoDellaCondizione);
                 where = idCondCreata;
                 strategiaPutter.addLabel(conditionLabel, true);
 
             } else {
-                System.out.println("Cond Annidata");
                 idCondCreata = CreareStrategiaHandler.getSingletonInstance().scegliCondizioneAnnidata(idTypeCond, where, booleanoDellaCondizione, valori);
                 ICustomLabel conditionLabel = labelDragged.makeComponent(idCondCreata, where, booleanoDellaCondizione);
                 where = idCondCreata;
@@ -92,7 +89,6 @@ public class CreareStrategia implements Initializable {
         if (event.getGestureSource().getClass().toString().equals("class Client.UI.JavaFX.CustomWidget.ActionCreatorLabel")) { //TODO è bruttissimo
             //Caso in cui viene trascinato un AzioneCreator
             if (where != null) {
-                System.out.println("Hey abbiamo un creator di azione");
                 ActionCreatorLabel labelDragged = (ActionCreatorLabel) event.getGestureSource();
                 String idTypeAz = labelDragged.getIdType();
                 List<Integer> valori = new ArrayList<Integer>();
@@ -118,10 +114,7 @@ public class CreareStrategia implements Initializable {
         nomeStrategia.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue) {
-                    System.out.println("Textfield on focus");
-                } else {
-                    System.out.println("Textfield out focus");
+                if (!newValue) {
                     String nome = nomeStrategia.getText();
                     if (!nome.equals("")) {
                         CreareStrategiaHandler.getSingletonInstance().inserisciNomeStrategia(nome);
@@ -177,7 +170,6 @@ public class CreareStrategia implements Initializable {
             alert.setContentText("Controlla che la Strategia sia completa");
             alert.showAndWait();
         } else {
-            System.out.println("passoqui");
             ViewTransaction.getSingletonInstance().goToHome(confermaButton);
         }
 

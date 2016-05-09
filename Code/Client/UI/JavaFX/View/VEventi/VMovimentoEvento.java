@@ -1,13 +1,10 @@
 package Client.UI.JavaFX.View.VEventi;
 
-import Client.UI.JavaFX.View.Runnable;
 import javafx.application.Platform;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

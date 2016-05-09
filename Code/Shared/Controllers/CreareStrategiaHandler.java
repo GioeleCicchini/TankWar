@@ -104,6 +104,7 @@ public class CreareStrategiaHandler {
     public void distruggiStrategiaCorrente() {
 
         this.strategiaCorrente = null;
+        currentPlayer.eliminaUltimaStrategia();
 
     }
 
