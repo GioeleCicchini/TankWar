@@ -54,7 +54,13 @@ public class SimulareBattagliaHandler {
         }
         try {
             this.battaglia.creaCampoBattaglia();
-            this.campoScelto = this.battaglia.getCampoBattaglia();
+            CampoBattaglia campoAttuale = this.battaglia.getCampoBattaglia();
+            CampoBattaglia campoCopia = new CampoBattaglia();
+            campoCopia.setCaselleMonodimensionali(campoAttuale.getCaselleMonodimensionali());
+            campoCopia.setId(campoAttuale.getId());
+            campoCopia.setCampo(campoAttuale.getCampo());
+            campoCopia.setDimensioneCampo(campoAttuale.getDimensioneCampo());
+            this.campoScelto=campoCopia;
 
         }catch (NullPointerException e){
             throw new NullPointerException("Campo Battaglia non trovato");
@@ -89,12 +95,21 @@ public class SimulareBattagliaHandler {
         for (int i=0;i<numeroVolte;i++) {
             Battaglia b = new Battaglia(tankPersonale);
             this.battaglie.add(b);
-            b.setImpostatoreBattagliaRipetuta(tankAvversario,this.campoScelto);
+
+            CampoBattaglia campoCopia = new CampoBattaglia();
+            campoCopia.setCaselleMonodimensionali(campoScelto.getCaselleMonodimensionali());
+            campoCopia.setId(campoScelto.getId());
+            campoCopia.setCampo(campoScelto.getCampo());
+            campoCopia.setDimensioneCampo(campoScelto.getDimensioneCampo());
+
+
+            b.setImpostatoreBattagliaRipetuta(tankAvversario,campoCopia);
             impostaBattagliaRipetuta(i);
             while (!b.isTerminata()) {
                 b.faiMossa();
             }
             if (b.isTerminata()) {
+                System.out.println("terminata la "+i+" Battaglia");
                 String risultato;
                 risultato = b.getRisultato();
                 switch (risultato) {

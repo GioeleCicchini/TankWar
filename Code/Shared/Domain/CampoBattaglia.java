@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by gioele on 22/03/16.
  */
-public class CampoBattaglia implements Serializable {
+public class CampoBattaglia implements Serializable,Cloneable {
 
     private String id;
 
@@ -46,6 +46,13 @@ public class CampoBattaglia implements Serializable {
         this.campo = campo;
         this.muri = this.getMuri();
     }
+
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        } return null; }
 
     public List<ICasella> getCaselleMonodimensionali() {
         return caselleMonodimensionali;
