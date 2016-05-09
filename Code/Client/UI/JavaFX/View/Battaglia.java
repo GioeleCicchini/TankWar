@@ -227,6 +227,7 @@ public class Battaglia implements Initializable {
 
 
                 }
+
                 return null;
             }
         };

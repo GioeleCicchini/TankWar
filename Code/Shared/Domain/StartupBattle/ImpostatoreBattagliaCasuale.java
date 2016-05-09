@@ -58,9 +58,12 @@ public class ImpostatoreBattagliaCasuale implements IImpostatoreBattaglia {
                     posX = dimX-1;
                 }
                 posY=RandomMinMax.randInt(0,dimY-1);
-                 posizione = new Posizione(posX,posY);
+                posizione = new Posizione(posX,posY);
                 casellaAttuale = campo.getCasella(posizione);
-                if (casellaPrecedente==null || casellaPrecedente.isDisponibile()) {
+                if (PosizionamentoDestraSinistra == 0) {
+                    casellaPrecedente = casellaAttuale;
+                }
+                if (casellaPrecedente.isDisponibile()) {
                     PosizionamentoDestraSinistra++;
                 }
                 casellaPrecedente = casellaAttuale;

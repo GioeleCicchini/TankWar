@@ -24,7 +24,7 @@ public class Battaglia {
     private CampoBattaglia campoBattaglia;
     private Turno turno;
     private IImpostatoreBattaglia impBattaglia;
-    private String risultato = "in corso";
+    private String risultato = "inCorso";
 
 
 

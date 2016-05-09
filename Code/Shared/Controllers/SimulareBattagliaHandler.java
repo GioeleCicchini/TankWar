@@ -99,7 +99,6 @@ public class SimulareBattagliaHandler {
                 b.faiMossa();
             }
             if (b.isTerminata()) {
-                System.out.println("terminata la "+i+" Battaglia");
                 String risultato;
                 risultato = b.getRisultato();
                 switch (risultato) {
@@ -118,6 +117,10 @@ public class SimulareBattagliaHandler {
 
     public boolean isFinita(){
         return battaglia.isTerminata();
+    }
+
+    public String statoBattaglia() {
+        return this.battaglia.getRisultato();
     }
 
     public Map getCampoBattaglia(){
