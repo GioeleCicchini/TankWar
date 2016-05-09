@@ -54,13 +54,7 @@ public class SimulareBattagliaHandler {
         }
         try {
             this.battaglia.creaCampoBattaglia();
-            CampoBattaglia campoAttuale = this.battaglia.getCampoBattaglia();
-            CampoBattaglia campoCopia = new CampoBattaglia();
-            campoCopia.setCaselleMonodimensionali(campoAttuale.getCaselleMonodimensionali());
-            campoCopia.setId(campoAttuale.getId());
-            campoCopia.setCampo(campoAttuale.getCampo());
-            campoCopia.setDimensioneCampo(campoAttuale.getDimensioneCampo());
-            this.campoScelto=campoCopia;
+            this.campoScelto = this.battaglia.getCampoBattaglia().clone();
 
         }catch (NullPointerException e){
             throw new NullPointerException("Campo Battaglia non trovato");
@@ -96,11 +90,7 @@ public class SimulareBattagliaHandler {
             Battaglia b = new Battaglia(tankPersonale);
             this.battaglie.add(b);
 
-            CampoBattaglia campoCopia = new CampoBattaglia();
-            campoCopia.setCaselleMonodimensionali(campoScelto.getCaselleMonodimensionali());
-            campoCopia.setId(campoScelto.getId());
-            campoCopia.setCampo(campoScelto.getCampo());
-            campoCopia.setDimensioneCampo(campoScelto.getDimensioneCampo());
+            CampoBattaglia campoCopia = this.campoScelto.clone();
 
 
             b.setImpostatoreBattagliaRipetuta(tankAvversario,campoCopia);

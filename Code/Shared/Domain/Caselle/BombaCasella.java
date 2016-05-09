@@ -37,6 +37,13 @@ public class BombaCasella implements ICasella {
     }
 
     @Override
+    public ICasella clone() {
+        ICasella casella = new BombaCasella();
+        casella.setPosizione(this.posizione);
+        return casella;
+    }
+
+    @Override
     public boolean isDisponibile() {
         return disponibile;
     }

@@ -51,6 +51,13 @@ public class PlainCasella implements ICasella,Serializable {
     }
 
     @Override
+    public ICasella clone() {
+        ICasella casella = new PlainCasella();
+        casella.setPosizione(this.posizione);
+        return casella;
+    }
+
+    @Override
     public boolean isDisponibile() {
         return disponibile;
     }

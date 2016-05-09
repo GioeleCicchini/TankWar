@@ -18,8 +18,6 @@ import java.util.Map;
  */
 public class MuroCasella implements ICasella,Serializable {
 
-    private Map caselleVicine = new HashMap< OrientamentoEnum,ICasella>();
-
     private String id;
     private Posizione posizione;
 
@@ -36,6 +34,13 @@ public class MuroCasella implements ICasella,Serializable {
     @Override
     public void setId(String id) {
         this.id=id;
+    }
+
+    @Override
+    public ICasella clone() {
+        ICasella casella = new MuroCasella();
+        casella.setPosizione(this.posizione);
+        return casella;
     }
 
     @Override

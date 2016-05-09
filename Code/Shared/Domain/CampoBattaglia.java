@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by gioele on 22/03/16.
  */
-public class CampoBattaglia implements Serializable,Cloneable {
+public class CampoBattaglia implements Serializable {
 
     private String id;
 
@@ -28,6 +28,21 @@ public class CampoBattaglia implements Serializable,Cloneable {
     private List<ICasella> muri;
 
     public CampoBattaglia() {
+    }
+
+    public CampoBattaglia clone() {
+        CampoBattaglia campoCopia = new CampoBattaglia();
+        ICasella [][] appoggio = new ICasella[dimensioneCampo][dimensioneCampo];
+        for (ICasella [] x:this.campo) {
+            for (ICasella y:x) {
+                appoggio[y.getPosizione().getX()][y.getPosizione().getY()] = this.getCasella(y.getPosizione()).clone();
+            }
+        }
+        campoCopia.setCampo(appoggio);
+        campoCopia.setId(this.id);
+        campoCopia.setDimensioneCampo(this.dimensioneCampo);
+        campoCopia.setMuri(campoCopia.getMuri());
+        return campoCopia;
     }
 
     public String getId() {
@@ -46,13 +61,6 @@ public class CampoBattaglia implements Serializable,Cloneable {
         this.campo = campo;
         this.muri = this.getMuri();
     }
-
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        } return null; }
 
     public List<ICasella> getCaselleMonodimensionali() {
         return caselleMonodimensionali;
@@ -185,6 +193,10 @@ public class CampoBattaglia implements Serializable,Cloneable {
             }
         }
         return muri;
+    }
+
+    public void setMuri(List<ICasella> muri) {
+        this.muri = muri;
     }
 
     public IEvento rimuoviMuroCasuale() {
