@@ -29,8 +29,14 @@ public class VSparaEvento implements VEvento {
 
         List<Map> caselleSparoPropagazione = (List)Evento.get("casellePropagazione");
 
-       Map tankColpito= (Map)Evento.get("TankColpito");
-        boolean vivo = (boolean)tankColpito.get("Vivo");
+        Map tankColpito= (Map)Evento.get("TankColpito");
+        boolean vivo;
+        if (tankColpito!=null) {
+            vivo = (boolean)tankColpito.get("Vivo");
+        } else {
+            vivo = true;
+        }
+
 
         final Label colpo = creaColpo();
 
