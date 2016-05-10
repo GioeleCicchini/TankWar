@@ -210,8 +210,6 @@ public class CampoBattaglia implements Serializable {
             ICasella plainCasella = new PlainCasella(posizioneMuro);
             this.campo[posizioneMuro.getX()][posizioneMuro.getY()] = plainCasella;
             evento = new TogliMuroEvento(muroDaTogliere);
-        } else {
-            evento = new TogliMuroEvento();
         }
         return evento;
     }

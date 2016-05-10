@@ -156,7 +156,9 @@ public class Battaglia {
         turno.increment();
         if (this.turno.getNumeroTurno()%20 == 0) {
             IEvento togliMuro = this.campoBattaglia.rimuoviMuroCasuale();
-            eventi.add(togliMuro);
+            if (togliMuro!=null) {
+                eventi.add(togliMuro);
+            }
         }
         SimulareBattagliaHandler.getSingletonInstance().setEventi(eventi);
 
