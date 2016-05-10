@@ -46,7 +46,7 @@ public class VVittoriaEvento implements VEvento {
 
     private Button getButtonSimulaPartite(){
 
-        Button button = new Button("Simula 100 Partite");
+        Button button = new Button("Simula 10000 Partite");
         button.setStyle("-fx-background-color: #1B5E20; -fx-text-fill:white;-fx-font-size: 37px;");
         button.setPrefHeight(127);
         button.setPrefWidth(400);
