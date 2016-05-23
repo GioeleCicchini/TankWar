@@ -86,6 +86,8 @@ public class SimulareBattagliaHandler {
         ITank tankAvversario = this.battaglia.getTankAvversario();
         double vittorie = 0;
         double sconfitte = 0;
+
+        System.out.println("ciao");
         double pareggio = 0;
         long iniziato = System.currentTimeMillis();
         for (int i=0;i<numeroVolte;i++) {
