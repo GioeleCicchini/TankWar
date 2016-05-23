@@ -96,6 +96,8 @@ public class SimulareBattagliaHandler {
 
             System.out.println("prova");
 
+            System.out.println("modifica");
+
             CampoBattaglia campoCopia = this.campoScelto.clone();
 
 
