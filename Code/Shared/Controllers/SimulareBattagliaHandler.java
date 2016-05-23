@@ -138,8 +138,13 @@ public class SimulareBattagliaHandler {
             eventiCorrenti.add(evento.getMap());
         }
         map.put("eventi",eventiCorrenti);
+
+
+        System.out.println("Ciao a tutti");
         return map;
     }
+
+
 
     public List<IEvento> getEventi() {
         return eventi;
