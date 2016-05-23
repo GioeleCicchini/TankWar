@@ -21,6 +21,8 @@ public class SimulareBattagliaHandler {
             singletonInstance = new SimulareBattagliaHandler();
         }
         return singletonInstance;
+
+
     }
 
 
@@ -89,6 +91,8 @@ public class SimulareBattagliaHandler {
         for (int i=0;i<numeroVolte;i++) {
             Battaglia b = new Battaglia(tankPersonale);
             this.battaglie.add(b);
+
+            System.out.println("prova");
 
             CampoBattaglia campoCopia = this.campoScelto.clone();
 
@@ -171,4 +175,4 @@ public class SimulareBattagliaHandler {
         return strategie;
     }
 }
-//
+//Sto facendo
