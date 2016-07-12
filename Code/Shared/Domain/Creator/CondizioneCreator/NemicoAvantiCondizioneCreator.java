@@ -1,7 +1,7 @@
-package Shared.Domain.Creator.CodizioneCreator;
+package Shared.Domain.Creator.CondizioneCreator;
 
 import Shared.Domain.Condizioni.ICondizione;
-import Shared.Domain.Condizioni.SullaBombaCondizione;
+import Shared.Domain.Condizioni.NemicoAvantiCondizione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;
@@ -9,32 +9,32 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by emanuele on 16/02/16.
+ * Created by beniamino on 15/02/16.
  */
-public class SullaBombaCondizioneCreator implements ICreator, ICondizioneCreator {
+public class NemicoAvantiCondizioneCreator implements ICreator, ICondizioneCreator {
 
-    private static SullaBombaCondizioneCreator singletonInstance = null;
+    private static NemicoAvantiCondizioneCreator singletonInstance = null;
 
     private String name;
     private String description;
     private String idType;
 
-    private SullaBombaCondizioneCreator() {
-        this.name = "Sto su una bomba";
-        this.description = "Questa condizione controlla se c'è una propria bomba sotto al tank";
-        this.idType = "011";
+    private NemicoAvantiCondizioneCreator() {
+        this.name = "Nemico Avanti";
+        this.description = "Questa condizione controlla se c'è un nemico nel semicampo avanti a sè";
+        this.idType = "001";
     }
 
-    public static SullaBombaCondizioneCreator getSingletonInstance() {
+    public static NemicoAvantiCondizioneCreator getSingletonInstance() {
         if (singletonInstance == null) {
-            singletonInstance = new SullaBombaCondizioneCreator();
+            singletonInstance = new NemicoAvantiCondizioneCreator();
         }
         return singletonInstance;
     }
 
     public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
-        SullaBombaCondizione sullaBombaCondizione = new SullaBombaCondizione(this.name, this.description, this.idType, idCond, vera, valori);
-        return sullaBombaCondizione;
+        NemicoAvantiCondizione nemicoAvantiCondizione = new NemicoAvantiCondizione(this.name, this.description, idType, idCond, vera, valori);
+        return nemicoAvantiCondizione;
     }
 
     @Override

@@ -1,7 +1,7 @@
-package Shared.Domain.Creator.CodizioneCreator;
+package Shared.Domain.Creator.CondizioneCreator;
 
 import Shared.Domain.Condizioni.ICondizione;
-import Shared.Domain.Condizioni.NemicoDestraCondizione;
+import Shared.Domain.Condizioni.NemicoSottoTiroCondizione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;
@@ -11,30 +11,30 @@ import java.util.Map;
 /**
  * Created by beniamino on 15/02/16.
  */
-public class NemicoDestraCondizioneCreator implements ICreator, ICondizioneCreator {
+public class NemicoSottoTiroCondizioneCreator implements ICreator, ICondizioneCreator {
 
-    private static NemicoDestraCondizioneCreator singletonInstance = null;
+    private static NemicoSottoTiroCondizioneCreator singletonInstance = null;
 
     private String name;
     private String description;
     private String idType;
 
-    private NemicoDestraCondizioneCreator() {
-        this.name = "Nemico a destra";
-        this.idType = "002";
-        this.description = "Questa condizione controlla se c'è un nemico nel semicampo alla destra del tank";
+    private NemicoSottoTiroCondizioneCreator() {
+        this.name = "Nemico sotto tiro";
+        this.description = "Questa condizione controlla se c'è un nemico nel raggio di sparo del proprio tank";
+        this.idType = "005";
     }
 
-    public static NemicoDestraCondizioneCreator getSingletonInstance() {
+    public static NemicoSottoTiroCondizioneCreator getSingletonInstance() {
         if (singletonInstance == null) {
-            singletonInstance = new NemicoDestraCondizioneCreator();
+            singletonInstance = new NemicoSottoTiroCondizioneCreator();
         }
         return singletonInstance;
     }
 
     public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
-        NemicoDestraCondizione nemicoDestraCondizione = new NemicoDestraCondizione(this.name, this.description, this.idType, idCond, vera, valori);
-        return nemicoDestraCondizione;
+        NemicoSottoTiroCondizione nemicoSottoTiroCondizione = new NemicoSottoTiroCondizione(this.name, this.description, this.idType, idCond, vera, valori);
+        return nemicoSottoTiroCondizione;
     }
 
     @Override
