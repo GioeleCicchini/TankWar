@@ -38,7 +38,7 @@ public class BombaCasella implements ICasella,Serializable {
     }
 
     @Override
-    public ICasella clone() {
+    public ICasella clones() {
         ICasella casella = new BombaCasella();
         casella.setPosizione(this.posizione);
         return casella;

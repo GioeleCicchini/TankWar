@@ -28,7 +28,8 @@ public class ViewTransaction {
 
         stage = (Stage) transactionNode.getScene().getWindow();
         try {
-            root = FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/home.fxml"));
+            System.out.println("percorso");
+            root = FXMLLoader.load(getClass().getResource("/Client/UI/JavaFX/Fxml/home.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,7 +50,7 @@ public class ViewTransaction {
 
         stage = (Stage) transactionNode.getScene().getWindow();
         try {
-            root = FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/crearestrategia.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/Client/UI/JavaFX/Fxml/crearestrategia.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,7 +69,7 @@ public class ViewTransaction {
 
         stage = (Stage) transactionNode.getScene().getWindow();
         try {
-            root = FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/Client/UI/JavaFX/Fxml/login.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,7 +88,7 @@ public class ViewTransaction {
 
         stage = (Stage) transactionNode.getScene().getWindow();
         try {
-            root = FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/impostareBattaglia.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/Client/UI/JavaFX/Fxml/impostareBattaglia.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -110,7 +111,7 @@ public class ViewTransaction {
 
         stage = (Stage) transactionNode.getScene().getWindow();
         try {
-            root = FXMLLoader.load(getClass().getResource("../JavaFX/Fxml/Battaglia.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/Client/UI/JavaFX/Fxml/Battaglia.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -37,7 +37,7 @@ public class MuroCasella implements ICasella,Serializable {
     }
 
     @Override
-    public ICasella clone() {
+    public ICasella clones() {
         ICasella casella = new MuroCasella();
         casella.setPosizione(this.posizione);
         return casella;

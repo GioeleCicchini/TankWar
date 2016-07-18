@@ -35,7 +35,7 @@ public class CampoBattaglia implements Serializable {
         ICasella [][] appoggio = new ICasella[dimensioneCampo][dimensioneCampo];
         for (ICasella [] x:this.campo) {
             for (ICasella y:x) {
-                appoggio[y.getPosizione().getX()][y.getPosizione().getY()] = this.getCasella(y.getPosizione()).clone();
+                appoggio[y.getPosizione().getX()][y.getPosizione().getY()] = this.getCasella(y.getPosizione()).clones();
             }
         }
         campoCopia.setCampo(appoggio);

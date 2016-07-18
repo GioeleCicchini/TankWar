@@ -16,7 +16,7 @@ public interface ICasella {
 
     void setId(String id);
 
-    public ICasella clone();
+    public ICasella clones();
     public boolean isDisponibile();
     public ITank getTank();
     public void setTank(ITank tank);

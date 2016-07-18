@@ -30,6 +30,7 @@ public class LoginHandler {
 
     public Player getPlayerFromServer(String username, String password) throws IOException {
 
+        System.out.println("qui ci arrivo");
         ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
         DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
 
@@ -38,9 +39,13 @@ public class LoginHandler {
 
         if (risp.getFunzione().equals("UtenteTrovato")) {
             this.player = (Player) risp.getOggettiTrasferimento().get(0);
+            System.out.println("Utente Trovato");
+            System.out.println(this.player.getNome());
         }
         else {
+            System.out.println("Utente non Trovato");
             throw new NullPointerException("Utente non trovato");
+
         }
 
         return player;
