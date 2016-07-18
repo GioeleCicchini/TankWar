@@ -5,6 +5,7 @@ import Shared.Util.DTO;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Inet4Address;
 import java.net.Socket;
 
 /**
@@ -26,7 +27,7 @@ public class ConcreteRemoteService implements IComRemoteService {
 
     @Override
     public DTO RichiediAlServer(DTO dto) throws IOException {
-        Socket clientSocket = new Socket("localhost", 6789);
+        Socket clientSocket = new Socket("82.49.130.1", 6789);
         DTO risp = null;
         try {
             ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
