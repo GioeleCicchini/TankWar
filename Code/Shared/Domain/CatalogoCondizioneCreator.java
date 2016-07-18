@@ -1,7 +1,7 @@
 package Shared.Domain;
 
 
-import Shared.Domain.Creator.CodizioneCreator.*;
+import Shared.Domain.Creator.CondizioneCreator.*;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;

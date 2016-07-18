@@ -1,10 +1,8 @@
 package Shared.Domain;
 
-import Shared.Domain.Azioni.IAzione;
-import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Creator.AzioneCreator.IAzioneCreator;
-import Shared.Domain.Creator.CodizioneCreator.DefaultCondizioneCreator;
-import Shared.Domain.Creator.CodizioneCreator.ICondizioneCreator;
+import Shared.Domain.Creator.CondizioneCreator.DefaultCondizioneCreator;
+import Shared.Domain.Creator.CondizioneCreator.ICondizioneCreator;
 import Shared.Domain.Creator.ICreator;
 
 import java.io.Serializable;

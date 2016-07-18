@@ -1,7 +1,7 @@
-package Shared.Domain.Creator.CodizioneCreator;
+package Shared.Domain.Creator.CondizioneCreator;
 
 import Shared.Domain.Condizioni.ICondizione;
-import Shared.Domain.Condizioni.OstacoloAdiacenteSinistraCondizione;
+import Shared.Domain.Condizioni.OstacoloAdiacenteAvantiCondizione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;
@@ -9,33 +9,32 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by beniamino on 16/02/16.
+ * Created by beniamino on 15/02/16.
  */
-public class OstacoloAdiacenteSinistraCondizioneCreator implements ICreator, ICondizioneCreator {
+public class OstacoloAdiacenteAvantiCondizioneCreator implements ICreator, ICondizioneCreator {
 
-    private static OstacoloAdiacenteSinistraCondizioneCreator singletonInstance = null;
+    private static OstacoloAdiacenteAvantiCondizioneCreator singletonInstance = null;
 
     private String name;
     private String description;
     private String idType;
 
-    private OstacoloAdiacenteSinistraCondizioneCreator() {
-        this.name = "Muro adiacente sinistra";
-        this.description = "Questa condizione controlla se c'è un muro alla sinistra del tank";
-        this.idType = "008";
+    private OstacoloAdiacenteAvantiCondizioneCreator() {
+        this.name = "Muro adiacente davanti";
+        this.description = "Questa condizione controlla se c'è un muro avanti al tank";
+        this.idType = "006";
     }
 
-    public static OstacoloAdiacenteSinistraCondizioneCreator getSingletonInstance() {
+    public static OstacoloAdiacenteAvantiCondizioneCreator getSingletonInstance() {
         if (singletonInstance == null) {
-            singletonInstance = new OstacoloAdiacenteSinistraCondizioneCreator();
+            singletonInstance = new OstacoloAdiacenteAvantiCondizioneCreator();
         }
         return singletonInstance;
     }
 
-
     public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
-        OstacoloAdiacenteSinistraCondizione ostacoloAdiacenteSinistraCondizione = new OstacoloAdiacenteSinistraCondizione(this.name, this.description, this.idType, idCond, vera, valori);
-        return ostacoloAdiacenteSinistraCondizione;
+        OstacoloAdiacenteAvantiCondizione ostacoloAdiacenteAvantiCondizione = new OstacoloAdiacenteAvantiCondizione(this.name, this.description, this.idType, idCond, vera, valori);
+        return ostacoloAdiacenteAvantiCondizione;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package Shared.Domain.Creator.CodizioneCreator;
+package Shared.Domain.Creator.CondizioneCreator;
 
 import Shared.Domain.Condizioni.ICondizione;
 import Shared.Domain.Condizioni.NemicoDietroCondizione;

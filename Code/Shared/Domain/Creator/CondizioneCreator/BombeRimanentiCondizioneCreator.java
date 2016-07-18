@@ -1,7 +1,7 @@
-package Shared.Domain.Creator.CodizioneCreator;
+package Shared.Domain.Creator.CondizioneCreator;
 
+import Shared.Domain.Condizioni.BombeRimanentiCondizione;
 import Shared.Domain.Condizioni.ICondizione;
-import Shared.Domain.Condizioni.OstacoloAdiacenteDietroCondizione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;
@@ -9,32 +9,32 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by beniamino on 16/02/16.
+ * Created by emanuele on 16/02/16.
  */
-public class OstacoloAdiacenteDietroCondizioneCreator implements ICreator, ICondizioneCreator {
+public class BombeRimanentiCondizioneCreator implements ICreator, ICondizioneCreator {
 
-    private static OstacoloAdiacenteDietroCondizioneCreator singletonInstance = null;
+    private static BombeRimanentiCondizioneCreator singletonInstance = null;
 
     private String name;
     private String description;
     private String idType;
 
-    private OstacoloAdiacenteDietroCondizioneCreator() {
-        this.name = "Muro adiacente dietro";
-        this.description = "Questa condizione controlla se c'è un muro dietro al tank";
-        this.idType = "009";
+    private BombeRimanentiCondizioneCreator() {
+        this.name = "Ho bombe rimanenti";
+        this.description = "Questa condizione controlla se il Tank ha ancora delle bombe";
+        this.idType = "010";
     }
 
-    public static OstacoloAdiacenteDietroCondizioneCreator getSingletonInstance() {
+    public static BombeRimanentiCondizioneCreator getSingletonInstance() {
         if (singletonInstance == null) {
-            singletonInstance = new OstacoloAdiacenteDietroCondizioneCreator();
+            singletonInstance = new BombeRimanentiCondizioneCreator();
         }
         return singletonInstance;
     }
 
     public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
-        OstacoloAdiacenteDietroCondizione ostacoloAdiacenteDietroCondizione = new OstacoloAdiacenteDietroCondizione(this.name, this.description, this.idType, idCond, vera, valori);
-        return ostacoloAdiacenteDietroCondizione;
+        BombeRimanentiCondizione bombeRimanentiCondizione = new BombeRimanentiCondizione(this.name, this.description, this.idType, idCond, vera, valori);
+        return bombeRimanentiCondizione;
     }
 
     @Override

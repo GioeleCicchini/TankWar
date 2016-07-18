@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by gioele on 16/02/16.
  */
-public class ControllerFacade implements Controller {
+public class ControllerFacade implements IController {
 
     private String funzione;
     private List<Serializable> oggettiPersistenti;

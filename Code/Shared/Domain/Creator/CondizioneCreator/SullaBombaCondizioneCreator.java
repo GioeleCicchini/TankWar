@@ -1,7 +1,7 @@
-package Shared.Domain.Creator.CodizioneCreator;
+package Shared.Domain.Creator.CondizioneCreator;
 
-import Shared.Domain.Condizioni.BombeRimanentiCondizione;
 import Shared.Domain.Condizioni.ICondizione;
+import Shared.Domain.Condizioni.SullaBombaCondizione;
 import Shared.Domain.Creator.ICreator;
 
 import java.util.HashMap;
@@ -11,30 +11,30 @@ import java.util.Map;
 /**
  * Created by emanuele on 16/02/16.
  */
-public class BombeRimanentiCondizioneCreator implements ICreator, ICondizioneCreator {
+public class SullaBombaCondizioneCreator implements ICreator, ICondizioneCreator {
 
-    private static BombeRimanentiCondizioneCreator singletonInstance = null;
+    private static SullaBombaCondizioneCreator singletonInstance = null;
 
     private String name;
     private String description;
     private String idType;
 
-    private BombeRimanentiCondizioneCreator() {
-        this.name = "Ho bombe rimanenti";
-        this.description = "Questa condizione controlla se il Tank ha ancora delle bombe";
-        this.idType = "010";
+    private SullaBombaCondizioneCreator() {
+        this.name = "Sto su una bomba";
+        this.description = "Questa condizione controlla se c'è una propria bomba sotto al tank";
+        this.idType = "011";
     }
 
-    public static BombeRimanentiCondizioneCreator getSingletonInstance() {
+    public static SullaBombaCondizioneCreator getSingletonInstance() {
         if (singletonInstance == null) {
-            singletonInstance = new BombeRimanentiCondizioneCreator();
+            singletonInstance = new SullaBombaCondizioneCreator();
         }
         return singletonInstance;
     }
 
     public ICondizione doMakeCondizione(String idCond, boolean vera, List<Integer> valori) {
-        BombeRimanentiCondizione bombeRimanentiCondizione = new BombeRimanentiCondizione(this.name, this.description, this.idType, idCond, vera, valori);
-        return bombeRimanentiCondizione;
+        SullaBombaCondizione sullaBombaCondizione = new SullaBombaCondizione(this.name, this.description, this.idType, idCond, vera, valori);
+        return sullaBombaCondizione;
     }
 
     @Override

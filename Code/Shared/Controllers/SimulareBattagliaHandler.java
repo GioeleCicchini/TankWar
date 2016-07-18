@@ -21,6 +21,8 @@ public class SimulareBattagliaHandler {
             singletonInstance = new SimulareBattagliaHandler();
         }
         return singletonInstance;
+
+
     }
 
 
@@ -84,11 +86,17 @@ public class SimulareBattagliaHandler {
         ITank tankAvversario = this.battaglia.getTankAvversario();
         double vittorie = 0;
         double sconfitte = 0;
+
+        System.out.println("ciao");
         double pareggio = 0;
         long iniziato = System.currentTimeMillis();
         for (int i=0;i<numeroVolte;i++) {
             Battaglia b = new Battaglia(tankPersonale);
             this.battaglie.add(b);
+
+            System.out.println("prova");
+
+            System.out.println("modifica");
 
             CampoBattaglia campoCopia = this.campoScelto.clone();
 
@@ -134,8 +142,13 @@ public class SimulareBattagliaHandler {
             eventiCorrenti.add(evento.getMap());
         }
         map.put("eventi",eventiCorrenti);
+
+
+        System.out.println("Ciao a tutti");
         return map;
     }
+
+
 
     public List<IEvento> getEventi() {
         return eventi;
@@ -171,3 +184,4 @@ public class SimulareBattagliaHandler {
         return strategie;
     }
 }
+//Sto facendo
