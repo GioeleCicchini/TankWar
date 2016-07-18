@@ -28,7 +28,6 @@ public class ViewTransaction {
 
         stage = (Stage) transactionNode.getScene().getWindow();
         try {
-            System.out.println("percorso");
             root = FXMLLoader.load(getClass().getResource("/Client/UI/JavaFX/Fxml/home.fxml"));
         } catch (IOException e) {
             e.printStackTrace();

@@ -29,8 +29,6 @@ public class LoginHandler {
 
 
     public Player getPlayerFromServer(String username, String password) throws IOException {
-
-        System.out.println("qui ci arrivo");
         ConcreteRemoteService service = ConcreteRemoteService.getSingletonInstance();
         DTOMaker dtoMaker = DTOMaker.getSingletonInstance();
 
