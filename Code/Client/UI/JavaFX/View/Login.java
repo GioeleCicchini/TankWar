@@ -44,9 +44,11 @@ public class Login implements Initializable {
 
                 ViewTransaction.getSingletonInstance().goToHome(LoginButton);
 
+                System.out.println("Player Ricevuto");
+
             }catch (NullPointerException e){
                 System.out.println(e.getMessage());
-
+                System.out.println("Player non Ricevuto");
             }
 
 
